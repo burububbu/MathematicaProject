@@ -1,0 +1,1316 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     54381,       1306]
+NotebookOptionsPosition[     53018,       1253]
+NotebookOutlinePosition[     53656,       1278]
+CellTagsIndexPosition[     53613,       1275]
+WindowTitle->Interactive Maze - Source
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Interactive Maze", "Section",
+ CellFrame->{{0, 0}, {0, 0}},
+ ShowCellBracket->False,
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[BoxData[
+ GraphicsBox[RasterBox[CompressedData["
+1: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
+FP/69esnAAAAAAAAAAAAwM74B4thROM=
+   "], {{0, 0}, {1800, 25}}, {0, 255},
+   ColorFunction->RGBColor],
+  ImageSize->{1800, 25},
+  PlotRange->{{0, 1800}, {0, 25}}]], "Section",
+ CellFrame->{{0, 0}, {0, 0}},
+ ShowCellBracket->False],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DynamicModule", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"pt", "=", 
+       RowBox[{"{", 
+        RowBox[{".5", ",", ".5"}], "}"}]}], ",", 
+      RowBox[{"ll", "=", 
+       RowBox[{"{", "}"}]}]}], "}"}], ",", "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"DrawMaze", ":=", 
+      RowBox[{"LocatorPane", "[", 
+       RowBox[{
+        RowBox[{"Dynamic", "[", 
+         RowBox[{"pt", ",", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"ll", ",", "#"}], "]"}], ";", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Length", "[", "ll", "]"}], ">", "20"}], ",", 
+               RowBox[{"ll", "=", 
+                RowBox[{"Take", "[", 
+                 RowBox[{"ll", ",", 
+                  RowBox[{"-", "20"}]}], "]"}]}]}], "]"}], ";", 
+             RowBox[{"pt", "=", 
+              RowBox[{"Last", "@", "ll"}]}]}], ")"}], "&"}]}], "]"}], ",", 
+        RowBox[{"Module", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"x", ",", "y", ",", " ", "lineList"}], "}"}], ",", "\n", 
+          "\t\t", 
+          RowBox[{
+           RowBox[{"scale", " ", "=", "1"}], ";", "\n", "\t\t", 
+           RowBox[{"lineList", " ", "=", 
+            RowBox[{"Complement", "[", " ", 
+             RowBox[{
+              RowBox[{"Union", "[", " ", 
+               RowBox[{"Flatten", "[", " ", 
+                RowBox[{"MapIndexed", "[", " ", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"y", ",", "x"}], "}"}], "=", "#2"}], ";", "\n", 
+                    "\t\t\t\t\t", 
+                    RowBox[{"Union", "[", " ", "\n", "\t\t\t\t", 
+                    RowBox[{"{", "\t", 
+                    RowBox[{
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#1", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "==", "1"}], ",", " ", 
+                    RowBox[{"Line", "[", " ", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", 
+                    RowBox[{"y", "+", "scale"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"x", "+", "scale"}], ",", 
+                    RowBox[{"y", "+", "scale"}]}], "}"}]}], "}"}], "]"}]}], 
+                    " ", "]"}], ",", "\n", "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#1", "[", 
+                    RowBox[{"[", "3", "]"}], "]"}], "==", "1"}], ",", " ", 
+                    RowBox[{"Line", "[", " ", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", "y"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"x", "+", "scale"}], ",", "y"}], "}"}]}], "}"}], 
+                    "]"}]}], " ", "]"}], ",", 
+                    RowBox[{"If", "[", " ", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#1", "[", 
+                    RowBox[{"[", "2", "]"}], "]"}], "==", "1"}], ",", " ", 
+                    RowBox[{"Line", "[", " ", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", "y"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"x", ",", 
+                    RowBox[{"y", "+", "scale"}]}], "}"}]}], "}"}], "]"}]}], 
+                    " ", "]"}], ",", "\n", "\t\t\t", 
+                    RowBox[{"If", "[", " ", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#1", "[", 
+                    RowBox[{"[", "4", "]"}], "]"}], "==", "1"}], ",", " ", 
+                    RowBox[{"Line", "[", " ", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"x", "+", "scale"}], ",", "y"}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"x", "+", "scale"}], ",", 
+                    RowBox[{"y", "+", "scale"}]}], "}"}]}], "}"}], "]"}]}], 
+                    " ", "]"}]}], "\n", "\t\t\t", "}"}], "]"}]}], ")"}], " ", 
+                   "&"}], ",", " ", "maze", ",", 
+                  RowBox[{"{", "2", "}"}]}], "]"}], " ", "]"}], "]"}], ",", 
+              RowBox[{"{", "Null", "}"}]}], "]"}]}], ";", "\n", "\t\t\t\t\t", 
+           
+           RowBox[{"Dynamic", "@", 
+            RowBox[{"Graphics", "[", " ", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Thickness", "[", "0.005", "]"}], ",", "\n", 
+                "lineList", ",", 
+                RowBox[{"With", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"newpts", "=", 
+                    RowBox[{"Partition", "[", 
+                    RowBox[{"ll", ",", "2", ",", "1"}], "]"}]}], "}"}], ",", 
+                  RowBox[{"Table", "[", 
+                   RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Hue", "[", 
+                    RowBox[{"i", "/", 
+                    RowBox[{"Length", "[", "newpts", "]"}]}], "]"}], ",", 
+                    RowBox[{"Line", "[", 
+                    RowBox[{"newpts", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"i", ",", "1", ",", 
+                    RowBox[{"Length", "[", "newpts", "]"}], ",", "1"}], 
+                    "}"}]}], "]"}]}], "]"}]}], "}"}], "\n", "\t\t\t", ",", 
+              RowBox[{"AspectRatio", "\[Rule]", 
+               RowBox[{"height", "/", "width"}]}], ",", " ", 
+              RowBox[{"ImageSize", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"450", ",", "450"}], "}"}]}]}], "]"}]}]}]}], "\n", 
+         "\t\t\t\t\t", "\n", "\t\t", "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", "\n", 
+     RowBox[{
+      RowBox[{"OKtoEnterCell", "[", 
+       RowBox[{"{", 
+        RowBox[{"y_", ",", "x_"}], "}"}], "]"}], ":=", " ", 
+      RowBox[{"Module", "[", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", "\n", "\t\t", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"x", ">", "0"}], ")"}], "&&", 
+           RowBox[{"(", 
+            RowBox[{"x", "<=", "width"}], ")"}], "&&", 
+           RowBox[{"(", 
+            RowBox[{"y", ">", "0"}], ")"}], "&&", 
+           RowBox[{"(", 
+            RowBox[{"y", "<=", "height"}], ")"}]}], ",", "\n", "\t\t", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"maze", "[", 
+             RowBox[{"[", 
+              RowBox[{"y", ",", "x", ",", "5"}], "]"}], "]"}], ">", "3"}], 
+           " ", "||", "  ", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"y", "==", "height"}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{"x", "==", "exitPoint"}], ")"}]}], ")"}]}], ",", "\n", 
+          "\t\t\t", "False"}], "]"}]}], "\n", "\t\t", "]"}]}], ";", "\n", 
+     "\n", 
+     RowBox[{
+      RowBox[{"BreakWall", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"y_", ",", "x_"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"y2_", ",", "x2_"}], "}"}]}], "]"}], ":=", 
+      RowBox[{"Module", "[", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"wall1", ",", "wall2"}], "}"}], ",", "\n", "\t\t", 
+        RowBox[{
+         RowBox[{"If", "[", " ", 
+          RowBox[{
+           RowBox[{"x", "==", "x2"}], ",", "\n", "\t\t\t", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"y", ">", "y2"}], ",", " ", 
+              RowBox[{
+               RowBox[{"wall1", " ", "=", " ", "3"}], ";", 
+               RowBox[{
+                RowBox[{"wall2", "=", "1"}], ";"}]}], ",", 
+              RowBox[{
+               RowBox[{"wall1", "=", "1"}], ";", " ", 
+               RowBox[{"wall2", "=", "3"}], ";"}]}], "]"}], ";"}], ",", "\n", 
+           "\t\t\t", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"x", ">", "x2"}], ",", " ", 
+              RowBox[{
+               RowBox[{"wall1", " ", "=", "2"}], ";", 
+               RowBox[{
+                RowBox[{"wall2", " ", "=", " ", "4"}], ";"}]}], ",", 
+              RowBox[{
+               RowBox[{"wall1", " ", "=", "4"}], ";", 
+               RowBox[{"wall2", " ", "=", "2"}], ";"}]}], "]"}], ";"}]}], 
+          "\n", "\t\t\t\t", "]"}], ";", "\n", 
+         RowBox[{
+          RowBox[{"maze", "[", 
+           RowBox[{"[", 
+            RowBox[{"y", ",", "x", ",", "wall1"}], "]"}], "]"}], "=", "0"}], 
+         ";", "\n", 
+         RowBox[{
+          RowBox[{"maze", "[", 
+           RowBox[{"[", 
+            RowBox[{"y2", ",", "x2", ",", "wall2"}], "]"}], "]"}], "=", "0"}],
+          ";", "\n", "\n", 
+         RowBox[{"If", "[", "  ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"maze", "[", 
+             RowBox[{"[", 
+              RowBox[{"y2", ",", "x2", ",", "5"}], "]"}], "]"}], " ", "==", 
+            "4"}], ",", " ", 
+           RowBox[{"cellVisited", "++"}]}], "]"}], ";", "\n", " ", "\n", 
+         RowBox[{
+          RowBox[{"maze", "[", 
+           RowBox[{"[", 
+            RowBox[{"y2", ",", "x2", ",", "5"}], "]"}], "]"}], "--"}], ";", 
+         "\n", " ", 
+         RowBox[{
+          RowBox[{"maze", "[", 
+           RowBox[{"[", 
+            RowBox[{"y", ",", "x", ",", "5"}], "]"}], "]"}], "--"}], ";"}]}], 
+       "\n", "\t\t", "]"}]}], ";", "\n", "\n", "\n", 
+     RowBox[{
+      RowBox[{"legalCell", "[", 
+       RowBox[{"{", 
+        RowBox[{"y_", ",", "x_"}], "}"}], "]"}], ":=", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"x", ">", "0"}], ")"}], "&&", 
+       RowBox[{"(", 
+        RowBox[{"x", "<=", "width"}], ")"}], "&&", 
+       RowBox[{"(", 
+        RowBox[{"y", ">", "0"}], ")"}], "&&", 
+       RowBox[{"(", 
+        RowBox[{"y", "<=", "height"}], ")"}]}]}], ";", "\n", "\t", "\n", 
+     RowBox[{
+      RowBox[{"needToBreak", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"y_", ",", "x_"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"y2_", ",", "x2_"}], "}"}]}], "]"}], ":=", 
+      RowBox[{"Module", "[", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"wall1", ",", "wall2"}], "}"}], ",", "\n", "\t\t", 
+        RowBox[{
+         RowBox[{"If", "[", " ", 
+          RowBox[{
+           RowBox[{"x", "==", "x2"}], ",", "\n", "\t\t\t", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"y", ">", "y2"}], ",", " ", 
+              RowBox[{
+               RowBox[{"wall1", " ", "=", " ", "3"}], ";", 
+               RowBox[{
+                RowBox[{"wall2", "=", "1"}], ";"}]}], ",", 
+              RowBox[{
+               RowBox[{"wall1", "=", "1"}], ";", " ", 
+               RowBox[{"wall2", "=", "3"}], ";"}]}], "]"}], ";"}], ",", "\n", 
+           "\t\t\t", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"x", ">", "x2"}], ",", " ", 
+              RowBox[{
+               RowBox[{"wall1", " ", "=", "2"}], ";", 
+               RowBox[{
+                RowBox[{"wall2", " ", "=", " ", "4"}], ";"}]}], ",", 
+              RowBox[{
+               RowBox[{"wall1", " ", "=", "4"}], ";", 
+               RowBox[{"wall2", " ", "=", "2"}], ";"}]}], "]"}], ";"}]}], 
+          "\n", "\t\t\t\t", "]"}], ";", "\n", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"maze", "[", 
+              RowBox[{"[", 
+               RowBox[{"y", ",", "x", ",", "wall1"}], "]"}], "]"}], "==", 
+             "1"}], " ", ")"}], "&&", " ", "\n", 
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"maze", "[", 
+              RowBox[{"[", 
+               RowBox[{"y2", ",", "x2", ",", "wall2"}], "]"}], "]"}], "==", 
+             "1"}], ")"}]}], ")"}]}]}], "\n", "\t\t", "]"}]}], ";", "\n", 
+     RowBox[{"Clear", "[", "buildBranch", "]"}], ";", "\n", 
+     RowBox[{
+      RowBox[{"buildBranch", "[", 
+       RowBox[{"{", 
+        RowBox[{"startY_", ",", "startX_"}], "}"}], "]"}], ":=", 
+      RowBox[{"Module", "[", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "curX", ",", "curY", ",", "legalCells", ",", "allCells", ",", 
+          "snake"}], "}"}], ",", "\n", "\t\t", 
+        RowBox[{
+         RowBox[{"snake", " ", "=", " ", 
+          RowBox[{"{", 
+           RowBox[{"{", 
+            RowBox[{"startY", ",", "startX"}], "}"}], "}"}]}], ";", "\n", 
+         "\t\t", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"curY", ",", "curX"}], "}"}], "=", 
+          RowBox[{"{", 
+           RowBox[{"startY", ",", "startX"}], "}"}]}], ";", "\n", "\t\t", 
+         "\n", "\t\t", 
+         RowBox[{"While", "[", " ", 
+          RowBox[{
+           RowBox[{"totalCells", " ", ">", "cellVisited"}], " ", ",", "\n", 
+           "\t\t\t", "\n", "\n", "\t\t\t\t", 
+           RowBox[{
+            RowBox[{"legalCells", " ", "=", " ", 
+             RowBox[{"Select", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                 RowBox[{"(", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{"curY", ",", "curX"}], "}"}], " ", "+", "#"}], 
+                  ")"}], "&"}], " ", "/@", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"1", ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", 
+                    RowBox[{"-", "1"}]}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"-", "1"}], ",", "0"}], "}"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", " ", 
+               "legalCell"}], "]"}]}], ";", "\n", "\t\t\t\t", 
+            RowBox[{"allCells", " ", "=", " ", 
+             RowBox[{"Select", "[", 
+              RowBox[{"legalCells", ",", 
+               RowBox[{
+                RowBox[{"needToBreak", "[", 
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"curY", ",", "curX"}], "}"}], ",", "#"}], "]"}], 
+                "&"}]}], "]"}]}], ";", "\n", "\t\t\t\t", 
+            RowBox[{"allCells", " ", "=", " ", 
+             RowBox[{"Select", "[", 
+              RowBox[{"allCells", ",", " ", "OKtoEnterCell"}], " ", "]"}]}], 
+            ";", "\n", "\t\t\t\t", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "we", " ", "are", " ", "ledt", " ", "with", " ", "cells", " ", 
+              "to", " ", "enter"}], " ", "*)"}], "\n", "\t\t\t\t", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Length", "[", "allCells", "]"}], "==", "0"}], ",", 
+              " ", 
+              RowBox[{"(*", " ", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"can", "'"}], "t", " ", "break"}], ",", " ", 
+                RowBox[{"then", " ", "move"}]}], " ", "*)"}], "\n", 
+              "\t\t\t\t\t", 
+              RowBox[{"(*", " ", 
+               RowBox[{
+               "we", " ", "move", " ", "back", " ", "to", " ", "previous", 
+                " ", "cell"}], " ", "*)"}], "\n", "\t\t\t\t   ", 
+              RowBox[{
+               RowBox[{"snake", " ", "=", " ", 
+                RowBox[{"Drop", "[", 
+                 RowBox[{"snake", ",", 
+                  RowBox[{"-", "1"}]}], "]"}]}], ";", "\n", "\t\t\t\t\t", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"curY", ",", "curX"}], "}"}], " ", "=", 
+                RowBox[{"Last", "[", "snake", "]"}]}], ";"}], "\n", 
+              "\t\t\t\t\t", ",", "\n", "\t\t\t\t\t", 
+              RowBox[{"(*", " ", 
+               RowBox[{
+               "we", " ", "can", " ", "break", "  ", "so", " ", "we", " ", 
+                "do", " ", "it", " ", "randomly"}], "*)"}], "\n", 
+              "\t\t\t\t\t", 
+              RowBox[{
+               RowBox[{"possibleCell", "=", " ", 
+                RowBox[{"allCells", " ", "[", 
+                 RowBox[{"[", " ", 
+                  RowBox[{"Random", "[", " ", 
+                   RowBox[{"Integer", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", 
+                    RowBox[{"Length", "[", "allCells", "]"}]}], "}"}]}], 
+                   "]"}], " ", "]"}], "]"}]}], ";", "\n", "\t\t\t\t\t", 
+               RowBox[{"BreakWall", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"curY", ",", "curX"}], "}"}], " ", ",", 
+                 "possibleCell"}], "]"}], ";", "\n", "\t\t\t\t\t", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"curY", ",", "curX"}], "}"}], " ", "=", 
+                "possibleCell"}], ";", "\n", "\t\t\t\t   ", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"snake", ",", "possibleCell"}], "]"}], ";"}]}], "\n", 
+             "\t\t\t\t\t", "]"}], ";"}]}], "\n", "\t\t\t", "]"}], ";"}]}], 
+       "\n", "\t\t", "]"}]}], ";", "\n", "\t\t", "\n", "\n", 
+     RowBox[{
+      RowBox[{"buildMaze", "[", "size_", "]"}], ":=", 
+      RowBox[{"Module", "[", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", "\n", 
+        RowBox[{
+         RowBox[{"width", " ", "=", " ", 
+          RowBox[{"height", " ", "=", "size"}]}], ";", "\n", 
+         RowBox[{"(*", " ", 
+          RowBox[{"top", ",", "left", ",", "bot", ",", "right"}], " ", "*)"}],
+          "\n", 
+         RowBox[{"maze", " ", "=", " ", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"1", ",", "1", ",", "1", ",", "1", ",", "4"}], "}"}], 
+            ",", 
+            RowBox[{"{", "height", "}"}], ",", 
+            RowBox[{"{", "width", "}"}]}], "]"}]}], ";", "\n", 
+         RowBox[{"totalCells", " ", "=", " ", 
+          RowBox[{
+           RowBox[{"width", " ", "height"}], "-", "2"}]}], ";", "\n", 
+         RowBox[{"cellVisited", " ", "=", " ", "0"}], ";", "\n", 
+         RowBox[{"(*", " ", 
+          RowBox[{"entrance", " ", "at", " ", "bottom"}], " ", "*)"}], "\n", 
+         RowBox[{"start", " ", "=", " ", 
+          RowBox[{"RandomInteger", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "width"}], "}"}], "]"}]}], ";", "\n", "\t\t", 
+         RowBox[{"exitPoint", " ", "=", " ", 
+          RowBox[{"RandomInteger", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "width"}], "}"}], "]"}]}], ";", "\n", 
+         RowBox[{
+          RowBox[{"maze", "[", 
+           RowBox[{"[", " ", 
+            RowBox[{"1", ",", "start"}], " ", "]"}], "]"}], " ", "=", "  ", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "1", ",", "0", ",", "1", ",", "3"}], "}"}]}], 
+         ";", "\n", 
+         RowBox[{"(*", " ", 
+          RowBox[{"exit", " ", "at", " ", "Top"}], " ", "*)"}], "\n", 
+         RowBox[{
+          RowBox[{"maze", "[", 
+           RowBox[{"[", " ", 
+            RowBox[{"height", ",", "exitPoint"}], " ", "]"}], "]"}], " ", "=",
+           "  ", 
+          RowBox[{"{", 
+           RowBox[{"0", ",", "1", ",", "1", ",", "1", ",", "3"}], "}"}]}], 
+         ";", "\n", "\n", " ", 
+         RowBox[{"buildBranch", "[", " ", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "start"}], "}"}], "]"}], ";", "\n", 
+         "DrawMaze"}]}], "\n", "\t\t", "]"}]}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"mazeDraw", "[", "size_", "]"}], ":=", 
+      RowBox[{"DynamicModule", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"pt", "=", 
+           RowBox[{"{", 
+            RowBox[{".5", ",", ".5"}], "}"}]}], ",", 
+          RowBox[{"ll", "=", 
+           RowBox[{"{", "}"}]}], ",", 
+          RowBox[{"maze", "=", 
+           RowBox[{"Part", "[", 
+            RowBox[{
+             RowBox[{"buildMaze", "[", "size", "]"}], ",", "2", ",", "1", ",",
+              "1"}], "]"}]}]}], "}"}], ",", 
+        RowBox[{"LocatorPane", "[", 
+         RowBox[{
+          RowBox[{"Dynamic", "[", 
+           RowBox[{"pt", ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ll", ",", "#"}], "]"}], ";", 
+               RowBox[{"pt", "=", 
+                RowBox[{"Last", "@", "ll"}]}]}], ")"}], "&"}]}], "]"}], ",", 
+          RowBox[{"Dynamic", "@", 
+           RowBox[{"Graphics", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"maze", ",", 
+               RowBox[{"With", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"newpts", "=", 
+                   RowBox[{"Partition", "[", 
+                    RowBox[{"ll", ",", "2", ",", "1"}], "]"}]}], "}"}], ",", 
+                 RowBox[{"Table", "[", 
+                  RowBox[{
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Hue", "[", 
+                    RowBox[{"i", "/", 
+                    RowBox[{"Length", "[", "newpts", "]"}]}], "]"}], ",", 
+                    RowBox[{"Line", "[", 
+                    RowBox[{"newpts", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+                   RowBox[{"{", 
+                    RowBox[{"i", ",", "1", ",", 
+                    RowBox[{"Length", "[", "newpts", "]"}], ",", "1"}], 
+                    "}"}]}], "]"}]}], "]"}]}], "}"}], ",", 
+             RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}]}], "]"}]}], 
+       "]"}]}]}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.36986902554687*^9, 3.36986902603125*^9}, {
+   3.36986912925*^9, 3.36986915003125*^9}, {3.3726952420273037`*^9, 
+   3.3726952595424895`*^9}, {3.373678619398005*^9, 3.3736786262105484`*^9}, {
+   3.374884665015625*^9, 3.374884676484375*^9}, {3.388615900359375*^9, 
+   3.388615907546875*^9}},
+ CellID->5681730],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"mazeDraw", "[", "u", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"u", ",", "5", ",", "\"\<size of maze\>\""}], "}"}], ",", "5", 
+     ",", "25", ",", "1"}], "}"}], ",", 
+   RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.36986906217188*^9, 3.36986906973437*^9}, {
+   3.36986916921875*^9, 3.36986916989062*^9}, {3.36994269428125*^9, 
+   3.36994269776563*^9}, {3.36994281367188*^9, 3.36994282323438*^9}, {
+   3.372695273712866*^9, 3.372695278770138*^9}, {3.372695471537323*^9, 
+   3.3726954718277407`*^9}, {3.388615891*^9, 3.38861589196875*^9}},
+ CellID->1496021318]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`u$$ = 5, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`u$$], 5, "size of maze"}, 5, 25, 1}}, 
+    Typeset`size$$ = {360., {177., 182.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    False, $CellContext`u$117938$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`u$$ = 5}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`u$$, $CellContext`u$117938$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> $CellContext`mazeDraw[$CellContext`u$$], 
+      "Specifications" :> {{{$CellContext`u$$, 5, "size of maze"}, 5, 25, 1}},
+       "Options" :> {}, "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{405., {221., 226.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>(({$CellContext`mazeDraw[
+          Pattern[$CellContext`size$, 
+           Blank[]]] := 
+        DynamicModule[{$CellContext`pt$100422 = {0.5, 
+            0.5}, $CellContext`ll$100422 = {}, $CellContext`maze = Part[
+             $CellContext`buildMaze[$CellContext`size$], 2, 1, 1]}, 
+          LocatorPane[
+           
+           Dynamic[$CellContext`pt$100422, (
+            AppendTo[$CellContext`ll$100422, #]; $CellContext`pt$100422 = 
+             Last[$CellContext`ll$100422])& ], 
+           Dynamic[
+            Graphics[{$CellContext`maze, 
+              
+              With[{$CellContext`newpts = 
+                Partition[$CellContext`ll$100422, 2, 1]}, 
+               Table[{
+                 Hue[$CellContext`i/Length[$CellContext`newpts]], 
+                 Line[
+                  
+                  Part[$CellContext`newpts, $CellContext`i]]}, \
+{$CellContext`i, 1, 
+                 Length[$CellContext`newpts], 1}]]}, PlotRange -> All]]]], 
+        Attributes[$CellContext`size$] = {Temporary}, 
+        Attributes[$CellContext`pt$100422] = {
+         Temporary}, $CellContext`pt$100422 = {0.5, 0.5}, 
+        Attributes[$CellContext`ll$100422] = {
+         Temporary}, $CellContext`ll$100422 = {}, $CellContext`maze = \
+CompressedData["
+1:eJx1TssVwCAMAn09dIyu5Agu0P1vTWJ8xk8PoVAI5qlvqRnA7XPJgEQiBJSm
+ISk6bW7/Z4tCTi6zsw6W6/Xu+u5PbrinN7Zcc/Uwq+fcPA5iXFvYcsZUYNLr
+fcNUKNXvdG6EUAodyx9yDZg/57MDAQ==
+         "], $CellContext`buildMaze[
+          Pattern[$CellContext`size, 
+           Blank[]]] := 
+        Module[{}, $CellContext`width = ($CellContext`height = \
+$CellContext`size); $CellContext`maze = 
+           Table[{1, 1, 1, 1, 
+             4}, {$CellContext`height}, {$CellContext`width}]; \
+$CellContext`totalCells = $CellContext`width $CellContext`height - 
+            2; $CellContext`cellVisited = 0; $CellContext`start = 
+           RandomInteger[{1, $CellContext`width}]; $CellContext`exitPoint = 
+           RandomInteger[{1, $CellContext`width}]; 
+          Part[$CellContext`maze, 1, $CellContext`start] = {1, 1, 0, 1, 3}; 
+          Part[$CellContext`maze, $CellContext`height, \
+$CellContext`exitPoint] = {0, 1, 1, 1, 3}; $CellContext`buildBranch[{
+            1, $CellContext`start}]; $CellContext`DrawMaze], \
+$CellContext`width = 9, $CellContext`height = 9, $CellContext`totalCells = 
+        79, $CellContext`cellVisited = 79, $CellContext`start = 
+        6, $CellContext`exitPoint = 3, $CellContext`buildBranch[{
+           Pattern[$CellContext`startY, 
+            Blank[]], 
+           Pattern[$CellContext`startX, 
+            Blank[]]}] := 
+        Module[{$CellContext`curX, $CellContext`curY, \
+$CellContext`legalCells, $CellContext`allCells, $CellContext`snake}, \
+$CellContext`snake = {{$CellContext`startY, $CellContext`startX}}; \
+{$CellContext`curY, $CellContext`curX} = {$CellContext`startY, \
+$CellContext`startX}; 
+          While[$CellContext`totalCells > $CellContext`cellVisited, \
+$CellContext`legalCells = Select[
+               
+               Map[{$CellContext`curY, $CellContext`curX} + #& , {{1, 0}, {
+                0, -1}, {-1, 0}, {0, 
+                1}}], $CellContext`legalCell]; $CellContext`allCells = 
+             Select[$CellContext`legalCells, \
+$CellContext`needToBreak[{$CellContext`curY, $CellContext`curX}, #]& ]; \
+$CellContext`allCells = 
+             Select[$CellContext`allCells, $CellContext`OKtoEnterCell]; 
+            If[Length[$CellContext`allCells] == 
+              0, $CellContext`snake = 
+               Drop[$CellContext`snake, -1]; {$CellContext`curY, \
+$CellContext`curX} = Last[$CellContext`snake]; 
+              Null, $CellContext`possibleCell = Part[$CellContext`allCells, 
+                 Random[Integer, {1, 
+                   
+                   Length[$CellContext`allCells]}]]; \
+$CellContext`BreakWall[{$CellContext`curY, $CellContext`curX}, \
+$CellContext`possibleCell]; {$CellContext`curY, $CellContext`curX} = \
+$CellContext`possibleCell; 
+              AppendTo[$CellContext`snake, $CellContext`possibleCell]; Null]; 
+            Null]; Null], $CellContext`legalCell[{
+           Pattern[$CellContext`y, 
+            Blank[]], 
+           Pattern[$CellContext`x, 
+            Blank[]]}] := 
+        And[$CellContext`x > 
+          0, $CellContext`x <= $CellContext`width, $CellContext`y > 
+          0, $CellContext`y <= $CellContext`height], $CellContext`needToBreak[{
+           Pattern[$CellContext`y, 
+            Blank[]], 
+           Pattern[$CellContext`x, 
+            Blank[]]}, {
+           Pattern[$CellContext`y2, 
+            Blank[]], 
+           Pattern[$CellContext`x2, 
+            Blank[]]}] := 
+        Module[{$CellContext`wall1, $CellContext`wall2}, 
+          If[$CellContext`x == $CellContext`x2, 
+            If[$CellContext`y > $CellContext`y2, $CellContext`wall1 = 
+               3; ($CellContext`wall2 = 1; Null), $CellContext`wall1 = 
+               1; $CellContext`wall2 = 3; Null]; Null, 
+            If[$CellContext`x > $CellContext`x2, $CellContext`wall1 = 
+               2; ($CellContext`wall2 = 4; Null), $CellContext`wall1 = 
+               4; $CellContext`wall2 = 2; Null]; Null]; 
+          And[Part[$CellContext`maze, $CellContext`y, $CellContext`x, \
+$CellContext`wall1] == 1, 
+            Part[$CellContext`maze, $CellContext`y2, $CellContext`x2, \
+$CellContext`wall2] == 1]], $CellContext`OKtoEnterCell[{
+           Pattern[$CellContext`y, 
+            Blank[]], 
+           Pattern[$CellContext`x, 
+            Blank[]]}] := Module[{}, 
+          If[
+           
+           And[$CellContext`x > 
+            0, $CellContext`x <= $CellContext`width, $CellContext`y > 
+            0, $CellContext`y <= $CellContext`height], 
+           Or[
+           Part[$CellContext`maze, $CellContext`y, $CellContext`x, 5] > 3, 
+            
+            And[$CellContext`y == $CellContext`height, $CellContext`x == \
+$CellContext`exitPoint]], False]], $CellContext`possibleCell = {2, 
+         8}, $CellContext`BreakWall[{
+           Pattern[$CellContext`y, 
+            Blank[]], 
+           Pattern[$CellContext`x, 
+            Blank[]]}, {
+           Pattern[$CellContext`y2, 
+            Blank[]], 
+           Pattern[$CellContext`x2, 
+            Blank[]]}] := 
+        Module[{$CellContext`wall1, $CellContext`wall2}, 
+          If[$CellContext`x == $CellContext`x2, 
+            If[$CellContext`y > $CellContext`y2, $CellContext`wall1 = 
+               3; ($CellContext`wall2 = 1; Null), $CellContext`wall1 = 
+               1; $CellContext`wall2 = 3; Null]; Null, 
+            If[$CellContext`x > $CellContext`x2, $CellContext`wall1 = 
+               2; ($CellContext`wall2 = 4; Null), $CellContext`wall1 = 
+               4; $CellContext`wall2 = 2; Null]; Null]; 
+          Part[$CellContext`maze, $CellContext`y, $CellContext`x, \
+$CellContext`wall1] = 0; 
+          Part[$CellContext`maze, $CellContext`y2, $CellContext`x2, \
+$CellContext`wall2] = 0; 
+          If[Part[$CellContext`maze, $CellContext`y2, $CellContext`x2, 5] == 
+            4, 
+            Increment[$CellContext`cellVisited]]; Decrement[
+            Part[$CellContext`maze, $CellContext`y2, $CellContext`x2, 5]]; 
+          Decrement[
+            Part[$CellContext`maze, $CellContext`y, $CellContext`x, 5]]; 
+          Null], $CellContext`DrawMaze := LocatorPane[
+          
+          Dynamic[$CellContext`pt$100422, (
+           AppendTo[$CellContext`ll$100422, #]; 
+           If[Length[$CellContext`ll$100422] > 20, $CellContext`ll$100422 = 
+             Take[$CellContext`ll$100422, -20]]; $CellContext`pt$100422 = 
+            Last[$CellContext`ll$100422])& ], 
+          
+          Module[{$CellContext`x$, $CellContext`y$, $CellContext`lineList$}, \
+$CellContext`scale = 1; $CellContext`lineList$ = Complement[
+              Union[
+               Flatten[
+                MapIndexed[({$CellContext`y$, $CellContext`x$} = #2; Union[{
+                    If[Part[#, 1] == 1, 
+                    
+                    Line[{{$CellContext`x$, $CellContext`y$ + \
+$CellContext`scale}, {$CellContext`x$ + $CellContext`scale, $CellContext`y$ + \
+$CellContext`scale}}]], 
+                    If[Part[#, 3] == 1, 
+                    
+                    Line[{{$CellContext`x$, $CellContext`y$}, \
+{$CellContext`x$ + $CellContext`scale, $CellContext`y$}}]], 
+                    If[Part[#, 2] == 1, 
+                    
+                    Line[{{$CellContext`x$, $CellContext`y$}, \
+{$CellContext`x$, $CellContext`y$ + $CellContext`scale}}]], 
+                    If[Part[#, 4] == 1, 
+                    
+                    Line[{{$CellContext`x$ + $CellContext`scale, \
+$CellContext`y$}, {$CellContext`x$ + $CellContext`scale, $CellContext`y$ + \
+$CellContext`scale}}]]}])& , $CellContext`maze, {2}]]], {Null}]; Dynamic[
+             Graphics[{
+               Thickness[0.005], $CellContext`lineList$, 
+               
+               With[{$CellContext`newpts = 
+                 Partition[$CellContext`ll$100422, 2, 1]}, 
+                Table[{
+                  Hue[$CellContext`i/Length[$CellContext`newpts]], 
+                  Line[
+                   
+                   Part[$CellContext`newpts, $CellContext`i]]}, \
+{$CellContext`i, 1, 
+                  Length[$CellContext`newpts], 1}]]}, 
+              AspectRatio -> $CellContext`height/$CellContext`width, 
+              ImageSize -> {450, 450}]]]], 
+        Attributes[$CellContext`x$] = {Temporary}, 
+        Attributes[$CellContext`y$] = {Temporary}, 
+        Attributes[$CellContext`lineList$] = {Temporary}, $CellContext`scale = 
+        1}; Typeset`initDone$$ = True); ReleaseHold[
+       HoldComplete[{
+        DynamicModule[{$CellContext`pt = {0.5, 
+             0.5}, $CellContext`ll = {}}, $CellContext`DrawMaze := LocatorPane[
+              
+              Dynamic[$CellContext`pt, (AppendTo[$CellContext`ll, #]; 
+               If[Length[$CellContext`ll] > 20, $CellContext`ll = 
+                 Take[$CellContext`ll, -20]]; $CellContext`pt = 
+                Last[$CellContext`ll])& ], 
+              
+              Module[{$CellContext`x, $CellContext`y, $CellContext`lineList}, \
+$CellContext`scale = 1; $CellContext`lineList = Complement[
+                  Union[
+                   Flatten[
+                    
+                    MapIndexed[({$CellContext`y, $CellContext`x} = #2; 
+                    Union[{
+                    If[Part[#, 1] == 1, 
+                    
+                    Line[{{$CellContext`x, $CellContext`y + \
+$CellContext`scale}, {$CellContext`x + $CellContext`scale, $CellContext`y + \
+$CellContext`scale}}]], 
+                    If[Part[#, 3] == 1, 
+                    
+                    Line[{{$CellContext`x, $CellContext`y}, {$CellContext`x + \
+$CellContext`scale, $CellContext`y}}]], 
+                    If[Part[#, 2] == 1, 
+                    
+                    Line[{{$CellContext`x, $CellContext`y}, {$CellContext`x, \
+$CellContext`y + $CellContext`scale}}]], 
+                    If[Part[#, 4] == 1, 
+                    
+                    Line[{{$CellContext`x + $CellContext`scale, \
+$CellContext`y}, {$CellContext`x + $CellContext`scale, $CellContext`y + \
+$CellContext`scale}}]]}])& , $CellContext`maze, {2}]]], {Null}]; Dynamic[
+                 Graphics[{
+                   Thickness[0.005], $CellContext`lineList, 
+                   
+                   With[{$CellContext`newpts = 
+                    Partition[$CellContext`ll, 2, 1]}, 
+                    Table[{
+                    Hue[$CellContext`i/Length[$CellContext`newpts]], 
+                    Line[
+                    
+                    Part[$CellContext`newpts, $CellContext`i]]}, \
+{$CellContext`i, 1, 
+                    Length[$CellContext`newpts], 1}]]}, 
+                  AspectRatio -> $CellContext`height/$CellContext`width, 
+                  ImageSize -> {450, 450}]]]]; $CellContext`OKtoEnterCell[{
+               Pattern[$CellContext`y, 
+                Blank[]], 
+               Pattern[$CellContext`x, 
+                Blank[]]}] := Module[{}, 
+              If[
+               
+               And[$CellContext`x > 
+                0, $CellContext`x <= $CellContext`width, $CellContext`y > 
+                0, $CellContext`y <= $CellContext`height], 
+               Or[
+               Part[$CellContext`maze, $CellContext`y, $CellContext`x, 5] > 3, 
+                
+                And[$CellContext`y == $CellContext`height, $CellContext`x == \
+$CellContext`exitPoint]], False]]; $CellContext`BreakWall[{
+               Pattern[$CellContext`y, 
+                Blank[]], 
+               Pattern[$CellContext`x, 
+                Blank[]]}, {
+               Pattern[$CellContext`y2, 
+                Blank[]], 
+               Pattern[$CellContext`x2, 
+                Blank[]]}] := 
+            Module[{$CellContext`wall1, $CellContext`wall2}, 
+              If[$CellContext`x == $CellContext`x2, 
+                If[$CellContext`y > $CellContext`y2, $CellContext`wall1 = 
+                   3; ($CellContext`wall2 = 1; Null), $CellContext`wall1 = 
+                   1; $CellContext`wall2 = 3; Null]; Null, 
+                If[$CellContext`x > $CellContext`x2, $CellContext`wall1 = 
+                   2; ($CellContext`wall2 = 4; Null), $CellContext`wall1 = 
+                   4; $CellContext`wall2 = 2; Null]; Null]; 
+              Part[$CellContext`maze, $CellContext`y, $CellContext`x, \
+$CellContext`wall1] = 0; 
+              Part[$CellContext`maze, $CellContext`y2, $CellContext`x2, \
+$CellContext`wall2] = 0; 
+              If[Part[$CellContext`maze, $CellContext`y2, $CellContext`x2, 5] == 
+                4, 
+                Increment[$CellContext`cellVisited]]; Decrement[
+                Part[$CellContext`maze, $CellContext`y2, $CellContext`x2, 5]]; 
+              Decrement[
+                Part[$CellContext`maze, $CellContext`y, $CellContext`x, 5]]; 
+              Null]; $CellContext`legalCell[{
+               Pattern[$CellContext`y, 
+                Blank[]], 
+               Pattern[$CellContext`x, 
+                Blank[]]}] := 
+            And[$CellContext`x > 
+              0, $CellContext`x <= $CellContext`width, $CellContext`y > 
+              0, $CellContext`y <= $CellContext`height]; \
+$CellContext`needToBreak[{
+               Pattern[$CellContext`y, 
+                Blank[]], 
+               Pattern[$CellContext`x, 
+                Blank[]]}, {
+               Pattern[$CellContext`y2, 
+                Blank[]], 
+               Pattern[$CellContext`x2, 
+                Blank[]]}] := 
+            Module[{$CellContext`wall1, $CellContext`wall2}, 
+              If[$CellContext`x == $CellContext`x2, 
+                If[$CellContext`y > $CellContext`y2, $CellContext`wall1 = 
+                   3; ($CellContext`wall2 = 1; Null), $CellContext`wall1 = 
+                   1; $CellContext`wall2 = 3; Null]; Null, 
+                If[$CellContext`x > $CellContext`x2, $CellContext`wall1 = 
+                   2; ($CellContext`wall2 = 4; Null), $CellContext`wall1 = 
+                   4; $CellContext`wall2 = 2; Null]; Null]; 
+              And[Part[$CellContext`maze, $CellContext`y, $CellContext`x, \
+$CellContext`wall1] == 1, 
+                Part[$CellContext`maze, $CellContext`y2, $CellContext`x2, \
+$CellContext`wall2] == 1]]; 
+           Clear[$CellContext`buildBranch]; $CellContext`buildBranch[{
+               Pattern[$CellContext`startY, 
+                Blank[]], 
+               Pattern[$CellContext`startX, 
+                Blank[]]}] := 
+            Module[{$CellContext`curX, $CellContext`curY, \
+$CellContext`legalCells, $CellContext`allCells, $CellContext`snake}, \
+$CellContext`snake = {{$CellContext`startY, $CellContext`startX}}; \
+{$CellContext`curY, $CellContext`curX} = {$CellContext`startY, \
+$CellContext`startX}; 
+              While[$CellContext`totalCells > $CellContext`cellVisited, \
+$CellContext`legalCells = Select[
+                   
+                   Map[{$CellContext`curY, $CellContext`curX} + #& , {{1, 
+                    0}, {0, -1}, {-1, 0}, {0, 
+                    1}}], $CellContext`legalCell]; $CellContext`allCells = 
+                 Select[$CellContext`legalCells, \
+$CellContext`needToBreak[{$CellContext`curY, $CellContext`curX}, #]& ]; \
+$CellContext`allCells = 
+                 Select[$CellContext`allCells, $CellContext`OKtoEnterCell]; 
+                If[Length[$CellContext`allCells] == 
+                  0, $CellContext`snake = 
+                   Drop[$CellContext`snake, -1]; {$CellContext`curY, \
+$CellContext`curX} = Last[$CellContext`snake]; 
+                  Null, $CellContext`possibleCell = 
+                   Part[$CellContext`allCells, 
+                    Random[Integer, {1, 
+                    
+                    Length[$CellContext`allCells]}]]; \
+$CellContext`BreakWall[{$CellContext`curY, $CellContext`curX}, \
+$CellContext`possibleCell]; {$CellContext`curY, $CellContext`curX} = \
+$CellContext`possibleCell; 
+                  AppendTo[$CellContext`snake, $CellContext`possibleCell]; 
+                  Null]; Null]; Null]; $CellContext`buildMaze[
+              Pattern[$CellContext`size, 
+               Blank[]]] := 
+            Module[{}, $CellContext`width = ($CellContext`height = \
+$CellContext`size); $CellContext`maze = 
+               Table[{1, 1, 1, 1, 
+                 4}, {$CellContext`height}, {$CellContext`width}]; \
+$CellContext`totalCells = $CellContext`width $CellContext`height - 
+                2; $CellContext`cellVisited = 0; $CellContext`start = 
+               RandomInteger[{1, $CellContext`width}]; $CellContext`exitPoint = 
+               RandomInteger[{1, $CellContext`width}]; 
+              Part[$CellContext`maze, 1, $CellContext`start] = {1, 1, 0, 1, 
+                3}; Part[$CellContext`maze, $CellContext`height, \
+$CellContext`exitPoint] = {0, 1, 1, 1, 3}; $CellContext`buildBranch[{
+                1, $CellContext`start}]; $CellContext`DrawMaze]; \
+$CellContext`mazeDraw[
+              Pattern[$CellContext`size, 
+               Blank[]]] := 
+            DynamicModule[{$CellContext`pt = {0.5, 
+                0.5}, $CellContext`ll = {}, $CellContext`maze = Part[
+                 $CellContext`buildMaze[$CellContext`size], 2, 1, 1]}, 
+              LocatorPane[
+               
+               Dynamic[$CellContext`pt, (
+                AppendTo[$CellContext`ll, #]; $CellContext`pt = 
+                 Last[$CellContext`ll])& ], 
+               Dynamic[
+                Graphics[{$CellContext`maze, 
+                  With[{$CellContext`newpts = 
+                    Partition[$CellContext`ll, 2, 1]}, 
+                   Table[{
+                    Hue[$CellContext`i/Length[$CellContext`newpts]], 
+                    Line[
+                    
+                    Part[$CellContext`newpts, $CellContext`i]]}, \
+{$CellContext`i, 1, 
+                    Length[$CellContext`newpts], 1}]]}, PlotRange -> All]]]]]; 
+         Null}]]; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->163622661],
+
+Cell[CellGroupData[{
+
+Cell["CAPTION", "Section",
+ CellFrame->{{0, 0}, {1, 0}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->12,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell["\<\
+Create a customized maze. Click to create a locator and either drag it or \
+keep clicking to draw a path through the maze. \
+\>", "Text"]
+}, Close]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["THIS NOTEBOOK IS THE SOURCE CODE FROM", "Text",
+ CellFrame->{{0, 0}, {0, 0}},
+ CellMargins->{{48, 10}, {4, 28}},
+ CellGroupingRules->{"SectionGrouping", 25},
+ CellFrameMargins->{{48, 48}, {6, 5}},
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ FontFamily->"Helvetica",
+ FontSize->10,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0.597406, 0, 0.0527047]],
+
+Cell[TextData[{
+ "\"",
+ ButtonBox["Interactive Maze",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/InteractiveMaze/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/InteractiveMaze/"],
+ "\"",
+ " from ",
+ ButtonBox["the Wolfram Demonstrations Project",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/"],
+ "\[ParagraphSeparator]\[NonBreakingSpace]",
+ ButtonBox["http://demonstrations.wolfram.com/InteractiveMaze/",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/InteractiveMaze/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/InteractiveMaze/"]
+}], "Text",
+ CellMargins->{{48, Inherited}, {0, Inherited}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.5]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Luc Barthelet",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Luc+Barthelet"],
+     None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Luc+Barthelet"]
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{66, 48}, {2, 4}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.6],
+ CellID->181894500],
+
+Cell[TextData[{
+ "Additional Contributions by: ",
+ ButtonBox["Rob Morris",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Rob+Morris"], 
+    None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Rob+Morris"]
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{66, 48}, {2, 4}},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.6],
+ CellID->270136893]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "A full-function Wolfram ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " system (Version 6 or higher) is required to edit this notebook.\n",
+ StyleBox[ButtonBox["GET WOLFRAM MATHEMATICA \[RightGuillemet]",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://www.wolfram.com/products/mathematica/"], None},
+  ButtonNote->"http://www.wolfram.com/products/mathematica/"],
+  FontFamily->"Helvetica",
+  FontWeight->"Bold",
+  FontSlant->"Italic",
+  FontColor->RGBColor[1, 0.42, 0]]
+}], "Text",
+ CellFrame->True,
+ CellMargins->{{48, 68}, {8, 28}},
+ CellFrameMargins->12,
+ CellFrameColor->RGBColor[0.87, 0.87, 0.87],
+ CellChangeTimes->{3.3750111182355957`*^9},
+ ParagraphSpacing->{1., 1.},
+ FontFamily->"Verdana",
+ FontSize->10,
+ FontColor->GrayLevel[0.411765],
+ Background->RGBColor[1, 1, 1]],
+
+Cell[TextData[{
+ "\[Copyright] ",
+ StyleBox[ButtonBox["Wolfram Demonstrations Project & Contributors",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/"],
+  FontColor->GrayLevel[0.6]],
+ "\[ThickSpace]\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+ StyleBox[ButtonBox["Terms of Use",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/termsofuse.html"], None},
+  ButtonNote->"http://demonstrations.wolfram.com/termsofuse.html"],
+  FontColor->GrayLevel[0.6]],
+ "\[ThickSpace]\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]\
+\[ThickSpace]",
+ StyleBox[ButtonBox["Make a new version of this Demonstration \
+\[RightGuillemet]",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/participate/upload.jsp?id=\
+InteractiveMaze"], None},
+  ButtonNote->None],
+  FontColor->GrayLevel[0.6]]
+}], "Text",
+ CellFrame->{{0, 0}, {0, 0.5}},
+ CellMargins->{{48, 10}, {20, 50}},
+ CellFrameMargins->{{6, 0}, {6, 6}},
+ CellFrameColor->GrayLevel[0.6],
+ FontFamily->"Verdana",
+ FontSize->9,
+ FontColor->GrayLevel[0.6]]
+}, Open  ]]
+}, Open  ]]
+},
+Editable->True,
+Saveable->False,
+ScreenStyleEnvironment->"Working",
+CellInsertionPointCell->None,
+WindowSize->{710, 650},
+WindowMargins->{{Inherited, Inherited}, {Inherited, 0}},
+WindowElements->{
+ "StatusArea", "MemoryMonitor", "MagnificationPopUp", "VerticalScrollBar", 
+  "MenuBar"},
+WindowTitle->"Interactive Maze - Source",
+DockedCells->{},
+CellContext->Notebook,
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[618, 23, 136, 3, 70, "Section"],
+Cell[757, 28, 3700, 64, 70, "Section"],
+Cell[4460, 94, 22664, 556, 70, "Input",
+ CellID->5681730],
+Cell[27127, 652, 727, 16, 70, "Input",
+ CellID->1496021318]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27891, 673, 20455, 420, 70, "Output",
+ CellID->163622661],
+Cell[CellGroupData[{
+Cell[48371, 1097, 209, 6, 70, "Section"],
+Cell[48583, 1105, 147, 3, 70, "Text"]
+}, Close]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48778, 1114, 355, 9, 70, "Text",
+ CellGroupingRules->{"SectionGrouping", 25}],
+Cell[49136, 1125, 868, 24, 70, "Text"],
+Cell[CellGroupData[{
+Cell[50029, 1153, 456, 15, 70, "Text",
+ CellID->181894500],
+Cell[50488, 1170, 460, 15, 70, "Text",
+ CellID->270136893]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50985, 1190, 815, 24, 70, "Text"],
+Cell[51803, 1216, 1187, 33, 70, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+(* NotebookSignature JS4RieCpT#SjLApzJn4AWK0y *)

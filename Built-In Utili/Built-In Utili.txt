@@ -1,0 +1,20 @@
+Guide utili
+https://reference.wolfram.com/language/guide/GraphicsInteractivityAndDrawing.html
+https://reference.wolfram.com/language/ref/Manipulate.html
+https://reference.wolfram.com/language/ref/Locator.html
+	(Manipulate[Graphics[Line[{{0, 0}, p}], PlotRange -> 2], {{p, {1, 1}}, Locator}])
+https://reference.wolfram.com/language/ref/LocatorAutoCreate.html
+https://reference.wolfram.com/language/guide/LowLevelInterfaceControl.html
+	(mhe)
+https://reference.wolfram.com/language/ref/ClickPane.html
+https://reference.wolfram.com/language/ref/Panel.html
+https://reference.wolfram.com/language/ref/Mouseover.html
+https://reference.wolfram.com/language/ref/Tooltip.html
+https://reference.wolfram.com/language/guide/GraphicsOptionsAndStyling.html
+	(mhe)
+https://reference.wolfram.com/language/guide/AnnotatingAndCombiningGraphics.html
+https://reference.wolfram.com/language/ref/Annotation.html
+	{Annotation[Graphics[Disk[]], "An annotation", "Mouse"],Dynamic[MouseAnnotation[]]}
+	Graph[{Annotation[1 \[UndirectedEdge] 2, EdgeLabels -> "hello"], 2 \[UndirectedEdge] 3, 3 \[UndirectedEdge] 1}]
+https://reference.wolfram.com/language/ref/MouseAnnotation.html
+https://reference.wolfram.com/language/guide/DynamicGraphicsElements.html

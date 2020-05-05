@@ -1,0 +1,367 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13306,        359]
+NotebookOptionsPosition[     11393,        317]
+NotebookOutlinePosition[     11794,        333]
+CellTagsIndexPosition[     11751,        330]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", "p"}], "}"}], "]"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "2"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"p", ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "1"}], "}"}]}], "}"}], ",", "Locator"}], "}"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7968272888044405`*^9, 3.7968273044530582`*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"fca3fbbb-7ff3-4658-a137-a56ce0de2235"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`p$$ = {1, 1}, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`p$$], {1, 1}}, Automatic}}, Typeset`size$$ = {
+    360., {177., 183.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`p$$ = {1, 1}}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Graphics[
+        Line[{{0, 0}, $CellContext`p$$}], PlotRange -> 2], 
+      "Specifications" :> {{{$CellContext`p$$, {1, 1}}, Automatic, 
+         ControlType -> Locator}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{417., {212., 218.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.7968280779065247`*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"04376c77-1524-4a9c-9833-f29ed1bbfc68"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Deploy", "[", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"Cyan", ",", 
+      RowBox[{"Disk", "[", "]"}], ",", 
+      RowBox[{"Locator", "[", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}], "]"}]}], "}"}], ",", 
+    RowBox[{"PlotRange", "\[Rule]", "1"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.796827310487379*^9, 3.79682731049608*^9}, {
+  3.7969891623799677`*^9, 3.7969891795414925`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"6df1477f-fe35-4373-8883-5d0f40d7a2da"],
+
+Cell[BoxData[
+ TagBox[
+  GraphicsBox[
+   {RGBColor[0, 1, 1], DiskBox[{0, 0}], LocatorBox[{0, 0}]},
+   PlotRange->1],
+  Deploy,
+  DefaultBaseStyle->"Deploy"]], "Output",
+ CellChangeTimes->{
+  3.7968280780225134`*^9, {3.7969891638822455`*^9, 3.796989179956562*^9}},
+ CellLabel->"Out[4]=",ExpressionUUID->"a568384e-f43e-433b-bb94-100637f1639a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"pt", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}]}], "}"}], ",", 
+   RowBox[{"ClickPane", "[", 
+    RowBox[{
+     RowBox[{"Dynamic", "@", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Yellow", ",", 
+          RowBox[{"Disk", "[", "]"}], ",", "Black", ",", 
+          RowBox[{"Point", "[", "pt", "]"}]}], "}"}], ",", 
+        RowBox[{"ImageSize", "\[Rule]", "Tiny"}]}], "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"pt", "=", "#"}], ")"}], "&"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7968274226905594`*^9, 3.7968274227003975`*^9}, {
+  3.796827514967661*^9, 3.7968275291929717`*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"52c6a0ae-0244-4b25-a351-9c9f3f229054"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`pt$$ = {0, 0}}, 
+  TagBox[
+   DynamicBox[ToBoxes[
+     Graphics[{Yellow, 
+       Disk[], Black, 
+       Point[$CellContext`pt$$]}, ImageSize -> Tiny], StandardForm],
+    ImageSizeCache->{100., {47., 53.}}],
+   EventHandlerTag[{"MouseClicked" :> (($CellContext`pt$$ = #)& )[
+       MousePosition["EventHandlerAutomatic"]], Method -> "Preemptive", 
+     PassEventsDown -> Automatic, PassEventsUp -> True}]],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.7968280780575733`*^9},
+ CellLabel->"Out[29]=",ExpressionUUID->"432f4357-268e-45e5-a9e5-92c3f70ae143"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"pt", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}]}], "}"}], ",", 
+   RowBox[{"ClickPane", "[", 
+    RowBox[{
+     RowBox[{"Framed", "@", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Yellow", ",", 
+          RowBox[{"Dynamic", "@", 
+           RowBox[{"Disk", "[", "pt", "]"}]}]}], "}"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "5"}]}], "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"pt", "=", "#"}], ")"}], "&"}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7968276803983517`*^9, 3.7968277036278152`*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"da12e6a6-5ee5-417e-b967-025af59ec5aa"],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`pt$$ = {0, 0}}, 
+  TagBox[
+   FrameBox[
+    GraphicsBox[
+     {RGBColor[1, 1, 0], 
+      DynamicBox[Typeset`ToBoxes[
+        Disk[$CellContext`pt$$], StandardForm, Graphics],
+       ImageSizeCache->{{144., 216.}, {-39., 33.}}]},
+     PlotRange->5],
+    StripOnInput->False],
+   EventHandlerTag[{"MouseClicked" :> (($CellContext`pt$$ = #)& )[
+       MousePosition["EventHandlerAutomatic"]], Method -> "Preemptive", 
+     PassEventsDown -> Automatic, PassEventsUp -> True}]],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{3.796828078098522*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"d682eed3-3efa-4db3-8527-0e8e4fd358a4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Annotation", "[", 
+    RowBox[{
+     RowBox[{"Graphics", "[", 
+      RowBox[{"Disk", "[", "]"}], "]"}], ",", "\"\<An annotation\>\"", ",", 
+     "\"\<Mouse\>\""}], "]"}], ",", 
+   RowBox[{"Dynamic", "[", 
+    RowBox[{"MouseAnnotation", "[", "]"}], "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.7968279539964385`*^9, 3.796827954005395*^9}},
+ CellLabel->"In[31]:=",ExpressionUUID->"c6dbc747-b48a-4b7f-90c0-23633399ae79"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TagBox[
+    GraphicsBox[DiskBox[{0, 0}]],
+    Annotation[#, "An annotation", "Mouse"]& ], ",", 
+   DynamicBox[ToBoxes[
+     MouseAnnotation[], StandardForm],
+    ImageSizeCache->{28., {0., 9.}}]}], "}"}]], "Output",
+ CellChangeTimes->{3.7968280781405306`*^9},
+ CellLabel->"Out[31]=",ExpressionUUID->"686b8ba5-3fdf-49a6-839e-a4a297f030e3"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Annotation", "[", 
+     RowBox[{
+      RowBox[{"1", "\[UndirectedEdge]", "2"}], ",", 
+      RowBox[{"EdgeLabels", "\[Rule]", "\"\<hello\>\""}]}], "]"}], ",", 
+    RowBox[{"2", "\[UndirectedEdge]", "3"}], ",", 
+    RowBox[{"3", "\[UndirectedEdge]", "1"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.796828008541793*^9, 3.7968280085526485`*^9}},
+ CellLabel->"In[32]:=",ExpressionUUID->"c8eeb92d-83eb-41b5-8eb6-e050cadaf67f"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{1, 2, 3}, {Null, {{1, 2}, {2, 3}, {3, 1}}}, {
+      EdgeLabels -> {UndirectedEdge[1, 2] -> "hello"}}]]}, 
+    TagBox[GraphicsGroupBox[{
+       {Hue[0.6, 0.7, 0.5], Opacity[
+        0.7], {LineBox[{{-0.8660254037844384, -0.49999999999999933`}, {
+          1.8369701987210297`*^-16, 1.}}], 
+         InsetBox["\<\"hello\"\>", {-0.4330127018922191, 0.25000000000000033},
+           ImageScaled[{0.5, 0.5}],
+          BaseStyle->"Graphics"]}, 
+        LineBox[{{-0.8660254037844384, -0.49999999999999933`}, {
+         0.8660254037844389, -0.5000000000000012}}], 
+        LineBox[{{1.8369701987210297`*^-16, 1.}, {
+         0.8660254037844389, -0.5000000000000012}}]}, 
+       {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+        DiskBox[{-0.8660254037844384, -0.49999999999999933}, 
+         0.020399597244776385], 
+        DiskBox[{1.8369701987210297*^-16, 1.}, 0.020399597244776385], 
+        DiskBox[{0.8660254037844389, -0.5000000000000012}, 
+         0.020399597244776385]}}],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->{
+   "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+  FormatType->TraditionalForm,
+  FrameTicks->None]], "Output",
+ CellChangeTimes->{3.7968280781965275`*^9},
+ CellLabel->"Out[32]=",ExpressionUUID->"73b66649-566f-487e-b1fa-db849802fb16"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "If", " ", "the", " ", "mouse", " ", "is", " ", "over", " ", "the", " ", 
+     "graphics"}], ",", 
+    RowBox[{
+    "MouseAnnotation", " ", "will", " ", "return", " ", "the", " ", 
+     "associated", " ", 
+     RowBox[{"annotation", ":"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Annotation", "[", 
+    RowBox[{
+     RowBox[{"Graphics", "[", 
+      RowBox[{"Disk", "[", "]"}], "]"}], ",", "\"\<An annotation\>\"", ",", 
+     "\"\<Mouse\>\""}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "When", " ", "the", " ", "mouse", " ", "is", " ", "over", " ", "the", 
+      " ", "graphics"}], ",", 
+     RowBox[{"the", " ", "annotation", " ", "is", " ", "displayed"}]}], " ", 
+    "*)"}], 
+   RowBox[{"Dynamic", "[", 
+    RowBox[{"MouseAnnotation", "[", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.79682810263964*^9, 3.796828102648703*^9}, {
+  3.796828133817624*^9, 3.7968281667003202`*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"cfd68202-c1be-4379-a2ae-8b286e711221"],
+
+Cell[BoxData[
+ TagBox[
+  GraphicsBox[DiskBox[{0, 0}]],
+  Annotation[#, "An annotation", "Mouse"]& ]], "Output",
+ CellChangeTimes->{3.796828103713642*^9, 3.7968281680404253`*^9},
+ CellLabel->"Out[34]=",ExpressionUUID->"adfb5a64-3fb3-4684-8631-80cdd637fea4"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[
+   MouseAnnotation[], StandardForm],
+  ImageSizeCache->{28., {0., 9.}}]], "Output",
+ CellChangeTimes->{3.796828103713642*^9, 3.7968281680453196`*^9},
+ CellLabel->"Out[35]=",ExpressionUUID->"52a7290f-dd1e-475a-9926-9331406e4cd2"]
+}, Open  ]]
+},
+WindowSize->{1920, 1007},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e1c22975-6569-4f00-a161-81e716dea58b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 652, 19, 28, "Input",ExpressionUUID->"fca3fbbb-7ff3-4658-a137-a56ce0de2235"],
+Cell[1235, 43, 1657, 33, 449, "Output",ExpressionUUID->"04376c77-1524-4a9c-9833-f29ed1bbfc68"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2929, 81, 542, 13, 28, "Input",ExpressionUUID->"6df1477f-fe35-4373-8883-5d0f40d7a2da"],
+Cell[3474, 96, 341, 9, 398, "Output",ExpressionUUID->"a568384e-f43e-433b-bb94-100637f1639a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3852, 110, 839, 22, 28, "Input",ExpressionUUID->"52c6a0ae-0244-4b25-a351-9c9f3f229054"],
+Cell[4694, 134, 613, 13, 117, "Output",ExpressionUUID->"432f4357-268e-45e5-a9e5-92c3f70ae143"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5344, 152, 763, 21, 28, "Input",ExpressionUUID->"da12e6a6-5ee5-417e-b967-025af59ec5aa"],
+Cell[6110, 175, 679, 16, 389, "Output",ExpressionUUID->"d682eed3-3efa-4db3-8527-0e8e4fd358a4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6826, 196, 472, 11, 28, "Input",ExpressionUUID->"c6dbc747-b48a-4b7f-90c0-23633399ae79"],
+Cell[7301, 209, 381, 10, 199, "Output",ExpressionUUID->"686b8ba5-3fdf-49a6-839e-a4a297f030e3"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7719, 224, 506, 11, 28, "Input",ExpressionUUID->"c8eeb92d-83eb-41b5-8eb6-e050cadaf67f"],
+Cell[8228, 237, 1489, 30, 331, "Output",ExpressionUUID->"73b66649-566f-487e-b1fa-db849802fb16"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9754, 272, 1098, 28, 86, "Input",ExpressionUUID->"cfd68202-c1be-4379-a2ae-8b286e711221"],
+Cell[10855, 302, 256, 5, 397, "Output",ExpressionUUID->"adfb5a64-3fb3-4684-8631-80cdd637fea4"],
+Cell[11114, 309, 263, 5, 32, "Output",ExpressionUUID->"52a7290f-dd1e-475a-9926-9331406e4cd2"]
+}, Open  ]]
+}
+]
+*)
+
