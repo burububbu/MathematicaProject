@@ -1,0 +1,20 @@
+Tipologia esercizi
+
+
+- Angolo 2/5 circonferenza, trovare angolo alla cc. (es6 sito, 161 251)
+-G Quadrilatero vertici circonferenza e diagonale = diametro e ho angolo diametro. Trovare ampiezza altri angoli (es7 sito)
+- Contrario del punto immediatamente sopra a questo |^ (7 186, 16 196, 125 e 126 G33)
+-G Disegnare due punti su circ. Quanti angoli che insistono su AB, quanti angoli alla cc e come sono ???????????? (8 186)
+-G Disegnare 3 angoli retti su circ. (17 197)
+-G Disegnare circonferenza, tracciare diametro, fissare punto su circ. e disegnare angolo, calcolare sua ampiezza (da fare graficamente 122 211)
+-G Figura con più angoli determinare uno specifico angolo (124 211, 127 e 130 e 131 212, 143 249, 153 250)
+-G Figura e rispondere a domande (125 212)
+-G Figura in circonferenza con un angolo specificato e calcolare altri angoli (132 212, 157 250)
+-G Tabella angoli al centro e alla circonferenza (142 249) più NO
+-G Quali angoli non insistono sullo stesso arco (137 e 138 [variante] 153)
+- Ho raggio, corda e so che C punto circ. tale che  AC perpendicolare AB, trovare BC (136 Unità G9)
+- Ho somma angoli al ct e alla cc, trovare loro ampiezza (es2 sito, da 128 a 134 Unità G9)
+-G Triangolo con vertice in circ. e lato opposto diametro, ho angolo diametro. Trovare ampiezza altri angoli triangolo. (es3 sito, 135 Unità G9)
+-G Indicare in figura angoli corrispondenti (3 189)
+- Calcolare angolo alla cc a partire da angolo al ct (5 186, 15.0 e 15 196, 8fig.6 270, 123 e 124 G33)
+-G Determinare quali sono angoli rettangoli tra angoli alla cc (155 155)
