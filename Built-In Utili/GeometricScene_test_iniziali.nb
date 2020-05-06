@@ -1,0 +1,2649 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    117119,       2641]
+NotebookOptionsPosition[    115028,       2602]
+NotebookOutlinePosition[    115466,       2619]
+CellTagsIndexPosition[    115423,       2616]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"scene1", " ", "=", 
+   RowBox[{"GeometricScene", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c", ",", "o"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Triangle", "[", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}], ",", 
+       RowBox[{"CircleThrough", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", " ", "o"}], "]"}], 
+       ",", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Midpoint", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "b"}], "}"}], " ", "]"}], " ", "\[Equal]", " ", 
+         "o"}], "  ", "&&", " ", 
+        RowBox[{
+         RowBox[{"PlanarAngle", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}], "\[Equal]", 
+         RowBox[{"40", "\[Degree]"}]}]}]}], "}"}]}], "]"}]}], ";", 
+  RowBox[{"RandomInstance", "[", "scene1", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"FindGeometricConjectures", "[", 
+  RowBox[{"%", ",", " ", 
+   RowBox[{"GeometricAssertion", "[", 
+    RowBox[{"_", ",", " ", "\"\<Perpendicular\>\""}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"RandomInstance", "[", 
+  RowBox[{"scene1", ",", " ", "5"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7969075228169785`*^9, 3.7969076449877996`*^9}, {
+  3.796923334557947*^9, 3.796923359155203*^9}, {3.7969234716792264`*^9, 
+  3.79692349639281*^9}, {3.7969236076122255`*^9, 3.7969237196768665`*^9}, {
+  3.796923752196076*^9, 3.796923772870076*^9}, {3.7969238707569866`*^9, 
+  3.796923871145978*^9}, {3.796923945152745*^9, 3.7969240243527465`*^9}, {
+  3.796924161205946*^9, 3.796924166272996*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"7c5e5224-4834-4163-8da2-3342c1db08d0"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[
+   {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], Thickness[
+    Large]}], 
+    {Opacity[0.2], 
+     PolygonBox[{{1.7640299379500746`, 
+      5.31196706923301}, {-3.2718446495877647`, 2.046345965573367}, {
+      1.2913324279664298`, 1.4830069169844626`}}]}, {
+     {Opacity[0], 
+      CircleBox[{-3.2718446495877647, 2.046345965573367}, 
+       Offset[{17., 17.}, {0., 0.}]]}, 
+     {GrayLevel[0.7], AbsoluteThickness[2], 
+      {Opacity[0], 
+       TagBox[
+        TooltipBox[
+         DiskBox[{-3.2718446495877647, 2.046345965573367}, 
+          Offset[{17., 17.}, {0., 0.}], {-0.1228317536353012, 
+          0.5752999471626965}],
+         TagBox[
+          FormBox[
+           RowBox[{"40", " ", "\[Degree]"}], TraditionalForm], 
+          TraditionalForm, Editable -> True]],
+        Annotation[#, 
+         TraditionalForm[40 Degree], "Tooltip"]& ]}, 
+      CircleBox[{-3.2718446495877647, 2.046345965573367}, 
+       Offset[{17., 17.}, {0., 0.}], {-0.1228317536353012, 
+       0.5752999471626965}]}}, 
+    {Dashing[{Small, Small}], CapForm["None"], 
+     LineBox[{{1.7640299379500746`, 5.31196706923301}, {-3.2718446495877647`, 
+      2.046345965573367}}]}, 
+    {Dashing[{Small, Small}], CapForm["None"], 
+     LineBox[{{-3.2718446495877647`, 2.046345965573367}, {1.2913324279664298`,
+       1.4830069169844626`}}]}, 
+    CircleBox[{-0.753907355818845, 3.6791565174031886}, 3.0010129306829545], {
+     {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+      PointBox[{1.7640299379500746`, 5.31196706923301}]}, InsetBox[
+      StyleBox["\<\" a \"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->11,
+       FontColor->GrayLevel[1]], {1.7640299379500746, 5.31196706923301}], 
+     {AbsolutePointSize[17], Opacity[0], 
+      PointBox[{1.7640299379500746`, 5.31196706923301}]}}, {
+     {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+      PointBox[{-3.2718446495877647`, 2.046345965573367}]}, InsetBox[
+      StyleBox["\<\" b \"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->11,
+       FontColor->GrayLevel[1]], {-3.2718446495877647, 2.046345965573367}], 
+     {AbsolutePointSize[17], Opacity[0], 
+      PointBox[{-3.2718446495877647`, 2.046345965573367}]}}, {
+     {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+      PointBox[{1.2913324279664298`, 1.4830069169844626`}]}, InsetBox[
+      StyleBox["\<\" c \"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->11,
+       FontColor->GrayLevel[1]], {1.2913324279664298, 1.4830069169844626}], 
+     {AbsolutePointSize[17], Opacity[0], 
+      PointBox[{1.2913324279664298`, 1.4830069169844626`}]}}, {
+     {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+      PointBox[{-0.753907355818845, 3.6791565174031886`}]}, InsetBox[
+      StyleBox["\<\" o \"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->11,
+       FontColor->GrayLevel[1]], {-0.753907355818845, 3.6791565174031886}], 
+     {AbsolutePointSize[17], Opacity[0], 
+      PointBox[{-0.753907355818845, 3.6791565174031886`}]}}},
+   BoxForm`SceneTag[{{$CellContext`a -> {1.7640299379500746`, 
+       5.31196706923301}, $CellContext`b -> {-3.2718446495877647`, 
+       2.046345965573367}, $CellContext`c -> {1.2913324279664298`, 
+       1.4830069169844626`}, $CellContext`o -> {-0.753907355818845, 
+       3.6791565174031886`}}, {C["GeometricQuantity"][
+        C["Unspecified"][
+        "radius", 
+         "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {2, 0}}"]] -> 3.0010129306829545`}}, {
+     Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+     CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+     And[Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o, 
+      PlanarAngle[{$CellContext`a, $CellContext`b, $CellContext`c}] == 
+      40 Degree]}, {}],
+   Editable->False],
+  PlotRange->{{-4.355122872638391, 2.8473081610007007`}, {0.07794100058364306,
+    7.280372034222735}}]], "Output",
+ CellChangeTimes->{3.7976561406330223`*^9},
+ CellLabel->"Out[46]=",ExpressionUUID->"419d782c-f926-4775-8fa8-78491be8ba8b"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[
+   DynamicModuleBox[{Typeset`var$$ = 1}, 
+    InterpretationBox[
+     TagBox[
+      PanelBox[GridBox[{
+         {
+          ItemBox[
+           PopupMenuBox[Dynamic[Typeset`var$$], {1->
+            TagBox[
+             RowBox[{"GeometricAssertion", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Line", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"b", ",", "c"}], "}"}], "]"}], ",", 
+                 RowBox[{"Line", "[", 
+                  RowBox[{"{", 
+                   RowBox[{"c", ",", "a"}], "}"}], "]"}]}], "}"}], 
+               ",", "\<\"Perpendicular\"\>"}], "]"}],
+             HoldForm]},
+            DefaultMenuStyle->"MenuViewLabel",
+            Enabled->Automatic,
+            MenuStyle->{}],
+           Alignment->Left,
+           StripOnInput->False]},
+         {
+          ItemBox[
+           StyleBox[
+            PaneSelectorBox[{1->
+             GraphicsBox[
+              TagBox[
+               {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[
+                0.7], Thickness[Large]}], 
+                {Opacity[0.2], 
+                 PolygonBox[{{1.7640299379500746`, 
+                  5.31196706923301}, {-3.2718446495877647`, 
+                  2.046345965573367}, {1.2913324279664298`, 
+                  1.4830069169844626`}}]}, {
+                 {Opacity[0], 
+                  CircleBox[{-3.2718446495877647, 2.046345965573367}, 
+                   Offset[{17., 17.}, {0., 0.}]]}, 
+                 {GrayLevel[0.7], AbsoluteThickness[2], 
+                  {Opacity[0], 
+                   TagBox[
+                    
+                    TooltipBox[
+                    DiskBox[{-3.2718446495877647, 2.046345965573367}, 
+                    Offset[{17., 17.}, {0., 0.}], {-0.1228317536353012, 
+                    0.5752999471626965}],
+                    TagBox[
+                    FormBox[
+                    RowBox[{"40", " ", "\[Degree]"}], TraditionalForm], 
+                    TraditionalForm, Editable -> True]],
+                    Annotation[#, 
+                    TraditionalForm[40 Degree], "Tooltip"]& ]}, 
+                  CircleBox[{-3.2718446495877647, 2.046345965573367}, 
+                   Offset[{17., 17.}, {0., 0.}], {-0.1228317536353012, 
+                   0.5752999471626965}]}}, 
+                {Dashing[{Small, Small}], CapForm["None"], 
+                 LineBox[{{1.7640299379500746`, 
+                  5.31196706923301}, {-3.2718446495877647`, 
+                  2.046345965573367}}]}, 
+                {Dashing[{Small, Small}], CapForm["None"], 
+                 LineBox[{{-3.2718446495877647`, 2.046345965573367}, {
+                  1.2913324279664298`, 1.4830069169844626`}}]}, 
+                CircleBox[{-0.753907355818845, 3.6791565174031886}, 
+                 3.0010129306829545], 
+                {RGBColor[1, 0.5, 0], AbsoluteThickness[2], 
+                 LineBox[{{-3.2718446495877647`, 2.046345965573367}, {
+                  1.2913324279664298`, 1.4830069169844626`}}]}, 
+                {RGBColor[1, 0.5, 0], AbsoluteThickness[2], 
+                 LineBox[{{1.2913324279664298`, 1.4830069169844626`}, {
+                  1.7640299379500746`, 5.31196706923301}}]}, {
+                 {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+                  PointBox[{1.7640299379500746`, 5.31196706923301}]}, InsetBox[
+                  StyleBox["\<\" a \"\>",
+                   StripOnInput->False,
+                   LineColor->RGBColor[0, 0, 1],
+                   FrontFaceColor->RGBColor[0, 0, 1],
+                   BackFaceColor->RGBColor[0, 0, 1],
+                   GraphicsColor->RGBColor[0, 0, 1],
+                   FontSize->11,
+                   
+                   FontColor->GrayLevel[
+                    1]], {1.7640299379500746, 5.31196706923301}], 
+                 {AbsolutePointSize[17], Opacity[0], 
+                  PointBox[{1.7640299379500746`, 5.31196706923301}]}}, {
+                 {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+                  PointBox[{-3.2718446495877647`, 2.046345965573367}]}, 
+                 InsetBox[
+                  StyleBox["\<\" b \"\>",
+                   StripOnInput->False,
+                   LineColor->RGBColor[0, 0, 1],
+                   FrontFaceColor->RGBColor[0, 0, 1],
+                   BackFaceColor->RGBColor[0, 0, 1],
+                   GraphicsColor->RGBColor[0, 0, 1],
+                   FontSize->11,
+                   
+                   FontColor->GrayLevel[
+                    1]], {-3.2718446495877647, 2.046345965573367}], 
+                 {AbsolutePointSize[17], Opacity[0], 
+                  PointBox[{-3.2718446495877647`, 2.046345965573367}]}}, {
+                 {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+                  PointBox[{1.2913324279664298`, 1.4830069169844626`}]}, 
+                 InsetBox[
+                  StyleBox["\<\" c \"\>",
+                   StripOnInput->False,
+                   LineColor->RGBColor[0, 0, 1],
+                   FrontFaceColor->RGBColor[0, 0, 1],
+                   BackFaceColor->RGBColor[0, 0, 1],
+                   GraphicsColor->RGBColor[0, 0, 1],
+                   FontSize->11,
+                   
+                   FontColor->GrayLevel[
+                    1]], {1.2913324279664298, 1.4830069169844626}], 
+                 {AbsolutePointSize[17], Opacity[0], 
+                  PointBox[{1.2913324279664298`, 1.4830069169844626`}]}}, {
+                 {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+                  PointBox[{-0.753907355818845, 3.6791565174031886`}]}, 
+                 InsetBox[
+                  StyleBox["\<\" o \"\>",
+                   StripOnInput->False,
+                   LineColor->RGBColor[0, 0, 1],
+                   FrontFaceColor->RGBColor[0, 0, 1],
+                   BackFaceColor->RGBColor[0, 0, 1],
+                   GraphicsColor->RGBColor[0, 0, 1],
+                   FontSize->11,
+                   
+                   FontColor->GrayLevel[
+                    1]], {-0.753907355818845, 3.6791565174031886}], 
+                 {AbsolutePointSize[17], Opacity[0], 
+                  PointBox[{-0.753907355818845, 3.6791565174031886`}]}}},
+               
+               BoxForm`SceneTag[{{$CellContext`a -> {1.7640299379500746`, 
+                   5.31196706923301}, $CellContext`b -> {-3.2718446495877647`,
+                    2.046345965573367}, $CellContext`c -> {
+                   1.2913324279664298`, 
+                   1.4830069169844626`}, $CellContext`o -> \
+{-0.753907355818845, 3.6791565174031886`}}, {C["GeometricQuantity"][
+                    C["Unspecified"][
+                    "radius", 
+                    "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], C[\
+\"GeometricPoint\"][c]}, {2, 0}}"]] -> 3.0010129306829545`}}, {
+                 Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+                 
+                 CircleThrough[{$CellContext`a, $CellContext`b, \
+$CellContext`c}, $CellContext`o], 
+                 And[
+                 Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o,
+                   PlanarAngle[{$CellContext`a, $CellContext`b, \
+$CellContext`c}] == 40 Degree]}, 
+                GeometricAssertion[{
+                  Line[{$CellContext`b, $CellContext`c}], 
+                  Line[{$CellContext`c, $CellContext`a}]}, "Perpendicular"]],
+               Editable->False],
+              
+              PlotRange->{{-4.355122872638391, 2.8473081610007007`}, {
+               0.07794100058364306, 7.280372034222735}}]}, Dynamic[
+             Typeset`var$$],
+             Alignment->{Left, Top},
+             ImageSize->Automatic,
+             TransitionDirection->Horizontal,
+             TransitionDuration->0.5,
+             TransitionEffect->Automatic],
+            Deployed->False,
+            StripOnInput->False],
+           Background->GrayLevel[1],
+           Frame->True,
+           FrameStyle->GrayLevel[0.8235294117647058],
+           StripOnInput->False]}
+        },
+        AutoDelete->False,
+        GridBoxAlignment->{"Columns" -> {{Left}}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       BaseStyle->{PopupMenuBoxOptions -> {ImageSize -> Automatic}},
+       BaselinePosition->Automatic,
+       DefaultBaseStyle->"MenuView",
+       FrameMargins->6,
+       ImageMargins->Automatic],
+      Deploy,
+      DefaultBaseStyle->"Deploy"],
+     MenuView[{HoldForm[
+         GeometricAssertion[{
+           Line[{$CellContext`b, $CellContext`c}], 
+           Line[{$CellContext`c, $CellContext`a}]}, "Perpendicular"]] -> 
+       RawBoxes[
+         GraphicsBox[
+          TagBox[{{
+             AbsoluteThickness[2], 
+             GrayLevel[0.7], 
+             EdgeForm[{
+               GrayLevel[0.7], 
+               Thickness[Large]}], {{
+               Opacity[0.2], 
+               
+               PolygonBox[{{1.7640299379500746`, 
+                5.31196706923301}, {-3.2718446495877647`, 
+                2.046345965573367}, {1.2913324279664298`, 
+                1.4830069169844626`}}]}, {{
+                Opacity[0], 
+                CircleBox[{-3.2718446495877647`, 2.046345965573367}, 
+                 Offset[{17, 17}]]}, 
+               AbsoluteThickness[2], 
+               GrayLevel[0.7], {{
+                 Opacity[0], 
+                 TagBox[
+                  TooltipBox[
+                   DiskBox[{-3.2718446495877647`, 2.046345965573367}, 
+                    Offset[{17, 17}], {-0.1228317536353012, 
+                    0.5752999471626965}], 
+                   TagBox[
+                    FormBox[
+                    RowBox[{"40", " ", "\[Degree]"}], TraditionalForm], 
+                    TraditionalForm, Editable -> True]], Annotation[#, 
+                   TraditionalForm[40 Degree], "Tooltip"]& ]}, 
+                CircleBox[{-3.2718446495877647`, 2.046345965573367}, 
+                 Offset[{17, 17}], {-0.1228317536353012, 
+                 0.5752999471626965}]}}, {
+               Dashing[{Small, Small}], 
+               CapForm["None"], 
+               
+               LineBox[{{1.7640299379500746`, 
+                5.31196706923301}, {-3.2718446495877647`, 
+                2.046345965573367}}]}, {
+               Dashing[{Small, Small}], 
+               CapForm["None"], 
+               
+               LineBox[{{-3.2718446495877647`, 2.046345965573367}, {
+                1.2913324279664298`, 1.4830069169844626`}}]}, {
+               CircleBox[{-0.753907355818845, 3.6791565174031886`}, 
+                3.0010129306829545`]}, {
+               AbsoluteThickness[2], 
+               RGBColor[1, 0.5, 0], 
+               
+               LineBox[{{-3.2718446495877647`, 2.046345965573367}, {
+                1.2913324279664298`, 1.4830069169844626`}}]}, {
+               AbsoluteThickness[2], 
+               RGBColor[1, 0.5, 0], 
+               
+               LineBox[{{1.2913324279664298`, 1.4830069169844626`}, {
+                1.7640299379500746`, 5.31196706923301}}]}, {{
+                Hue[0.58, 1, 1, 1], 
+                AbsolutePointSize[17], 
+                PointBox[{1.7640299379500746`, 5.31196706923301}]}, 
+               InsetBox[
+                BoxData[
+                 FormBox[
+                  StyleBox["\" a \"", 
+                   RGBColor[0, 0, 1], FontSize -> 11, FontColor -> 
+                   GrayLevel[1], StripOnInput -> False], TraditionalForm]], {
+                1.7640299379500746`, 5.31196706923301}], {
+                AbsolutePointSize[17], 
+                Opacity[0], 
+                PointBox[{1.7640299379500746`, 5.31196706923301}]}}, {{
+                Hue[0.58, 1, 1, 1], 
+                AbsolutePointSize[17], 
+                PointBox[{-3.2718446495877647`, 2.046345965573367}]}, 
+               InsetBox[
+                BoxData[
+                 FormBox[
+                  StyleBox["\" b \"", 
+                   RGBColor[0, 0, 1], FontSize -> 11, FontColor -> 
+                   GrayLevel[1], StripOnInput -> False], 
+                  TraditionalForm]], {-3.2718446495877647`, 
+                2.046345965573367}], {
+                AbsolutePointSize[17], 
+                Opacity[0], 
+                PointBox[{-3.2718446495877647`, 2.046345965573367}]}}, {{
+                Hue[0.58, 1, 1, 1], 
+                AbsolutePointSize[17], 
+                PointBox[{1.2913324279664298`, 1.4830069169844626`}]}, 
+               InsetBox[
+                BoxData[
+                 FormBox[
+                  StyleBox["\" c \"", 
+                   RGBColor[0, 0, 1], FontSize -> 11, FontColor -> 
+                   GrayLevel[1], StripOnInput -> False], TraditionalForm]], {
+                1.2913324279664298`, 1.4830069169844626`}], {
+                AbsolutePointSize[17], 
+                Opacity[0], 
+                PointBox[{1.2913324279664298`, 1.4830069169844626`}]}}, {{
+                Hue[0.58, 1, 1, 1], 
+                AbsolutePointSize[17], 
+                PointBox[{-0.753907355818845, 3.6791565174031886`}]}, 
+               InsetBox[
+                BoxData[
+                 FormBox[
+                  StyleBox["\" o \"", 
+                   RGBColor[0, 0, 1], FontSize -> 11, FontColor -> 
+                   GrayLevel[1], StripOnInput -> False], 
+                  TraditionalForm]], {-0.753907355818845, 
+                3.6791565174031886`}], {
+                AbsolutePointSize[17], 
+                Opacity[0], 
+                PointBox[{-0.753907355818845, 3.6791565174031886`}]}}}}}, 
+           
+           BoxForm`SceneTag[{{$CellContext`a -> {1.7640299379500746`, 
+               5.31196706923301}, $CellContext`b -> {-3.2718446495877647`, 
+               2.046345965573367}, $CellContext`c -> {1.2913324279664298`, 
+               1.4830069169844626`}, $CellContext`o -> {-0.753907355818845, 
+               3.6791565174031886`}}, {C["GeometricQuantity"][
+                C["Unspecified"][
+                "radius", 
+                 "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {2, 0}}"]] -> 3.0010129306829545`}}, {
+             Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+             
+             CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+             And[
+             Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o, 
+              PlanarAngle[{$CellContext`a, $CellContext`b, $CellContext`c}] == 
+              40 Degree]}, 
+            GeometricAssertion[{
+              Line[{$CellContext`b, $CellContext`c}], 
+              Line[{$CellContext`c, $CellContext`a}]}, "Perpendicular"]], 
+           Editable -> False], 
+          PlotRange -> {{-4.355122872638391, 2.8473081610007007`}, {
+           0.07794100058364306, 7.280372034222735}}]]}, ImageSize -> 
+      Automatic, 
+      BaseStyle -> {PopupMenuBoxOptions -> {ImageSize -> Automatic}}]],
+    DynamicModuleValues:>{}],
+   Setting[#, {0}]& ],
+  GeometricScene[{{$CellContext`a -> {1.7640299379500746`, 
+      5.31196706923301}, $CellContext`b -> {-3.2718446495877647`, 
+      2.046345965573367}, $CellContext`c -> {1.2913324279664298`, 
+      1.4830069169844626`}, $CellContext`o -> {-0.753907355818845, 
+      3.6791565174031886`}}, {C["GeometricQuantity"][
+       C["Unspecified"][
+       "radius", 
+        "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {2, 0}}"]] -> 3.0010129306829545`}}, {
+    Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+    CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+    And[Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o, 
+     PlanarAngle[{$CellContext`a, $CellContext`b, $CellContext`c}] == 
+     40 Degree]}, {
+    GeometricAssertion[{
+      Line[{$CellContext`b, $CellContext`c}], 
+      Line[{$CellContext`c, $CellContext`a}]}, "Perpendicular"]}],
+  SelectWithContents->True]], "Output",
+ CellChangeTimes->{3.797656141002128*^9},
+ CellLabel->"Out[47]=",ExpressionUUID->"da671a67-83c5-446e-97c2-6a62cc6f6dd0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[
+    TagBox[
+     {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], 
+      Thickness[Large]}], 
+      {Opacity[0.2], 
+       PolygonBox[{{-1.6680532537019719`, -0.8277298775531671}, {
+        4.324329223359412, -1.3750531093518303`}, {
+        0.5383507535634098, -4.004543014956404}}]}, {
+       {Opacity[0], 
+        CircleBox[{4.324329223359412, -1.3750531093518303}, 
+         Offset[{17., 17.}, {0., 0.}]]}, 
+       {GrayLevel[0.7], AbsoluteThickness[2], 
+        {Opacity[0], 
+         TagBox[
+          
+          TooltipBox[
+           DiskBox[{4.324329223359412, -1.3750531093518303}, 
+            Offset[{17., 17.}, {0., 0.}], {3.0505088787196257`, 
+            3.748640579517353}],
+           TagBox[
+            FormBox[
+             RowBox[{"40", " ", "\[Degree]"}], TraditionalForm], 
+            TraditionalForm, Editable -> True]],
+          Annotation[#, 
+           TraditionalForm[40 Degree], "Tooltip"]& ]}, 
+        CircleBox[{4.324329223359412, -1.3750531093518303}, 
+         Offset[{17., 17.}, {0., 0.}], {3.0505088787196257`, 
+         3.748640579517353}]}}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{-1.6680532537019719`, -0.8277298775531671}, {
+        4.324329223359412, -1.3750531093518303`}}]}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{4.324329223359412, -1.3750531093518303`}, {
+        0.5383507535634098, -4.004543014956404}}]}, 
+      CircleBox[{1.3281379848287203, -1.1013914934524989}, 
+       3.008662935201912], {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{-1.6680532537019719`, -0.8277298775531671}]}, InsetBox[
+        StyleBox["\<\" a \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[
+          1]], {-1.6680532537019719, -0.8277298775531671}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{-1.6680532537019719`, -0.8277298775531671}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{4.324329223359412, -1.3750531093518303`}]}, InsetBox[
+        StyleBox["\<\" b \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {4.324329223359412, -1.3750531093518303}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{4.324329223359412, -1.3750531093518303`}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{0.5383507535634098, -4.004543014956404}]}, InsetBox[
+        StyleBox["\<\" c \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {0.5383507535634098, -4.004543014956404}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{0.5383507535634098, -4.004543014956404}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{1.3281379848287203`, -1.1013914934524989`}]}, InsetBox[
+        StyleBox["\<\" o \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {1.3281379848287203, -1.1013914934524989}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{1.3281379848287203`, -1.1013914934524989`}]}}},
+     BoxForm`SceneTag[{{$CellContext`a -> {-1.6680532537019719`, \
+-0.8277298775531671}, $CellContext`b -> {
+         4.324329223359412, -1.3750531093518303`}, $CellContext`c -> {
+         0.5383507535634098, -4.004543014956404}, $CellContext`o -> {
+         1.3281379848287203`, -1.1013914934524989`}}, {C["GeometricQuantity"][
+          C["Unspecified"][
+          "radius", 
+           "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {2, 0}}"]] -> 3.008662935201912}}, {
+       Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+       CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+       And[
+       Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o, 
+        PlanarAngle[{$CellContext`a, $CellContext`b, $CellContext`c}] == 
+        40 Degree]}, {}],
+     Editable->False],
+    PlotRange->{{-2.2822575374135745`, 
+     4.938533507071015}, {-4.711787015694794, 2.509004028789796}}], ",", 
+   GraphicsBox[
+    TagBox[
+     {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], 
+      Thickness[Large]}], 
+      {Opacity[0.2], 
+       PolygonBox[{{1.7714587335024634`, 
+        7.498414944166558}, {-0.6067220126898109, -2.4731711509722487`}, {
+        5.698899388913279, 2.207370358026686}}]}, {
+       {Opacity[0], 
+        CircleBox[{-0.6067220126898109, -2.4731711509722487}, 
+         Offset[{17., 17.}, {0., 0.}]]}, 
+       {GrayLevel[0.7], AbsoluteThickness[2], 
+        {Opacity[0], 
+         TagBox[
+          
+          TooltipBox[
+           DiskBox[{-0.6067220126898109, -2.4731711509722487}, 
+            Offset[{17., 17.}, {0., 0.}], {0.6385424691502047, 
+            1.3366741699479363`}],
+           TagBox[
+            FormBox[
+             RowBox[{"40", " ", "\[Degree]"}], TraditionalForm], 
+            TraditionalForm, Editable -> True]],
+          Annotation[#, 
+           TraditionalForm[40 Degree], "Tooltip"]& ]}, 
+        CircleBox[{-0.6067220126898109, -2.4731711509722487}, 
+         Offset[{17., 17.}, {0., 0.}], {0.6385424691502047, 
+         1.3366741699479363`}]}}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{1.7714587335024634`, 
+        7.498414944166558}, {-0.6067220126898109, -2.4731711509722487`}}]}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{-0.6067220126898109, -2.4731711509722487`}, {
+        5.698899388913279, 2.207370358026686}}]}, 
+      CircleBox[{0.5823683604063263, 2.5126218965971545}, 5.125628575656536], {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{1.7714587335024634`, 7.498414944166558}]}, InsetBox[
+        StyleBox["\<\" a \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {1.7714587335024634, 7.498414944166558}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{1.7714587335024634`, 7.498414944166558}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{-0.6067220126898109, -2.4731711509722487`}]}, InsetBox[
+        StyleBox["\<\" b \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[
+          1]], {-0.6067220126898109, -2.4731711509722487}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{-0.6067220126898109, -2.4731711509722487`}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{5.698899388913279, 2.207370358026686}]}, InsetBox[
+        StyleBox["\<\" c \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {5.698899388913279, 2.207370358026686}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{5.698899388913279, 2.207370358026686}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{0.5823683604063263, 2.5126218965971545`}]}, InsetBox[
+        StyleBox["\<\" o \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {0.5823683604063263, 2.5126218965971545}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{0.5823683604063263, 2.5126218965971545`}]}}},
+     BoxForm`SceneTag[{{$CellContext`a -> {1.7714587335024634`, 
+         7.498414944166558}, $CellContext`b -> {-0.6067220126898109, \
+-2.4731711509722487`}, $CellContext`c -> {5.698899388913279, 
+         2.207370358026686}, $CellContext`o -> {0.5823683604063263, 
+         2.5126218965971545`}}, {C["GeometricQuantity"][
+          C["Unspecified"][
+          "radius", 
+           "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {2, 0}}"]] -> 5.125628575656536}}, {
+       Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+       CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+       And[
+       Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o, 
+        PlanarAngle[{$CellContext`a, $CellContext`b, $CellContext`c}] == 
+        40 Degree]}, {}],
+     Editable->False],
+    PlotRange->{{-5.568385930381516, 
+     6.7331226511941695`}, {-3.6381323941906882`, 8.663376187384998}}], ",", 
+   GraphicsBox[
+    TagBox[
+     {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], 
+      Thickness[Large]}], 
+      {Opacity[0.2], 
+       PolygonBox[{{-2.358932366895176, 2.961446189739019}, {
+        4.451702066724647, 
+        0.8085988892873456}, {-0.6050126423398535, -1.2816412546640192`}}]}, {
+       {Opacity[0], 
+        CircleBox[{4.451702066724647, 0.8085988892873456}, 
+         Offset[{17., 17.}, {0., 0.}]]}, 
+       {GrayLevel[0.7], AbsoluteThickness[2], 
+        {Opacity[0], 
+         TagBox[
+          
+          TooltipBox[
+           DiskBox[{4.451702066724647, 0.8085988892873456}, 
+            Offset[{17., 17.}, {0., 0.}], {2.8354306712390707`, 
+            3.5335623720368012`}],
+           TagBox[
+            FormBox[
+             RowBox[{"40", " ", "\[Degree]"}], TraditionalForm], 
+            TraditionalForm, Editable -> True]],
+          Annotation[#, 
+           TraditionalForm[40 Degree], "Tooltip"]& ]}, 
+        CircleBox[{4.451702066724647, 0.8085988892873456}, 
+         Offset[{17., 17.}, {0., 0.}], {2.8354306712390707`, 
+         3.5335623720368012`}]}}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{-2.358932366895176, 2.961446189739019}, {4.451702066724647, 
+        0.8085988892873456}}]}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{4.451702066724647, 
+        0.8085988892873456}, {-0.6050126423398535, -1.2816412546640192`}}]}, 
+      CircleBox[{1.046384849914736, 1.8850225395131823}, 3.5713965464581348], {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{-2.358932366895176, 2.961446189739019}]}, InsetBox[
+        StyleBox["\<\" a \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {-2.358932366895176, 2.961446189739019}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{-2.358932366895176, 2.961446189739019}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{4.451702066724647, 0.8085988892873456}]}, InsetBox[
+        StyleBox["\<\" b \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {4.451702066724647, 0.8085988892873456}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{4.451702066724647, 0.8085988892873456}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{-0.6050126423398535, -1.2816412546640192`}]}, InsetBox[
+        StyleBox["\<\" c \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[
+          1]], {-0.6050126423398535, -1.2816412546640192}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{-0.6050126423398535, -1.2816412546640192`}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{1.046384849914736, 1.8850225395131823`}]}, InsetBox[
+        StyleBox["\<\" o \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {1.046384849914736, 1.8850225395131823}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{1.046384849914736, 1.8850225395131823`}]}}},
+     BoxForm`SceneTag[{{$CellContext`a -> {-2.358932366895176, 
+         2.961446189739019}, $CellContext`b -> {4.451702066724647, 
+         0.8085988892873456}, $CellContext`c -> {-0.6050126423398535, \
+-1.2816412546640192`}, $CellContext`o -> {1.046384849914736, 
+         1.8850225395131823`}}, {C["GeometricQuantity"][
+          C["Unspecified"][
+          "radius", 
+           "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {2, 0}}"]] -> 3.5713965464581348`}}, {
+       Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+       CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+       And[
+       Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o, 
+        PlanarAngle[{$CellContext`a, $CellContext`b, $CellContext`c}] == 
+        40 Degree]}, {}],
+     Editable->False],
+    PlotRange->{{-3.239291005835026, 
+     5.332060705664498}, {-2.4006533162365793`, 6.170698395262945}}], ",", 
+   GraphicsBox[
+    TagBox[
+     {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], 
+      Thickness[Large]}], 
+      {Opacity[0.2], 
+       PolygonBox[{{4.088916425769256, 1.2734311082079477`}, {
+        2.5762817133168268`, -2.7007849458920963`}, {1.5070128028334528`, 
+        0.376207983001097}}]}, {
+       {Opacity[0], 
+        CircleBox[{2.5762817133168268, -2.7007849458920963}, 
+         Offset[{17., 17.}, {0., 0.}]]}, 
+       {GrayLevel[0.7], AbsoluteThickness[2], 
+        {Opacity[0], 
+         TagBox[
+          
+          TooltipBox[
+           DiskBox[{2.5762817133168268, -2.7007849458920963}, 
+            Offset[{17., 17.}, {0., 0.}], {1.2071145614209855`, 
+            1.9052462622187356`}],
+           TagBox[
+            FormBox[
+             RowBox[{"40", " ", "\[Degree]"}], TraditionalForm], 
+            TraditionalForm, Editable -> True]],
+          Annotation[#, 
+           TraditionalForm[40 Degree], "Tooltip"]& ]}, 
+        CircleBox[{2.5762817133168268, -2.7007849458920963}, 
+         Offset[{17., 17.}, {0., 0.}], {1.2071145614209855`, 
+         1.9052462622187356`}]}}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{4.088916425769256, 1.2734311082079477`}, {
+        2.5762817133168268`, -2.7007849458920963`}}]}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{2.5762817133168268`, -2.7007849458920963`}, {
+        1.5070128028334528`, 0.376207983001097}}]}, 
+      CircleBox[{3.332599069543041, -0.7136769188420743}, 
+       2.1261736417818224], {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{4.088916425769256, 1.2734311082079477`}]}, InsetBox[
+        StyleBox["\<\" a \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {4.088916425769256, 1.2734311082079477}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{4.088916425769256, 1.2734311082079477`}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{2.5762817133168268`, -2.7007849458920963`}]}, InsetBox[
+        StyleBox["\<\" b \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {2.5762817133168268, -2.7007849458920963}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{2.5762817133168268`, -2.7007849458920963`}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{1.5070128028334528`, 0.376207983001097}]}, InsetBox[
+        StyleBox["\<\" c \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {1.5070128028334528, 0.376207983001097}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{1.5070128028334528`, 0.376207983001097}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{3.332599069543041, -0.7136769188420743}]}, InsetBox[
+        StyleBox["\<\" o \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {3.332599069543041, -0.7136769188420743}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{3.332599069543041, -0.7136769188420743}]}}},
+     BoxForm`SceneTag[{{$CellContext`a -> {4.088916425769256, 
+         1.2734311082079477`}, $CellContext`b -> {
+         2.5762817133168268`, -2.7007849458920963`}, $CellContext`c -> {
+         1.5070128028334528`, 0.376207983001097}, $CellContext`o -> {
+         3.332599069543041, -0.7136769188420743}}, {C["GeometricQuantity"][
+          C["Unspecified"][
+          "radius", 
+           "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {2, 0}}"]] -> 2.1261736417818224`}}, {
+       Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+       CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+       And[
+       Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o, 
+        PlanarAngle[{$CellContext`a, $CellContext`b, $CellContext`c}] == 
+        40 Degree]}, {}],
+     Editable->False],
+    PlotRange->{{0.7811906994048543, 
+     5.884007439681228}, {-3.2650852889802615`, 1.8377314512961125`}}], ",", 
+   GraphicsBox[
+    TagBox[
+     {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], 
+      Thickness[Large]}], 
+      {Opacity[0.2], 
+       PolygonBox[{{4.104864222306128, 1.0893299963759209`}, {
+        0.23485559498557812`, 0.14302496459678882`}, {2.03990562502622, 
+        2.6039468158400885`}}]}, {
+       {Opacity[0], 
+        CircleBox[{0.23485559498557812, 0.14302496459678882}, 
+         Offset[{17., 17.}, {0., 0.}]]}, 
+       {GrayLevel[0.7], AbsoluteThickness[2], 
+        {Opacity[0], 
+         TagBox[
+          
+          TooltipBox[
+           DiskBox[{0.23485559498557812, 0.14302496459678882}, Offset[{17., 17.},
+             {0., 0.}], {0.23981696858247048`, 0.9379486693799458}],
+           TagBox[
+            FormBox[
+             RowBox[{"40", " ", "\[Degree]"}], TraditionalForm], 
+            TraditionalForm, Editable -> True]],
+          Annotation[#, 
+           TraditionalForm[40 Degree], "Tooltip"]& ]}, 
+        CircleBox[{0.23485559498557812, 0.14302496459678882}, 
+         Offset[{17., 17.}, {0., 0.}], {0.23981696858247048`, 
+         0.9379486693799458}]}}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{4.104864222306128, 1.0893299963759209`}, {
+        0.23485559498557812`, 0.14302496459678882`}}]}, 
+      {Dashing[{Small, Small}], CapForm["None"], 
+       LineBox[{{0.23485559498557812`, 0.14302496459678882`}, {
+        2.03990562502622, 2.6039468158400885`}}]}, 
+      CircleBox[{2.1698599086458534, 0.6161774804863548}, 
+       1.9920128217625757], {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{4.104864222306128, 1.0893299963759209`}]}, InsetBox[
+        StyleBox["\<\" a \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {4.104864222306128, 1.0893299963759209}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{4.104864222306128, 1.0893299963759209`}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{0.23485559498557812`, 0.14302496459678882`}]}, InsetBox[
+        StyleBox["\<\" b \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[
+          1]], {0.23485559498557812, 0.14302496459678882}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{0.23485559498557812`, 0.14302496459678882`}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{2.03990562502622, 2.6039468158400885`}]}, InsetBox[
+        StyleBox["\<\" c \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {2.03990562502622, 2.6039468158400885}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{2.03990562502622, 2.6039468158400885`}]}}, {
+       {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+        PointBox[{2.1698599086458534`, 0.6161774804863548}]}, InsetBox[
+        StyleBox["\<\" o \"\>",
+         StripOnInput->False,
+         LineColor->RGBColor[0, 0, 1],
+         FrontFaceColor->RGBColor[0, 0, 1],
+         BackFaceColor->RGBColor[0, 0, 1],
+         GraphicsColor->RGBColor[0, 0, 1],
+         FontSize->11,
+         FontColor->GrayLevel[1]], {2.1698599086458534, 0.6161774804863548}], 
+       {AbsolutePointSize[17], Opacity[0], 
+        PointBox[{2.1698599086458534`, 0.6161774804863548}]}}},
+     BoxForm`SceneTag[{{$CellContext`a -> {4.104864222306128, 
+         1.0893299963759209`}, $CellContext`b -> {0.23485559498557812`, 
+         0.14302496459678882`}, $CellContext`c -> {2.03990562502622, 
+         2.6039468158400885`}, $CellContext`o -> {2.1698599086458534`, 
+         0.6161774804863548}}, {C["GeometricQuantity"][
+          C["Unspecified"][
+          "radius", 
+           "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {2, 0}}"]] -> 1.9920128217625757`}}, {
+       Triangle[{$CellContext`a, $CellContext`b, $CellContext`c}], 
+       CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+       And[
+       Midpoint[{$CellContext`a, $CellContext`b}] == $CellContext`o, 
+        PlanarAngle[{$CellContext`a, $CellContext`b, $CellContext`c}] == 
+        40 Degree]}, {}],
+     Editable->False],
+    PlotRange->{{-0.22055547746923743`, 
+     4.560275294760944}, {-1.774237905628736, 3.0065928666014456`}}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.7976561432307196`*^9},
+ CellLabel->"Out[48]=",ExpressionUUID->"a45b61c6-42c8-48da-b223-f144f8eb8c02"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"usare", " ", "line", " ", "o", " ", "triangle"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"angle1", " ", "=", " ", 
+     RowBox[{"80", "\[Degree]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"scene2", " ", "=", 
+     RowBox[{"GeometricScene", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c", ",", 
+         RowBox[{"o", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"1", ",", "1"}], "}"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"CircleThrough", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", " ", "o", ",", 
+           "1"}], "]"}], ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "b"}], "}"}], "]"}], ",", " ", "Blue"}], "]"}],
+          ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"c", ",", "b"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "o"}], "}"}], "]"}], ",", " ", "Blue"}], "]"}],
+          ",", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"1", ",", "1"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"0.5", ",", "0.5"}], "}"}]}], "}"}], "]"}], ",", "Red"}
+           ], "]"}], ",", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"o", ",", "b"}], "}"}], "]"}], ",", " ", "Blue"}], "]"}],
+          ",", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "o", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", "angle1"}], " ", "&&", " ", 
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", 
+           RowBox[{"angle1", " ", "/", " ", "2"}]}], "  ", "&&", "  ", 
+          RowBox[{"Boole", "[", 
+           RowBox[{"Not", "[", 
+            RowBox[{
+             RowBox[{"RegionMember", "[", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{"Triangle", "[", 
+                 RowBox[{"{", 
+                  RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}], " ", "]"}],
+                ",", " ", 
+               RowBox[{"{", 
+                RowBox[{"0.5", ",", "0.5"}], "}"}]}], " ", "]"}], " ", 
+             "\[Equal]", " ", "True"}], " ", "]"}], "]"}]}]}], "}"}]}], "  ", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"RandomInstance", "[", 
+    RowBox[{"scene2", ",", " ", "5"}], "]"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwl0V1IUwEABeDV3NZkzBpMLjIHu6urbHYhJQN/Ioc6s1owbS8jt2xFLskx
+N5AJYgarYCiCI8IxYVRKrJqFigYblYbEWIowRz9ioaLiVqiw9TDpnuvD4Xs6
+nIejaO3Q3zrK4XCKmMCqFz0xceNOzdjnQ12x6Aqc+/tkG0Z/kbswcN/Lukkd
+4eYx5pcP50L6VAUByUK3HPKlzyg4kDPL6pcsVMOVrPA85JL1GugJ1NXBfVNC
+BwXO0SbYq/Q62L7Ox5o4U+qCuVziIfyiLfdB2/L4GOw3x4MwK1ydhMlXdBiW
+iK6xFoSaP0FJvolVw9W0KBhFBpMZhuLm29Cq/9oGFQuaDmi7HmAVU9NOeO9f
+pgvaSXsE0mtnZ6FkXXyDZHwZXLLACrV78C0j4Vf7Ya3v2yhsiEyEYOnlkQnY
+0k1MwXme7AO0jJTMwYzxYxQWe6QxOGP4uQyrlaotKPt+LAV786J/YNebu2nY
+dy58AG9WrvHe4Z/5QgFcTNyRwtW9bgI+aKxNdV5idk/L0/Dg/aMcB2Mf33EC
+binlFDSbBCp45XgzDTcswTI49FReBS/84NfAXU+ZFrY/LroIk6/dV+HJuEwP
+f7eJWqHN+NwK/wNCZhu6
+  "],ExpressionUUID->"b30f1846-f651-45aa-914e-0faf2483eceb"],
+
+Cell[BoxData[
+ RowBox[{"RandomInstance", "[", 
+  RowBox[{
+   RowBox[{"GeometricScene", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c", ",", "o"}], "}"}], ",", 
+       RowBox[{"{", "}"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"CircleThrough", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "o", ",", "1"}], 
+        "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "c"}], "}"}], "]"}], ",", "Red"}], "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "b"}], "}"}], "]"}], ",", "Blue"}], "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{"c", ",", "b"}], "}"}], "]"}], ",", "Red"}], "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "o"}], "}"}], "]"}], ",", "Blue"}], "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"1", ",", "1"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"0.5`", ",", "0.5`"}], "}"}]}], "}"}], "]"}], ",", 
+         "Red"}], "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{"o", ",", "b"}], "}"}], "]"}], ",", "Blue"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"PlanarAngle", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "o", ",", "b"}], "}"}], "]"}], "\[Equal]", 
+         "angle1"}], "&&", 
+        RowBox[{
+         RowBox[{"PlanarAngle", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "c", ",", "b"}], "}"}], "]"}], "\[Equal]", 
+         FractionBox["angle1", "2"]}], "&&", 
+        RowBox[{
+         RowBox[{"RegionMember", "[", 
+          RowBox[{
+           RowBox[{"Triangle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "b", ",", "c"}], "}"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0.5`", ",", "0.5`"}], "}"}]}], "]"}], "\[Equal]", 
+         "True"}]}], ",", 
+       RowBox[{"o", "\[Equal]", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1"}], "}"}]}]}], "}"}], ",", 
+     RowBox[{"{", "}"}]}], "]"}], ",", "5"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.7972596581867666`*^9, 3.797259709095414*^9, {3.7972597984089794`*^9, 
+   3.7972598287959285`*^9}, {3.7972598839218626`*^9, 3.797259891015555*^9}, {
+   3.79725997417559*^9, 3.7972599998177056`*^9}, {3.797260136657462*^9, 
+   3.797260162879204*^9}, {3.7972602751216526`*^9, 3.797260279841442*^9}, {
+   3.7972603394013214`*^9, 3.79726034850999*^9}, 3.7972605014546876`*^9, {
+   3.797655603081255*^9, 3.7976556218812847`*^9}, {3.7976556526731224`*^9, 
+   3.797655699422223*^9}, {3.7976558736266375`*^9, 3.7976558836352777`*^9}, {
+   3.7976559413946996`*^9, 3.7976559665060315`*^9}, {3.797656042619075*^9, 
+   3.797656075616341*^9}, 3.7976561436688957`*^9},
+ CellLabel->"Out[51]=",ExpressionUUID->"8e181924-ac8b-48a7-ba31-4a2859f84f91"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"angle3", " ", "=", " ", 
+     RowBox[{"100", "\[Degree]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"scene3", " ", "=", 
+     RowBox[{"GeometricScene", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "e", ",", "o"}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"CircleThrough", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"a", ",", "b", ",", "c", ",", "d", ",", "e"}], "}"}], ",",
+            " ", "o"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"c", ",", "b"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "d"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"d", ",", "b"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "e"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"e", ",", "b"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "o"}], "}"}], "]"}], ",", " ", "Blue"}], "]"}],
+          ",", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"o", ",", "b"}], "}"}], "]"}], ",", " ", "Blue"}], "]"}],
+          ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "o", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", "angle3"}], " ", "&&", " ", 
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", 
+           RowBox[{"angle3", " ", "/", " ", "2"}]}], "  ", "&&", " ", 
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "d", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", 
+           RowBox[{"angle3", " ", "/", " ", "2"}]}], " ", "&&", " ", 
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "e", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", 
+           RowBox[{"angle3", " ", "/", " ", "2"}]}], " ", 
+          "\[IndentingNewLine]", "&&", " ", 
+          RowBox[{
+           RowBox[{"EuclideanDistance", "[", 
+            RowBox[{"c", ",", "d"}], "]"}], " ", "\[Equal]", " ", 
+           RowBox[{"EuclideanDistance", "[", 
+            RowBox[{"d", ",", "e"}], "]"}]}]}]}], "}"}]}], "]"}]}], ";", " ", 
+    RowBox[{"(*", 
+     RowBox[{"c", ",", "d", ",", 
+      RowBox[{
+      "e", " ", "decono", " ", "essere", " ", "sullo", " ", "stesso", " ", 
+       "arco"}], " ", ",", " ", 
+      RowBox[{
+      "circonferenza", " ", "divisa", " ", "in", " ", "due", " ", "archi", 
+       " ", "da", " ", "a", " ", "e", " ", "b"}]}], "*)"}], 
+    "\[IndentingNewLine]", "\t", GridBox[{
+      {
+       RowBox[{"RandomInstance", "[", 
+        RowBox[{"scene3", ",", " ", "3"}], "]"}]},
+      {"\[Placeholder]"}
+     }]}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.7969642478845983`*^9, 3.7969644327165937`*^9}, {
+   3.7969646221624737`*^9, 3.7969646532748127`*^9}, {3.7969647116855774`*^9, 
+   3.7969647192776127`*^9}, {3.7969648758765783`*^9, 3.796964892487631*^9}, {
+   3.796964991769046*^9, 3.7969651456614833`*^9}, {3.7969652773775578`*^9, 
+   3.7969653050606184`*^9}, {3.7969654038928933`*^9, 3.796965539298231*^9}, {
+   3.796965881374854*^9, 3.7969658833199534`*^9}, {3.7969659582473803`*^9, 
+   3.7969659816179876`*^9}, {3.7969661534321194`*^9, 
+   3.7969661647950687`*^9}, {3.7969662055848503`*^9, 3.796966206038816*^9}, {
+   3.796966261599026*^9, 3.7969662833340974`*^9}, {3.796966396232931*^9, 
+   3.796966437048915*^9}, {3.7969665156639776`*^9, 3.796966546920479*^9}, {
+   3.7969666554060535`*^9, 3.7969666555360928`*^9}, {3.7969667123271294`*^9, 
+   3.796966804185339*^9}, {3.79696686439476*^9, 3.796966870412758*^9}, {
+   3.796966906612012*^9, 3.7969669234819803`*^9}, {3.7972569720887237`*^9, 
+   3.7972569795805836`*^9}, 3.7972593341251993`*^9, {3.7976559961847734`*^9, 
+   3.7976559994496984`*^9}},
+ CellLabel->"In[52]:=",ExpressionUUID->"97ad2478-8f3c-4659-ae25-61b97b6a857f"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+      GraphicsBox[
+       TagBox[
+        {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], 
+         Thickness[Large]}], {
+          {Opacity[0], 
+           CircleBox[{0.9193516887999889, -0.02400982510214862}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{0.9193516887999889, -0.02400982510214862}, 
+               Offset[{17., 17.}, {0., 0.}], {2.559311768516648, 
+               4.304641020510917}],
+              TagBox[
+               FormBox[
+                RowBox[{"100", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[100 Degree], "Tooltip"]& ]}, 
+           CircleBox[{0.9193516887999889, -0.02400982510214862}, 
+            Offset[{17., 17.}, {0., 0.}], {2.559311768516648, 
+            4.304641020510917}]}}, {
+          {Opacity[0], 
+           CircleBox[{1.7698784891153, -3.145285293044922}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{1.7698784891153, -3.145285293044922}, 
+               Offset[{17., 17.}, {0., 0.}], {2.1980712003814684`, 
+               3.0707358263800586`}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{1.7698784891153, -3.145285293044922}, 
+            Offset[{17., 17.}, {0., 0.}], {2.1980712003814684`, 
+            3.0707358263800586`}]}}, {
+          {Opacity[0], 
+           CircleBox[{0.8335749692405742, 3.209934936922765}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{0.8335749692405742, 3.209934936922765}, 
+               Offset[{17., 17.}, {0., 0.}], {-2.634076108174328, \
+-1.7614114821678728`}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{0.8335749692405742, 3.209934936922765}, 
+            Offset[{17., 17.}, {0., 0.}], {-2.634076108174328, \
+-1.7614114821678728`}]}}, {
+          {Opacity[0], 
+           CircleBox[{0.23548095063529342, -3.1859834488344503}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{0.23548095063529342, -3.1859834488344503}, 
+               Offset[{17., 17.}, {0., 0.}], {1.958554544063868, 
+               2.8312191701083953`}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{0.23548095063529342, -3.1859834488344503}, 
+            Offset[{17., 17.}, {0., 0.}], {1.958554544063868, 
+            2.8312191701083953`}]}}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-0.36349724467327, -2.993867565287979}, {
+           0.9193516887999889, -0.02400982510214862}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{
+           0.9193516887999889, -0.02400982510214862}, {-1.7826228580307184`, 
+           1.7550601340327223`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-0.36349724467327, -2.993867565287979}, {
+           1.7698784891153, -3.145285293044922}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{
+           1.7698784891153, -3.145285293044922}, {-1.7826228580307184`, 
+           1.7550601340327223`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-0.36349724467327, -2.993867565287979}, {
+           0.8335749692405742, 3.209934936922765}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{0.8335749692405742, 
+           3.209934936922765}, {-1.7826228580307184`, 1.7550601340327223`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-0.36349724467327, -2.993867565287979}, {
+           0.23548095063529342`, -3.1859834488344503`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{
+           0.23548095063529342`, -3.1859834488344503`}, {-1.7826228580307184`,
+            1.7550601340327223`}}]}, 
+         CircleBox[{0.9193516887999889, -0.02400982510214862}, 
+          3.235082137342504], 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{-0.36349724467327, -2.993867565287979}, {
+           1.7698784891153, -3.145285293044922}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{
+           1.7698784891153, -3.145285293044922}, {-1.7826228580307184`, 
+           1.7550601340327223`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{-0.36349724467327, -2.993867565287979}, {
+           0.8335749692405742, 3.209934936922765}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{0.8335749692405742, 
+           3.209934936922765}, {-1.7826228580307184`, 1.7550601340327223`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{-0.36349724467327, -2.993867565287979}, {
+           0.23548095063529342`, -3.1859834488344503`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{
+           0.23548095063529342`, -3.1859834488344503`}, {-1.7826228580307184`,
+            1.7550601340327223`}}]}, 
+         {RGBColor[0, 0, 1], 
+          LineBox[{{-0.36349724467327, -2.993867565287979}, {
+           0.9193516887999889, -0.02400982510214862}}]}, 
+         {RGBColor[0, 0, 1], 
+          LineBox[{{
+           0.9193516887999889, -0.02400982510214862}, {-1.7826228580307184`, 
+           1.7550601340327223`}}]}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{-0.36349724467327, -2.993867565287979}]}, InsetBox[
+           StyleBox["\<\" a \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {-0.36349724467327, -2.993867565287979}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{-0.36349724467327, -2.993867565287979}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{-1.7826228580307184`, 1.7550601340327223`}]}, InsetBox[
+           StyleBox["\<\" b \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {-1.7826228580307184, 1.7550601340327223}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{-1.7826228580307184`, 1.7550601340327223`}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{1.7698784891153, -3.145285293044922}]}, InsetBox[
+           StyleBox["\<\" c \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            FontColor->GrayLevel[1]], {1.7698784891153, -3.145285293044922}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{1.7698784891153, -3.145285293044922}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{0.8335749692405742, 3.209934936922765}]}, InsetBox[
+           StyleBox["\<\" d \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {0.8335749692405742, 3.209934936922765}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{0.8335749692405742, 3.209934936922765}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{0.23548095063529342`, -3.1859834488344503`}]}, InsetBox[
+           StyleBox["\<\" e \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {0.23548095063529342, -3.1859834488344503}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{0.23548095063529342`, -3.1859834488344503`}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{0.9193516887999889, -0.02400982510214862}]}, InsetBox[
+           StyleBox["\<\" o \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {0.9193516887999889, -0.02400982510214862}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{0.9193516887999889, -0.02400982510214862}]}}},
+        BoxForm`SceneTag[{{$CellContext`a -> {-0.36349724467327, \
+-2.993867565287979}, $CellContext`b -> {-1.7826228580307184`, 
+            1.7550601340327223`}, $CellContext`c -> {
+            1.7698784891153, -3.145285293044922}, $CellContext`d -> {
+            0.8335749692405742, 3.209934936922765}, $CellContext`e -> {
+            0.23548095063529342`, -3.1859834488344503`}, $CellContext`o -> {
+            0.9193516887999889, -0.02400982510214862}}, {
+          C["GeometricQuantity"][
+             C["Unspecified"][
+             "radius", 
+              "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c], C[\"GeometricPoint\"][d], \
+C[\"GeometricPoint\"][e]}, {1, 0}}"]] -> 3.235082137342504}}, {
+          
+          CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c, \
+$CellContext`d, $CellContext`e}, $CellContext`o], 
+          Style[
+           Line[{$CellContext`a, $CellContext`c}], Red], 
+          Style[
+           Line[{$CellContext`c, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`d}], Red], 
+          Style[
+           Line[{$CellContext`d, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`e}], Red], 
+          Style[
+           Line[{$CellContext`e, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`o}], Blue], 
+          Style[
+           Line[{$CellContext`o, $CellContext`b}], Blue], 
+          And[
+          PlanarAngle[{$CellContext`a, $CellContext`o, $CellContext`b}] == \
+$CellContext`angle3, 
+           PlanarAngle[{$CellContext`a, $CellContext`c, $CellContext`b}] == \
+$CellContext`angle3/2, 
+           PlanarAngle[{$CellContext`a, $CellContext`d, $CellContext`b}] == \
+$CellContext`angle3/2, 
+           PlanarAngle[{$CellContext`a, $CellContext`e, $CellContext`b}] == \
+$CellContext`angle3/2, EuclideanDistance[$CellContext`c, $CellContext`d] == 
+           EuclideanDistance[$CellContext`d, $CellContext`e]]}, {}],
+        Editable->False],
+       PlotRange->{{-2.962746876011016, 
+        4.801450253610993}, {-3.9061083899131535`, 3.858088739708856}}], ",", 
+      GraphicsBox[
+       TagBox[
+        {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], 
+         Thickness[Large]}], {
+          {Opacity[0], 
+           CircleBox[{-0.4357375124501843, -1.0552319240750276}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{-0.4357375124501843, -1.0552319240750276}, 
+               Offset[{17., 17.}, {0., 0.}], {-1.2944516080342279`, 
+               0.4508776439598017}],
+              TagBox[
+               FormBox[
+                RowBox[{"100", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[100 Degree], "Tooltip"]& ]}, 
+           CircleBox[{-0.4357375124501843, -1.0552319240750276}, 
+            Offset[{17., 17.}, {0., 0.}], {-1.2944516080342279`, 
+            0.4508776439598017}]}}, {
+          {Opacity[0], 
+           CircleBox[{-1.8978767712525686, -3.594837699495747}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{-1.8978767712525686, -3.594837699495747}, 
+               Offset[{17., 17.}, {0., 0.}], {-0.123020779777535, 
+               0.7496438462327191}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{-1.8978767712525686, -3.594837699495747}, 
+            Offset[{17., 17.}, {0., 0.}], {-0.123020779777535, 
+            0.7496438462327191}]}}, {
+          {Opacity[0], 
+           CircleBox[{-2.6741783010624376, 0.8360194004515633}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{-2.6741783010624376, 0.8360194004515633}, 
+               Offset[{17., 17.}, {0., 0.}], {-0.9979877476356519, \
+-0.12532312164661707`}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{-2.6741783010624376, 0.8360194004515633}, 
+            Offset[{17., 17.}, {0., 0.}], {-0.9979877476356519, \
+-0.12532312164661707`}]}}, {
+          {Opacity[0], 
+           CircleBox[{1.824097205918981, 0.8104035703276579}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{1.824097205918981, 0.8104035703276579}, 
+               Offset[{17., 17.}, {0., 0.}], {-1.8729547155441382`, \
+-1.000290089900353}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{1.824097205918981, 0.8104035703276579}, 
+            Offset[{17., 17.}, {0., 0.}], {-1.8729547155441382`, \
+-1.000290089900353}]}}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{2.201844414134728, 
+           0.22172161003148275`}, {-0.4357375124501843, \
+-1.0552319240750276`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-0.4357375124501843, -1.0552319240750276`}, {
+           0.36380493152341237`, -3.8744837029148926`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{2.201844414134728, 
+           0.22172161003148275`}, {-1.8978767712525686`, \
+-3.594837699495747}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-1.8978767712525686`, -3.594837699495747}, {
+           0.36380493152341237`, -3.8744837029148926`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{2.201844414134728, 
+           0.22172161003148275`}, {-2.6741783010624376`, 
+           0.8360194004515633}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-2.6741783010624376`, 0.8360194004515633}, {
+           0.36380493152341237`, -3.8744837029148926`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{2.201844414134728, 0.22172161003148275`}, {
+           1.824097205918981, 0.8104035703276579}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{1.824097205918981, 0.8104035703276579}, {
+           0.36380493152341237`, -3.8744837029148926`}}]}, 
+         CircleBox[{-0.4357375124501843, -1.0552319240750276}, 
+          2.930434934584572], 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{2.201844414134728, 
+           0.22172161003148275`}, {-1.8978767712525686`, \
+-3.594837699495747}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{-1.8978767712525686`, -3.594837699495747}, {
+           0.36380493152341237`, -3.8744837029148926`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{2.201844414134728, 
+           0.22172161003148275`}, {-2.6741783010624376`, 
+           0.8360194004515633}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{-2.6741783010624376`, 0.8360194004515633}, {
+           0.36380493152341237`, -3.8744837029148926`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{2.201844414134728, 0.22172161003148275`}, {
+           1.824097205918981, 0.8104035703276579}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{1.824097205918981, 0.8104035703276579}, {
+           0.36380493152341237`, -3.8744837029148926`}}]}, 
+         {RGBColor[0, 0, 1], 
+          LineBox[{{2.201844414134728, 
+           0.22172161003148275`}, {-0.4357375124501843, \
+-1.0552319240750276`}}]}, 
+         {RGBColor[0, 0, 1], 
+          LineBox[{{-0.4357375124501843, -1.0552319240750276`}, {
+           0.36380493152341237`, -3.8744837029148926`}}]}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{2.201844414134728, 0.22172161003148275`}]}, InsetBox[
+           StyleBox["\<\" a \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {2.201844414134728, 0.22172161003148275}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{2.201844414134728, 0.22172161003148275`}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{0.36380493152341237`, -3.8744837029148926`}]}, InsetBox[
+           StyleBox["\<\" b \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {0.36380493152341237, -3.8744837029148926}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{0.36380493152341237`, -3.8744837029148926`}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{-1.8978767712525686`, -3.594837699495747}]}, InsetBox[
+           StyleBox["\<\" c \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {-1.8978767712525686, -3.594837699495747}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{-1.8978767712525686`, -3.594837699495747}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{-2.6741783010624376`, 0.8360194004515633}]}, InsetBox[
+           StyleBox["\<\" d \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {-2.6741783010624376, 0.8360194004515633}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{-2.6741783010624376`, 0.8360194004515633}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{1.824097205918981, 0.8104035703276579}]}, InsetBox[
+           StyleBox["\<\" e \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {1.824097205918981, 0.8104035703276579}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{1.824097205918981, 0.8104035703276579}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{-0.4357375124501843, -1.0552319240750276`}]}, InsetBox[
+           StyleBox["\<\" o \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {-0.4357375124501843, -1.0552319240750276}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{-0.4357375124501843, -1.0552319240750276`}]}}},
+        BoxForm`SceneTag[{{$CellContext`a -> {2.201844414134728, 
+            0.22172161003148275`}, $CellContext`b -> {
+            0.36380493152341237`, -3.8744837029148926`}, $CellContext`c -> \
+{-1.8978767712525686`, -3.594837699495747}, $CellContext`d -> \
+{-2.6741783010624376`, 0.8360194004515633}, $CellContext`e -> {
+            1.824097205918981, 
+            0.8104035703276579}, $CellContext`o -> {-0.4357375124501843, \
+-1.0552319240750276`}}, {C["GeometricQuantity"][
+             C["Unspecified"][
+             "radius", 
+              "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c], C[\"GeometricPoint\"][d], \
+C[\"GeometricPoint\"][e]}, {1, 0}}"]] -> 2.930434934584572}}, {
+          
+          CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c, \
+$CellContext`d, $CellContext`e}, $CellContext`o], 
+          Style[
+           Line[{$CellContext`a, $CellContext`c}], Red], 
+          Style[
+           Line[{$CellContext`c, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`d}], Red], 
+          Style[
+           Line[{$CellContext`d, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`e}], Red], 
+          Style[
+           Line[{$CellContext`e, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`o}], Blue], 
+          Style[
+           Line[{$CellContext`o, $CellContext`b}], Blue], 
+          And[
+          PlanarAngle[{$CellContext`a, $CellContext`o, $CellContext`b}] == \
+$CellContext`angle3, 
+           PlanarAngle[{$CellContext`a, $CellContext`c, $CellContext`b}] == \
+$CellContext`angle3/2, 
+           PlanarAngle[{$CellContext`a, $CellContext`d, $CellContext`b}] == \
+$CellContext`angle3/2, 
+           PlanarAngle[{$CellContext`a, $CellContext`e, $CellContext`b}] == \
+$CellContext`angle3/2, EuclideanDistance[$CellContext`c, $CellContext`d] == 
+           EuclideanDistance[$CellContext`d, $CellContext`e]]}, {}],
+        Editable->False],
+       PlotRange->{{-3.9522594339516703`, 
+        3.080784409051302}, {-4.571753845576514, 2.4612899974264586`}}], ",", 
+      GraphicsBox[
+       TagBox[
+        {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], 
+         Thickness[Large]}], {
+          {Opacity[0], 
+           CircleBox[{-1.0564495817674384, 0.2677057948735338}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{-1.0564495817674384, 0.2677057948735338}, 
+               Offset[{17., 17.}, {0., 0.}], {2.067719401405389, 
+               3.8130486533995347`}],
+              TagBox[
+               FormBox[
+                RowBox[{"100", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[100 Degree], "Tooltip"]& ]}, 
+           CircleBox[{-1.0564495817674384, 0.2677057948735338}, 
+            Offset[{17., 17.}, {0., 0.}], {2.067719401405389, 
+            3.8130486533995347`}]}}, {
+          {Opacity[0], 
+           CircleBox[{2.597764068427812, -2.6312284637727945}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{2.597764068427812, -2.6312284637727945}, 
+               Offset[{17., 17.}, {0., 0.}], {2.269331014900065, 
+               3.141995640897877}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{2.597764068427812, -2.6312284637727945}, 
+            Offset[{17., 17.}, {0., 0.}], {2.269331014900065, 
+            3.141995640897877}]}}, {
+          {Opacity[0], 
+           CircleBox[{3.275668531938679, -1.461412446306477}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{3.275668531938679, -1.461412446306477}, 
+               Offset[{17., 17.}, {0., 0.}], {2.4147739751790223`, 
+               3.2874386011761616`}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{3.275668531938679, -1.461412446306477}, 
+            Offset[{17., 17.}, {0., 0.}], {2.4147739751790223`, 
+            3.2874386011761616`}]}}, {
+          {Opacity[0], 
+           CircleBox[{3.58958989193355, -0.14631649691194934}, 
+            Offset[{17., 17.}, {0., 0.}]]}, 
+          {GrayLevel[0.7], AbsoluteThickness[2], 
+           {Opacity[0], 
+            TagBox[
+             
+             TooltipBox[
+              DiskBox[{3.58958989193355, -0.14631649691194934}, 
+               Offset[{17., 17.}, {0., 0.}], {2.5602169354583917`, 
+               3.4328815614545736`}],
+              TagBox[
+               FormBox[
+                RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+               TraditionalForm, Editable -> True]],
+             Annotation[#, 
+              TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+           CircleBox[{3.58958989193355, -0.14631649691194934}, 
+            Offset[{17., 17.}, {0., 0.}], {2.5602169354583917`, 
+            3.4328815614545736`}]}}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-3.2801004367770323`, 
+           4.368007507920033}, {-1.0564495817674384`, 0.2677057948735338}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-1.0564495817674384`, 
+           0.2677057948735338}, {-4.708325577012786, -2.6341727253310125`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-3.2801004367770323`, 4.368007507920033}, {
+           2.597764068427812, -2.6312284637727945`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{
+           2.597764068427812, -2.6312284637727945`}, {-4.708325577012786, \
+-2.6341727253310125`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-3.2801004367770323`, 4.368007507920033}, {
+           3.275668531938679, -1.461412446306477}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{
+           3.275668531938679, -1.461412446306477}, {-4.708325577012786, \
+-2.6341727253310125`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{-3.2801004367770323`, 4.368007507920033}, {
+           3.58958989193355, -0.14631649691194934`}}]}, 
+         {Dashing[{Small, Small}], CapForm["None"], 
+          LineBox[{{
+           3.58958989193355, -0.14631649691194934`}, {-4.708325577012786, \
+-2.6341727253310125`}}]}, 
+         CircleBox[{-1.0564495817674384, 0.2677057948735338}, 
+          4.664450381968311], 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{-3.2801004367770323`, 4.368007507920033}, {
+           2.597764068427812, -2.6312284637727945`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{
+           2.597764068427812, -2.6312284637727945`}, {-4.708325577012786, \
+-2.6341727253310125`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{-3.2801004367770323`, 4.368007507920033}, {
+           3.275668531938679, -1.461412446306477}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{
+           3.275668531938679, -1.461412446306477}, {-4.708325577012786, \
+-2.6341727253310125`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{-3.2801004367770323`, 4.368007507920033}, {
+           3.58958989193355, -0.14631649691194934`}}]}, 
+         {RGBColor[1, 0, 0], 
+          LineBox[{{
+           3.58958989193355, -0.14631649691194934`}, {-4.708325577012786, \
+-2.6341727253310125`}}]}, 
+         {RGBColor[0, 0, 1], 
+          LineBox[{{-3.2801004367770323`, 
+           4.368007507920033}, {-1.0564495817674384`, 0.2677057948735338}}]}, 
+         {RGBColor[0, 0, 1], 
+          LineBox[{{-1.0564495817674384`, 
+           0.2677057948735338}, {-4.708325577012786, \
+-2.6341727253310125`}}]}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{-3.2801004367770323`, 4.368007507920033}]}, InsetBox[
+           StyleBox["\<\" a \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {-3.2801004367770323, 4.368007507920033}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{-3.2801004367770323`, 4.368007507920033}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{-4.708325577012786, -2.6341727253310125`}]}, InsetBox[
+           StyleBox["\<\" b \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {-4.708325577012786, -2.6341727253310125}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{-4.708325577012786, -2.6341727253310125`}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{2.597764068427812, -2.6312284637727945`}]}, InsetBox[
+           StyleBox["\<\" c \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {2.597764068427812, -2.6312284637727945}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{2.597764068427812, -2.6312284637727945`}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{3.275668531938679, -1.461412446306477}]}, InsetBox[
+           StyleBox["\<\" d \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {3.275668531938679, -1.461412446306477}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{3.275668531938679, -1.461412446306477}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{3.58958989193355, -0.14631649691194934`}]}, InsetBox[
+           StyleBox["\<\" e \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {3.58958989193355, -0.14631649691194934}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{3.58958989193355, -0.14631649691194934`}]}}, {
+          {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+           PointBox[{-1.0564495817674384`, 0.2677057948735338}]}, InsetBox[
+           StyleBox["\<\" o \"\>",
+            StripOnInput->False,
+            LineColor->RGBColor[0, 0, 1],
+            FrontFaceColor->RGBColor[0, 0, 1],
+            BackFaceColor->RGBColor[0, 0, 1],
+            GraphicsColor->RGBColor[0, 0, 1],
+            FontSize->11,
+            
+            FontColor->GrayLevel[
+             1]], {-1.0564495817674384, 0.2677057948735338}], 
+          {AbsolutePointSize[17], Opacity[0], 
+           PointBox[{-1.0564495817674384`, 0.2677057948735338}]}}},
+        BoxForm`SceneTag[{{$CellContext`a -> {-3.2801004367770323`, 
+            4.368007507920033}, $CellContext`b -> {-4.708325577012786, \
+-2.6341727253310125`}, $CellContext`c -> {
+            2.597764068427812, -2.6312284637727945`}, $CellContext`d -> {
+            3.275668531938679, -1.461412446306477}, $CellContext`e -> {
+            3.58958989193355, -0.14631649691194934`}, $CellContext`o -> \
+{-1.0564495817674384`, 0.2677057948735338}}, {C["GeometricQuantity"][
+             C["Unspecified"][
+             "radius", 
+              "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c], C[\"GeometricPoint\"][d], \
+C[\"GeometricPoint\"][e]}, {1, 0}}"]] -> 4.664450381968311}}, {
+          
+          CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c, \
+$CellContext`d, $CellContext`e}, $CellContext`o], 
+          Style[
+           Line[{$CellContext`a, $CellContext`c}], Red], 
+          Style[
+           Line[{$CellContext`c, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`d}], Red], 
+          Style[
+           Line[{$CellContext`d, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`e}], Red], 
+          Style[
+           Line[{$CellContext`e, $CellContext`b}], Red], 
+          Style[
+           Line[{$CellContext`a, $CellContext`o}], Blue], 
+          Style[
+           Line[{$CellContext`o, $CellContext`b}], Blue], 
+          And[
+          PlanarAngle[{$CellContext`a, $CellContext`o, $CellContext`b}] == \
+$CellContext`angle3, 
+           PlanarAngle[{$CellContext`a, $CellContext`c, $CellContext`b}] == \
+$CellContext`angle3/2, 
+           PlanarAngle[{$CellContext`a, $CellContext`d, $CellContext`b}] == \
+$CellContext`angle3/2, 
+           PlanarAngle[{$CellContext`a, $CellContext`e, $CellContext`b}] == \
+$CellContext`angle3/2, EuclideanDistance[$CellContext`c, $CellContext`d] == 
+           EuclideanDistance[$CellContext`d, $CellContext`e]]}, {}],
+        Editable->False],
+       PlotRange->{{-6.653790040129412, 
+        4.540890876594535}, {-5.32963466348844, 5.865046253235507}}]}], "}"}],
+     "}"}], ",", 
+   RowBox[{"{", "\[Placeholder]", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.797656150774785*^9},
+ CellLabel->"Out[53]=",ExpressionUUID->"3af2af1b-740f-4600-9acd-c13e07aab6a0"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"angle2", " ", "=", " ", "Pi"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"scene3", " ", "=", 
+     RowBox[{"GeometricScene", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c", ",", "o"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"CircleThrough", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", " ", "o"}], "]"}], 
+         ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Triangle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c", ",", "b"}], "}"}], "]"}], ",", " ", 
+           "Red"}], "]"}], ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Triangle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "o", ",", "b"}], "}"}], "]"}], ",", " ", 
+           "Yellow"}], "]"}], ",", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "o", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", "angle2"}], " ", "&&", " ", 
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", 
+           RowBox[{"angle2", " ", "/", " ", "2"}]}]}]}], "}"}]}], "]"}]}], 
+    ";"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"scene3", " ", "=", " ", 
+   RowBox[{"GeometricScene", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c", ",", "o"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"CircleThrough", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", "o"}], "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Triangle", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "c", ",", "b"}], "}"}], "]"}], ",", "Red"}], 
+        "]"}], ",", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Triangle", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "o", ",", "b"}], "}"}], "]"}], ",", "Yellow"}], 
+        "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"PlanarAngle", "[", 
+         RowBox[{"o", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "b"}], "}"}]}], "]"}], "\[Equal]", "angle2"}]}], 
+      "\[IndentingNewLine]", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"RandomInstance", "[", 
+  RowBox[{"scene3", ",", " ", "3"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.796924016579755*^9, 3.7969240165817914`*^9}, {
+  3.796962227629904*^9, 3.7969622539841585`*^9}, {3.7969627420648546`*^9, 
+  3.7969627933333364`*^9}, {3.796962830026342*^9, 3.7969628338710566`*^9}, {
+  3.796963808676865*^9, 3.7969638630755887`*^9}, {3.7969639084842134`*^9, 
+  3.7969639094676723`*^9}, {3.7969642355044594`*^9, 3.796964238051479*^9}, {
+  3.796965904628873*^9, 3.7969659331748238`*^9}, {3.7972569683467855`*^9, 
+  3.7972570255732975`*^9}, {3.7972582257614555`*^9, 3.797258231968844*^9}, {
+  3.7972583812051105`*^9, 3.797258591672447*^9}, {3.7972586593063855`*^9, 
+  3.797258693276449*^9}, {3.797258782685575*^9, 3.7972587871309156`*^9}, {
+  3.7972589360624824`*^9, 3.7972589627996144`*^9}, {3.7972590167400713`*^9, 
+  3.7972590300162106`*^9}, {3.797259191438686*^9, 3.797259192125965*^9}},
+ CellLabel->"In[54]:=",ExpressionUUID->"dbf03a12-5076-4fea-8030-b2abd434f56a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"angle3", " ", "=", " ", 
+   RowBox[{"180", "\[Degree]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"scene5", " ", "=", 
+   RowBox[{"GeometricScene", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c", ",", "o"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"CircleThrough", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", " ", "o"}], "]"}], 
+       ",", " ", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Triangle", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "c", ",", "b"}], "}"}], "]"}], ",", " ", "Red"}],
+         "]"}], ",", " ", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{"Triangle", "[", 
+          RowBox[{"{", 
+           RowBox[{"a", ",", "o", ",", "b"}], "}"}], "]"}], ",", " ", 
+         "Yellow"}], "]"}]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"PlanarAngle", "[", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", "o", ",", " ", "b"}], "}"}], "]"}], " ", 
+        "\[Equal]", " ", "angle3"}], " ", "&&", " ", 
+       RowBox[{
+        RowBox[{"PlanarAngle", "[", 
+         RowBox[{"{", 
+          RowBox[{"a", ",", "c", ",", " ", "b"}], "}"}], "]"}], " ", 
+        "\[Equal]", " ", 
+        RowBox[{"angle3", " ", "/", " ", "2"}]}], "&&", 
+       RowBox[{
+        RowBox[{"RegionMember", "[", 
+         RowBox[{
+          RowBox[{"Triangle", "[", 
+           RowBox[{"{", 
+            RowBox[{"a", ",", "c", ",", "b"}], "}"}], "]"}], ",", "o"}], 
+         "]"}], "\[Equal]", "False"}]}], "}"}]}], "]"}]}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"RandomInstance", "[", "scene5", "]"}]}], "Input",
+ CellChangeTimes->{{3.7972563972651987`*^9, 3.797256403493331*^9}, {
+  3.7972564444996433`*^9, 3.7972564666912384`*^9}, {3.7972564982494593`*^9, 
+  3.797256500739286*^9}, {3.797257031987943*^9, 3.7972570692627945`*^9}, {
+  3.7972571061287403`*^9, 3.797257107510867*^9}, {3.797257204717537*^9, 
+  3.797257290342069*^9}, {3.797257392828193*^9, 3.7972574786952534`*^9}, {
+  3.7972576005622454`*^9, 3.797257646620078*^9}, {3.7972577124019527`*^9, 
+  3.797257713439166*^9}, {3.797257831589177*^9, 3.797257910802187*^9}, {
+  3.797257942766549*^9, 3.7972579855250125`*^9}, {3.7972580386254115`*^9, 
+  3.797258040991885*^9}, {3.7972580863797283`*^9, 3.797258088886551*^9}, {
+  3.797258129325712*^9, 3.7972581799871016`*^9}},
+ CellLabel->"",ExpressionUUID->"a5fe38e5-4e76-44db-b93d-f97a0a242534"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"usare", " ", "line", " ", "o", " ", "triangle"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"angle4", " ", "=", " ", 
+     RowBox[{"100", "\[Degree]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"scene4", " ", "=", 
+    RowBox[{"RandomInstance", "[", 
+     RowBox[{"GeometricScene", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"a", ",", "b", ",", "c", ",", "o"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"CircleThrough", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"a", ",", "b", ",", "c"}], "}"}], ",", " ", "o"}], "]"}], 
+         ",", " ", "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", " ", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"c", ",", "b"}], "}"}], "]"}], ",", " ", "Red"}], "]"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "o"}], "}"}], "]"}], ",", " ", "Blue"}], "]"}],
+          ",", 
+         RowBox[{"Style", "[", 
+          RowBox[{
+           RowBox[{"Line", "[", 
+            RowBox[{"{", 
+             RowBox[{"o", ",", "b"}], "}"}], "]"}], ",", " ", "Blue"}], "]"}],
+          ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "o", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", "angle4"}], " ", "&&", " ", 
+          RowBox[{
+           RowBox[{"PlanarAngle", "[", 
+            RowBox[{"{", 
+             RowBox[{"a", ",", "c", ",", " ", "b"}], "}"}], "]"}], " ", 
+           "\[Equal]", " ", 
+           RowBox[{"angle4", " ", "/", " ", "2"}]}]}]}], " ", 
+        "\[IndentingNewLine]", "}"}]}], " ", "]"}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.7969247309351315`*^9, 3.7969247309721346`*^9}, 
+   3.7969248504381647`*^9, {3.796967603524318*^9, 3.7969676079801235`*^9}, {
+   3.796967661526213*^9, 3.7969676986892443`*^9}, {3.7969677380001464`*^9, 
+   3.796967745591715*^9}, {3.7969677919911118`*^9, 3.7969678009231234`*^9}, {
+   3.7969679465823965`*^9, 3.7969680382122073`*^9}, {3.7969680747138395`*^9, 
+   3.7969681142357435`*^9}, {3.796968482937169*^9, 3.796968538749585*^9}, 
+   3.7969685796393585`*^9, {3.7969687587125893`*^9, 3.796968818152597*^9}, 
+   3.7969689288390603`*^9, {3.7969690851898766`*^9, 3.7969691817516117`*^9}, {
+   3.79696927748151*^9, 3.79696931060454*^9}, {3.796969413690922*^9, 
+   3.7969694379778233`*^9}, {3.7969697997865114`*^9, 
+   3.7969698088432617`*^9}, {3.7969699036596575`*^9, 3.796969994002892*^9}, {
+   3.796970053157998*^9, 3.7969701408418193`*^9}, {3.7969703947196093`*^9, 
+   3.79697046752705*^9}, 3.7969707277661953`*^9, {3.797259352966526*^9, 
+   3.7972593673226347`*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"bf32ad4f-9218-42cf-b1f4-3f9b35f1b610"],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[
+   {GrayLevel[0.7], AbsoluteThickness[2], EdgeForm[{GrayLevel[0.7], Thickness[
+    Large]}], {
+     {Opacity[0], 
+      CircleBox[{-2.7095714010447502, -1.8073273589251817}, 
+       Offset[{17., 17.}, {0., 0.}]]}, 
+     {GrayLevel[0.7], AbsoluteThickness[2], 
+      {Opacity[0], 
+       TagBox[
+        TooltipBox[
+         DiskBox[{-2.7095714010447502, -1.8073273589251817}, 
+          Offset[{17., 17.}, {0., 0.}], {0.07507441713896294, 
+          1.8204036691333583`}],
+         TagBox[
+          FormBox[
+           RowBox[{"100", " ", "\[Degree]"}], TraditionalForm], 
+          TraditionalForm, Editable -> True]],
+        Annotation[#, 
+         TraditionalForm[100 Degree], "Tooltip"]& ]}, 
+      CircleBox[{-2.7095714010447502, -1.8073273589251817}, 
+       Offset[{17., 17.}, {0., 0.}], {0.07507441713896294, 
+       1.8204036691333583`}]}}, {
+     {Opacity[0], 
+      CircleBox[{1.3958690851354874, -2.143567806555044}, 
+       Offset[{17., 17.}, {0., 0.}]]}, 
+     {GrayLevel[0.7], AbsoluteThickness[2], 
+      {Opacity[0], 
+       TagBox[
+        TooltipBox[
+         DiskBox[{1.3958690851354874, -2.143567806555044}, 
+          Offset[{17., 17.}, {0., 0.}], {1.5674741385597937`, 
+          2.4401387643812074`}],
+         TagBox[
+          FormBox[
+           RowBox[{"50", " ", "\[Degree]"}], TraditionalForm], 
+          TraditionalForm, Editable -> True]],
+        Annotation[#, 
+         TraditionalForm[50 Degree], "Tooltip"]& ]}, 
+      CircleBox[{1.3958690851354874, -2.143567806555044}, 
+       Offset[{17., 17.}, {0., 0.}], {1.5674741385597937`, 
+       2.4401387643812074`}]}}, 
+    {Dashing[{Small, Small}], CapForm["None"], 
+     LineBox[{{
+      1.3980125541803405`, -1.4983722284047305`}, {-2.7095714010447502`, \
+-1.8073273589251817`}}]}, 
+    {Dashing[{Small, Small}], CapForm["None"], 
+     LineBox[{{-2.7095714010447502`, -1.8073273589251817`}, \
+{-3.727107276696886, 2.184203668358654}}]}, 
+    {Dashing[{Small, Small}], CapForm["None"], 
+     LineBox[{{1.3980125541803405`, -1.4983722284047305`}, {
+      1.3958690851354874`, -2.143567806555044}}]}, 
+    {Dashing[{Small, Small}], CapForm["None"], 
+     LineBox[{{1.3958690851354874`, -2.143567806555044}, {-3.727107276696886, 
+      2.184203668358654}}]}, 
+    CircleBox[{-2.7095714010447502, -1.8073273589251817}, 4.119186723899296], 
+    {RGBColor[1, 0, 0], 
+     LineBox[{{1.3980125541803405`, -1.4983722284047305`}, {
+      1.3958690851354874`, -2.143567806555044}}]}, 
+    {RGBColor[1, 0, 0], 
+     LineBox[{{1.3958690851354874`, -2.143567806555044}, {-3.727107276696886, 
+      2.184203668358654}}]}, 
+    {RGBColor[0, 0, 1], 
+     LineBox[{{
+      1.3980125541803405`, -1.4983722284047305`}, {-2.7095714010447502`, \
+-1.8073273589251817`}}]}, 
+    {RGBColor[0, 0, 1], 
+     LineBox[{{-2.7095714010447502`, -1.8073273589251817`}, \
+{-3.727107276696886, 2.184203668358654}}]}, {
+     {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+      PointBox[{1.3980125541803405`, -1.4983722284047305`}]}, InsetBox[
+      StyleBox["\<\" a \"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->11,
+       FontColor->GrayLevel[1]], {1.3980125541803405, -1.4983722284047305}], 
+     {AbsolutePointSize[17], Opacity[0], 
+      PointBox[{1.3980125541803405`, -1.4983722284047305`}]}}, {
+     {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+      PointBox[{-3.727107276696886, 2.184203668358654}]}, InsetBox[
+      StyleBox["\<\" b \"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->11,
+       FontColor->GrayLevel[1]], {-3.727107276696886, 2.184203668358654}], 
+     {AbsolutePointSize[17], Opacity[0], 
+      PointBox[{-3.727107276696886, 2.184203668358654}]}}, {
+     {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+      PointBox[{1.3958690851354874`, -2.143567806555044}]}, InsetBox[
+      StyleBox["\<\" c \"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->11,
+       FontColor->GrayLevel[1]], {1.3958690851354874, -2.143567806555044}], 
+     {AbsolutePointSize[17], Opacity[0], 
+      PointBox[{1.3958690851354874`, -2.143567806555044}]}}, {
+     {Hue[0.58, 1, 1], AbsolutePointSize[17], Opacity[1], 
+      PointBox[{-2.7095714010447502`, -1.8073273589251817`}]}, InsetBox[
+      StyleBox["\<\" o \"\>",
+       StripOnInput->False,
+       LineColor->RGBColor[0, 0, 1],
+       FrontFaceColor->RGBColor[0, 0, 1],
+       BackFaceColor->RGBColor[0, 0, 1],
+       GraphicsColor->RGBColor[0, 0, 1],
+       FontSize->11,
+       FontColor->GrayLevel[1]], {-2.7095714010447502, -1.8073273589251817}], 
+     {AbsolutePointSize[17], Opacity[0], 
+      PointBox[{-2.7095714010447502`, -1.8073273589251817`}]}}},
+   BoxForm`SceneTag[{{$CellContext`a -> {
+       1.3980125541803405`, -1.4983722284047305`}, $CellContext`b -> \
+{-3.727107276696886, 2.184203668358654}, $CellContext`c -> {
+       1.3958690851354874`, -2.143567806555044}, $CellContext`o -> \
+{-2.7095714010447502`, -1.8073273589251817`}}, {C["GeometricQuantity"][
+        C["Unspecified"][
+        "radius", 
+         "{{C[\"GeometricPoint\"][a], C[\"GeometricPoint\"][b], \
+C[\"GeometricPoint\"][c]}, {1, 0}}"]] -> 4.119186723899296}}, {
+     CircleThrough[{$CellContext`a, $CellContext`b, $CellContext`c}, \
+$CellContext`o], 
+     Style[
+      Line[{$CellContext`a, $CellContext`c}], Red], 
+     Style[
+      Line[{$CellContext`c, $CellContext`b}], Red], 
+     Style[
+      Line[{$CellContext`a, $CellContext`o}], Blue], 
+     Style[
+      Line[{$CellContext`o, $CellContext`b}], Blue], 
+     And[PlanarAngle[{$CellContext`a, $CellContext`o, $CellContext`b}] == \
+$CellContext`angle4, 
+      PlanarAngle[{$CellContext`a, $CellContext`c, $CellContext`b}] == \
+$CellContext`angle4/2]}, {}],
+   Editable->False],
+  PlotRange->{{-7.652595469723906, 2.2334526676344053`}, {-6.750351427604337, 
+   3.135696709753973}}]], "Output",
+ CellChangeTimes->{3.797259368292666*^9},
+ CellLabel->"Out[13]=",ExpressionUUID->"373a05b5-8043-44c5-9326-2922dc00fd79"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.796967561805318*^9, 
+  3.796967593488144*^9}},ExpressionUUID->"a2fbe107-6d34-4e91-8a26-\
+dd759a370d11"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7969695729148006`*^9, 3.796969576261838*^9}, 
+   3.796993412293414*^9},
+ CellLabel->"In[5]:=",ExpressionUUID->"f4b0c233-d45b-44c7-ba65-95345b477057"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7969622259819045`*^9, 
+  3.796962226042904*^9}},ExpressionUUID->"fa9efef8-3d7e-46e9-b540-\
+9ccf8202f7a0"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.796923849668937*^9, 3.796923849758979*^9}, 
+   3.796923984509755*^9, 
+   3.7969240217127485`*^9},ExpressionUUID->"1e99a92b-7c4e-479e-b2a3-\
+0a1c1876b428"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7969238512809806`*^9, 
+  3.796923851282978*^9}},ExpressionUUID->"2a51f670-f6ed-4b9b-b602-\
+921f49a368b7"]
+},
+WindowSize->{1152., 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"ddda1b04-9bde-44b2-8a24-6a0b73f38cdc"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1800, 42, 88, "Input",ExpressionUUID->"7c5e5224-4834-4163-8da2-3342c1db08d0"],
+Cell[2383, 66, 4741, 102, 377, "Output",ExpressionUUID->"419d782c-f926-4775-8fa8-78491be8ba8b"],
+Cell[7127, 170, 16135, 347, 249, "Output",ExpressionUUID->"da671a67-83c5-446e-97c2-6a62cc6f6dd0"],
+Cell[23265, 519, 24321, 521, 200, "Output",ExpressionUUID->"a45b61c6-42c8-48da-b223-f144f8eb8c02"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47623, 1045, 4173, 106, 224, "Input",ExpressionUUID->"b30f1846-f651-45aa-914e-0faf2483eceb"],
+Cell[51799, 1153, 3360, 86, 98, "Output",ExpressionUUID->"8e181924-ac8b-48a7-ba31-4a2859f84f91"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55196, 1244, 5908, 134, 709, "Input",ExpressionUUID->"97ad2478-8f3c-4659-ae25-61b97b6a857f"],
+Cell[61107, 1380, 37104, 814, 200, "Output",ExpressionUUID->"3af2af1b-740f-4600-9acd-c13e07aab6a0"]
+}, Open  ]],
+Cell[98226, 2197, 3588, 86, 146, "Input",ExpressionUUID->"dbf03a12-5076-4fea-8030-b2abd434f56a"],
+Cell[101817, 2285, 2558, 61, 88, "Input",ExpressionUUID->"a5fe38e5-4e76-44db-b93d-f97a0a242534"],
+Cell[CellGroupData[{
+Cell[104400, 2350, 3316, 76, 224, "Input",ExpressionUUID->"bf32ad4f-9218-42cf-b1f4-3f9b35f1b610"],
+Cell[107719, 2428, 6417, 145, 376, "Output",ExpressionUUID->"373a05b5-8043-44c5-9326-2922dc00fd79"]
+}, Open  ]],
+Cell[114151, 2576, 152, 3, 28, "Input",ExpressionUUID->"a2fbe107-6d34-4e91-8a26-dd759a370d11"],
+Cell[114306, 2581, 198, 3, 28, "Input",ExpressionUUID->"f4b0c233-d45b-44c7-ba65-95345b477057"],
+Cell[114507, 2586, 154, 3, 28, "Input",ExpressionUUID->"fa9efef8-3d7e-46e9-b540-9ccf8202f7a0"],
+Cell[114664, 2591, 203, 4, 28, "Input",ExpressionUUID->"1e99a92b-7c4e-479e-b2a3-0a1c1876b428"],
+Cell[114870, 2597, 154, 3, 28, "Input",ExpressionUUID->"2a51f670-f6ed-4b9b-b602-921f49a368b7"]
+}
+]
+*)
+
