@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     35674,        754]
-NotebookOptionsPosition[     34067,        724]
-NotebookOutlinePosition[     34545,        742]
-CellTagsIndexPosition[     34502,        739]
+NotebookDataLength[     30644,        646]
+NotebookOptionsPosition[     29075,        617]
+NotebookOutlinePosition[     29516,        634]
+CellTagsIndexPosition[     29473,        631]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,16 +34,7 @@ Cell[BoxData[
     RowBox[{
     "1.", " ", "generare", " ", "angoli", " ", "alla", " ", "circonferenza", 
      " ", "partendo", " ", "da", " ", "angolo", " ", "al", " ", "centro"}], 
-    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{"(*", "\[IndentingNewLine]", 
-    RowBox[{
-     RowBox[{"input", "=", "0"}], ";", " ", 
-     RowBox[{"(*", " ", 
-      RowBox[{"ampiezza", " ", "angolo", " ", "al", " ", "centro"}], " ", 
-      "*)"}], "\[IndentingNewLine]", 
-     RowBox[{"Slider", "[", 
-      RowBox[{"Dynamic", "[", "input", "]"}], "]"}]}], "\[IndentingNewLine]", 
-    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"alpha", " ", "=", "  ", 
      RowBox[{
@@ -103,7 +94,9 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"beta", " ", "=", " ", 
      RowBox[{
-      RowBox[{"180", "\[Degree]"}], "-", " ", "alpha"}]}], ";", 
+      RowBox[{"180", "\[Degree]"}], "-", " ", "alpha"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
     RowBox[{"choices", " ", "=", " ", 
      RowBox[{"{", " ", 
       RowBox[{
@@ -126,31 +119,47 @@ Cell[BoxData[
          RowBox[{"{", 
           RowBox[{"0", ",", " ", "alpha"}], "}"}], "]"}]}]}], "}"}]}], ";"}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   RowBox[{"RadioButtonBar", "[", 
-    RowBox[{
-     RowBox[{"Dynamic", "[", "choice", "]"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-       RowBox[{"2", " ", "\[Rule]", " ", "\"\<Interno\>\""}], ",", "  ", 
-       RowBox[{"1", " ", "\[Rule]", " ", "\"\<Esterno\>\""}]}], "}"}]}], 
-    "]"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"RadioButtonBar", "[", 
+     RowBox[{
+      RowBox[{"Dynamic", "[", "choice", "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"2", " ", "\[Rule]", " ", "\"\<Interno\>\""}], ",", "  ", 
+        RowBox[{"1", " ", "\[Rule]", " ", "\"\<Esterno\>\""}]}], "}"}]}], 
+     "]"}], "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
-    RowBox[{"AppendTo", "[", 
-     RowBox[{"points", ",", 
+    RowBox[{"choice", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"AppendTo", "[", 
+    RowBox[{"points", ",", 
+     RowBox[{
       RowBox[{
+       RowBox[{"RotationMatrix", "[", 
+        RowBox[{"choices", "[", 
+         RowBox[{"[", "choice", "]"}], "]"}], "]"}], ".", "middlePoint"}], "/.", 
+      RowBox[{"middlePoint", "\[Rule]", 
        RowBox[{
         RowBox[{"RotationMatrix", "[", 
-         RowBox[{"Dynamic", "[", 
-          RowBox[{"choices", "[", 
-           RowBox[{"[", "choice", "]"}], "]"}], "]"}], "]"}], ".", 
-        "middlePoint"}], "/.", " ", 
-       RowBox[{"middlePoint", " ", "\[Rule]", "  ", 
+         RowBox[{"alpha", "/", "2"}], "]"}], ".", 
+        RowBox[{"points", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}]}]}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"points", ",", 
+       RowBox[{
         RowBox[{
          RowBox[{"RotationMatrix", "[", 
-          RowBox[{"alpha", "/", "2"}], "]"}], ".", 
-         RowBox[{"points", "[", 
-          RowBox[{"[", "1", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+          RowBox[{"Dynamic", "[", 
+           RowBox[{"choices", "[", 
+            RowBox[{"[", "choice", "]"}], "]"}], "]"}], "]"}], ".", 
+         "middlePoint"}], "/.", " ", 
+        RowBox[{"middlePoint", " ", "\[Rule]", "  ", 
+         RowBox[{
+          RowBox[{"RotationMatrix", "[", 
+           RowBox[{"alpha", "/", "2"}], "]"}], ".", 
+          RowBox[{"points", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}]}]}]}], "]"}], ";"}], "*)"}], 
    "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"Graphics", "[", 
@@ -434,49 +443,26 @@ Cell[BoxData[
    3.798007468671766*^9, 3.798007470526765*^9}, {3.7980075217192326`*^9, 
    3.798007528555699*^9}, {3.798007595853914*^9, 3.798007599190611*^9}, {
    3.7980076860151463`*^9, 3.798007699851875*^9}, {3.7980077393737984`*^9, 
-   3.7980077604490705`*^9}, {3.798007929250736*^9, 3.7980079334646473`*^9}},
- CellLabel->"In[49]:=",ExpressionUUID->"fa530484-9937-4925-8904-ce265631b064"],
+   3.7980077604490705`*^9}, {3.798007929250736*^9, 3.7980079334646473`*^9}, {
+   3.7980270369625664`*^9, 3.7980271079237623`*^9}, {3.7980271561646423`*^9, 
+   3.7980271666756*^9}},ExpressionUUID->"fa530484-9937-4925-8904-\
+ce265631b064"],
 
 Cell[BoxData[
- InterpretationBox[
-  StyleBox[
-   RowBox[{GridBox[{
-      {
-       RadioButtonBox[Dynamic[$CellContext`choice], {2},
-        DefaultBaseStyle->"RadioButtonBar"], 
-       StyleBox["\<\"Interno\"\>", "RadioButtonBarLabel",
-        StripOnInput->False]}
-     },
-     AutoDelete->False,
-     BaselinePosition->{1, 2},
-     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
-     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
-     GridBoxSpacings->{"Columns" -> {
-         Offset[0.27999999999999997`], {
-          Offset[0.21]}, 
-         Offset[0.27999999999999997`]}, "Rows" -> {
-         Offset[0.2], {
-          Offset[0.4]}, 
-         Offset[0.2]}}], "  ", GridBox[{
-      {
-       RadioButtonBox[Dynamic[$CellContext`choice], {1},
-        DefaultBaseStyle->"RadioButtonBar"], 
-       StyleBox["\<\"Esterno\"\>", "RadioButtonBarLabel",
-        StripOnInput->False]}
-     },
-     AutoDelete->False,
-     BaselinePosition->{1, 2},
-     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
-     GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
-     GridBoxSpacings->{"Columns" -> {
-         Offset[0.27999999999999997`], {
-          Offset[0.21]}, 
-         Offset[0.27999999999999997`]}, "Rows" -> {
-         Offset[0.2], {
-          Offset[0.4]}, 
-         Offset[0.2]}}]}], "Deploy"],
-  RadioButtonBar[
-   Dynamic[$CellContext`choice], {2 -> "Interno", 1 -> "Esterno"}]]], "Output",
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.02738934009562564`"}], ",", "0.9996248416526703`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.7833625836026753`"}], ",", "0.6215650107682554`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.999085350912307`"}], ",", "0.0427605144079507`"}], 
+    "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.798006364642681*^9, 3.7980063815381236`*^9}, {
    3.7980065299137793`*^9, 3.7980065558652725`*^9}, {3.798006593468479*^9, 
    3.798006668126793*^9}, 3.7980067895359716`*^9, {3.7980069120176725`*^9, 
@@ -484,129 +470,52 @@ Cell[BoxData[
    3.7980071113497725`*^9, 3.798007148102137*^9, {3.7980072389688997`*^9, 
    3.798007289570858*^9}, 3.7980073944487696`*^9, 3.7980074319624543`*^9, 
    3.7980074712128677`*^9, {3.7980077463522835`*^9, 3.798007762207026*^9}, 
-   3.7980079345290933`*^9},
- CellLabel->"Out[56]=",ExpressionUUID->"5242f60f-d17c-46bf-bd58-94fd25a2c4c2"],
+   3.7980079345290933`*^9, 3.798027031878646*^9, {3.7980271186993923`*^9, 
+   3.7980271328785553`*^9}},
+ CellLabel->
+  "Out[153]=",ExpressionUUID->"c1329ec9-739e-4d26-a5f7-c3de5f71aa81"],
 
 Cell[BoxData[
  GraphicsBox[{CircleBox[{0, 0}, 1], 
-   PointBox[{0, 0}], {PointBox[{-0.8360554653862714, 0.5486449296200094}], 
-    PointBox[{-0.9576924937418196, -0.2877934805213189}], 
-    PointBox[{(-0.9895909451429848) 
-       Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-      0.14390886453243174` 
-      Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]], 
-      0.14390886453243174` 
-       Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-      0.9895909451429848 
-      Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]]}]}, 
+   PointBox[{0, 0}], {PointBox[{-0.02738934009562564, 0.9996248416526703}], 
+    PointBox[{-0.7833625836026753, 0.6215650107682554}], 
+    PointBox[{-0.999085350912307, 0.0427605144079507}]}, 
    {RGBColor[0, 0, 1], Opacity[0.3], 
     TagBox[
-     PolygonBox[{{-0.8360554653862714, 
-       0.5486449296200094}, {-0.9576924937418196, -0.2877934805213189}, {0, 
+     PolygonBox[{{-0.02738934009562564, 
+       0.9996248416526703}, {-0.7833625836026753, 0.6215650107682554}, {0, 
        0}}],
      "Triangle"]}, 
    {RGBColor[1, 0, 0], Opacity[0.3], 
     TagBox[
-     PolygonBox[{{-0.8360554653862714, 
-       0.5486449296200094}, {-0.9576924937418196, -0.2877934805213189}, \
-{(-0.9895909451429848) 
-         Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-        0.14390886453243174` 
-        Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]], 
-        0.14390886453243174` 
-         Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-        0.9895909451429848 
-        Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]]}}],
+     PolygonBox[{{-0.02738934009562564, 
+      0.9996248416526703}, {-0.7833625836026753, 
+      0.6215650107682554}, {-0.999085350912307, 0.0427605144079507}}],
      "Triangle"]}, 
-   LineBox[{{-0.8360554653862714, 
-     0.5486449296200094}, {-0.9576924937418196, -0.2877934805213189}, \
-{(-0.9895909451429848) 
-       Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-      0.14390886453243174` 
-      Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]], 
-      0.14390886453243174` 
-       Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-      0.9895909451429848 
-      Sin[Dynamic[
-        Part[$CellContext`choices, $CellContext`choice]]]}, \
-{-0.8360554653862714, 0.5486449296200094}}], 
-   LineBox[{{-0.8360554653862714, 
-     0.5486449296200094}, {-0.9576924937418196, -0.2877934805213189}, {0, 
-     0}, {-0.8360554653862714, 0.5486449296200094}}], 
+   LineBox[{{-0.02738934009562564, 0.9996248416526703}, {-0.7833625836026753, 
+    0.6215650107682554}, {-0.999085350912307, 
+    0.0427605144079507}, {-0.02738934009562564, 0.9996248416526703}}], 
+   LineBox[{{-0.02738934009562564, 0.9996248416526703}, {-0.7833625836026753, 
+     0.6215650107682554}, {0, 0}, {-0.02738934009562564, 
+     0.9996248416526703}}], 
    TagBox[
     TooltipBox[
      {RGBColor[1, 0, 0], Thickness[Large], 
-      CircleBox[{0, 0}, 0.2, {2.560850069346408, 3.4335146953435727`}]},
+      CircleBox[{0, 0}, 0.2, {1.598189092517777, 2.4708537185149417`}]},
      RowBox[{"50", " ", "\[Degree]"}]],
     Annotation[#, 50 Degree, "Tooltip"]& ], 
    TagBox[
     TooltipBox[
      {RGBColor[0, 0, 1], Thickness[Large], 
-      CircleBox[{(-0.9895909451429848) 
-         Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-        0.14390886453243174` 
-        Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]], 
-        0.14390886453243174` 
-         Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-        0.9895909451429848 
-        Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]]}, 0.2, {
-       ArcCos[1. (
-           Abs[-0.8360554653862714 + 
-              0.9895909451429848 
-               Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] + 
-              0.14390886453243174` 
-               Sin[Dynamic[
-                 Part[$CellContext`choices, $CellContext`choice]]]]^2 + 
-           Abs[0.5486449296200094 - 0.14390886453243174` 
-              Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] + 
-              0.9895909451429848 
-               Sin[Dynamic[
-                 Part[$CellContext`choices, $CellContext`choice]]]]^2)^
-          Rational[-1, 2] (0. + 
-          1. (-0.8360554653862714 + 
-            0.9895909451429848 
-             Conjugate[
-              Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]]] + 
-            0.14390886453243174` 
-             Conjugate[
-              Sin[Dynamic[
-                Part[$CellContext`choices, $CellContext`choice]]]]))], 
-        25 Degree + 
-        ArcCos[1. (
-            Abs[-0.8360554653862714 + 
-               0.9895909451429848 
-                Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] + 
-               0.14390886453243174` 
-                Sin[Dynamic[
-                  Part[$CellContext`choices, $CellContext`choice]]]]^2 + 
-            Abs[0.5486449296200094 - 0.14390886453243174` 
-               Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] + 
-               0.9895909451429848 
-                Sin[Dynamic[
-                  Part[$CellContext`choices, $CellContext`choice]]]]^2)^
-           Rational[-1, 2] (0. + 
-           1. (-0.8360554653862714 + 
-             0.9895909451429848 
-              Conjugate[
-               Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]]] + 
-             0.14390886453243174` 
-              Conjugate[
-               Sin[Dynamic[
-                 Part[$CellContext`choices, $CellContext`choice]]]]))]}]},
+      CircleBox[{-0.999085350912307, 0.0427605144079507}, 0.2, {
+       0.7777077681915479, 1.2140400811901302`}]},
      RowBox[{"25", " ", "\[Degree]"}]],
     Annotation[#, 25 Degree, "Tooltip"]& ], {
-    InsetBox["\<\"A\"\>", {-0.8360554653862714, 0.5486449296200094}, 
+    InsetBox["\<\"A\"\>", {-0.02738934009562564, 0.9996248416526703}, 
      ImageScaled[{1.25, -0.25}]], 
-    InsetBox["\<\"B\"\>", {-0.9576924937418196, -0.2877934805213189}, 
+    InsetBox["\<\"B\"\>", {-0.7833625836026753, 0.6215650107682554}, 
      ImageScaled[{1.25, -0.25}]], 
-    InsetBox["\<\"C\"\>", {(-0.9895909451429848) 
-       Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-      0.14390886453243174` 
-      Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]], 
-      0.14390886453243174` 
-       Cos[Dynamic[Part[$CellContext`choices, $CellContext`choice]]] - 
-      0.9895909451429848 
-      Sin[Dynamic[Part[$CellContext`choices, $CellContext`choice]]]}, 
+    InsetBox["\<\"C\"\>", {-0.999085350912307, 0.0427605144079507}, 
      ImageScaled[{1.25, -0.25}]]}, 
    InsetBox["\<\"O\"\>", {0, 0}, ImageScaled[{1.25, -0.25}]]},
   ImageSize->Medium]], "Output",
@@ -617,12 +526,14 @@ Cell[BoxData[
    3.7980071113497725`*^9, 3.798007148102137*^9, {3.7980072389688997`*^9, 
    3.798007289570858*^9}, 3.7980073944487696`*^9, 3.7980074319624543`*^9, 
    3.7980074712128677`*^9, {3.7980077463522835`*^9, 3.798007762207026*^9}, 
-   3.7980079350501776`*^9},
- CellLabel->"Out[58]=",ExpressionUUID->"9915b99e-d3a3-4fb9-839a-88cad3b38c93"],
+   3.7980079345290933`*^9, 3.798027031878646*^9, {3.7980271186993923`*^9, 
+   3.798027132886694*^9}},
+ CellLabel->
+  "Out[154]=",ExpressionUUID->"f072c34b-c560-4ff7-ba25-1b1de567dd32"],
 
 Cell[BoxData[
  DynamicBox[ToBoxes[$CellContext`choice, StandardForm],
-  ImageSizeCache->{7.2, {0., 9.}}]], "Output",
+  ImageSizeCache->{7., {0., 8.}}]], "Output",
  CellChangeTimes->{{3.798006364642681*^9, 3.7980063815381236`*^9}, {
    3.7980065299137793`*^9, 3.7980065558652725`*^9}, {3.798006593468479*^9, 
    3.798006668126793*^9}, 3.7980067895359716`*^9, {3.7980069120176725`*^9, 
@@ -630,46 +541,26 @@ Cell[BoxData[
    3.7980071113497725`*^9, 3.798007148102137*^9, {3.7980072389688997`*^9, 
    3.798007289570858*^9}, 3.7980073944487696`*^9, 3.7980074319624543`*^9, 
    3.7980074712128677`*^9, {3.7980077463522835`*^9, 3.798007762207026*^9}, 
-   3.7980079350832024`*^9},
- CellLabel->"Out[59]=",ExpressionUUID->"0a00030b-9e82-4309-860e-03753b282e5e"],
+   3.7980079345290933`*^9, 3.798027031878646*^9, {3.7980271186993923`*^9, 
+   3.7980271328906946`*^9}},
+ CellLabel->
+  "Out[155]=",ExpressionUUID->"9a21a4dd-38c2-4fda-863e-c179fe635171"],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{
    RowBox[{"{", 
     RowBox[{
-     RowBox[{"-", "0.8360554653862714`"}], ",", "0.5486449296200094`"}], 
+     RowBox[{"-", "0.02738934009562564`"}], ",", "0.9996248416526703`"}], 
     "}"}], ",", 
    RowBox[{"{", 
     RowBox[{
-     RowBox[{"-", "0.9576924937418196`"}], ",", 
-     RowBox[{"-", "0.2877934805213189`"}]}], "}"}], ",", 
+     RowBox[{"-", "0.7833625836026753`"}], ",", "0.6215650107682554`"}], 
+    "}"}], ",", 
    RowBox[{"{", 
     RowBox[{
-     RowBox[{
-      RowBox[{
-       RowBox[{"-", "0.9895909451429848`"}], " ", 
-       RowBox[{"Cos", "[", 
-        DynamicBox[ToBoxes[
-          Part[$CellContext`choices, $CellContext`choice], StandardForm],
-         ImageSizeCache->{66.4, {0., 9.}}], "]"}]}], "-", 
-      RowBox[{"0.14390886453243174`", " ", 
-       RowBox[{"Sin", "[", 
-        DynamicBox[ToBoxes[
-          Part[$CellContext`choices, $CellContext`choice], StandardForm],
-         ImageSizeCache->{66.4, {0., 9.}}], "]"}]}]}], ",", 
-     RowBox[{
-      RowBox[{"0.14390886453243174`", " ", 
-       RowBox[{"Cos", "[", 
-        DynamicBox[ToBoxes[
-          Part[$CellContext`choices, $CellContext`choice], StandardForm],
-         ImageSizeCache->{66.4, {0., 9.}}], "]"}]}], "-", 
-      RowBox[{"0.9895909451429848`", " ", 
-       RowBox[{"Sin", "[", 
-        DynamicBox[ToBoxes[
-          Part[$CellContext`choices, $CellContext`choice], StandardForm],
-         ImageSizeCache->{66.4, {0., 9.}}], "]"}]}]}]}], "}"}]}], 
-  "}"}]], "Output",
+     RowBox[{"-", "0.999085350912307`"}], ",", "0.0427605144079507`"}], 
+    "}"}]}], "}"}]], "Output",
  CellChangeTimes->{{3.798006364642681*^9, 3.7980063815381236`*^9}, {
    3.7980065299137793`*^9, 3.7980065558652725`*^9}, {3.798006593468479*^9, 
    3.798006668126793*^9}, 3.7980067895359716`*^9, {3.7980069120176725`*^9, 
@@ -677,8 +568,10 @@ Cell[BoxData[
    3.7980071113497725`*^9, 3.798007148102137*^9, {3.7980072389688997`*^9, 
    3.798007289570858*^9}, 3.7980073944487696`*^9, 3.7980074319624543`*^9, 
    3.7980074712128677`*^9, {3.7980077463522835`*^9, 3.798007762207026*^9}, 
-   3.798007935098194*^9},
- CellLabel->"Out[60]=",ExpressionUUID->"bbff8a16-e9b1-4c2a-8af3-c28ca77e1e1f"]
+   3.7980079345290933`*^9, 3.798027031878646*^9, {3.7980271186993923`*^9, 
+   3.798027132894696*^9}},
+ CellLabel->
+  "Out[156]=",ExpressionUUID->"3871e288-0e01-4d0a-8489-57add25c1f7e"]
 }, Open  ]],
 
 Cell[BoxData[""], "Input",
@@ -722,9 +615,8 @@ Cell[BoxData[""], "Input",
   3.797745580433136*^9}},ExpressionUUID->"46ff1832-471b-4de0-8d69-\
 4e4c01ce0eb6"]
 },
-WindowSize->{1152., 585.6},
-WindowMargins->{{
-  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+WindowSize->{1920, 1007},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 TaggingRules->{"TryRealOnly" -> False},
 FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -742,20 +634,20 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 21082, 415, 983, "Input",ExpressionUUID->"fa530484-9937-4925-8904-ce265631b064"],
-Cell[21665, 439, 2106, 48, 32, "Output",ExpressionUUID->"5242f60f-d17c-46bf-bd58-94fd25a2c4c2"],
-Cell[23774, 489, 6230, 131, 376, "Output",ExpressionUUID->"9915b99e-d3a3-4fb9-839a-88cad3b38c93"],
-Cell[30007, 622, 745, 11, 32, "Output",ExpressionUUID->"0a00030b-9e82-4309-860e-03753b282e5e"],
-Cell[30755, 635, 1965, 45, 53, "Output",ExpressionUUID->"bbff8a16-e9b1-4c2a-8af3-c28ca77e1e1f"]
+Cell[580, 22, 21404, 426, 866, "Input",ExpressionUUID->"fa530484-9937-4925-8904-ce265631b064"],
+Cell[21987, 450, 1125, 25, 32, "Output",ExpressionUUID->"c1329ec9-739e-4d26-a5f7-c3de5f71aa81"],
+Cell[23115, 477, 2660, 54, 384, "Output",ExpressionUUID->"f072c34b-c560-4ff7-ba25-1b1de567dd32"],
+Cell[25778, 533, 824, 13, 32, "Output",ExpressionUUID->"9a21a4dd-38c2-4fda-863e-c179fe635171"],
+Cell[26605, 548, 1123, 25, 32, "Output",ExpressionUUID->"3871e288-0e01-4d0a-8489-57add25c1f7e"]
 }, Open  ]],
-Cell[32735, 683, 205, 4, 28, "Input",ExpressionUUID->"d6876265-b0b1-4479-a131-c04ca19af745"],
-Cell[32943, 689, 156, 3, 28, "Input",ExpressionUUID->"9f940649-02d3-4c22-a9cb-8e55d4376b2c"],
-Cell[33102, 694, 152, 3, 28, "Input",ExpressionUUID->"d7554ede-fe6c-4159-aded-8370389b6c6c"],
-Cell[33257, 699, 156, 3, 28, "Input",ExpressionUUID->"e73ec8e3-f7fa-4f14-b655-9f5f9a594094"],
-Cell[33416, 704, 176, 3, 28, "Input",ExpressionUUID->"4c9cb602-0a41-44ce-bcf5-6d0116dd348d"],
-Cell[33595, 709, 154, 3, 28, "Input",ExpressionUUID->"88eed7bf-7d41-4dc5-ae22-0d71639ccb01"],
-Cell[33752, 714, 156, 3, 28, "Input",ExpressionUUID->"b2b48523-481e-4ae1-88f3-b050c62cbc9a"],
-Cell[33911, 719, 152, 3, 28, "Input",ExpressionUUID->"46ff1832-471b-4de0-8d69-4e4c01ce0eb6"]
+Cell[27743, 576, 205, 4, 28, "Input",ExpressionUUID->"d6876265-b0b1-4479-a131-c04ca19af745"],
+Cell[27951, 582, 156, 3, 28, "Input",ExpressionUUID->"9f940649-02d3-4c22-a9cb-8e55d4376b2c"],
+Cell[28110, 587, 152, 3, 28, "Input",ExpressionUUID->"d7554ede-fe6c-4159-aded-8370389b6c6c"],
+Cell[28265, 592, 156, 3, 28, "Input",ExpressionUUID->"e73ec8e3-f7fa-4f14-b655-9f5f9a594094"],
+Cell[28424, 597, 176, 3, 28, "Input",ExpressionUUID->"4c9cb602-0a41-44ce-bcf5-6d0116dd348d"],
+Cell[28603, 602, 154, 3, 28, "Input",ExpressionUUID->"88eed7bf-7d41-4dc5-ae22-0d71639ccb01"],
+Cell[28760, 607, 156, 3, 28, "Input",ExpressionUUID->"b2b48523-481e-4ae1-88f3-b050c62cbc9a"],
+Cell[28919, 612, 152, 3, 28, "Input",ExpressionUUID->"46ff1832-471b-4de0-8d69-4e4c01ce0eb6"]
 }
 ]
 *)
