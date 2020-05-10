@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     30644,        646]
-NotebookOptionsPosition[     29075,        617]
-NotebookOutlinePosition[     29516,        634]
-CellTagsIndexPosition[     29473,        631]
+NotebookDataLength[     49231,       1060]
+NotebookOptionsPosition[     47169,       1022]
+NotebookOutlinePosition[     47647,       1040]
+CellTagsIndexPosition[     47604,       1037]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -64,7 +64,9 @@ Cell[BoxData[
         RowBox[{"alpha", " ", "+", " ", "0.1"}], ",", " ", 
         RowBox[{
          RowBox[{"2", "*", "Pi"}], " ", "-", " ", "0.1"}]}], " ", "}"}], 
-      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"--", "--"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"points", " ", "=", " ", 
      RowBox[{"{", 
@@ -445,7 +447,8 @@ Cell[BoxData[
    3.7980076860151463`*^9, 3.798007699851875*^9}, {3.7980077393737984`*^9, 
    3.7980077604490705`*^9}, {3.798007929250736*^9, 3.7980079334646473`*^9}, {
    3.7980270369625664`*^9, 3.7980271079237623`*^9}, {3.7980271561646423`*^9, 
-   3.7980271666756*^9}},ExpressionUUID->"fa530484-9937-4925-8904-\
+   3.7980271666756*^9}, {3.798128967739797*^9, 
+   3.798128971185794*^9}},ExpressionUUID->"fa530484-9937-4925-8904-\
 ce265631b064"],
 
 Cell[BoxData[
@@ -533,7 +536,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  DynamicBox[ToBoxes[$CellContext`choice, StandardForm],
-  ImageSizeCache->{7., {0., 8.}}]], "Output",
+  ImageSizeCache->{43.2, {0., 10.}}]], "Output",
  CellChangeTimes->{{3.798006364642681*^9, 3.7980063815381236`*^9}, {
    3.7980065299137793`*^9, 3.7980065558652725`*^9}, {3.798006593468479*^9, 
    3.798006668126793*^9}, 3.7980067895359716`*^9, {3.7980069120176725`*^9, 
@@ -585,20 +588,337 @@ Cell[BoxData[""], "Input",
   3.7979226442858377`*^9}},ExpressionUUID->"9f940649-02d3-4c22-a9cb-\
 8e55d4376b2c"],
 
-Cell[BoxData[""], "Input",
- CellChangeTimes->{3.797918084642638*^9, 
-  3.7979181634471483`*^9},ExpressionUUID->"d7554ede-fe6c-4159-aded-\
-8370389b6c6c"],
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.7981254216371737`*^9},ExpressionUUID->"8d4fb12e-a1d5-43c2-b002-\
+637abdd1cd82"],
 
 Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.7979156372771263`*^9, 
-  3.7979156372821283`*^9}},ExpressionUUID->"e73ec8e3-f7fa-4f14-b655-\
+ CellChangeTimes->{
+  3.797918084642638*^9, 3.7979181634471483`*^9, 3.798125394621036*^9, {
+   3.79812543001235*^9, 3.7981255123740363`*^9}, {3.798126067930091*^9, 
+   3.7981260764528275`*^9}, {3.7981261204454303`*^9, 3.79812617639587*^9}, {
+   3.7981265781674623`*^9, 3.798126579173505*^9}, {3.7981272772157497`*^9, 
+   3.7981272805667133`*^9}, 3.798128108101504*^9, 3.7981283354355536`*^9},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"d7554ede-fe6c-4159-aded-8370389b6c6c"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7979156372771263`*^9, 3.7979156372821283`*^9}, {
+  3.7981259118664627`*^9, 3.798125965146434*^9}, {3.7981265390373096`*^9, 
+  3.798126582034684*^9}},ExpressionUUID->"e73ec8e3-f7fa-4f14-b655-\
 9f5f9a594094"],
 
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.797839280391189*^9, 3.79783929666672*^9}, 
-   3.7979111745782747`*^9},ExpressionUUID->"4c9cb602-0a41-44ce-bcf5-\
+   3.7979111745782747`*^9, 3.798126586086543*^9, 
+   3.798126625176146*^9},ExpressionUUID->"4c9cb602-0a41-44ce-bcf5-\
 6d0116dd348d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"fun", "[", 
+     RowBox[{"type_", ",", " ", "angle_", ",", " ", "choice_"}], " ", "]"}], 
+    " ", ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Graphics", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Circle", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0"}], "}"}], ",", " ", "angle"}], "]"}], ",", 
+          " ", 
+          RowBox[{"Point", "[", 
+           RowBox[{"{", 
+            RowBox[{"type", ",", " ", "choice"}], "}"}], "]"}]}], "}"}], 
+        "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"type_", ",", " ", "angle_", ",", " ", "choice_"}], "]"}], ":=", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Circle", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", "angle"}], "]"}], ",", " ", 
+       RowBox[{"Point", "[", 
+        RowBox[{"{", 
+         RowBox[{"type", ",", " ", "choice"}], "}"}], "]"}]}], "}"}], "]"}]}],
+    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"FormPage", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<angletype\>\"", ",", "\"\<Tipo di angolo di partenza\>\""}], 
+       "}"}], "\[Rule]", 
+      RowBox[{"<|", 
+       RowBox[{
+        RowBox[{"\"\<Interpreter\>\"", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<Centro\>\"", "\[Rule]", "1"}], ",", 
+           RowBox[{"\"\<Circonferenza\>\"", "\[Rule]", "2"}]}], "}"}]}], ",", 
+        RowBox[{"\"\<Control\>\"", "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"RadioButtonBar", "[", 
+            RowBox[{"##", ",", 
+             RowBox[{"Appearance", "\[Rule]", "\"\<Vertical\>\""}]}], "]"}], 
+           "&"}], ")"}]}]}], "|>"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"\"\<angle\>\"", ",", "\"\<Ampiezza Angolo\>\""}], "}"}], 
+      "\[Rule]", 
+      RowBox[{"Restricted", "[", 
+       RowBox[{"\"\<Integer\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", "360"}], "}"}]}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<choice\>\"", ",", 
+        "\"\<Centro della Circonferenza \[EGrave]\>\""}], "}"}], "\[Rule]", 
+      RowBox[{"<|", 
+       RowBox[{
+        RowBox[{"\"\<Interpreter\>\"", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"\"\<Interno\>\"", "\[Rule]", "1"}], ",", 
+           RowBox[{"\"\<Esterno\>\"", "\[Rule]", "2"}]}], "}"}]}], ",", 
+        RowBox[{"\"\<Control\>\"", "\[Rule]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"RadioButtonBar", "[", 
+            RowBox[{"##", ",", 
+             RowBox[{"Appearance", "\[Rule]", "\"\<Vertical\>\""}]}], "]"}], 
+           "&"}], ")"}]}]}], "|>"}]}], ","}], "\[IndentingNewLine]", "}"}], 
+   ",", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"#angletype", ",", "#angle", ",", " ", "#choice"}], "]"}], 
+     "&"}], ")"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7981266201571054`*^9, 3.7981266242261095`*^9}, {
+   3.798126655175528*^9, 3.7981267087209253`*^9}, {3.798126782793347*^9, 
+   3.798126824924463*^9}, {3.7981268651747866`*^9, 3.7981269115435996`*^9}, {
+   3.798126964670689*^9, 3.798126973674694*^9}, {3.7981270316014137`*^9, 
+   3.798127105513488*^9}, {3.798127150008503*^9, 3.798127262417714*^9}, {
+   3.7981273008624563`*^9, 3.7981273563132944`*^9}, {3.7981274317234836`*^9, 
+   3.7981274384785175`*^9}, {3.798127612458514*^9, 3.7981276834331737`*^9}, {
+   3.798127771855611*^9, 3.7981279344988213`*^9}, {3.798127980781186*^9, 
+   3.7981280945079975`*^9}, {3.7981281254756336`*^9, 
+   3.7981281402755833`*^9}, {3.7981283172617035`*^9, 
+   3.7981284280123496`*^9}, {3.798128488102054*^9, 3.798128593032719*^9}, {
+   3.798128882527687*^9, 3.798128940444244*^9}, {3.79812900138984*^9, 
+   3.798129032522171*^9}, {3.798129076775049*^9, 3.798129078444876*^9}, {
+   3.7981291156930523`*^9, 3.7981291286050386`*^9}, {3.7981291800179243`*^9, 
+   3.7981292131359034`*^9}, {3.7981292601532717`*^9, 
+   3.7981294497678795`*^9}, {3.798129519694221*^9, 3.7981296127107067`*^9}, {
+   3.798129689074072*^9, 3.798129701526995*^9}, {3.7981297672920265`*^9, 
+   3.7981297817851944`*^9}, {3.7981298217601285`*^9, 3.798129859431018*^9}, {
+   3.79812991905792*^9, 3.7981299394750223`*^9}, {3.7981299908490863`*^9, 
+   3.798130017953238*^9}, 3.798130071061078*^9, {3.798130212815919*^9, 
+   3.798130235134221*^9}, {3.7981303225073223`*^9, 3.79813040554607*^9}, {
+   3.7981304459320936`*^9, 3.7981304717465076`*^9}, {3.798132967387771*^9, 
+   3.7981329853006945`*^9}, {3.7981335372510138`*^9, 3.798133539997666*^9}, {
+   3.798133831939454*^9, 3.798133927369187*^9}, {3.798134003139078*^9, 
+   3.7981340636176124`*^9}, {3.798134243988513*^9, 3.7981342638955927`*^9}, {
+   3.7981343961151123`*^9, 3.7981344866363173`*^9}, {3.7981345342602987`*^9, 
+   3.798134588575319*^9}},ExpressionUUID->"599b40f1-054d-4ce2-a084-\
+36c6957a729d"],
+
+Cell[BoxData[
+ InterpretationBox[
+  DynamicModuleBox[{Forms`FormPage`PackagePrivate`temp$$ = Association[
+   "angletype" -> 
+    Association[
+     "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+      "Control" -> (RadioButtonBar[
+        SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+      "Tipo di angolo di partenza", "Input" -> "Centro"], "angle" -> 
+    Association[
+     "Interpreter" -> Restricted["Integer", {1, 360}], "Label" -> 
+      "Ampiezza Angolo", "Input" -> ""], "choice" -> 
+    Association[
+     "Interpreter" -> {"Interno" -> 1, "Esterno" -> 2}, 
+      "Control" -> (RadioButtonBar[
+        SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+      "Centro della Circonferenza \[EGrave]", "Input" -> "Interno"]], 
+   Forms`FormPage`PackagePrivate`vals$$ = Association[], 
+   Forms`FormPage`PackagePrivate`valid$$ = False, 
+   Forms`FormPage`PackagePrivate`form2$$ = FormObject[
+    Association[
+    "angletype" -> 
+     Association[
+      "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+       "Control" -> (RadioButtonBar[
+         SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+       "Tipo di angolo di partenza"], "angle" -> 
+     Association[
+      "Interpreter" -> Restricted["Integer", {1, 360}], "Label" -> 
+       "Ampiezza Angolo"], "choice" -> 
+     Association[
+      "Interpreter" -> {"Interno" -> 1, "Esterno" -> 2}, 
+       "Control" -> (RadioButtonBar[
+         SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+       "Centro della Circonferenza \[EGrave]"]], 
+    Association[], FormLayoutFunction -> 
+    Forms`buildLayoutFunction[{{"angletype", "Tipo di angolo di partenza"} -> 
+       Association[
+        "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+         "Control" -> (RadioButtonBar[
+           SlotSequence[1], Appearance -> "Vertical"]& )], {
+        "angle", "Ampiezza Angolo"} -> 
+       Restricted["Integer", {1, 360}], {
+        "choice", "Centro della Circonferenza \[EGrave]"} -> 
+       Association[
+        "Interpreter" -> {"Interno" -> 1, "Esterno" -> 2}, 
+         "Control" -> (RadioButtonBar[
+           SlotSequence[1], Appearance -> "Vertical"]& )], Null}], 
+    ImageFormattingWidth -> 200], Forms`FormPage`PackagePrivate`valid2$$}, 
+   DynamicBox[ToBoxes[
+     With[{Forms`FormPage`PackagePrivate`formpane$ = Panel[
+         Forms`getFormLayout[
+          Forms`PackageScope`bindableForm[
+          Forms`FormPage`PackagePrivate`temp$$, 
+           Evaluate[Forms`FormPage`PackagePrivate`form2$$], None, None -> 
+           Forms`PackageScope`completeAction[
+            Forms`FormPage`PackagePrivate`form2$$, 
+             Forms`FormPage`PackagePrivate`temp$$, 
+             Forms`FormPage`PackagePrivate`vals$$, (
+             Unset[Forms`FormPage`PackagePrivate`vals$$]; 
+             Forms`FormPage`PackagePrivate`vals$$ = #; 
+             Forms`FormPage`PackagePrivate`valid2$$ = Not[
+                TrueQ[Forms`PackageScope`$DontComplete]])& , {
+             FormLayoutFunction -> 
+              Forms`buildLayoutFunction[{{
+                  "angletype", "Tipo di angolo di partenza"} -> 
+                 Association[
+                  "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+                   "Control" -> (RadioButtonBar[
+                    SlotSequence[1], Appearance -> "Vertical"]& )], {
+                  "angle", "Ampiezza Angolo"} -> 
+                 Restricted["Integer", {1, 360}], {
+                  "choice", "Centro della Circonferenza \[EGrave]"} -> 
+                 Association[
+                  "Interpreter" -> {"Interno" -> 1, "Esterno" -> 2}, 
+                   "Control" -> (RadioButtonBar[
+                    SlotSequence[1], Appearance -> "Vertical"]& )], Null}], 
+              ImageFormattingWidth -> 200}]]]], 
+       Forms`FormPage`PackagePrivate`resultpane$ = Framed[
+         If[
+         Forms`FormPage`PackagePrivate`valid$$ = 
+          And[Forms`FormPage`PackagePrivate`vals$$ =!= Association[], 
+            FreeQ[
+             Values[Forms`FormPage`PackagePrivate`vals$$], 
+             Alternatives[
+              Blank[Failure], Forms`PackageScope`fieldHidden]], 
+            TrueQ[Forms`FormPage`PackagePrivate`valid2$$]], 
+          Unset[Forms`FormPage`PackagePrivate`valid2$$]; Style[
+            ($CellContext`f[
+             Slot["angletype"], 
+             Slot["angle"], 
+             Slot["choice"]]& )[Forms`FormPage`PackagePrivate`vals$$], 
+            "Output", "StandardForm"], 
+          Style["Invalid form", "Message"]], FrameStyle -> Lighter[Gray], 
+         Background -> White]}, 
+      Panel[
+       Column[
+        Forms`doLayout[
+        Automatic, Forms`FormPage`PackagePrivate`valid$$, {
+         Forms`FormPage`PackagePrivate`formpane$, 
+          Forms`FormPage`PackagePrivate`resultpane$, 
+          Panel[
+           Item[
+            Row[{
+              Spacer[0], 
+              DefaultButton[
+               Forms`PackageScope`completeAction[
+               Forms`FormPage`PackagePrivate`form2$$, 
+                Forms`FormPage`PackagePrivate`temp$$, 
+                Forms`FormPage`PackagePrivate`vals$$, (
+                Unset[Forms`FormPage`PackagePrivate`vals$$]; 
+                Forms`FormPage`PackagePrivate`vals$$ = #; 
+                Forms`FormPage`PackagePrivate`valid2$$ = Not[
+                   TrueQ[Forms`PackageScope`$DontComplete]])& , {
+                FormLayoutFunction -> 
+                 Forms`buildLayoutFunction[{{
+                    "angletype", "Tipo di angolo di partenza"} -> 
+                    Association[
+                    "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+                    "Control" -> (RadioButtonBar[
+                    SlotSequence[1], Appearance -> "Vertical"]& )], {
+                    "angle", "Ampiezza Angolo"} -> 
+                    Restricted["Integer", {1, 360}], {
+                    "choice", "Centro della Circonferenza \[EGrave]"} -> 
+                    Association[
+                    "Interpreter" -> {"Interno" -> 1, "Esterno" -> 2}, 
+                    "Control" -> (RadioButtonBar[
+                    SlotSequence[1], Appearance -> "Vertical"]& )], Null}], 
+                 ImageFormattingWidth -> 200}]]}], Alignment -> Right]]}]]]], 
+     StandardForm],
+    ImageSizeCache->{422.4, {95.7, 100.5}},
+    TrackedSymbols:>{Forms`FormPage`PackagePrivate`vals$$}],
+   DynamicModuleValues:>{}],
+  FormPage[
+   FormObject[
+    Association[
+    "angletype" -> 
+     Association[
+      "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+       "Control" -> (RadioButtonBar[
+         SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+       "Tipo di angolo di partenza"], "angle" -> 
+     Association[
+      "Interpreter" -> Restricted["Integer", {1, 360}], "Label" -> 
+       "Ampiezza Angolo"], "choice" -> 
+     Association[
+      "Interpreter" -> {"Interno" -> 1, "Esterno" -> 2}, 
+       "Control" -> (RadioButtonBar[
+         SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+       "Centro della Circonferenza \[EGrave]"]], 
+    Association[], FormLayoutFunction -> 
+    Forms`buildLayoutFunction[{{"angletype", "Tipo di angolo di partenza"} -> 
+       Association[
+        "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+         "Control" -> (RadioButtonBar[
+           SlotSequence[1], Appearance -> "Vertical"]& )], {
+        "angle", "Ampiezza Angolo"} -> 
+       Restricted["Integer", {1, 360}], {
+        "choice", "Centro della Circonferenza \[EGrave]"} -> 
+       Association[
+        "Interpreter" -> {"Interno" -> 1, "Esterno" -> 2}, 
+         "Control" -> (RadioButtonBar[
+           SlotSequence[1], Appearance -> "Vertical"]& )], Null}], 
+    ImageFormattingWidth -> 200], $CellContext`f[
+    Slot["angletype"], 
+    Slot["angle"], 
+    Slot["choice"]]& ],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.798134264277837*^9, 3.7981343717382174`*^9, {3.798134407105962*^9, 
+   3.7981344870223165`*^9}, {3.7981345380648785`*^9, 3.7981345424966345`*^9}},
+ CellLabel->
+  "Out[113]=",ExpressionUUID->"a9673014-fb48-4102-8263-ef5f6bc52b3d"]
+}, Open  ]],
 
 Cell[BoxData[""], "Input",
  CellChangeTimes->{{3.7977506837009993`*^9, 
@@ -610,13 +930,99 @@ Cell[BoxData[""], "Input",
   3.7977506896459937`*^9}},ExpressionUUID->"b2b48523-481e-4ae1-88f3-\
 b050c62cbc9a"],
 
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.797745575780505*^9, 
-  3.797745580433136*^9}},ExpressionUUID->"46ff1832-471b-4de0-8d69-\
-4e4c01ce0eb6"]
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Style", "[", 
+  RowBox[{
+   RowBox[{"FormPage", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\"\<age\>\"", "\[Rule]", "\"\<Number\>\""}], "}"}], ",", 
+     "First"}], "]"}], ",", " ", 
+   RowBox[{"Background", " ", "\[Rule]", " ", "Blue"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.797745575780505*^9, 3.797745580433136*^9}, {
+  3.7981334202045565`*^9, 3.798133519378314*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"46ff1832-471b-4de0-8d69-4e4c01ce0eb6"],
+
+Cell[BoxData[
+ StyleBox[
+  InterpretationBox[
+   DynamicModuleBox[{Forms`FormPage`PackagePrivate`temp$$ = Association[
+    "age" -> Association["Interpreter" -> "Number", "Input" -> ""]], 
+    Forms`FormPage`PackagePrivate`vals$$ = Association[], 
+    Forms`FormPage`PackagePrivate`valid$$ = False, 
+    Forms`FormPage`PackagePrivate`form2$$ = FormObject[
+     Association["age" -> Association["Interpreter" -> "Number"]], 
+     Association[]], Forms`FormPage`PackagePrivate`valid2$$}, 
+    DynamicBox[ToBoxes[
+      With[{Forms`FormPage`PackagePrivate`formpane$ = Panel[
+          Forms`getFormLayout[
+           Forms`PackageScope`bindableForm[
+           Forms`FormPage`PackagePrivate`temp$$, 
+            Evaluate[Forms`FormPage`PackagePrivate`form2$$], None, None -> 
+            Forms`PackageScope`completeAction[
+             Forms`FormPage`PackagePrivate`form2$$, 
+              Forms`FormPage`PackagePrivate`temp$$, 
+              Forms`FormPage`PackagePrivate`vals$$, (
+              Unset[Forms`FormPage`PackagePrivate`vals$$]; 
+              Forms`FormPage`PackagePrivate`vals$$ = #; 
+              Forms`FormPage`PackagePrivate`valid2$$ = Not[
+                 TrueQ[Forms`PackageScope`$DontComplete]])& , {}]]]], 
+        Forms`FormPage`PackagePrivate`resultpane$ = Framed[
+          If[
+          Forms`FormPage`PackagePrivate`valid$$ = 
+           And[Forms`FormPage`PackagePrivate`vals$$ =!= Association[], 
+             FreeQ[
+              Values[Forms`FormPage`PackagePrivate`vals$$], 
+              Alternatives[
+               Blank[Failure], Forms`PackageScope`fieldHidden]], 
+             TrueQ[Forms`FormPage`PackagePrivate`valid2$$]], 
+           Unset[Forms`FormPage`PackagePrivate`valid2$$]; Style[
+             First[Forms`FormPage`PackagePrivate`vals$$], "Output", 
+             "StandardForm"], 
+           Style["Invalid form", "Message"]], FrameStyle -> Lighter[Gray], 
+          Background -> White]}, 
+       Panel[
+        Column[
+         Forms`doLayout[
+         Automatic, Forms`FormPage`PackagePrivate`valid$$, {
+          Forms`FormPage`PackagePrivate`formpane$, 
+           Forms`FormPage`PackagePrivate`resultpane$, 
+           Panel[
+            Item[
+             Row[{
+               Spacer[0], 
+               DefaultButton[
+                Forms`PackageScope`completeAction[
+                Forms`FormPage`PackagePrivate`form2$$, 
+                 Forms`FormPage`PackagePrivate`temp$$, 
+                 Forms`FormPage`PackagePrivate`vals$$, (
+                 Unset[Forms`FormPage`PackagePrivate`vals$$]; 
+                 Forms`FormPage`PackagePrivate`vals$$ = #; 
+                 Forms`FormPage`PackagePrivate`valid2$$ = Not[
+                    TrueQ[Forms`PackageScope`$DontComplete]])& , {}]]}], 
+             Alignment -> Right]]}]]]], StandardForm],
+     ImageSizeCache->{284.4, {53.7, 58.5}},
+     TrackedSymbols:>{Forms`FormPage`PackagePrivate`vals$$}],
+    DynamicModuleValues:>{}],
+   FormPage[
+    FormObject[
+     Association["age" -> Association["Interpreter" -> "Number"]], 
+     Association[]], First],
+   Editable->False,
+   SelectWithContents->True,
+   Selectable->False],
+  StripOnInput->False,
+  Background->RGBColor[0, 0, 1]]], "Output",
+ CellChangeTimes->{{3.7981334294100156`*^9, 3.7981334597060704`*^9}, 
+   3.7981335199064627`*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"6c49d2d6-628e-4ff3-b509-63b7f033d549"]
+}, Open  ]]
 },
-WindowSize->{1920, 1007},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{1152., 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
 TaggingRules->{"TryRealOnly" -> False},
 FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
 StyleDefinitions->"Default.nb",
@@ -634,20 +1040,28 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 21404, 426, 866, "Input",ExpressionUUID->"fa530484-9937-4925-8904-ce265631b064"],
-Cell[21987, 450, 1125, 25, 32, "Output",ExpressionUUID->"c1329ec9-739e-4d26-a5f7-c3de5f71aa81"],
-Cell[23115, 477, 2660, 54, 384, "Output",ExpressionUUID->"f072c34b-c560-4ff7-ba25-1b1de567dd32"],
-Cell[25778, 533, 824, 13, 32, "Output",ExpressionUUID->"9a21a4dd-38c2-4fda-863e-c179fe635171"],
-Cell[26605, 548, 1123, 25, 32, "Output",ExpressionUUID->"3871e288-0e01-4d0a-8489-57add25c1f7e"]
+Cell[580, 22, 21507, 429, 885, "Input",ExpressionUUID->"fa530484-9937-4925-8904-ce265631b064"],
+Cell[22090, 453, 1125, 25, 32, "Output",ExpressionUUID->"c1329ec9-739e-4d26-a5f7-c3de5f71aa81"],
+Cell[23218, 480, 2660, 54, 382, "Output",ExpressionUUID->"f072c34b-c560-4ff7-ba25-1b1de567dd32"],
+Cell[25881, 536, 827, 13, 32, "Output",ExpressionUUID->"9a21a4dd-38c2-4fda-863e-c179fe635171"],
+Cell[26711, 551, 1123, 25, 32, "Output",ExpressionUUID->"3871e288-0e01-4d0a-8489-57add25c1f7e"]
 }, Open  ]],
-Cell[27743, 576, 205, 4, 28, "Input",ExpressionUUID->"d6876265-b0b1-4479-a131-c04ca19af745"],
-Cell[27951, 582, 156, 3, 28, "Input",ExpressionUUID->"9f940649-02d3-4c22-a9cb-8e55d4376b2c"],
-Cell[28110, 587, 152, 3, 28, "Input",ExpressionUUID->"d7554ede-fe6c-4159-aded-8370389b6c6c"],
-Cell[28265, 592, 156, 3, 28, "Input",ExpressionUUID->"e73ec8e3-f7fa-4f14-b655-9f5f9a594094"],
-Cell[28424, 597, 176, 3, 28, "Input",ExpressionUUID->"4c9cb602-0a41-44ce-bcf5-6d0116dd348d"],
-Cell[28603, 602, 154, 3, 28, "Input",ExpressionUUID->"88eed7bf-7d41-4dc5-ae22-0d71639ccb01"],
-Cell[28760, 607, 156, 3, 28, "Input",ExpressionUUID->"b2b48523-481e-4ae1-88f3-b050c62cbc9a"],
-Cell[28919, 612, 152, 3, 28, "Input",ExpressionUUID->"46ff1832-471b-4de0-8d69-4e4c01ce0eb6"]
+Cell[27849, 579, 205, 4, 28, "Input",ExpressionUUID->"d6876265-b0b1-4479-a131-c04ca19af745"],
+Cell[28057, 585, 156, 3, 28, "Input",ExpressionUUID->"9f940649-02d3-4c22-a9cb-8e55d4376b2c"],
+Cell[28216, 590, 149, 3, 49, "Input",ExpressionUUID->"8d4fb12e-a1d5-43c2-b002-637abdd1cd82"],
+Cell[28368, 595, 507, 8, 28, "Input",ExpressionUUID->"d7554ede-fe6c-4159-aded-8370389b6c6c"],
+Cell[28878, 605, 255, 4, 28, "Input",ExpressionUUID->"e73ec8e3-f7fa-4f14-b655-9f5f9a594094"],
+Cell[29136, 611, 224, 4, 28, "Input",ExpressionUUID->"4c9cb602-0a41-44ce-bcf5-6d0116dd348d"],
+Cell[CellGroupData[{
+Cell[29385, 619, 5368, 124, 283, "Input",ExpressionUUID->"599b40f1-054d-4ce2-a084-36c6957a729d"],
+Cell[34756, 745, 8169, 174, 215, "Output",ExpressionUUID->"a9673014-fb48-4102-8263-ef5f6bc52b3d"]
+}, Open  ]],
+Cell[42940, 922, 154, 3, 28, "Input",ExpressionUUID->"88eed7bf-7d41-4dc5-ae22-0d71639ccb01"],
+Cell[43097, 927, 156, 3, 28, "Input",ExpressionUUID->"b2b48523-481e-4ae1-88f3-b050c62cbc9a"],
+Cell[CellGroupData[{
+Cell[43278, 934, 487, 11, 28, "Input",ExpressionUUID->"46ff1832-471b-4de0-8d69-4e4c01ce0eb6"],
+Cell[43768, 947, 3385, 72, 131, "Output",ExpressionUUID->"6c49d2d6-628e-4ff3-b509-63b7f033d549"]
+}, Open  ]]
 }
 ]
 *)
