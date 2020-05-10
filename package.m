@@ -1,107 +1,53 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
+(* ::Package:: *)
 
-(*** Wolfram Notebook File ***)
-(* http://www.wolfram.com/nb *)
+(* :Title: AngleCircBackend*)
+(* :Context: AngleCircBackend`*)
+(* :Author: Don't Panic!*)
+(* :Summary: package for angle and circumference exercises *)
+(* :Copyright: Don't Panic! 2020*)
+(* :Package Version:1*)
+(* :Mathematica Version:12*)
+(* :History:*)
+(* :Keywords: *)
+(* :Sources:biblio*)
+(* :Discussion:*)
 
-(* CreatedBy='Mathematica 12.1' *)
+f::usage = "ShowAngles[] returns the graphics of the circle with the corrispondent angles."
+Begin["Private`"]
+f[type_, angle_, choice_] := Module[{circleCenter, alpha, AAngle, circAngle, points, beta, choices},
+circleCenter={0,0};
+alpha=Which[angle==180,0\[Degree],True,Mod[angle,180]\[Degree]];
+AAngle=RandomReal[{0,Pi}];
+circAngle=RandomReal[{alpha+0.1,2*Pi-0.1}];
+points={CirclePoints[{1,AAngle},1][[1]]};
+AppendTo[points,RotationMatrix[alpha].points[[1]]];
+beta=180\[Degree]-alpha;
 
-(*CacheID: 234*)
-(* Internal cache information:
-NotebookFileLineBreakTest
-NotebookFileLineBreakTest
-NotebookDataPosition[       158,          7]
-NotebookDataLength[      3354,         99]
-NotebookOptionsPosition[      2963,         84]
-NotebookOutlinePosition[      3401,        101]
-CellTagsIndexPosition[      3358,         98]
-WindowFrame->Normal*)
-
-(* Beginning of Notebook Content *)
-Notebook[{
-Cell[BoxData[
- RowBox[{
-  RowBox[{"(*", " ", 
-   RowBox[{":", "Title", ":", " ", "AngleCircBackend"}], "*)"}], 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", "Context", ":", " ", "AngleCircBackend`"}], "*)"}], 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", "Author", ":", " ", 
-    RowBox[{
-     RowBox[{"Don", "'"}], "t", " ", 
-     RowBox[{"Panic", "!"}]}]}], "*)"}], "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", "Summary", ":", " ", 
-    RowBox[{
-    "package", " ", "for", " ", "angle", " ", "and", " ", "circumference", 
-     " ", "exercises"}]}], " ", "*)"}], "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", "Copyright", ":", " ", 
-    RowBox[{
-     RowBox[{"Don", "'"}], "t", " ", 
-     RowBox[{"Panic", "!"}], " ", "2020"}]}], "*)"}], "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", 
-    RowBox[{"Package", " ", "Version"}], ":", "1"}], "*)"}], 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", 
-    RowBox[{"Mathematica", " ", "Version"}], ":", "12"}], "*)"}], 
-  "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", "History", ":"}], "*)"}], "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", "Keywords", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", "Sources", ":", "biblio"}], "*)"}], "\[IndentingNewLine]", 
-  RowBox[{"(*", " ", 
-   RowBox[{":", "Discussion", ":"}], "*)"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", 
-  RowBox[{
-   RowBox[{
-    RowBox[{"PowerSum", "::", "usage"}], "=", 
-    "\"\<PowerSum[x, n] returns the sum of the first n powers of x.\>\""}], 
-   "\n", 
-   RowBox[{"Begin", "[", "\"\<Private`\>\"", "]"}], "\n", 
-   RowBox[{
-    RowBox[{"PowerSum", "[", 
-     RowBox[{"x_", ",", "n_"}], "]"}], ":=", 
-    RowBox[{"Module", "[", 
-     RowBox[{
-      RowBox[{"{", "i", "}"}], ",", 
-      RowBox[{"Sum", "[", 
-       RowBox[{
-        RowBox[{"x", "^", "i"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], "]"}]}], "\n", 
-   RowBox[{"End", "[", "]"}]}]}]], "Input",
- CellChangeTimes->{{3.798110767807403*^9, 3.798110807366911*^9}, 
-   3.798111016316534*^9, {3.7981110805954924`*^9, 3.7981112236763935`*^9}, {
-   3.7981112547364655`*^9, 3.798111290389886*^9}, {3.798111393178877*^9, 
-   3.7981114106924753`*^9}},ExpressionUUID->"4862da6e-8d36-45fd-860c-\
-96abea5c9b3f"]
-},
-WindowSize->{1152., 585.6},
-WindowMargins->{{
-  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
-FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 18, 2020)",
-StyleDefinitions->"Default.nb",
-ExpressionUUID->"71a17b36-851e-447f-9302-980d53cd4e34"
+(*TODO Unevaluated*)
+choices={ RandomChoice[{-1, 1}] *(alpha/2 + 0.1+RandomReal[{0, beta  - 0.1}]),alpha/2 + beta +RandomReal[{0, alpha}]};
+AppendTo[points,RotationMatrix[choices[[choice]]].middlePoint/.middlePoint->RotationMatrix[alpha/2].points[[1]]];
+(*drawF[c_]:=Module[{pointsS},
+pointsS=Append[points,RotationMatrix[choices[[c]]].middlePoint/.middlePoint\[Rule]RotationMatrix[alpha/2].points[[1]]];
+pointsS
 ]
-(* End of Notebook Content *)
+points;*)
+{
+Circle[circleCenter, 1] ,
+Point[circleCenter],
+Point /@ points,
 
-(* Internal cache information *)
-(*CellTagsOutline
-CellTagsIndex->{}
-*)
-(*CellTagsIndex
-CellTagsIndex->{}
-*)
-(*NotebookFileOutline
-Notebook[{
-Cell[558, 20, 2401, 62, 322, "Input",ExpressionUUID->"4862da6e-8d36-45fd-860c-96abea5c9b3f"]
-}
+{Opacity[0.3],Style[Triangle[{points[[1]],points[[2]],circleCenter}], Blue]},
+{Opacity[0.3],Style[Triangle[points], Red]},
+
+Line[Append[points,  points[[1]]]],(* triangolo con angolo al centro *)
+Line[{points[[1]],points[[2]],circleCenter, points[[1]]}], (* triangolo con angolo alla circonferenza *)
+
+Tooltip[Style[Circle[circleCenter, 0.2, {AAngle, AAngle + alpha}], Red, Thick ], alpha],
+Tooltip[Style[Circle[points[[3]], 0.2, {angletemp, angletemp+alpha/2}], Blue, Thick ], alpha/2],
+(* Annotation[Style[Circle[points[[3]], 0.2, {angletemp, angletemp+alpha/2}], Blue, Thick ], alpha/2, "Mouse"], *)
+
+MapIndexed[ Text[FromCharacterCode[#2[[1]]+ 64] , #1, {1.5,-1.5}]&, points], 
+Text["O", circleCenter,{1.5,-1.5}]
+}/.angletemp -> PlanarAngle[points[[3]] -> { {points[[3]][[1]] + 1, points[[3]][[2]]}, points[[1]]}]
 ]
-*)
-
+End[]
