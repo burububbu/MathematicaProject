@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    240402,       4263]
-NotebookOptionsPosition[    234333,       4137]
-NotebookOutlinePosition[    238449,       4227]
-CellTagsIndexPosition[    238369,       4222]
+NotebookDataLength[    298970,       5503]
+NotebookOptionsPosition[    291887,       5359]
+NotebookOutlinePosition[    296064,       5450]
+CellTagsIndexPosition[    295984,       5445]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,9 +34,41 @@ Cell[TextData[{
    3.7099080105038958`*^9, 3.7099080108133383`*^9}, {3.727189496068931*^9, 
    3.7271894962748613`*^9}, {3.7981126655311007`*^9, 3.7981127304252424`*^9}, 
    3.798135081370819*^9, 3.7981351600245295`*^9, 3.7981355271996584`*^9, 
-   3.7981355680432715`*^9, {3.798137422475111*^9, 
-   3.7981374824009404`*^9}},ExpressionUUID->"92508663-47f1-4deb-9615-\
+   3.7981355680432715`*^9, {3.798137422475111*^9, 3.7981374824009404`*^9}, 
+   3.7982591516788006`*^9},ExpressionUUID->"92508663-47f1-4deb-9615-\
 d2c271e8e453"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->
+  "SlideShowHeader",ExpressionUUID->"2f167a9d-6c77-489f-9eef-02cd3ff19cf4"],
+
+Cell["Valuta sto notebook", "Title",
+ CellChangeTimes->{{3.798259154578437*^9, 3.798259189155301*^9}, {
+  3.7982593187345486`*^9, 
+  3.7982593201029243`*^9}},ExpressionUUID->"5d095342-5eaf-49e9-9dfd-\
+779161eedd68"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"noteDir", " ", "=", " ", 
+   RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"$Path", ",", " ", "noteDir"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", "noteDir", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Directory", "[", "]"}], "\[Equal]", 
+   RowBox[{"SetDirectory", "[", "noteDir", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"<<", " ", "package.m"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.798259321902649*^9, 3.798259322688817*^9}, 
+   3.798260739098462*^9},
+ CellLabel->"In[37]:=",ExpressionUUID->"c3e8d4a2-98af-49d1-bf41-54b443009f01"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3880,248 +3912,261 @@ Cell["Calcola l' area e il perimetro dei triangoli ABC e AOB", "Text",
   3.7981139116031322`*^9}},ExpressionUUID->"cac38220-9db5-44ec-8899-\
 a8a685e8c89c"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{"(*", 
-  RowBox[{"Manipulate", "[", 
+ RowBox[{
+  RowBox[{"(*", " ", 
    RowBox[{
+    RowBox[{"Definisce", " ", "una", " ", 
+     RowBox[{"Form", ":", " ", 
+      RowBox[{"il", " ", "primo", " ", "parametro", " ", 
+       RowBox[{"(", "FormObject", ")"}], " ", "ne", "\[IndentingNewLine]", 
+       "specifica", " ", "la", " ", "struttura"}]}]}], ",", " ", 
+    RowBox[{
+    "il", " ", "secondo", " ", "la", " ", "funzione", " ", "da", 
+     "\[IndentingNewLine]", "  ", "eseguire", " ", "alla", " ", "pressione", 
+     " ", "del", " ", "pulsante", " ", 
+     RowBox[{"\"\<OK\>\"", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"FormPage", "[", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"FormObject", " ", "definisce", " ", 
+     RowBox[{"l", "'"}], "insieme", " ", "degli", " ", "oggetti", " ", "che", 
+     "\[IndentingNewLine]", "\t", "compongono", " ", "la", " ", "form"}], " ",
+     "*)"}], "\n", " ", 
+   RowBox[{
+    RowBox[{"FormObject", "[", "\n", "  ", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "Definizione", " ", "del", " ", "\"\<RadioButtonBar\>\"", " ", "che", 
+         " ", "permette", " ", "la", " ", "scelta", " ", "del", 
+         "\[IndentingNewLine]", "tipo", " ", "di", " ", "angolo", " ", "di", 
+         " ", "cui", " ", 
+         RowBox[{"l", "'"}], "utente", " ", "andr\[AGrave]", " ", "ad", " ", 
+         "inserire", " ", "il", " ", "valore", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+           "al", " ", "centro", " ", "o", " ", "alla", " ", "circonferenza"}],
+            ")"}], ".", "\[IndentingNewLine]", "\[IndentingNewLine]", "Il"}], 
+         " ", "tipo", " ", "selezionato", " ", 
+         RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
+         "memorizzato", " ", "nella", " ", "variabile", "\[IndentingNewLine]", 
+         RowBox[{"\"\<angletype\>\"", "."}]}], " ", "*)"}], 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{"{", 
+         RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], "\n", "   ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"\"\<angletype\>\"", ",", " ", "\"\<Tipo di Angolo\>\""}], 
+          "}"}], "\[Rule]", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "Elenco", " ", "dei", " ", "radiobutton", " ", "selezionabili", 
+           "\[IndentingNewLine]", "\t\t\t\t\t", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"label", "\[Rule]", "value"}], ",", "..."}], "}"}]}], 
+          " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"<|", 
+          RowBox[{
+           RowBox[{"\"\<Interpreter\>\"", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"\"\<Centro\>\"", "\[Rule]", "1"}], ",", " ", 
+              RowBox[{"\"\<Circonferenza\>\"", "\[Rule]", "2"}]}], "}"}]}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{
+             "Qui", " ", "viene", " ", "definito", " ", "il", " ", 
+              "controller", " ", "da", " ", 
+              RowBox[{"utilizzare", ":", " ", 
+               RowBox[{
+                RowBox[{
+                "RadioButtonBar", ".", "\[IndentingNewLine]", "\"\<##\>\""}], 
+                " ", "verr\[AGrave]", " ", "sostituito"}]}]}], ",", " ", 
+             RowBox[{"alla", " ", "valutazione", " ", "del", " ", "codice"}], 
+             ",", " ", 
+             RowBox[{"con", " ", 
+              RowBox[{"l", "'"}], "insieme", "\[IndentingNewLine]", 
+              "definito", " ", "alla", " ", "riga", " ", "sovrastante", " ", 
+              RowBox[{
+               RowBox[{"(", 
+                RowBox[{"dove", " ", "si", " ", "definisce", " ", 
+                 RowBox[{"l", "'"}], "interpreter"}], ")"}], "."}]}]}], " ", 
+            "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"\"\<Control\>\"", "\[Rule]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"RadioButtonBar", "[", 
+               RowBox[{"##", ",", " ", 
+                RowBox[{"Appearance", "\[Rule]", "\"\<Vertical\>\""}]}], 
+               "]"}], " ", "&"}], ")"}]}]}], "|>"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Definizione", " ", "della", " ", "TextBox", " ", "per", " ", 
+          RowBox[{"l", "'"}], "inserimento", " ", 
+          RowBox[{"dell", "'"}], "ampiezza", "\[IndentingNewLine]", 
+          RowBox[{"dell", "'"}], 
+          RowBox[{
+          "angolo", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", "Il"}],
+           " ", "valore", " ", "inserito", " ", 
+          RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
+          "memorizzato", " ", "nella", " ", "variabile", 
+          "\[IndentingNewLine]", 
+          RowBox[{"\"\<alpha\>\"", "."}]}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"{", 
+          RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<alpha\>\"", ",", " ", 
+           "\"\<Ampiezza Angolo (gradi - \[Degree])\>\""}], "}"}], "\[Rule]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"La", " ", "Built"}], "-", 
+            RowBox[{
+            "in", " ", "\"\<Restricted\>\"", " ", "permette", " ", "di", " ", 
+             "impostare", " ", "vincoli", " ", 
+             RowBox[{"sull", "'"}], 
+             RowBox[{
+             "input", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+              "In"}], " ", "particolare"}]}], ",", " ", 
+           RowBox[{
+           "il", " ", "valore", " ", "inserito", " ", "deve", " ", "essere", 
+            " ", "numerico", " ", "e", " ", "compreso", " ", "tra", 
+            "\[IndentingNewLine]", "0", " ", "e", " ", "360."}]}], " ", 
+          "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"Restricted", "[", 
+          RowBox[{"\"\<Number\>\"", ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", " ", "360"}], "}"}]}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "Definizione", " ", "del", " ", "\"\<RadioButtonBar\>\"", " ", "che",
+           " ", "permette", " ", "la", " ", "scelta", " ", "della", 
+          "\[IndentingNewLine]", "posizione", " ", "del", " ", "centro", " ", 
+          "della", " ", "circonferenza", " ", "rispetto", " ", "al", " ", 
+          "triangolo", "\[IndentingNewLine]", "da", " ", "costruire", " ", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+            "interno", " ", "o", " ", "esterno", " ", "al", " ", "triangolo", 
+             " ", "stesso"}], ")"}], ".", "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", "Il"}], " ", "tipo", " ", "selezionato", 
+          " ", 
+          RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
+          "memorizzato", " ", "nella", " ", "variabile", 
+          "\[IndentingNewLine]", 
+          RowBox[{"\"\<choice\>\"", "."}]}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"{", 
+          RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<choice\>\"", ",", " ", 
+           "\"\<Centro della Circonferenza \[EGrave]\>\""}], "}"}], "\[Rule]",
+          "\[IndentingNewLine]", 
+         RowBox[{"<|", 
+          RowBox[{
+           RowBox[{"\"\<Interpreter\>\"", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"\"\<Interno\>\"", "\[Rule]", "2"}], ",", " ", 
+              RowBox[{"\"\<Esterno\>\"", "\[Rule]", "1"}]}], "}"}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"\"\<Control\>\"", "\[Rule]", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"RadioButtonBar", "[", 
+               RowBox[{"##", ",", " ", 
+                RowBox[{"Appearance", " ", "->", " ", "\"\<Vertical\>\""}]}], 
+               "]"}], " ", "&"}], ")"}]}]}], "|>"}]}]}], "\n", "   ", "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Impostazione", " ", "delle", " ", "regole", " ", "che", " ", 
+        "determino", " ", 
+        RowBox[{"l", "'"}], "aspetto", " ", "del", " ", "form"}], " ", "*)"}],
+       "\n", "  ", 
+      RowBox[{"AppearanceRules", "\[Rule]", 
+       RowBox[{"<|", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", "Titolo", " ", "*)"}], "\n", "    ", 
+        RowBox[{
+         RowBox[{
+         "\"\<Title\>\"", "\[Rule]", 
+          "\"\<Esercizio Relazione tra Angoli\>\""}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", "Descrizione", " ", "*)"}], "\n", "    ", 
+         RowBox[{
+         "\"\<Description\>\"", "\[Rule]", 
+          "\"\<Immetti i dati necessari\>\""}]}], "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "Label", " ", "del", " ", "Pulsante", " ", "di", " ", "Sumbit", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(", 
+           RowBox[{"NOTA", ":", " ", 
+            RowBox[{
+            "\[EGrave]", " ", "stato", " ", "commentato", " ", "in", " ", 
+             "quanto", " ", "la", " ", "regola", " ", "viene", " ", 
+             "ignorata"}]}], ")"}]}], " ", "*)"}], "\n", "    ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"\"\<SubmitLabel\>\"", "\[Rule]", "\"\<Disegna\>\""}], " ", 
+         "*)"}], "\n", "    ", "|>"}]}]}], "\n", "  ", "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{
+      "Al", " ", "sumbit", " ", "viene", " ", "richiamata", " ", "la", " ", 
+       "funzione", " ", "\"\<circleAn gleGraphicsElements\>\"", 
+       "\[IndentingNewLine]", "al", " ", "quale", " ", "vengono", " ", 
+       "passati", " ", "i", " ", "valori", " ", "della", " ", 
+       RowBox[{
+       "FormObject", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        "La"}], " ", "funzione", " ", "ritorna", " ", "un", " ", "array", " ",
+        "di", " ", "oggetti", " ", "che", " ", "vengono", " ", "passati", " ",
+        "a", " ", "Graphics", "\[IndentingNewLine]", "per", " ", "il", " ", 
+       RowBox[{"disegno", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"NOTA", ":", " ", 
+         RowBox[{
+         "per", " ", "accedere", " ", "alle", " ", "variabili", " ", 
+          "definite", " ", "nel", " ", "FormObject"}]}]}]}], ",", " ", 
+      RowBox[{
+      "si", " ", "utilizza", "\[IndentingNewLine]", "la", " ", "notazione", 
+       " ", "\"\<#variableName\>\""}]}], " ", "*)"}], "\n", " ", 
     RowBox[{
      RowBox[{"Graphics", "[", 
       RowBox[{
-       RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"circleAngleGraphicsElements", "[", 
+        RowBox[{"#angletype", ",", " ", "#alpha", ",", " ", "#choice"}], 
+        "]"}], " ", ",", "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
         RowBox[{
-         RowBox[{"Circle", "[", 
-          RowBox[{"circleCenter", ",", " ", "1"}], "]"}], " ", ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"Point", "[", "circleCenter", "]"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"Point", " ", "/@", " ", "points"}], ",", 
-         "\[IndentingNewLine]", "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"Opacity", "[", "0.3", "]"}], ",", 
-           RowBox[{"Style", "[", 
-            RowBox[{
-             RowBox[{"Triangle", "[", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"points", "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], ",", 
-                RowBox[{"points", "[", 
-                 RowBox[{"[", "2", "]"}], "]"}], ",", "circleCenter"}], "}"}],
-               "]"}], ",", " ", "Blue"}], "]"}]}], "}"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"Opacity", "[", "0.3", "]"}], ",", 
-           RowBox[{"Style", "[", 
-            RowBox[{
-             RowBox[{"Triangle", "[", "points", "]"}], ",", " ", "Red"}], 
-            "]"}]}], "}"}], ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-         RowBox[{"Line", "[", 
-          RowBox[{"Append", "[", 
-           RowBox[{"points", ",", "  ", 
-            RowBox[{"points", "[", 
-             RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}], ",", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "triangolo", " ", "con", " ", "angolo", " ", "al", " ", "centro"}], 
-          " ", "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"Line", "[", 
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"points", "[", 
-             RowBox[{"[", "1", "]"}], "]"}], ",", 
-            RowBox[{"points", "[", 
-             RowBox[{"[", "2", "]"}], "]"}], ",", "circleCenter", ",", " ", 
-            RowBox[{"points", "[", 
-             RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "]"}], ",", " ", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "triangolo", " ", "con", " ", "angolo", " ", "alla", " ", 
-           "circonferenza"}], " ", "*)"}], "\[IndentingNewLine]", 
-         "\[IndentingNewLine]", 
-         RowBox[{"Tooltip", "[", 
-          RowBox[{
-           RowBox[{"Style", "[", 
-            RowBox[{
-             RowBox[{"Circle", "[", 
-              RowBox[{"circleCenter", ",", " ", "0.2", ",", " ", 
-               RowBox[{"{", 
-                RowBox[{"AAngle", ",", " ", 
-                 RowBox[{"AAngle", " ", "+", " ", "alpha"}]}], "}"}]}], "]"}],
-              ",", " ", "Red", ",", " ", "Thick"}], " ", "]"}], ",", " ", 
-           "alpha"}], "]"}], ",", "\[IndentingNewLine]", 
-         RowBox[{"Tooltip", "[", 
-          RowBox[{
-           RowBox[{"Style", "[", 
-            RowBox[{
-             RowBox[{"Circle", "[", 
-              RowBox[{
-               RowBox[{"points", "[", 
-                RowBox[{"[", "3", "]"}], "]"}], ",", " ", "0.2", ",", " ", 
-               RowBox[{"{", 
-                RowBox[{"angletemp", ",", " ", 
-                 RowBox[{"angletemp", "+", 
-                  RowBox[{"alpha", "/", "2"}]}]}], "}"}]}], "]"}], ",", " ", 
-             "Blue", ",", " ", "Thick"}], " ", "]"}], ",", " ", 
-           FractionBox["alpha", "2"]}], "]"}], ",", "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-           RowBox[{"Annotation", "[", 
-            RowBox[{
-             RowBox[{"Style", "[", 
-              RowBox[{
-               RowBox[{"Circle", "[", 
-                RowBox[{
-                 RowBox[{"points", "[", 
-                  RowBox[{"[", "3", "]"}], "]"}], ",", " ", "0.2", ",", " ", 
-                 RowBox[{"{", 
-                  RowBox[{"angletemp", ",", " ", 
-                   RowBox[{"angletemp", "+", 
-                    RowBox[{"alpha", "/", "2"}]}]}], "}"}]}], "]"}], ",", " ",
-                "Blue", ",", " ", "Thick"}], " ", "]"}], ",", " ", 
-             RowBox[{"alpha", "/", "2"}], ",", " ", "\"\<Mouse\>\""}], "]"}], 
-           ","}], " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
-         RowBox[{"MapIndexed", "[", " ", 
-          RowBox[{
-           RowBox[{
-            RowBox[{"Text", "[", 
-             RowBox[{
-              RowBox[{"FromCharacterCode", "[", 
-               RowBox[{
-                RowBox[{"#2", "[", 
-                 RowBox[{"[", "1", "]"}], "]"}], "+", " ", "64"}], "]"}], " ",
-               ",", " ", "#1", ",", " ", 
-              RowBox[{"{", 
-               RowBox[{"1.5", ",", 
-                RowBox[{"-", "1.5"}]}], "}"}]}], "]"}], "&"}], ",", " ", 
-           "points"}], "]"}], ",", " ", "\[IndentingNewLine]", 
-         RowBox[{"Text", "[", 
-          RowBox[{"\"\<O\>\"", ",", " ", "circleCenter", ",", 
-           RowBox[{"{", 
-            RowBox[{"1.5", ",", 
-             RowBox[{"-", "1.5"}]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
-        "}"}], ",", " ", 
-       RowBox[{"ImageSize", " ", "\[Rule]", " ", "Medium"}]}], "]"}], "/.", 
-     RowBox[{"{", 
-      RowBox[{"angletemp", " ", "\[Rule]", " ", 
-       RowBox[{"PlanarAngle", "[", 
-        RowBox[{
-         RowBox[{"points", "[", 
-          RowBox[{"[", "3", "]"}], "]"}], " ", "\[Rule]", " ", 
-         RowBox[{"{", " ", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{
-              RowBox[{
-               RowBox[{"points", "[", 
-                RowBox[{"[", "3", "]"}], "]"}], "[", 
-               RowBox[{"[", "1", "]"}], "]"}], " ", "+", " ", "1"}], ",", " ", 
-             RowBox[{
-              RowBox[{"points", "[", 
-               RowBox[{"[", "3", "]"}], "]"}], "[", 
-              RowBox[{"[", "2", "]"}], "]"}]}], "}"}], ",", " ", 
-           RowBox[{"points", "[", 
-            RowBox[{"[", "1", "]"}], "]"}]}], "}"}]}], "]"}]}], "}"}]}], ",", 
-    RowBox[{"{", 
-     RowBox[{"alpha", ",", "0", ",", " ", "180"}], "}"}]}], "]"}], " ", 
-  "*)"}]], "SideNote",
- CellChangeTimes->{{3.7981132352818437`*^9, 3.7981132771751723`*^9}, {
-   3.798113331477855*^9, 3.7981133548741655`*^9}, 3.798113476789462*^9, 
-   3.798138179668223*^9, {3.7981382463697004`*^9, 
-   3.7981382504724646`*^9}},ExpressionUUID->"9299fb4e-852e-457b-9c77-\
-7fb6c708cb10"],
-
-Cell[BoxData[{
- RowBox[{
-  RowBox[{"noteDir", " ", "=", " ", 
-   RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}], "\n", 
- RowBox[{
-  RowBox[{"AppendTo", "[", 
-   RowBox[{"$Path", ",", " ", "noteDir"}], "]"}], ";"}], "\n", 
- RowBox[{
-  RowBox[{"SetDirectory", "[", "noteDir", "]"}], ";"}], "\n", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Directory", "[", "]"}], " ", "==", " ", 
-   RowBox[{"SetDirectory", "[", "noteDir", "]"}]}], ";"}], "\n", 
- RowBox[{
-  RowBox[{"<<", " ", "package.m"}], ";"}], "\n", 
- RowBox[{"FormPage", "[", "\n", " ", 
-  RowBox[{
-   RowBox[{"FormObject", "[", "\n", "  ", 
-    RowBox[{
-     RowBox[{"{", "\n", "   ", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"\"\<angletype\>\"", ",", " ", "\"\<Tipo di Angolo\>\""}], 
-         "}"}], " ", "->", " ", 
-        RowBox[{"<|", 
-         RowBox[{
-          RowBox[{"\"\<Interpreter\>\"", " ", "->", " ", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"\"\<Centro\>\"", " ", "->", " ", "1"}], ",", " ", 
-             RowBox[{"\"\<Circonferenza\>\"", " ", "->", " ", "2"}]}], 
-            "}"}]}], ",", " ", 
-          RowBox[{"\"\<Control\>\"", " ", "->", " ", 
-           RowBox[{"(", 
-            RowBox[{
-             RowBox[{"RadioButtonBar", "[", 
-              RowBox[{"##", ",", " ", 
-               RowBox[{"Appearance", " ", "->", " ", "\"\<Vertical\>\""}]}], 
-              "]"}], " ", "&"}], ")"}]}]}], "|>"}]}], ",", "\n", "   ", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"\"\<alpha\>\"", ",", " ", "\"\<Ampiezza Angolo\>\""}], 
-         "}"}], " ", "->", " ", 
-        RowBox[{"Restricted", "[", 
-         RowBox[{"\"\<Number\>\"", ",", " ", 
-          RowBox[{"{", 
-           RowBox[{"0", ",", " ", "360"}], "}"}]}], "]"}]}], ",", " ", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{
-         "\"\<choice\>\"", ",", " ", 
-          "\"\<Centro della Circonferenza \[EGrave]\>\""}], "}"}], " ", "->", 
-        " ", 
-        RowBox[{"<|", 
-         RowBox[{
-          RowBox[{"\"\<Interpreter\>\"", " ", "->", " ", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"\"\<Interno\>\"", " ", "->", " ", "2"}], ",", " ", 
-             RowBox[{"\"\<Esterno\>\"", " ", "->", " ", "1"}]}], "}"}]}], ",",
-           " ", 
-          RowBox[{"\"\<Control\>\"", " ", "->", " ", 
-           RowBox[{"(", 
-            RowBox[{
-             RowBox[{"RadioButtonBar", "[", 
-              RowBox[{"##", ",", " ", 
-               RowBox[{"Appearance", " ", "->", " ", "\"\<Vertical\>\""}]}], 
-              "]"}], " ", "&"}], ")"}]}]}], "|>"}]}]}], "\n", "   ", "}"}], 
-     ",", "\n", "  ", 
-     RowBox[{"AppearanceRules", " ", "->", " ", 
-      RowBox[{"<|", "\n", "    ", 
-       RowBox[{
-        RowBox[{
-        "\"\<Title\>\"", " ", "->", " ", 
-         "\"\<Esercizio Relazione tra Angoli\>\""}], ",", "\n", "    ", 
-        RowBox[{
-        "\"\<Description\>\"", " ", "->", " ", 
-         "\"\<Immetti i dati necessari\>\""}], ",", "\n", "    ", 
-        RowBox[{"\"\<SubmitLabel\>\"", " ", "->", " ", "\"\<Disegna\>\""}]}], 
-       "\n", "    ", "|>"}]}]}], "\n", "  ", "]"}], ",", "\n", " ", 
-   RowBox[{
-    RowBox[{"Graphics", "[", 
-     RowBox[{
-      RowBox[{"circleAngleGraphicsElements", "[", 
-       RowBox[{"#angletype", ",", " ", "#alpha", ",", " ", "#choice"}], "]"}],
-       ",", " ", 
-      RowBox[{"ImageSize", " ", "->", " ", "Medium"}]}], "]"}], " ", "&"}]}], 
-  "]"}]}], "Input",
+        "394", " ", "\[EGrave]", " ", "il", " ", "valore", " ", "ottenuto", 
+         " ", "euristicamente", " ", "che", " ", "fa", " ", "coincidere", " ",
+          "la", "\[IndentingNewLine]", "dimensione", " ", "del", " ", 
+         "grafico", " ", "con", " ", "quella", " ", "della", " ", "form", " ",
+          "con", " ", "uno", " ", "zoom", " ", "del", " ", "100", 
+         RowBox[{"%", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+       StyleBox[
+        RowBox[{"ImageSize", "\[Rule]", "394"}],
+        FontSize->36]}], "]"}], " ", "&"}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
  CellChangeTimes->{{3.798139256803997*^9, 3.798139256805991*^9}, {
    3.7981393323167048`*^9, 3.7981393344802647`*^9}, {3.7981393747452145`*^9, 
    3.7981394090702033`*^9}, {3.798139473001606*^9, 3.798139497423054*^9}, {
@@ -4130,23 +4175,1199 @@ Cell[BoxData[{
    3.7981734068171377`*^9}, {3.7981734682120523`*^9, 3.798173483758986*^9}, {
    3.7981738020265417`*^9, 3.798173813658936*^9}, 3.7981739357402763`*^9, {
    3.798178062515413*^9, 3.7981780633164663`*^9}, {3.7981781419760337`*^9, 
-   3.798178160798214*^9}},
- CellLabel->"In[37]:=",ExpressionUUID->"cfd1372f-1809-4aef-85d8-aeda3e4a70bc"]
+   3.798178160798214*^9}, {3.798258868006448*^9, 3.798258972609689*^9}, {
+   3.798259264700656*^9, 3.7982592699463453`*^9}, {3.7982593074154806`*^9, 
+   3.798259312680814*^9}, {3.79825938981843*^9, 3.7982594842424383`*^9}, {
+   3.7982631640034423`*^9, 3.7982632080478687`*^9}, {3.7982632956830473`*^9, 
+   3.798263307655485*^9}, {3.7982633441441135`*^9, 3.7982633904981613`*^9}, {
+   3.798263454494516*^9, 3.7982634851839433`*^9}, {3.7982635457189846`*^9, 
+   3.798263692379121*^9}, {3.798348645340638*^9, 3.7983486646785088`*^9}, {
+   3.798348697194089*^9, 3.798349059218723*^9}, {3.798349139655947*^9, 
+   3.798349584615579*^9}, {3.798349622934142*^9, 3.798349718564607*^9}, {
+   3.79834977996527*^9, 3.7983505712659397`*^9}, 3.7983506563488855`*^9, {
+   3.7983510049929924`*^9, 3.798351070481126*^9}, {3.7983511396217127`*^9, 
+   3.7983511612953806`*^9}, {3.7983512767754593`*^9, 
+   3.7983513613803744`*^9}, {3.7983514078189745`*^9, 3.7983515323773413`*^9}},
+ CellLabel->"In[42]:=",ExpressionUUID->"cfd1372f-1809-4aef-85d8-aeda3e4a70bc"],
+
+Cell[BoxData[
+ InterpretationBox[
+  DynamicModuleBox[{Forms`FormPage`PackagePrivate`temp$$ = Association[
+   "angletype" -> 
+    Association[
+     "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+      "Control" -> (RadioButtonBar[
+        SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+      "Tipo di Angolo", "Input" -> "Centro"], "alpha" -> 
+    Association[
+     "Interpreter" -> Restricted["Number", {0, 360}], "Label" -> 
+      "Ampiezza Angolo (gradi - \[Degree])", "Input" -> ""], "choice" -> 
+    Association[
+     "Interpreter" -> {"Interno" -> 2, "Esterno" -> 1}, 
+      "Control" -> (RadioButtonBar[
+        SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+      "Centro della Circonferenza \[EGrave]", "Input" -> "Interno"]], 
+   Forms`FormPage`PackagePrivate`vals$$ = Association[], 
+   Forms`FormPage`PackagePrivate`valid$$ = False, 
+   Forms`FormPage`PackagePrivate`form2$$ = FormObject[
+    Association[
+    "angletype" -> 
+     Association[
+      "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+       "Control" -> (RadioButtonBar[
+         SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+       "Tipo di Angolo"], "alpha" -> 
+     Association[
+      "Interpreter" -> Restricted["Number", {0, 360}], "Label" -> 
+       "Ampiezza Angolo (gradi - \[Degree])"], "choice" -> 
+     Association[
+      "Interpreter" -> {"Interno" -> 2, "Esterno" -> 1}, 
+       "Control" -> (RadioButtonBar[
+         SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+       "Centro della Circonferenza \[EGrave]"]], 
+    Association[], AppearanceRules -> 
+    Association[
+     "Title" -> "Esercizio Relazione tra Angoli", "Description" -> 
+      "Immetti i dati necessari"]], Forms`FormPage`PackagePrivate`valid2$$}, 
+   DynamicBox[ToBoxes[
+     With[{Forms`FormPage`PackagePrivate`formpane$ = Panel[
+         Forms`getFormLayout[
+          Forms`PackageScope`bindableForm[
+          Forms`FormPage`PackagePrivate`temp$$, 
+           Evaluate[Forms`FormPage`PackagePrivate`form2$$], None, None -> 
+           Forms`PackageScope`completeAction[
+            Forms`FormPage`PackagePrivate`form2$$, 
+             Forms`FormPage`PackagePrivate`temp$$, 
+             Forms`FormPage`PackagePrivate`vals$$, (
+             Unset[Forms`FormPage`PackagePrivate`vals$$]; 
+             Forms`FormPage`PackagePrivate`vals$$ = #; 
+             Forms`FormPage`PackagePrivate`valid2$$ = Not[
+                TrueQ[Forms`PackageScope`$DontComplete]])& , {
+             AppearanceRules -> 
+              Association[
+               "Title" -> "Esercizio Relazione tra Angoli", "Description" -> 
+                "Immetti i dati necessari"]}]]]], 
+       Forms`FormPage`PackagePrivate`resultpane$ = Framed[
+         If[
+         Forms`FormPage`PackagePrivate`valid$$ = 
+          And[Forms`FormPage`PackagePrivate`vals$$ =!= Association[], 
+            FreeQ[
+             Values[Forms`FormPage`PackagePrivate`vals$$], 
+             Alternatives[
+              Blank[Failure], Forms`PackageScope`fieldHidden]], 
+            TrueQ[Forms`FormPage`PackagePrivate`valid2$$]], 
+          Unset[Forms`FormPage`PackagePrivate`valid2$$]; Style[
+            (Graphics[
+             AngleCircBackend`circleAngleGraphicsElements[
+              Slot["angletype"], 
+              Slot["alpha"], 
+              Slot["choice"]], ImageSize -> 394]& )[
+            Forms`FormPage`PackagePrivate`vals$$], "Output", "StandardForm"], 
+          Style["Invalid form", "Message"]], FrameStyle -> Lighter[Gray], 
+         Background -> White]}, 
+      Panel[
+       Column[
+        Forms`doLayout[
+        Automatic, Forms`FormPage`PackagePrivate`valid$$, {
+         Forms`FormPage`PackagePrivate`formpane$, 
+          Forms`FormPage`PackagePrivate`resultpane$, 
+          Panel[
+           Item[
+            Row[{
+              Spacer[0], 
+              DefaultButton[
+               Forms`PackageScope`completeAction[
+               Forms`FormPage`PackagePrivate`form2$$, 
+                Forms`FormPage`PackagePrivate`temp$$, 
+                Forms`FormPage`PackagePrivate`vals$$, (
+                Unset[Forms`FormPage`PackagePrivate`vals$$]; 
+                Forms`FormPage`PackagePrivate`vals$$ = #; 
+                Forms`FormPage`PackagePrivate`valid2$$ = Not[
+                   TrueQ[Forms`PackageScope`$DontComplete]])& , {
+                AppearanceRules -> 
+                 Association[
+                  "Title" -> "Esercizio Relazione tra Angoli", "Description" -> 
+                   "Immetti i dati necessari"]}]]}], Alignment -> 
+            Right]]}]]]], StandardForm],
+    ImageSizeCache->{429., {159., 165.}},
+    TrackedSymbols:>{Forms`FormPage`PackagePrivate`vals$$}],
+   DynamicModuleValues:>{}],
+  FormPage[
+   FormObject[
+    Association[
+    "angletype" -> 
+     Association[
+      "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+       "Control" -> (RadioButtonBar[
+         SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+       "Tipo di Angolo"], "alpha" -> 
+     Association[
+      "Interpreter" -> Restricted["Number", {0, 360}], "Label" -> 
+       "Ampiezza Angolo (gradi - \[Degree])"], "choice" -> 
+     Association[
+      "Interpreter" -> {"Interno" -> 2, "Esterno" -> 1}, 
+       "Control" -> (RadioButtonBar[
+         SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+       "Centro della Circonferenza \[EGrave]"]], 
+    Association[], AppearanceRules -> 
+    Association[
+     "Title" -> "Esercizio Relazione tra Angoli", "Description" -> 
+      "Immetti i dati necessari"]], Graphics[
+    AngleCircBackend`circleAngleGraphicsElements[
+     Slot["angletype"], 
+     Slot["alpha"], 
+     Slot["choice"]], ImageSize -> 394]& ],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.798259039248576*^9, 3.798259274353302*^9, {3.798259493470513*^9, 
+   3.7982594975703993`*^9}, 3.79826063829884*^9, 3.7982607259479713`*^9, 
+   3.798260840025755*^9, 3.7982609279892473`*^9, 3.798261117915611*^9, 
+   3.7982620909018536`*^9, 3.798262660469148*^9, 3.79826272675381*^9, 
+   3.7982627989887333`*^9, 3.798262837014366*^9, 3.7982629292059793`*^9, 
+   3.7982629896115255`*^9, 3.7982630447269835`*^9, 3.798263097179308*^9, {
+   3.798263148854821*^9, 3.798263177116933*^9}, 3.7982632998078156`*^9, {
+   3.798263346292903*^9, 3.798263391391961*^9}, {3.7982635696991987`*^9, 
+   3.7982636202409935`*^9}, {3.7982636674290514`*^9, 3.798263693112311*^9}, 
+   3.798263869287247*^9, 3.7982644912942324`*^9, 3.798264570458641*^9, 
+   3.798264619493534*^9, {3.798264669693329*^9, 3.798264757511136*^9}, 
+   3.798264812491523*^9, {3.798264883686668*^9, 3.798264939430563*^9}, 
+   3.7982654478203363`*^9, 3.798266024421381*^9, 3.798266087642112*^9, 
+   3.798266221636322*^9, {3.7982663920163546`*^9, 3.798266418770228*^9}, 
+   3.798266479643295*^9, 3.79834574568571*^9, 3.7983464506962557`*^9, 
+   3.798346603584689*^9, 3.798346739677742*^9, 3.7983468550394936`*^9, 
+   3.7983469278226323`*^9, {3.7983471532737856`*^9, 3.7983471809138856`*^9}, {
+   3.7983473277681847`*^9, 3.7983473544838257`*^9}, 3.798347512921256*^9, 
+   3.798347683876658*^9, 3.7983478049811316`*^9, {3.7983478634143066`*^9, 
+   3.7983478918876753`*^9}, 3.798348552327824*^9, 3.7983488066954*^9, {
+   3.7983511481779113`*^9, 3.7983511623511677`*^9}, {3.798351285822011*^9, 
+   3.798351361670989*^9}, 3.798352364218618*^9, 3.7983552744389725`*^9, 
+   3.798355348450013*^9, 3.7983555333850174`*^9, {3.7983558978093433`*^9, 
+   3.7983559229182363`*^9}, 3.7983561451398983`*^9, 3.7983562356726494`*^9},
+ CellLabel->"Out[42]=",ExpressionUUID->"c4ab3e53-0e24-4f08-9008-884cfeeab983"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"?", "circleAngleGraphicsElements"}], "\[IndentingNewLine]", 
+ RowBox[{"?", "Point"}]}], "Input",
+ CellChangeTimes->{{3.7983552811062436`*^9, 3.798355281357437*^9}, {
+  3.798355360686479*^9, 3.798355394626941*^9}},
+ CellLabel->"In[43]:=",ExpressionUUID->"0db97462-34c1-41e3-beaf-d81e064bc446"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = True, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"circleAngleGraphicsElements[type_, angle_, choice_] \
+ritorna una lista di oggetti grafici contenente:\\n- La circonferenza \
+goniometrica su cui vengono costruiti i triangoli\\n- Due ToolTips che \
+mostrano le dimensioni dell'angolo al centro e di quello alla circonferenza, \
+rispettivamente\\n- Il triangolo AOB dove O \[EGrave] il centro della \
+circonferenza e A e B formano un angolo al centro che rispetta i criteri \
+passati come parametri\\n- Il triangolo ABC inscritto nella circonferenza che \
+insiste sullo stesso arco AB e rispetta i criteri passati come \
+parametri.\\nParametri:\\t\\n- \\\"type\\\" definisce il tipo di angolo che \
+\\\"angle\\\" rappresenta: 1\[Rule]angolo al centro, 2\[Rule]angolo alla \
+circonferenza\\n- \\\"angle\\\" rappresenta la grandezza dell'angolo \
+specificato\\n- \\\"choice\\\" specifica se il centro della circonferenza \
+deve essere interno o esterno al triangolo \\\"ABC\\\": 1\[Rule]esterno , 2\
+\[Rule]interno.\\nNOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\
+\[AGrave] ritornata una lista con un unico elemento che rappresenta un \
+messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le \
+condizioni imposte.\\n\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False, False, False, False, 
+                False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Definitions\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Definitions\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Definitions", "Tooltip"]& ], GridBox[{
+                    {
+                    RowBox[{
+                    RowBox[{"circleAngleGraphicsElements", "[", 
+                    RowBox[{"type_", ",", "angle_", ",", "choice_"}], "]"}], ":=", 
+                    RowBox[{"Module", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    "AngleCircBackend`Private`alpha", ",", 
+                    "AngleCircBackend`Private`aAngle", ",", 
+                    "AngleCircBackend`Private`cAngle", ",", 
+                    "AngleCircBackend`Private`points", ",", 
+                    "AngleCircBackend`Private`choices", ",", 
+                    "AngleCircBackend`Private`radiantsAngle"}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"AngleCircBackend`Private`radiantsAngle", "=", 
+                    RowBox[{"angle", " ", "\[Degree]"}]}], ";", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Mod", "[", 
+                    RowBox[{"AngleCircBackend`Private`radiantsAngle", ",", 
+                    FractionBox["\[Pi]", 
+                    RowBox[{"type", " ", "1.`"}]]}], "]"}], "\[Equal]", "0"}],
+                     "&&", 
+                    RowBox[{"choice", "\[Equal]", "1"}]}], ",", 
+                    RowBox[{"Return", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "Text", "[", "\<\"Impossibile disengare.\"\>", "]"}], 
+                    "}"}], "]"}]}], "]"}], ";", 
+                    RowBox[{"AngleCircBackend`Private`alpha", "=", 
+                    RowBox[{
+                    RowBox[{"type", " ", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "AngleCircBackend`Private`resto", "\[Equal]", "0"}], ",", 
+                    FractionBox["\[Pi]", 
+                    RowBox[{"type", " ", "1.`"}]], ",", "True", ",", 
+                    "AngleCircBackend`Private`resto"}], "]"}]}], "/.", 
+                    "\[VeryThinSpace]", 
+                    RowBox[{"AngleCircBackend`Private`resto", "\[Rule]", 
+                    RowBox[{"Mod", "[", 
+                    RowBox[{"AngleCircBackend`Private`radiantsAngle", ",", 
+                    FractionBox["\[Pi]", 
+                    RowBox[{"type", " ", "1.`"}]]}], "]"}]}]}]}], ";", 
+                    RowBox[{"AngleCircBackend`Private`aAngle", "=", 
+                    RowBox[{"RandomReal", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "\[Pi]"}], "}"}], "]"}]}], ";", 
+                    RowBox[{"AngleCircBackend`Private`points", "=", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"AngleCircBackend`Private`A", ",", 
+                    RowBox[{
+                    RowBox[{
+                    "RotationMatrix", "[", "AngleCircBackend`Private`alpha", 
+                    "]"}], ".", "AngleCircBackend`Private`A"}]}], "}"}], "/.",
+                     "\[VeryThinSpace]", 
+                    RowBox[{"AngleCircBackend`Private`A", "\[Rule]", 
+                    RowBox[{
+                    RowBox[{"CirclePoints", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"1", ",", "AngleCircBackend`Private`aAngle"}], 
+                    "}"}], ",", "1"}], "]"}], "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}]}]}]}], ";", 
+                    RowBox[{"AngleCircBackend`Private`cAngle", "=", 
+                    RowBox[{"Which", "[", 
+                    RowBox[{
+                    RowBox[{"choice", "\[Equal]", "1"}], ",", 
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"RandomChoice", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], ",", "1"}], "}"}], "]"}], " ", 
+                    RowBox[{"RandomReal", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"AngleCircBackend`Private`alpha", "+", "0.2`"}], 
+                    ",", 
+                    RowBox[{
+                    RowBox[{"-", "AngleCircBackend`Private`alpha"}], "+", 
+                    RowBox[{"2", " ", "\[Pi]"}]}]}], "}"}], "]"}]}], ",", 
+                    RowBox[{"choice", "\[Equal]", "2"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    FractionBox["1", "2"], " ", 
+                    RowBox[{"RandomReal", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "AngleCircBackend`Private`alpha"}], ",", 
+                    "AngleCircBackend`Private`alpha"}], "}"}], "]"}]}], "+", 
+                    "\[Pi]"}]}], "]"}]}], ";", 
+                    RowBox[{"AppendTo", "[", 
+                    RowBox[{"AngleCircBackend`Private`points", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    "RotationMatrix", "[", "AngleCircBackend`Private`cAngle", 
+                    "]"}], ".", "AngleCircBackend`Private`middlePoint"}], "/.",
+                     "\[VeryThinSpace]", 
+                    RowBox[{"AngleCircBackend`Private`middlePoint", "\[Rule]", 
+                    RowBox[{
+                    RowBox[{"RotationMatrix", "[", 
+                    FractionBox["AngleCircBackend`Private`alpha", "2"], "]"}],
+                     ".", 
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "1", "\[RightDoubleBracket]"}]}]}]}]}], "]"}], ";", 
+                    RowBox[{"Return", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Circle", "[", 
+                    RowBox[{
+                    "AngleCircBackend`Private`circleCenter", ",", "1"}], 
+                    "]"}], ",", 
+                    RowBox[{
+                    "Point", "[", "AngleCircBackend`Private`circleCenter", 
+                    "]"}], ",", 
+                    RowBox[{
+                    "Point", "/@", "AngleCircBackend`Private`points"}], ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Opacity", "[", "0.3`", "]"}], ",", "Blue", ",", 
+                    RowBox[{"Triangle", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "1", "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "2", "\[RightDoubleBracket]"}], ",", 
+                    "AngleCircBackend`Private`circleCenter"}], "}"}], "]"}], 
+                    ",", "Red", ",", 
+                    RowBox[{
+                    "Triangle", "[", "AngleCircBackend`Private`points", 
+                    "]"}]}], "}"}], ",", 
+                    RowBox[{"Line", "[", 
+                    RowBox[{"Append", "[", 
+                    RowBox[{"AngleCircBackend`Private`points", ",", 
+                    RowBox[{"AngleCircBackend`Private`points", 
+                    "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+                    "]"}], "]"}], ",", 
+                    RowBox[{"Line", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "1", "\[RightDoubleBracket]"}], ",", 
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "2", "\[RightDoubleBracket]"}], ",", 
+                    "AngleCircBackend`Private`circleCenter", ",", 
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "1", "\[RightDoubleBracket]"}]}], "}"}], "]"}], ",", 
+                    RowBox[{"Tooltip", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"Red", ",", "Thick", ",", 
+                    RowBox[{"Circle", "[", 
+                    RowBox[{
+                    "AngleCircBackend`Private`circleCenter", ",", "0.2`", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"AngleCircBackend`Private`aAngle", ",", 
+                    RowBox[{
+                    "AngleCircBackend`Private`aAngle", "+", 
+                    "AngleCircBackend`Private`alpha"}]}], "}"}]}], "]"}]}], 
+                    "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"ToString", "[", 
+                    RowBox[{"NumberForm", "[", 
+                    RowBox[{
+                    
+                    FractionBox["AngleCircBackend`Private`alpha", 
+                    "\[Degree]"], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"3", ",", "2"}], "}"}]}], "]"}], "]"}], 
+                    "<>", "\<\"\[Degree]\"\>"}]}], "]"}], ",", 
+                    RowBox[{"Tooltip", "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{"Blue", ",", "Thick", ",", 
+                    RowBox[{"Circle", "[", 
+                    RowBox[{
+                    RowBox[{"AngleCircBackend`Private`points", 
+                    "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+                    ",", "0.2`", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"AngleCircBackend`Private`angletemp", ",", 
+                    RowBox[{"AngleCircBackend`Private`angletemp", "+", 
+                    FractionBox["AngleCircBackend`Private`alpha", "2"]}]}], 
+                    "}"}]}], "]"}]}], "}"}], ",", 
+                    RowBox[{
+                    RowBox[{"ToString", "[", 
+                    RowBox[{"NumberForm", "[", 
+                    RowBox[{
+                    FractionBox["AngleCircBackend`Private`alpha", 
+                    RowBox[{"2.`", " ", "\[Degree]"}]], ",", 
+                    RowBox[{"{", 
+                    RowBox[{"3", ",", "2"}], "}"}]}], "]"}], "]"}], 
+                    "<>", "\<\"\[Degree]\"\>"}]}], "]"}], ",", 
+                    RowBox[{"MapIndexed", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Text", "[", 
+                    RowBox[{
+                    RowBox[{"FromCharacterCode", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "#2", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], "+", "64"}], "]"}], ",", "#1", 
+                    ",", "AngleCircBackend`Private`offset"}], "]"}], "&"}], 
+                    ",", "AngleCircBackend`Private`points"}], "]"}], ",", 
+                    RowBox[{"Text", "[", 
+                    
+                    RowBox[{"\<\"O\"\>", ",", 
+                    "AngleCircBackend`Private`circleCenter", ",", 
+                    "AngleCircBackend`Private`offset"}], "]"}]}], "}"}], "/.",
+                     "\[VeryThinSpace]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"AngleCircBackend`Private`angletemp", "\[Rule]", 
+                    RowBox[{"PlanarAngle", "[", 
+                    RowBox[{
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "3", "\[RightDoubleBracket]"}], "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "3", "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", 
+                    "1", "\[RightDoubleBracket]"}], "+", "1"}], ",", 
+                    RowBox[{
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "3", "\[RightDoubleBracket]"}], "\[LeftDoubleBracket]", 
+                    "2", "\[RightDoubleBracket]"}]}], "}"}], ",", 
+                    RowBox[{
+                    "AngleCircBackend`Private`points", "\[LeftDoubleBracket]",
+                     "1", "\[RightDoubleBracket]"}]}], "}"}]}], "]"}]}], ",", 
+                    RowBox[{
+                    "AngleCircBackend`Private`circleCenter", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"0", ",", "0"}], "}"}]}], ",", 
+                    RowBox[{"AngleCircBackend`Private`offset", "\[Rule]", 
+                    RowBox[{"{", 
+                    RowBox[{"1.5`", ",", 
+                    RowBox[{"-", "1.5`"}]}], "}"}]}]}], "}"}]}], "]"}]}]}], 
+                    "]"}]}]}
+                    },
+                    DefaultBaseStyle->"Column",
+                    GridBoxAlignment->{"Columns" -> {{Left}}},
+                    
+                    GridBoxItemSize->{
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Attributes\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Attributes\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Attributes", "Tooltip"]& ], 
+                   RowBox[{"{", "Protected", "}"}]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], \
+"\<\"AngleCircBackend`circleAngleGraphicsElements\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->6], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"],
+               ImageSizeCache->{10., {2., 8.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"],
+               ImageSizeCache->{10., {2., 8.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"circleAngleGraphicsElements[type_, angle_, choice_] \
+ritorna una lista di oggetti grafici contenente:\\n- La circonferenza \
+goniometrica su cui vengono costruiti i triangoli\\n- Due ToolTips che \
+mostrano le dimensioni dell'angolo al centro e di quello alla circonferenza, \
+rispettivamente\\n- Il triangolo AOB dove O \[EGrave] il centro della \
+circonferenza e A e B formano un angolo al centro che rispetta i criteri \
+passati come parametri\\n- Il triangolo ABC inscritto nella circonferenza che \
+insiste sullo stesso arco AB e rispetta i criteri passati come \
+parametri.\\nParametri:\\t\\n- \\\"type\\\" definisce il tipo di angolo che \
+\\\"angle\\\" rappresenta: 1\[Rule]angolo al centro, 2\[Rule]angolo alla \
+circonferenza\\n- \\\"angle\\\" rappresenta la grandezza dell'angolo \
+specificato\\n- \\\"choice\\\" specifica se il centro della circonferenza \
+deve essere interno o esterno al triangolo \\\"ABC\\\": 1\[Rule]esterno , 2\
+\[Rule]interno.\\nNOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\
+\[AGrave] ritornata una lista con un unico elemento che rappresenta un \
+messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le \
+condizioni imposte.\\n\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {2., 8.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {2., 8.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "circleAngleGraphicsElements[type_, angle_, choice_] ritorna una lista di \
+oggetti grafici contenente:\n- La circonferenza goniometrica su cui vengono \
+costruiti i triangoli\n- Due ToolTips che mostrano le dimensioni dell'angolo \
+al centro e di quello alla circonferenza, rispettivamente\n- Il triangolo AOB \
+dove O \[EGrave] il centro della circonferenza e A e B formano un angolo al \
+centro che rispetta i criteri passati come parametri\n- Il triangolo ABC \
+inscritto nella circonferenza che insiste sullo stesso arco AB e rispetta i \
+criteri passati come parametri.\nParametri:\t\n- \"type\" definisce il tipo \
+di angolo che \"angle\" rappresenta: 1\[Rule]angolo al centro, 2\[Rule]angolo \
+alla circonferenza\n- \"angle\" rappresenta la grandezza dell'angolo \
+specificato\n- \"choice\" specifica se il centro della circonferenza deve \
+essere interno o esterno al triangolo \"ABC\": 1\[Rule]esterno , \
+2\[Rule]interno.\nNOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\
+\[AGrave] ritornata una lista con un unico elemento che rappresenta un \
+messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le \
+condizioni imposte.\n", "Documentation" -> None, "OwnValues" -> None, 
+    "UpValues" -> None, "DownValues" -> 
+    Information`InformationValueForm[
+     DownValues, AngleCircBackend`circleAngleGraphicsElements, {
+      AngleCircBackend`circleAngleGraphicsElements[
+         Pattern[AngleCircBackend`type, 
+          Blank[]], 
+         Pattern[AngleCircBackend`angle, 
+          Blank[]], 
+         Pattern[AngleCircBackend`choice, 
+          Blank[]]] :> 
+       Module[{AngleCircBackend`Private`alpha, 
+          AngleCircBackend`Private`aAngle, AngleCircBackend`Private`cAngle, 
+          AngleCircBackend`Private`points, AngleCircBackend`Private`choices, 
+          AngleCircBackend`Private`radiantsAngle}, 
+         AngleCircBackend`Private`radiantsAngle = 
+          AngleCircBackend`angle Degree; If[
+           And[
+           Mod[AngleCircBackend`Private`radiantsAngle, Pi/(
+              AngleCircBackend`type 1.)] == 0, AngleCircBackend`choice == 1], 
+           Return[{
+             Text["Impossibile disengare."]}]]; 
+         AngleCircBackend`Private`alpha = 
+          ReplaceAll[
+           AngleCircBackend`type 
+            Which[AngleCircBackend`Private`resto == 0, Pi/(
+              AngleCircBackend`type 1.), True, 
+              AngleCircBackend`Private`resto], AngleCircBackend`Private`resto -> 
+            Mod[
+             AngleCircBackend`Private`radiantsAngle, Pi/(
+              AngleCircBackend`type 1.)]]; 
+         AngleCircBackend`Private`aAngle = RandomReal[{0, Pi}]; 
+         AngleCircBackend`Private`points = 
+          ReplaceAll[{AngleCircBackend`Private`A, 
+             Dot[
+              RotationMatrix[AngleCircBackend`Private`alpha], 
+              AngleCircBackend`Private`A]}, AngleCircBackend`Private`A -> Part[
+              CirclePoints[{1, AngleCircBackend`Private`aAngle}, 1], 1]]; 
+         AngleCircBackend`Private`cAngle = 
+          Which[AngleCircBackend`choice == 
+            1, (RandomChoice[{-1, 1}] 
+             RandomReal[{
+               AngleCircBackend`Private`alpha + 
+                0.2, -AngleCircBackend`Private`alpha + 2 Pi}])/2, 
+            AngleCircBackend`choice == 2, 
+            RandomReal[{-AngleCircBackend`Private`alpha, 
+                AngleCircBackend`Private`alpha}]/2 + Pi]; 
+         AppendTo[AngleCircBackend`Private`points, 
+           ReplaceAll[
+            Dot[
+             RotationMatrix[AngleCircBackend`Private`cAngle], 
+             AngleCircBackend`Private`middlePoint], 
+            AngleCircBackend`Private`middlePoint -> Dot[
+              RotationMatrix[AngleCircBackend`Private`alpha/2], 
+              Part[AngleCircBackend`Private`points, 1]]]]; Return[
+           ReplaceAll[{
+             Circle[AngleCircBackend`Private`circleCenter, 1], 
+             Point[AngleCircBackend`Private`circleCenter], 
+             Map[Point, AngleCircBackend`Private`points], {
+              Opacity[0.3], Blue, 
+              Triangle[{
+                Part[AngleCircBackend`Private`points, 1], 
+                Part[AngleCircBackend`Private`points, 2], 
+                AngleCircBackend`Private`circleCenter}], Red, 
+              Triangle[AngleCircBackend`Private`points]}, 
+             Line[
+              Append[AngleCircBackend`Private`points, 
+               Part[AngleCircBackend`Private`points, 1]]], 
+             Line[{
+               Part[AngleCircBackend`Private`points, 1], 
+               Part[AngleCircBackend`Private`points, 2], 
+               AngleCircBackend`Private`circleCenter, 
+               Part[AngleCircBackend`Private`points, 1]}], 
+             Tooltip[{Red, Thick, 
+               Circle[
+               AngleCircBackend`Private`circleCenter, 0.2, {
+                AngleCircBackend`Private`aAngle, 
+                 AngleCircBackend`Private`aAngle + 
+                 AngleCircBackend`Private`alpha}]}, 
+              StringJoin[
+               ToString[
+                NumberForm[AngleCircBackend`Private`alpha/Degree, {3, 2}]], 
+               "\[Degree]"]], 
+             Tooltip[{Blue, Thick, 
+               Circle[
+                Part[AngleCircBackend`Private`points, 3], 0.2, {
+                AngleCircBackend`Private`angletemp, 
+                 AngleCircBackend`Private`angletemp + 
+                 AngleCircBackend`Private`alpha/2}]}, 
+              StringJoin[
+               ToString[
+                NumberForm[
+                AngleCircBackend`Private`alpha/(2. Degree), {3, 2}]], 
+               "\[Degree]"]], 
+             MapIndexed[Text[
+               FromCharacterCode[Part[#2, 1] + 64], #, 
+               AngleCircBackend`Private`offset]& , 
+              AngleCircBackend`Private`points], 
+             Text[
+             "O", AngleCircBackend`Private`circleCenter, 
+              AngleCircBackend`Private`offset]}, {
+            AngleCircBackend`Private`angletemp -> 
+             PlanarAngle[Part[AngleCircBackend`Private`points, 3] -> {{Part[
+                    Part[AngleCircBackend`Private`points, 3], 1] + 1, 
+                  Part[
+                   Part[AngleCircBackend`Private`points, 3], 2]}, 
+                 Part[AngleCircBackend`Private`points, 1]}], 
+             AngleCircBackend`Private`circleCenter -> {0, 0}, 
+             AngleCircBackend`Private`offset -> {1.5, -1.5}}]]]}], 
+    "SubValues" -> None, "DefaultValues" -> None, "NValues" -> None, 
+    "FormatValues" -> None, "Options" -> None, "Attributes" -> {Protected}, 
+    "FullName" -> "AngleCircBackend`circleAngleGraphicsElements"], 
+   False]]], "Output",
+ CellChangeTimes->{
+  3.7983552832730575`*^9, {3.7983553488295574`*^9, 3.798355395327956*^9}, 
+   3.798355534174202*^9, {3.7983558982754803`*^9, 3.79835592349268*^9}, 
+   3.7983561458713856`*^9, 3.7983562366811695`*^9},
+ CellLabel->"Out[43]=",ExpressionUUID->"a2dda078-2a8f-4d37-a0f9-9da56f7d1fe1"],
+
+Cell[BoxData[
+ InterpretationBox[
+  StyleBox[
+   FrameBox[
+    DynamicModuleBox[{System`InformationDump`open$$ = False, 
+     System`InformationDump`mouseOver$$ = False}, 
+     PaneSelectorBox[{True->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False,
+             BaseStyle -> None],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox[
+           PaneBox[
+            TooltipBox[
+             ButtonBox[
+              PaneSelectorBox[{False->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIcon"]], True->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIconHot"]]}, Dynamic[
+                CurrentValue["MouseOver"]]],
+              Appearance->None,
+              BaseStyle->"Link",
+              ButtonData->"paclet:ref/Point",
+              ButtonNote->"paclet:ref/Point"],
+             "\"paclet:ref/Point\""],
+            FrameMargins->{{0, 4}, {0, 2}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Point\\\", \\\"[\\\", \
+StyleBox[\\\"p\\\", \\\"TI\\\"], \\\"]\\\"}]\\) is a graphics and geometry \
+primitive that represents a point at \\!\\(\\*StyleBox[\\\"p\\\", \\\"TI\\\"]\
+\\). \\n\\!\\(\\*RowBox[{\\\"Point\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\"]\\\"}]\\) represents a collection of points. \
+\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          PaneBox[GridBox[{
+             {
+              
+              DynamicModuleBox[{System`InformationDump`open$$ = {
+               False, False, False, False, False, False, False, False, False, 
+                False, False, False}}, 
+               StyleBox[GridBox[{
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Documentation\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Documentation\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Documentation", "Tooltip"]& ], 
+                   TemplateBox[{
+                    
+                    TemplateBox[{
+                    "\"Local \[RightGuillemet]\"", "paclet:ref/Point", 
+                    "paclet:ref/Point", "Link", {
+                    RGBColor[0.9686274509803922, 0.4666666666666667, 0.]}, 
+                    BaseStyle -> {
+                    RGBColor[0.0784313725490196, 0.1568627450980392, 0.6]}}, 
+                    "HyperlinkTemplate"], "\"  \"", 
+                    StyleBox[
+                    "\"|\"", "InformationRowLabel", StripOnInput -> False], 
+                    "\"  \"", 
+                    TemplateBox[{"\"Web \[RightGuillemet]\"", {
+                    URL[
+                    "http://reference.wolfram.com/language/ref/Point.html"], 
+                    None}, "http://reference.wolfram.com/language/ref/Point.\
+html", "Hyperlink", {
+                    RGBColor[0.9686274509803922, 0.4666666666666667, 0.]}, 
+                    BaseStyle -> {
+                    RGBColor[0.0784313725490196, 0.1568627450980392, 0.6]}}, 
+                    "HyperlinkTemplate"]},
+                    "RowDefault"]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Options\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Options\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Options", "Tooltip"]& ], 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"VertexColors", "\[Rule]", "None"}], ",", 
+                    RowBox[{"VertexNormals", "\[Rule]", "None"}]}], "}"}]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Attributes\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"Attributes\"",
+                    TooltipStyle->"TextStyling"],
+                    Annotation[#, "Attributes", "Tooltip"]& ], 
+                   RowBox[{"{", 
+                    RowBox[{"Protected", ",", "ReadProtected"}], "}"}]},
+                  {
+                   TagBox[
+                    TooltipBox[
+                    StyleBox["\<\" Full Name\"\>", "InformationRowLabel",
+                    StripOnInput->False],
+                    "\"FullName\"",
+                    TooltipStyle->"TextStyling"],
+                    
+                    Annotation[#, "FullName", 
+                    "Tooltip"]& ], "\<\"System`Point\"\>"}
+                 },
+                 AutoDelete->False,
+                 GridBoxAlignment->{"Columns" -> {Right, Left}},
+                 GridBoxDividers->None,
+                 GridBoxItemSize->{"Columns" -> {Automatic, Automatic}},
+                 GridBoxSpacings->{"Columns" -> {
+                    Offset[0.27999999999999997`], {
+                    Offset[0.5599999999999999]}, 
+                    Offset[0.27999999999999997`]}, "Rows" -> {
+                    Offset[0.2], {
+                    Offset[0.8]}, 
+                    Offset[0.2]}}], "DialogStyle",
+                StripOnInput->False],
+               DynamicModuleValues:>{}]}
+            },
+            DefaultBaseStyle->"Column",
+            GridBoxAlignment->{"Columns" -> {{Left}}},
+            GridBoxDividers->{"Columns" -> {{False}}, "Rows" -> {{False}}},
+            
+            GridBoxItemSize->{
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+            GridBoxSpacings->{"Columns" -> {
+                Offset[0.27999999999999997`], {
+                 Offset[0.5599999999999999]}, 
+                Offset[0.27999999999999997`]}, "Rows" -> {
+                Offset[0.2], {
+                 Offset[3.6]}, 
+                Offset[0.2]}}],
+           FrameMargins->6], ""},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpener"]], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "UpPointerOpenerHot"]]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, False],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"], False->
+      TagBox[GridBox[{
+         {
+          ItemBox[
+           PaneBox[
+            StyleBox["\<\" Symbol\"\>", "InformationTitleText",
+             StripOnInput->False],
+            FrameMargins->{{4, 0}, {-1, 1}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], 
+          ItemBox[
+           PaneBox[
+            TooltipBox[
+             ButtonBox[
+              PaneSelectorBox[{False->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIcon"],
+                ImageSizeCache->{13., {-1., 14.}}], True->
+               
+               DynamicBox[FEPrivate`FrontEndResource[
+                "FEBitmaps", "InformationHelpIconHot"],
+                ImageSizeCache->{13., {-1., 14.}}]}, Dynamic[
+                CurrentValue["MouseOver"]]],
+              Appearance->None,
+              BaseStyle->"Link",
+              ButtonData->"paclet:ref/Point",
+              ButtonNote->"paclet:ref/Point"],
+             "\"paclet:ref/Point\""],
+            FrameMargins->{{0, 4}, {0, 2}}],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           PaneBox[
+            
+            StyleBox["\<\"\\!\\(\\*RowBox[{\\\"Point\\\", \\\"[\\\", \
+StyleBox[\\\"p\\\", \\\"TI\\\"], \\\"]\\\"}]\\) is a graphics and geometry \
+primitive that represents a point at \\!\\(\\*StyleBox[\\\"p\\\", \\\"TI\\\"]\
+\\). \\n\\!\\(\\*RowBox[{\\\"Point\\\", \\\"[\\\", RowBox[{\\\"{\\\", \
+RowBox[{SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], StyleBox[\\\"1\\\", \
+\\\"TR\\\"]], \\\",\\\", SubscriptBox[StyleBox[\\\"p\\\", \\\"TI\\\"], \
+StyleBox[\\\"2\\\", \\\"TR\\\"]], \\\",\\\", StyleBox[\\\"\[Ellipsis]\\\", \\\
+\"TR\\\"]}], \\\"}\\\"}], \\\"]\\\"}]\\) represents a collection of points. \
+\"\>", "InformationUsageText",
+             StripOnInput->False,
+             LineSpacing->{1.5, 1.5, 3.}],
+            FrameMargins->{{10, 10}, {8, 10}}],
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False], 
+          ItemBox["\<\"\"\>",
+           BaseStyle->"InformationUsageSubtitleBackground",
+           StripOnInput->False]},
+         {
+          ItemBox[
+           TagBox[
+            ButtonBox[
+             PaneSelectorBox[{False->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpener"],
+               ImageSizeCache->{10., {2., 8.}}], True->
+              
+              DynamicBox[FEPrivate`FrontEndResource[
+               "FEBitmaps", "DownPointerOpenerHot"],
+               ImageSizeCache->{10., {2., 8.}}]}, Dynamic[
+              System`InformationDump`mouseOver$$]],
+             Alignment->Left,
+             Appearance->{"Default" -> None},
+             
+             ButtonFunction:>FEPrivate`Set[
+              System`InformationDump`open$$, True],
+             Evaluator->Automatic,
+             FrameMargins->{{9, 0}, {0, 0}},
+             ImageMargins->0,
+             ImageSize->Full,
+             Method->"Preemptive"],
+            
+            EventHandlerTag[{
+             "MouseEntered" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, True], 
+              "MouseExited" :> 
+              FEPrivate`Set[System`InformationDump`mouseOver$$, False], 
+              Method -> "Preemptive", PassEventsDown -> Automatic, 
+              PassEventsUp -> True}]],
+           BaseStyle->"InformationTitleBackground",
+           StripOnInput->False], "\[SpanFromLeft]"}
+        },
+        AutoDelete->False,
+        FrameStyle->Directive[
+          GrayLevel[0.8], 
+          Thickness[Tiny]],
+        GridBoxAlignment->{"Columns" -> {Left, Right}, "Rows" -> {{Center}}},
+        GridBoxDividers->{
+         "Columns" -> {{None}}, "Rows" -> {False, {True}, False}},
+        GridBoxItemSize->{
+         "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+       "Grid"]}, Dynamic[System`InformationDump`open$$],
+      BaselinePosition->Baseline,
+      FrameMargins->0,
+      ImageSize->Automatic],
+     DynamicModuleValues:>{}],
+    BaseStyle->"InformationGridFrame",
+    StripOnInput->False], "InformationGridPlain",
+   StripOnInput->False],
+  InformationData[
+   Association[
+   "ObjectType" -> "Symbol", "Usage" -> 
+    "\!\(\*RowBox[{\"Point\", \"[\", StyleBox[\"p\", \"TI\"], \"]\"}]\) is a \
+graphics and geometry primitive that represents a point at \!\(\*StyleBox[\"p\
+\", \"TI\"]\). \n\!\(\*RowBox[{\"Point\", \"[\", RowBox[{\"{\", \
+RowBox[{SubscriptBox[StyleBox[\"p\", \"TI\"], StyleBox[\"1\", \"TR\"]], \
+\",\", SubscriptBox[StyleBox[\"p\", \"TI\"], StyleBox[\"2\", \"TR\"]], \",\", \
+StyleBox[\"\[Ellipsis]\", \"TR\"]}], \"}\"}], \"]\"}]\) represents a \
+collection of points. ", "Documentation" -> 
+    Association[
+     "Local" -> "paclet:ref/Point", "Web" -> 
+      "http://reference.wolfram.com/language/ref/Point.html"], "OwnValues" -> 
+    None, "UpValues" -> None, "DownValues" -> None, "SubValues" -> None, 
+    "DefaultValues" -> None, "NValues" -> None, "FormatValues" -> None, 
+    "Options" -> {VertexColors -> None, VertexNormals -> None}, 
+    "Attributes" -> {Protected, ReadProtected}, "FullName" -> "System`Point"],
+    False]]], "Output",
+ CellChangeTimes->{
+  3.7983552832730575`*^9, {3.7983553488295574`*^9, 3.798355395327956*^9}, 
+   3.798355534174202*^9, {3.7983558982754803`*^9, 3.79835592349268*^9}, 
+   3.7983561458713856`*^9, 3.7983562367478547`*^9},
+ CellLabel->"Out[44]=",ExpressionUUID->"d6c15228-477d-4ebe-a044-820fd5b683b9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\[Section]"], "Input",
+ CellChangeTimes->{3.7983552819961176`*^9},
+ CellLabel->"In[45]:=",ExpressionUUID->"dae9c3c3-c921-4249-b7a7-7b2feb472fb4"],
+
+Cell[BoxData["\[Section]"], "Output",
+ CellChangeTimes->{
+  3.798355348924407*^9, 3.7983555343351727`*^9, {3.798355898405352*^9, 
+   3.7983559236850986`*^9}, 3.7983561461653357`*^9, 3.7983562370115623`*^9},
+ CellLabel->"Out[45]=",ExpressionUUID->"8b7f1547-20f0-4d27-bbff-6a6698d7c03f"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 ScreenStyleEnvironment->"Slideshow Working",
-WindowSize->{1440., 747.75},
-WindowMargins->{{1147.2, Automatic}, {Automatic, -4.8}},
+WindowSize->{1904, 999},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 TaggingRules->{
  "PresenterSettings" -> {
    "ShowNavigationBar" -> True, 
     "SlideBreakStyles" -> {"Title", "Chapter", "Section"}, "ShowSlideBreaks" -> 
     True, "Theme" -> {
      "ThemeName" -> "Default", "FontSetName" -> "Sky", "ColorSetName" -> 
-      "Facet"}, "WindowSize" -> {1141.2, 580.1999999999999}, 
-    "WindowMargins" -> {{-5.3999999999999995`, 
-     5.400000000000091}, {-5.399999999999977, 0.}}, 
+      "Facet"}, "WindowSize" -> {1920, 1027}, 
+    "WindowMargins" -> {{-8, -8}, {-16, 0}}, 
     "Dialogs" -> {"SideNotesPalette" -> 23, "SideNotes" -> 0}, 
     "UserModifications" -> {{
       "Text", CellMargins :> 
@@ -4207,62 +5428,81 @@ ExpressionUUID->"db017220-a2fe-4bc8-9424-1af829269016"
 (*CellTagsOutline
 CellTagsIndex->{
  "SlideShowHeader"->{
-  Cell[580, 22, 136, 2, 60, "SlideShowNavigationBar",ExpressionUUID->"ae861ed8-5fa1-4088-84fd-2651cc7b368a",
+  Cell[580, 22, 136, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"ae861ed8-5fa1-4088-84fd-2651cc7b368a",
    CellTags->"SlideShowHeader"],
-  Cell[1381, 43, 192, 3, 60, "SlideShowNavigationBar",ExpressionUUID->"ee3ea2a1-973b-4e9a-a704-0d8a3c30d1be",
+  Cell[1405, 43, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"2f167a9d-6c77-489f-9eef-02cd3ff19cf4",
    CellTags->"SlideShowHeader"],
-  Cell[66778, 1178, 192, 3, 60, "SlideShowNavigationBar",ExpressionUUID->"78b04ffd-fa5d-4906-afda-8ff82c7f313b",
+  Cell[2452, 75, 192, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"ee3ea2a1-973b-4e9a-a704-0d8a3c30d1be",
    CellTags->"SlideShowHeader"],
-  Cell[106112, 1884, 186, 3, 60, "SlideShowNavigationBar",ExpressionUUID->"f1ea6945-699f-482b-8fd0-06e69f1653cb",
+  Cell[67849, 1210, 192, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"78b04ffd-fa5d-4906-afda-8ff82c7f313b",
    CellTags->"SlideShowHeader"],
-  Cell[223055, 3863, 122, 2, 60, "SlideShowNavigationBar",ExpressionUUID->"d0653087-e6fc-4117-98fa-618b3d35e3ba",
+  Cell[107183, 1916, 186, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"f1ea6945-699f-482b-8fd0-06e69f1653cb",
+   CellTags->"SlideShowHeader"],
+  Cell[224126, 3895, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"d0653087-e6fc-4117-98fa-618b3d35e3ba",
    CellTags->"SlideShowHeader"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"SlideShowHeader", 237620, 4208}
+ {"SlideShowHeader", 295092, 5429}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 136, 2, 60, "SlideShowNavigationBar",ExpressionUUID->"ae861ed8-5fa1-4088-84fd-2651cc7b368a",
+Cell[580, 22, 136, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"ae861ed8-5fa1-4088-84fd-2651cc7b368a",
  CellTags->"SlideShowHeader"],
-Cell[719, 26, 625, 12, 576, "Title",ExpressionUUID->"92508663-47f1-4deb-9615-d2c271e8e453"]
+Cell[719, 26, 649, 12, 761, "Title",ExpressionUUID->"92508663-47f1-4deb-9615-d2c271e8e453"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1381, 43, 192, 3, 60, "SlideShowNavigationBar",ExpressionUUID->"ee3ea2a1-973b-4e9a-a704-0d8a3c30d1be",
+Cell[1405, 43, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"2f167a9d-6c77-489f-9eef-02cd3ff19cf4",
+ CellTags->"SlideShowHeader"],
+Cell[1530, 47, 215, 4, 370, "Title",ExpressionUUID->"5d095342-5eaf-49e9-9dfd-779161eedd68"],
+Cell[1748, 53, 667, 17, 309, "Input",ExpressionUUID->"c3e8d4a2-98af-49d1-bf41-54b443009f01"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2452, 75, 192, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"ee3ea2a1-973b-4e9a-a704-0d8a3c30d1be",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[1598, 50, 363, 6, 117, "Subsection",ExpressionUUID->"7da6da63-6378-4f26-b58d-d42a7250afa4"],
-Cell[1964, 58, 64765, 1114, 390, "Text",ExpressionUUID->"06fd5125-d86c-4b59-b697-521b2d6607db"]
+Cell[2669, 82, 363, 6, 156, "Subsection",ExpressionUUID->"7da6da63-6378-4f26-b58d-d42a7250afa4"],
+Cell[3035, 90, 64765, 1114, 442, "Text",ExpressionUUID->"06fd5125-d86c-4b59-b697-521b2d6607db"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[66778, 1178, 192, 3, 60, "SlideShowNavigationBar",ExpressionUUID->"78b04ffd-fa5d-4906-afda-8ff82c7f313b",
+Cell[67849, 1210, 192, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"78b04ffd-fa5d-4906-afda-8ff82c7f313b",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[66995, 1185, 426, 7, 117, "Subsection",ExpressionUUID->"a59682d6-5f49-4e8b-a85d-e3757d6306b2"],
-Cell[67424, 1194, 38639, 684, 378, "Text",ExpressionUUID->"0a303cac-99e6-4583-b0ef-6402608cad5d"]
+Cell[68066, 1217, 426, 7, 156, "Subsection",ExpressionUUID->"a59682d6-5f49-4e8b-a85d-e3757d6306b2"],
+Cell[68495, 1226, 38639, 684, 431, "Text",ExpressionUUID->"0a303cac-99e6-4583-b0ef-6402608cad5d"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[106112, 1884, 186, 3, 60, "SlideShowNavigationBar",ExpressionUUID->"f1ea6945-699f-482b-8fd0-06e69f1653cb",
+Cell[107183, 1916, 186, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"f1ea6945-699f-482b-8fd0-06e69f1653cb",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[106323, 1891, 506, 8, 117, "Subsection",ExpressionUUID->"6135c970-ad58-4672-ba1b-4f339a749438"],
-Cell[106832, 1901, 116174, 1956, 409, "Text",ExpressionUUID->"cfc41bef-421c-4d66-a482-0f5a380e3a05"]
+Cell[107394, 1923, 506, 8, 156, "Subsection",ExpressionUUID->"6135c970-ad58-4672-ba1b-4f339a749438"],
+Cell[107903, 1933, 116174, 1956, 463, "Text",ExpressionUUID->"cfc41bef-421c-4d66-a482-0f5a380e3a05"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[223055, 3863, 122, 2, 60, "SlideShowNavigationBar",ExpressionUUID->"d0653087-e6fc-4117-98fa-618b3d35e3ba",
+Cell[224126, 3895, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"d0653087-e6fc-4117-98fa-618b3d35e3ba",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[223202, 3869, 356, 6, 117, "Subsection",ExpressionUUID->"a6bca3fb-c161-4f12-a2a7-035c628e3fe4"],
-Cell[223561, 3877, 198, 3, 65, "Text",ExpressionUUID->"cac38220-9db5-44ec-8899-a8a685e8c89c"],
-Cell[223762, 3882, 6400, 151, 1319, "SideNote",ExpressionUUID->"9299fb4e-852e-457b-9c77-7fb6c708cb10"],
-Cell[230165, 4035, 4140, 98, 979, "Input",ExpressionUUID->"cfd1372f-1809-4aef-85d8-aeda3e4a70bc"]
+Cell[224273, 3901, 356, 6, 156, "Subsection",ExpressionUUID->"a6bca3fb-c161-4f12-a2a7-035c628e3fe4"],
+Cell[224632, 3909, 198, 3, 85, "Text",ExpressionUUID->"cac38220-9db5-44ec-8899-a8a685e8c89c"],
+Cell[CellGroupData[{
+Cell[224855, 3916, 13269, 274, 3754, "Input",ExpressionUUID->"cfd1372f-1809-4aef-85d8-aeda3e4a70bc"],
+Cell[238127, 4192, 7653, 155, 380, "Output",ExpressionUUID->"c4ab3e53-0e24-4f08-9008-884cfeeab983"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[245817, 4352, 317, 5, 150, "Input",ExpressionUUID->"0db97462-34c1-41e3-beaf-d81e064bc446"],
+Cell[246137, 4359, 31216, 654, 870, "Output",ExpressionUUID->"a2dda078-2a8f-4d37-a0f9-9da56f7d1fe1"],
+Cell[277356, 5015, 14007, 326, 222, "Output",ExpressionUUID->"d6c15228-477d-4ebe-a044-820fd5b683b9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[291400, 5346, 159, 2, 96, "Input",ExpressionUUID->"dae9c3c3-c921-4249-b7a7-7b2feb472fb4"],
+Cell[291562, 5350, 285, 4, 110, "Output",ExpressionUUID->"8b7f1547-20f0-4d27-bbff-6a6698d7c03f"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }
