@@ -33,43 +33,77 @@ NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata u
 Begin["`Private`"]
 
 circleAngleGraphicsElements[type_, angle_, choice_] := Module[{alpha, aAngle, cAngle, points, choices,radiantsAngle},
+	(* trasforma l'angolo in radianti (per ragionare sempre in radianti) *)
 	radiantsAngle=angle*Degree;
+	
+	(* Controlla che i parametri siano coerenti: se viene richiesto che il centro della circonferenza sia esterno
+    al triangolo inscritto e che l'angolo al centro sia 180\[Degree], allora viene notificata l'impossibilit\[AGrave] di graficarlo *)
 	If[Mod[radiantsAngle, Pi/(type*1.)] == 0 && choice == 1, Return[{Text["Impossibile disegnare."]}]];
+	
+	(* Calcola alpha partendo dai valori di type e angle passati dall'utente.
+	alpha corrisponde all'angolo al centro in radianti ed \[EGrave] sempre minore o uguale a Pi.
+	Considerando che type \[EGrave] "1" se "angle" rappresenta un angolo al centro e "2" se rappresenta un angolo alla circonferenza,
+	si calcola il resto tra l'angolo in radianti ed il massimo valore che l'angolo stesso pu\[OGrave] avere (Pi se type = 1, Pi/2 altrimenti).
+	Calcolato il resto, se questo \[EGrave] zero si ritorna il massimo valore dell'angolo, altrimenti il resto.
+	Il valore ottenuto viene moltiplicato per "type", in questo modo se "angle" rappresenta l'angolo alla circonferenza, viene moltiplicato per 2,
+	altrimenti viene "moltiplicato per 1" (cio\[EGrave] rimane invariato).*)
 	alpha=type*Which[resto == 0, Pi/(type*1.), True, resto]/.resto ->Mod[radiantsAngle,Pi/(type*1.)];
-	aAngle=RandomReal[{0,Pi}];
-
+	
+	(* Viene memorizzato l'angolo che identifica il punto "A".*)
+	aAngle=RandomReal[{0,2*Pi}];
+	
+	(*Calcola i primi due punti.
+	Viene utilizzato "CirclePoints" per trovare il primo punto; viene poi costruita la matrice di rotazione ed applicata 
+	("." rappresenta l'operazione di prodotto tra matrice e vettore) al punto A al fine di ottenere il punto B
+	(che forma con A un angolo di alpha gradi).*)
 	points = {A, RotationMatrix[alpha].A }/.A->CirclePoints[{1, aAngle}, 1][[1]];
 	
+	(*Calcola l'angolo di rotazione da applicare al middlepoint per trovare il punto C coerentemente con la scelta dell'utente.
+	Middlepoint \[EGrave] il punto medio dell'arco AB.*)
 	cAngle=Which[
-		choice==1 (* esterno *),
+		choice==1 (* centro della circonferenza esterno al triangolo ABC *),
+		(* formula iniziale: RandomChoice[{-1, 1}]*(alpha/2 + 0.1 + RandomReal[{0, beta - 0.1}]) con beta = Pi-alpha
+		la formula sottostante equivale a quella sovrastante semplificata
+		*)
 		(RandomChoice[{-1, 1}]*RandomReal[{alpha+0.2,-alpha+2*Pi}])/2,
-		choice==2 (* interno *),
+		
+		choice==2 (* centro della circonferenza interno al triangolo ABC *),
+		(* formula iniziale: alpha/2 + beta + RandomReal[{0, alpha}] con beta = Pi-alpha
+		la formula sottostante equivale a quella sovrastante semplificata*)
 		RandomReal[{-alpha,alpha}]/2+Pi
 	];
+	(* Aggiunge il punto C alla lista dei punti.
+	Viene calcolato moltiplicando la "RotationMatrix" derivata da cAngle applicata al punto medio (ricavato moltiplicando la "RotationMatrix" derivata da alpha/2 ad A)*)
 	AppendTo[points, RotationMatrix[cAngle].middlePoint/.middlePoint->RotationMatrix[alpha/2].points[[1]]];
 
 	Return[
 		{
 			Circle[circleCenter, 1] ,
 			Point[circleCenter],
+			(* Trasforma tutti i punti in elementi grafici*)
 			Point/@points,
-
+			
+			(* Crea due triangoli con opacit\[AGrave] del 30%: uno blu (costruito sui punti ABO (dove O \[EGrave] il centro della circonferenza)), un altro rosso costruito su ABC. *)
 			{
+				EdgeForm[Thin],
 				Opacity[0.3],
 				Blue,
 				Triangle[{points[[1]], points[[2]], circleCenter}],
 				Red, Triangle[points]
 			},
 
-			Line[Append[points,  points[[1]]]], (* triangolo con angolo al centro *)
-			Line[{points[[1]], points[[2]], circleCenter, points[[1]]}], (* triangolo con angolo alla circonferenza *)
-
+			(* Permette di rappresentare graficamente gli angoli al centro e alla circonferenza.
+			Aggiunge, inoltre, un tooltip che mostra esplicitamente l'ampienza dell'angolo in gradi quando il mouse viene posizionato sopra.
+			  *)
 			Tooltip[{Red, Thick, Circle[circleCenter, 0.2, {aAngle, aAngle + alpha}]}, StringJoin[ToString@NumberForm[alpha/Degree, {3, 2}],"\[Degree]"]],
 			Tooltip[{Blue, Thick, Circle[points[[3]], 0.2, {angletemp, angletemp + alpha/2}]}, StringJoin[ToString@NumberForm[alpha/(2.*Degree), {3, 2}],"\[Degree]"]],
-
+			
+			(* Etichetta i punti A, B, C, O visualizzati. *)
 			MapIndexed[Text[FromCharacterCode[#2[[1]] + 64] , #1, offset]&, points], 
 			Text["O", circleCenter,offset]
-		}/.{angletemp -> PlanarAngle[points[[3]] -> {{points[[3]][[1]] + 1, points[[3]][[2]]}, points[[1]]}],circleCenter->{0,0}, offset->{1.5,-1.5}}
+			
+			(* "angleTemp" calcola l'angolo che definisce il punto di partenza per rappresentare graficamente l'angolo alla circonferenza *)
+		}/.{angletemp -> PlanarAngle[points[[3]] -> {{points[[3]][[1]] + 1, points[[3]][[2]]}, points[[1]]}], circleCenter -> {0,0}, offset->{1.5,-1.5}}
 	]
 ]
 End[]
