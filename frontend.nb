@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    246378,       4354]
-NotebookOptionsPosition[    239990,       4222]
-NotebookOutlinePosition[    244167,       4313]
-CellTagsIndexPosition[    244087,       4308]
+NotebookDataLength[    253555,       4498]
+NotebookOptionsPosition[    246880,       4360]
+NotebookOutlinePosition[    251081,       4451]
+CellTagsIndexPosition[    251001,       4446]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -45,11 +45,13 @@ Cell["", "SlideShowNavigationBar",
  CellTags->
   "SlideShowHeader",ExpressionUUID->"2f167a9d-6c77-489f-9eef-02cd3ff19cf4"],
 
-Cell["Valuta sto notebook", "Title",
+Cell["Valuta il notebook", "Title",
  CellChangeTimes->{{3.798259154578437*^9, 3.798259189155301*^9}, {
-  3.7982593187345486`*^9, 
-  3.7982593201029243`*^9}},ExpressionUUID->"5d095342-5eaf-49e9-9dfd-\
+  3.7982593187345486`*^9, 3.7982593201029243`*^9}, {3.7986096324554358`*^9, 
+  3.798609636655566*^9}},ExpressionUUID->"5d095342-5eaf-49e9-9dfd-\
 779161eedd68"],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
@@ -70,7 +72,14 @@ Cell[BoxData[{
   RowBox[{"Print", "[", "\"\<Notebook valutato\>\"", "]"}], ";"}]}], "Input",
  CellChangeTimes->{{3.798259321902649*^9, 3.798259322688817*^9}, 
    3.798260739098462*^9, {3.798523328078131*^9, 3.798523339204523*^9}},
- CellLabel->"In[1]:=",ExpressionUUID->"c3e8d4a2-98af-49d1-bf41-54b443009f01"]
+ CellLabel->"In[17]:=",ExpressionUUID->"c3e8d4a2-98af-49d1-bf41-54b443009f01"],
+
+Cell[BoxData["\<\"Notebook valutato\"\>"], "Print",
+ CellChangeTimes->{3.798610283581809*^9},
+ CellLabel->
+  "During evaluation of \
+In[17]:=",ExpressionUUID->"06c0945a-777c-4eee-8551-cf750114aacc"]
+}, Open  ]]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3914,6 +3923,8 @@ Cell["Calcola l' area e il perimetro dei triangoli ABC e AOB", "Text",
   3.7981139116031322`*^9}},ExpressionUUID->"cac38220-9db5-44ec-8899-\
 a8a685e8c89c"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
@@ -3928,252 +3939,295 @@ Cell[BoxData[
      "eseguire", " ", "alla", " ", "pressione", " ", "del", " ", "pulsante", 
      " ", 
      RowBox[{"\"\<OK\>\"", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
-  RowBox[{"FormPage", "[", "\n", "  ", 
+  RowBox[{
    RowBox[{
-    RowBox[{
-     RowBox[{"FormObject", "[", 
+    RowBox[{"form", " ", ":=", " ", 
+     RowBox[{"FormFunction", "[", "\n", "  ", 
       RowBox[{
-       RowBox[{"{", "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"FormObject", "[", 
          RowBox[{
-         "Definizione", " ", "del", " ", "\"\<RadioButtonBar\>\"", " ", "che",
-           " ", "permette", " ", "la", " ", "scelta", " ", "del", 
-          "\[IndentingNewLine]", "tipo", " ", "di", " ", "angolo", " ", "di", 
-          " ", "cui", " ", 
-          RowBox[{"l", "'"}], "utente", " ", "andr\[AGrave]", " ", "ad", " ", 
-          "inserire", " ", "il", " ", "valore", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"(", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
             RowBox[{
-            "al", " ", "centro", " ", "o", " ", "alla", " ", 
-             "circonferenza"}], ")"}], ".", "\[IndentingNewLine]", 
-           "\[IndentingNewLine]", "Il"}], " ", "tipo", " ", "di", " ", 
-          "angolo", " ", "selezionato", " ", 
-          RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
-          "memorizzato", " ", "nella", " ", "variabile", 
-          "\[IndentingNewLine]", 
-          RowBox[{"\"\<angletype\>\"", "."}]}], " ", "*)"}], 
-        "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
-         RowBox[{"{", 
-          RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], "\n", "   ", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"{", 
-           RowBox[{"\"\<angletype\>\"", ",", " ", "\"\<Tipo di Angolo\>\""}], 
-           "}"}], "\[Rule]", "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-           "Elenco", " ", "dei", " ", "radiobutton", " ", "selezionabili", 
-            "\[IndentingNewLine]", "\t\t\t\t\t", 
-            RowBox[{"{", 
+            "Definizione", " ", "del", " ", "\"\<RadioButtonBar\>\"", " ", 
+             "che", " ", "permette", " ", "la", " ", "scelta", " ", "del", 
+             "\[IndentingNewLine]", "tipo", " ", "di", " ", "angolo", " ", 
+             "di", " ", "cui", " ", 
+             RowBox[{"l", "'"}], "utente", " ", "andr\[AGrave]", " ", "ad", 
+             " ", "inserire", " ", "il", " ", "valore", "\[IndentingNewLine]", 
              RowBox[{
-              RowBox[{"label", "\[Rule]", "value"}], ",", "..."}], "}"}]}], 
-           " ", "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"<|", 
+              RowBox[{"(", 
+               RowBox[{
+               "al", " ", "centro", " ", "o", " ", "alla", " ", 
+                "circonferenza"}], ")"}], ".", "\[IndentingNewLine]", 
+              "\[IndentingNewLine]", "Il"}], " ", "tipo", " ", "di", " ", 
+             "angolo", " ", "selezionato", " ", 
+             RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
+             "memorizzato", " ", "nella", " ", "variabile", 
+             "\[IndentingNewLine]", 
+             RowBox[{"\"\<angletype\>\"", "."}]}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{"{", 
+             RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], "\n", 
+           "   ", 
            RowBox[{
-            RowBox[{"\"\<Interpreter\>\"", "\[Rule]", 
+            RowBox[{
              RowBox[{"{", 
               RowBox[{
-               RowBox[{"\"\<Centro\>\"", "\[Rule]", "1"}], ",", " ", 
-               RowBox[{"\"\<Circonferenza\>\"", "\[Rule]", "2"}]}], "}"}]}], 
+              "\"\<angletype\>\"", ",", " ", "\"\<Tipo di Angolo\>\""}], 
+              "}"}], "\[Rule]", "\[IndentingNewLine]", 
+             RowBox[{"(*", " ", 
+              RowBox[{
+              "Elenco", " ", "dei", " ", "radiobutton", " ", "selezionabili", 
+               "\[IndentingNewLine]", "\t\t\t\t\t", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"label", "\[Rule]", "value"}], ",", "..."}], "}"}]}],
+               " ", "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"<|", 
+              RowBox[{
+               RowBox[{"\"\<Interpreter\>\"", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"\"\<Centro\>\"", "\[Rule]", "1"}], ",", " ", 
+                  RowBox[{"\"\<Circonferenza\>\"", "\[Rule]", "2"}]}], 
+                 "}"}]}], ",", "\[IndentingNewLine]", 
+               RowBox[{"(*", " ", 
+                RowBox[{
+                 RowBox[{
+                 "Qui", " ", "viene", " ", "definito", " ", "il", " ", 
+                  "controller", " ", "da", " ", 
+                  RowBox[{"utilizzare", ":", " ", 
+                   RowBox[{
+                    RowBox[{
+                    "RadioButtonBar", ".", "\[IndentingNewLine]", 
+                    "\"\<##\>\""}], " ", "verr\[AGrave]", " ", 
+                    "sostituito"}]}]}], ",", " ", 
+                 RowBox[{
+                 "alla", " ", "valutazione", " ", "del", " ", "codice"}], ",",
+                  " ", 
+                 RowBox[{"con", " ", 
+                  RowBox[{"l", "'"}], "insieme", "\[IndentingNewLine]", 
+                  "definito", " ", "alla", " ", "riga", " ", "sovrastante", 
+                  " ", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{"dove", " ", "si", " ", "definisce", " ", 
+                    RowBox[{"l", "'"}], "interpreter"}], ")"}], "."}]}]}], 
+                " ", "*)"}], "\[IndentingNewLine]", 
+               RowBox[{"\"\<Control\>\"", "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"RadioButtonBar", "[", 
+                   RowBox[{"##", ",", " ", 
+                    RowBox[{"Appearance", "\[Rule]", "\"\<Vertical\>\""}]}], 
+                   "]"}], " ", "&"}], ")"}]}]}], "|>"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "Definizione", " ", "della", " ", "TextBox", " ", "per", " ", 
+              RowBox[{"l", "'"}], "inserimento", " ", 
+              RowBox[{"dell", "'"}], "ampiezza", "\[IndentingNewLine]", 
+              RowBox[{"dell", "'"}], 
+              RowBox[{
+              "angolo", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+               "Il"}], " ", "valore", " ", "inserito", " ", 
+              RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
+              "memorizzato", " ", "nella", " ", "variabile", 
+              "\[IndentingNewLine]", 
+              RowBox[{"\"\<alpha\>\"", "."}]}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"{", 
+              RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+              "\"\<alpha\>\"", ",", " ", 
+               "\"\<Ampiezza Angolo (gradi - \[Degree])\>\""}], "}"}], 
+             "\[Rule]", "\[IndentingNewLine]", 
+             RowBox[{"(*", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"La", " ", "Built"}], "-", 
+                RowBox[{
+                "in", " ", "\"\<Restricted\>\"", " ", "permette", " ", "di", 
+                 " ", "impostare", " ", "vincoli", " ", 
+                 RowBox[{"sull", "'"}], 
+                 RowBox[{
+                 "input", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+                  "In"}], " ", "particolare"}]}], ",", " ", 
+               RowBox[{
+               "il", " ", "valore", " ", "inserito", " ", "deve", " ", 
+                "essere", " ", "numerico", " ", "e", " ", "compreso", " ", 
+                "tra", "\[IndentingNewLine]", "0", " ", "e", " ", "360."}]}], 
+              " ", "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"<|", 
+              RowBox[{"\"\<Interpreter\>\"", " ", "\[Rule]", " ", 
+               RowBox[{"Restricted", "[", 
+                RowBox[{"\"\<Number\>\"", ",", " ", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", " ", "360"}], "}"}]}], "]"}]}], "|>"}]}], 
             ",", "\[IndentingNewLine]", 
             RowBox[{"(*", " ", 
              RowBox[{
+             "Definizione", " ", "del", " ", "\"\<RadioButtonBar\>\"", " ", 
+              "che", " ", "permette", " ", "la", " ", "scelta", " ", "della", 
+              "\[IndentingNewLine]", "posizione", " ", "del", " ", "centro", 
+              " ", "della", " ", "circonferenza", " ", "rispetto", " ", "al", 
+              " ", "triangolo", "\[IndentingNewLine]", "da", " ", "costruire",
+               " ", 
               RowBox[{
-              "Qui", " ", "viene", " ", "definito", " ", "il", " ", 
-               "controller", " ", "da", " ", 
-               RowBox[{"utilizzare", ":", " ", 
+               RowBox[{"(", 
                 RowBox[{
-                 RowBox[{
-                 "RadioButtonBar", ".", "\[IndentingNewLine]", "\"\<##\>\""}],
-                  " ", "verr\[AGrave]", " ", "sostituito"}]}]}], ",", " ", 
-              RowBox[{"alla", " ", "valutazione", " ", "del", " ", "codice"}],
-               ",", " ", 
-              RowBox[{"con", " ", 
-               RowBox[{"l", "'"}], "insieme", "\[IndentingNewLine]", 
-               "definito", " ", "alla", " ", "riga", " ", "sovrastante", " ", 
-               RowBox[{
-                RowBox[{"(", 
-                 RowBox[{"dove", " ", "si", " ", "definisce", " ", 
-                  RowBox[{"l", "'"}], "interpreter"}], ")"}], "."}]}]}], " ", 
-             "*)"}], "\[IndentingNewLine]", 
-            RowBox[{"\"\<Control\>\"", "\[Rule]", 
-             RowBox[{"(", 
-              RowBox[{
-               RowBox[{"RadioButtonBar", "[", 
-                RowBox[{"##", ",", " ", 
-                 RowBox[{"Appearance", "\[Rule]", "\"\<Vertical\>\""}]}], 
-                "]"}], " ", "&"}], ")"}]}]}], "|>"}]}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Definizione", " ", "della", " ", "TextBox", " ", "per", " ", 
-           RowBox[{"l", "'"}], "inserimento", " ", 
-           RowBox[{"dell", "'"}], "ampiezza", "\[IndentingNewLine]", 
-           RowBox[{"dell", "'"}], 
-           RowBox[{
-           "angolo", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-            "Il"}], " ", "valore", " ", "inserito", " ", 
-           RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
-           "memorizzato", " ", "nella", " ", "variabile", 
-           "\[IndentingNewLine]", 
-           RowBox[{"\"\<alpha\>\"", "."}]}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{"{", 
-           RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"{", 
-           RowBox[{
-           "\"\<alpha\>\"", ",", " ", 
-            "\"\<Ampiezza Angolo (gradi - \[Degree])\>\""}], "}"}], "\[Rule]",
-           "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
+                "interno", " ", "o", " ", "esterno", " ", "al", " ", 
+                 "triangolo", " ", "stesso"}], ")"}], ".", 
+               "\[IndentingNewLine]", "\[IndentingNewLine]", "Il"}], " ", 
+              "tipo", " ", "selezionato", " ", 
+              RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
+              "memorizzato", " ", "nella", " ", "variabile", 
+              "\[IndentingNewLine]", 
+              RowBox[{"\"\<choice\>\"", "."}]}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{"{", 
+              RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], 
+            "\[IndentingNewLine]", 
             RowBox[{
-             RowBox[{"La", " ", "Built"}], "-", 
-             RowBox[{
-             "in", " ", "\"\<Restricted\>\"", " ", "permette", " ", "di", " ",
-               "impostare", " ", "vincoli", " ", 
-              RowBox[{"sull", "'"}], 
-              RowBox[{
-              "input", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-               "In"}], " ", "particolare"}]}], ",", " ", 
-            RowBox[{
-            "il", " ", "valore", " ", "inserito", " ", "deve", " ", "essere", 
-             " ", "numerico", " ", "e", " ", "compreso", " ", "tra", 
-             "\[IndentingNewLine]", "0", " ", "e", " ", "360."}]}], " ", 
-           "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"<|", 
-           RowBox[{"\"\<Interpreter\>\"", " ", "\[Rule]", " ", 
-            RowBox[{"Restricted", "[", 
-             RowBox[{"\"\<Number\>\"", ",", " ", 
-              RowBox[{"{", 
-               RowBox[{"0", ",", " ", "360"}], "}"}]}], "]"}]}], "|>"}]}], 
-         ",", "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Definizione", " ", "del", " ", "\"\<RadioButtonBar\>\"", " ", 
-           "che", " ", "permette", " ", "la", " ", "scelta", " ", "della", 
-           "\[IndentingNewLine]", "posizione", " ", "del", " ", "centro", " ",
-            "della", " ", "circonferenza", " ", "rispetto", " ", "al", " ", 
-           "triangolo", "\[IndentingNewLine]", "da", " ", "costruire", " ", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{
-             "interno", " ", "o", " ", "esterno", " ", "al", " ", "triangolo",
-               " ", "stesso"}], ")"}], ".", "\[IndentingNewLine]", 
-            "\[IndentingNewLine]", "Il"}], " ", "tipo", " ", "selezionato", 
-           " ", 
-           RowBox[{"dall", "'"}], "utente", " ", "\[EGrave]", " ", 
-           "memorizzato", " ", "nella", " ", "variabile", 
-           "\[IndentingNewLine]", 
-           RowBox[{"\"\<choice\>\"", "."}]}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{"{", 
-           RowBox[{"variable", ",", "label"}], "}"}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"{", 
-           RowBox[{
-           "\"\<choice\>\"", ",", " ", 
-            "\"\<Centro della Circonferenza \[EGrave]\>\""}], "}"}], 
-          "\[Rule]", "\[IndentingNewLine]", 
-          RowBox[{"<|", 
-           RowBox[{
-            RowBox[{"\"\<Interpreter\>\"", "\[Rule]", 
              RowBox[{"{", 
               RowBox[{
-               RowBox[{"\"\<Interno\>\"", "\[Rule]", "2"}], ",", " ", 
-               RowBox[{"\"\<Esterno\>\"", "\[Rule]", "1"}]}], "}"}]}], ",", 
-            "\[IndentingNewLine]", 
-            RowBox[{"\"\<Control\>\"", "\[Rule]", 
-             RowBox[{"(", 
+              "\"\<choice\>\"", ",", " ", 
+               "\"\<Centro della Circonferenza \[EGrave]\>\""}], "}"}], 
+             "\[Rule]", "\[IndentingNewLine]", 
+             RowBox[{"<|", 
               RowBox[{
-               RowBox[{"RadioButtonBar", "[", 
-                RowBox[{"##", ",", " ", 
+               RowBox[{"\"\<Interpreter\>\"", "\[Rule]", 
+                RowBox[{"{", 
                  RowBox[{
-                 "Appearance", " ", "\[Rule]", " ", "\"\<Vertical\>\""}]}], 
-                "]"}], " ", "&"}], ")"}]}]}], "|>"}]}]}], "\n", "   ", "}"}], 
-       ",", "\[IndentingNewLine]", 
-       RowBox[{"(*", " ", 
-        RowBox[{
-        "Impostazione", " ", "delle", " ", "regole", " ", "che", " ", 
-         "determino", " ", 
-         RowBox[{"l", "'"}], "aspetto", " ", "del", " ", "form"}], " ", 
-        "*)"}], "\n", "  ", 
-       RowBox[{"AppearanceRules", "\[Rule]", 
-        RowBox[{"<|", "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", "Titolo", " ", "*)"}], "\n", "    ", 
-         RowBox[{
-          RowBox[{
-          "\"\<Title\>\"", "\[Rule]", 
-           "\"\<Esercizio Relazione tra Angoli\>\""}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", "Descrizione", " ", "*)"}], "\n", "    ", 
-          RowBox[{
-          "\"\<Description\>\"", "\[Rule]", 
-           "\"\<Immetti i dati necessari\>\""}]}], "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Label", " ", "del", " ", "Pulsante", " ", "di", " ", "Submit", 
-           "\[IndentingNewLine]", 
-           RowBox[{"(", 
-            RowBox[{"NOTA", ":", " ", 
+                  RowBox[{"\"\<Interno\>\"", "\[Rule]", "2"}], ",", " ", 
+                  RowBox[{"\"\<Esterno\>\"", "\[Rule]", "1"}]}], "}"}]}], ",",
+                "\[IndentingNewLine]", 
+               RowBox[{"\"\<Control\>\"", "\[Rule]", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"RadioButtonBar", "[", 
+                   RowBox[{"##", ",", " ", 
+                    RowBox[{
+                    "Appearance", " ", "\[Rule]", " ", "\"\<Vertical\>\""}]}],
+                    "]"}], " ", "&"}], ")"}]}]}], "|>"}]}]}], "\n", "   ", 
+           "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+           "Impostazione", " ", "delle", " ", "regole", " ", "che", " ", 
+            "determino", " ", 
+            RowBox[{"l", "'"}], "aspetto", " ", "del", " ", "form"}], " ", 
+           "*)"}], "\n", "  ", 
+          RowBox[{"AppearanceRules", "\[Rule]", 
+           RowBox[{"<|", "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", "Titolo", " ", "*)"}], "\n", "    ", 
+            RowBox[{
              RowBox[{
-             "\[EGrave]", " ", "stato", " ", "commentato", " ", "in", " ", 
-              "quanto", " ", "la", " ", "regola", " ", "viene", " ", 
-              "ignorata"}]}], ")"}]}], " ", "*)"}], "\n", "    ", 
-         RowBox[{"(*", " ", 
-          RowBox[{"\"\<SubmitLabel\>\"", "\[Rule]", "\"\<Disegna\>\""}], " ", 
-          "*)"}], "\n", "    ", "|>"}]}]}], "\n", "  ", "]"}], "[", 
-     RowBox[{"<|", 
-      RowBox[{
-       RowBox[{"\"\<angletype\>\"", "\[Rule]", "1"}], ",", " ", 
-       RowBox[{"\"\<choice\>\"", "\[Rule]", " ", "2"}], ",", 
-       RowBox[{"\"\<alpha\>\"", "\[Rule]", "\"\<60\>\""}]}], "|>"}], "]"}], 
-    ",", "\[IndentingNewLine]", 
-    RowBox[{"(*", " ", 
-     RowBox[{
-      RowBox[{
-      "Al", " ", "sumbit", " ", "viene", " ", "richiamata", " ", "la", " ", 
-       "funzione", " ", "\"\<circleAn gleGraphicsElements\>\"", 
-       "\[IndentingNewLine]", "al", " ", "quale", " ", "vengono", " ", 
-       "passati", " ", "i", " ", "valori", " ", "della", " ", 
-       RowBox[{
-       "FormObject", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-        "La"}], " ", "funzione", " ", "ritorna", " ", "un", " ", "array", " ",
-        "di", " ", "oggetti", " ", "che", " ", "vengono", " ", "passati", " ",
-        "a", " ", "Graphics", "\[IndentingNewLine]", "per", " ", "il", " ", 
-       RowBox[{"disegno", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
-        RowBox[{"NOTA", ":", " ", 
+             "\"\<Title\>\"", "\[Rule]", 
+              "\"\<Esercizio Relazione tra Angoli\>\""}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"(*", " ", "Descrizione", " ", "*)"}], "\n", "    ", 
+             RowBox[{
+             "\"\<Description\>\"", "\[Rule]", 
+              "\"\<Immetti i dati necessari\>\""}]}], "\[IndentingNewLine]", 
+            RowBox[{"(*", " ", 
+             RowBox[{
+             "Label", " ", "del", " ", "Pulsante", " ", "di", " ", "Submit", 
+              "\[IndentingNewLine]", 
+              RowBox[{"(", 
+               RowBox[{"NOTA", ":", " ", 
+                RowBox[{
+                "\[EGrave]", " ", "stato", " ", "commentato", " ", "in", " ", 
+                 "quanto", " ", "la", " ", "regola", " ", "viene", " ", 
+                 "ignorata"}]}], ")"}]}], " ", "*)"}], "\n", "    ", 
+            RowBox[{"(*", " ", 
+             RowBox[{"\"\<SubmitLabel\>\"", "\[Rule]", "\"\<Disegna\>\""}], 
+             " ", "*)"}], "\n", "    ", "|>"}]}]}], "\n", "  ", "]"}], "[", 
+        RowBox[{"<|", 
          RowBox[{
-         "per", " ", "accedere", " ", "alle", " ", "variabili", " ", 
-          "definite", " ", "nel", " ", "FormObject"}]}]}]}], ",", " ", 
-      RowBox[{
-      "si", " ", "utilizza", "\[IndentingNewLine]", "la", " ", "notazione", 
-       " ", "\"\<#variableName\>\""}]}], " ", "*)"}], "\n", " ", 
-    RowBox[{
-     RowBox[{"Graphics", "[", 
-      RowBox[{
-       RowBox[{"circleAngleGraphicsElements", "[", 
-        RowBox[{"#angletype", ",", " ", "#alpha", ",", " ", "#choice"}], 
-        "]"}], " ", ",", "\[IndentingNewLine]", 
+          RowBox[{"\"\<angletype\>\"", "\[Rule]", "1"}], ",", " ", 
+          RowBox[{"\"\<choice\>\"", "\[Rule]", " ", "2"}], ",", 
+          RowBox[{"\"\<alpha\>\"", "\[Rule]", "\"\<60\>\""}]}], "|>"}], "]"}],
+        ",", "\[IndentingNewLine]", 
        RowBox[{"(*", " ", 
         RowBox[{
-        "394", " ", "\[EGrave]", " ", "il", " ", "valore", " ", "ottenuto", 
-         " ", "euristicamente", " ", "che", " ", "fa", " ", "coincidere", " ",
-          "la", "\[IndentingNewLine]", "dimensione", " ", "del", " ", 
-         "grafico", " ", "con", " ", "quella", " ", "della", " ", "form", " ",
-          "con", " ", "uno", " ", "zoom", " ", "del", " ", "100", 
-         RowBox[{"%", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
-       StyleBox[
-        RowBox[{"ImageSize", "\[Rule]", "394"}],
-        FontSize->36]}], "]"}], " ", "&"}]}], "\[IndentingNewLine]", 
-   "]"}]}]], "Input",
+         RowBox[{
+         "Al", " ", "sumbit", " ", "viene", " ", "richiamata", " ", "la", " ",
+           "funzione", " ", "\"\<circleAn gleGraphicsElements\>\"", 
+          "\[IndentingNewLine]", "al", " ", "quale", " ", "vengono", " ", 
+          "passati", " ", "i", " ", "valori", " ", "della", " ", 
+          RowBox[{
+          "FormObject", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           "La"}], " ", "funzione", " ", "ritorna", " ", "un", " ", "array", 
+          " ", "di", " ", "oggetti", " ", "che", " ", "vengono", " ", 
+          "passati", " ", "a", " ", "Graphics", "\[IndentingNewLine]", "per", 
+          " ", "il", " ", 
+          RowBox[{
+          "disegno", ".", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"NOTA", ":", " ", 
+            RowBox[{
+            "per", " ", "accedere", " ", "alle", " ", "variabili", " ", 
+             "definite", " ", "nel", " ", "FormObject"}]}]}]}], ",", " ", 
+         RowBox[{
+         "si", " ", "utilizza", "\[IndentingNewLine]", "la", " ", "notazione",
+           " ", "\"\<#variableName\>\""}]}], " ", "*)"}], "\n", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"FormPage", "[", 
+          RowBox[{
+           RowBox[{"FormObject", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"\"\<ciao\>\"", ",", " ", "\"\<Ciao\>\""}], "}"}], " ",
+               "\[Rule]", " ", 
+              RowBox[{"Restricted", "[", 
+               RowBox[{"\"\<Number\>\"", ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "360"}], "}"}]}], "]"}]}], "}"}], "]"}], 
+           " ", ",", " ", 
+           RowBox[{
+            RowBox[{"Print", "[", "10", "]"}], " ", "&"}]}], "]"}], 
+         RowBox[{"Graphics", "[", 
+          RowBox[{
+           RowBox[{"circleAngleGraphicsElements", "[", 
+            RowBox[{"#angletype", ",", " ", "#alpha", ",", " ", "#choice"}], 
+            "]"}], " ", ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "394", " ", "\[EGrave]", " ", "il", " ", "valore", " ", 
+             "ottenuto", " ", "euristicamente", " ", "che", " ", "fa", " ", 
+             "coincidere", " ", "la", "\[IndentingNewLine]", "dimensione", 
+             " ", "del", " ", "grafico", " ", "con", " ", "quella", " ", 
+             "della", " ", "form", " ", "con", " ", "uno", " ", "zoom", " ", 
+             "del", " ", "100", 
+             RowBox[{"%", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+           StyleBox[
+            RowBox[{"ImageSize", "\[Rule]", "394"}],
+            FontSize->36]}], "]"}], " ", 
+         RowBox[{"Button", "[", 
+          RowBox[{"\"\<Indietro\>\"", ",", " ", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"FrontEndExecute", "[", 
+             RowBox[{"{", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{
+               "FrontEnd`FrontEndToken", "[", "\"\<SelectGeneratedCells\>\"", 
+                "]"}], ",", 
+               RowBox[{
+               "FrontEnd`FrontEndToken", "[", "\"\<Clear\>\"", "]"}]}], 
+              "\[IndentingNewLine]", "}"}], "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Print", "[", "10", "]"}]}]}], "\[IndentingNewLine]", 
+          "]"}]}], " ", "&"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"form", "[", "]"}]}]}]], "Input",
  CellChangeTimes->{{3.798139256803997*^9, 3.798139256805991*^9}, {
    3.7981393323167048`*^9, 3.7981393344802647`*^9}, {3.7981393747452145`*^9, 
    3.7981394090702033`*^9}, {3.798139473001606*^9, 3.798139497423054*^9}, {
@@ -4214,15 +4268,99 @@ Cell[BoxData[
    3.798465406808573*^9, 3.798465481147814*^9}, 3.7984662014472675`*^9, {
    3.7984677516036377`*^9, 3.7984677619599257`*^9}, {3.7985233691076517`*^9, 
    3.7985235749585447`*^9}, {3.798523674360083*^9, 3.798523818193183*^9}, {
-   3.7985240831702337`*^9, 
-   3.798524084237434*^9}},ExpressionUUID->"cfd1372f-1809-4aef-85d8-\
-aeda3e4a70bc"]
+   3.7985240831702337`*^9, 3.798524084237434*^9}, {3.7986074207639723`*^9, 
+   3.7986075520662923`*^9}, {3.7986076108909893`*^9, 3.798607641510063*^9}, {
+   3.7986077700000772`*^9, 3.7986077746503253`*^9}, {3.798607908872623*^9, 
+   3.7986080016734295`*^9}, {3.7986080639903507`*^9, 3.798608066776468*^9}, {
+   3.7986081833452625`*^9, 3.7986083950697985`*^9}, {3.7986084273307395`*^9, 
+   3.798608475519306*^9}, {3.7986085728248596`*^9, 3.798608604431415*^9}, {
+   3.7986087516994123`*^9, 3.798608753001419*^9}, {3.798608786453457*^9, 
+   3.7986088532320967`*^9}, {3.7986089291671495`*^9, 
+   3.7986089976739826`*^9}, {3.798609124146414*^9, 3.7986091959095182`*^9}, {
+   3.798609234485295*^9, 3.798609262387165*^9}, 3.7986093202757797`*^9, {
+   3.7986093575575223`*^9, 3.7986093644477577`*^9}, {3.798609407737801*^9, 
+   3.7986094504577274`*^9}, {3.798609490866114*^9, 3.798609492793855*^9}, {
+   3.7986097982344885`*^9, 3.798609812568596*^9}, {3.7986099619261994`*^9, 
+   3.7986099700296307`*^9}, {3.798610013808896*^9, 3.7986101020326276`*^9}, {
+   3.7986101441750283`*^9, 3.7986102217702436`*^9}, {3.7986102663151007`*^9, 
+   3.798610266690773*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"cfd1372f-1809-4aef-85d8-aeda3e4a70bc"],
+
+Cell[BoxData[
+ DynamicModuleBox[{Forms`Format`PackagePrivate`temp$$ = Association[
+  "angletype" -> 
+   Association[
+    "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+     "Control" -> (RadioButtonBar[
+       SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+     "Tipo di Angolo", "Input" -> "Centro"], "alpha" -> 
+   Association[
+    "Interpreter" -> Restricted["Number", {0, 360}], "Label" -> 
+     "Ampiezza Angolo (gradi - \[Degree])", "Input" -> "60"], "choice" -> 
+   Association[
+    "Interpreter" -> {"Interno" -> 2, "Esterno" -> 1}, 
+     "Control" -> (RadioButtonBar[
+       SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+     "Centro della Circonferenza \[EGrave]", "Input" -> "Interno"]], 
+  Forms`Format`PackagePrivate`form$$ = FormObject[
+   Association[
+   "angletype" -> 
+    Association[
+     "Interpreter" -> {"Centro" -> 1, "Circonferenza" -> 2}, 
+      "Control" -> (RadioButtonBar[
+        SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+      "Tipo di Angolo", "Input" -> 1], "alpha" -> 
+    Association[
+     "Interpreter" -> Restricted["Number", {0, 360}], "Label" -> 
+      "Ampiezza Angolo (gradi - \[Degree])", "Input" -> "60"], "choice" -> 
+    Association[
+     "Interpreter" -> {"Interno" -> 2, "Esterno" -> 1}, 
+      "Control" -> (RadioButtonBar[
+        SlotSequence[1], Appearance -> "Vertical"]& ), "Label" -> 
+      "Centro della Circonferenza \[EGrave]", "Input" -> 2]], 
+   Association["angletype" -> 1, "alpha" -> 60, "choice" -> 2], 
+   AppearanceRules -> 
+   Association[
+    "Title" -> "Esercizio Relazione tra Angoli", "Description" -> 
+     "Immetti i dati necessari"]], Forms`Format`PackagePrivate`vals$$ = 
+  Association["angletype" -> 1, "alpha" -> 60, "choice" -> 2]}, 
+  DynamicBox[ToBoxes[
+    Check[
+     Forms`getFormLayout[Forms`Format`PackagePrivate`form$$, 
+      Forms`PackageScope`bindableForm[Forms`Format`PackagePrivate`temp$$, 
+       Evaluate[Forms`Format`PackagePrivate`form$$], 
+       ((Forms`FormFunction`PackagePrivate`values$5584 = $Canceled)& )[
+       Forms`Format`PackagePrivate`vals$$], 
+       Forms`PackageScope`completeAction[
+       Forms`Format`PackagePrivate`form$$, Forms`Format`PackagePrivate`temp$$,
+         Forms`Format`PackagePrivate`vals$$, (
+        Forms`FormFunction`PackagePrivate`values$5584 = #)& , {
+        AppearanceRules -> 
+         Association[
+          "Title" -> "Esercizio Relazione tra Angoli", "Description" -> 
+           "Immetti i dati necessari"]}]]], Message[
+       MessageName[FormObject, "badformat"], 
+       Part[{
+        AppearanceRules -> 
+         Association[
+          "Title" -> "Esercizio Relazione tra Angoli", "Description" -> 
+           "Immetti i dati necessari"]}, 1, 2]]; 
+     InputForm[Forms`Format`PackagePrivate`form$$], 
+     MessageName[FormObject, "badaccessor"]], StandardForm],
+   ImageSizeCache->{382., {111.49999999999999`, 116.3}},
+   TrackedSymbols:>{Forms`Format`PackagePrivate`form$$}],
+  DynamicModuleValues:>{}]], "PrintTemporary",
+ CellChangeTimes->{3.79861028379128*^9},
+ CellLabel->
+  "During evaluation of \
+In[23]:=",ExpressionUUID->"ada050cd-a64e-4265-9988-b161b5c7456a"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
 ScreenStyleEnvironment->"Slideshow Working",
-WindowSize->{1904, 999},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{1152., 585.6},
+WindowMargins->{{-3.75, Automatic}, {-653.4000000000001, Automatic}},
 TaggingRules->{
  "PresenterSettings" -> {
    "ShowNavigationBar" -> True, 
@@ -4291,69 +4429,75 @@ ExpressionUUID->"db017220-a2fe-4bc8-9424-1af829269016"
 (*CellTagsOutline
 CellTagsIndex->{
  "SlideShowHeader"->{
-  Cell[580, 22, 136, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"ae861ed8-5fa1-4088-84fd-2651cc7b368a",
+  Cell[580, 22, 136, 2, 61, "SlideShowNavigationBar",ExpressionUUID->"ae861ed8-5fa1-4088-84fd-2651cc7b368a",
    CellTags->"SlideShowHeader"],
-  Cell[1405, 43, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"2f167a9d-6c77-489f-9eef-02cd3ff19cf4",
+  Cell[1405, 43, 122, 2, 61, "SlideShowNavigationBar",ExpressionUUID->"2f167a9d-6c77-489f-9eef-02cd3ff19cf4",
    CellTags->"SlideShowHeader"],
-  Cell[2598, 77, 192, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"ee3ea2a1-973b-4e9a-a704-0d8a3c30d1be",
+  Cell[2881, 86, 192, 3, 61, "SlideShowNavigationBar",ExpressionUUID->"ee3ea2a1-973b-4e9a-a704-0d8a3c30d1be",
    CellTags->"SlideShowHeader"],
-  Cell[67995, 1212, 192, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"78b04ffd-fa5d-4906-afda-8ff82c7f313b",
+  Cell[68278, 1221, 192, 3, 61, "SlideShowNavigationBar",ExpressionUUID->"78b04ffd-fa5d-4906-afda-8ff82c7f313b",
    CellTags->"SlideShowHeader"],
-  Cell[107329, 1918, 186, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"f1ea6945-699f-482b-8fd0-06e69f1653cb",
+  Cell[107612, 1927, 186, 3, 61, "SlideShowNavigationBar",ExpressionUUID->"f1ea6945-699f-482b-8fd0-06e69f1653cb",
    CellTags->"SlideShowHeader"],
-  Cell[224272, 3897, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"d0653087-e6fc-4117-98fa-618b3d35e3ba",
+  Cell[224555, 3906, 122, 2, 61, "SlideShowNavigationBar",ExpressionUUID->"d0653087-e6fc-4117-98fa-618b3d35e3ba",
    CellTags->"SlideShowHeader"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"SlideShowHeader", 243195, 4292}
+ {"SlideShowHeader", 250109, 4430}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 136, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"ae861ed8-5fa1-4088-84fd-2651cc7b368a",
+Cell[580, 22, 136, 2, 61, "SlideShowNavigationBar",ExpressionUUID->"ae861ed8-5fa1-4088-84fd-2651cc7b368a",
  CellTags->"SlideShowHeader"],
-Cell[719, 26, 649, 12, 761, "Title",ExpressionUUID->"92508663-47f1-4deb-9615-d2c271e8e453"]
+Cell[719, 26, 649, 12, 464, "Title",ExpressionUUID->"92508663-47f1-4deb-9615-d2c271e8e453"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1405, 43, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"2f167a9d-6c77-489f-9eef-02cd3ff19cf4",
+Cell[1405, 43, 122, 2, 61, "SlideShowNavigationBar",ExpressionUUID->"2f167a9d-6c77-489f-9eef-02cd3ff19cf4",
  CellTags->"SlideShowHeader"],
-Cell[1530, 47, 215, 4, 370, "Title",ExpressionUUID->"5d095342-5eaf-49e9-9dfd-779161eedd68"],
-Cell[1748, 53, 813, 19, 362, "Input",ExpressionUUID->"c3e8d4a2-98af-49d1-bf41-54b443009f01"]
-}, Open  ]],
+Cell[1530, 47, 262, 4, 221, "Title",ExpressionUUID->"5d095342-5eaf-49e9-9dfd-779161eedd68"],
 Cell[CellGroupData[{
-Cell[2598, 77, 192, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"ee3ea2a1-973b-4e9a-a704-0d8a3c30d1be",
- CellTags->"SlideShowHeader"],
-Cell[CellGroupData[{
-Cell[2815, 84, 363, 6, 156, "Subsection",ExpressionUUID->"7da6da63-6378-4f26-b58d-d42a7250afa4"],
-Cell[3181, 92, 64765, 1114, 442, "Text",ExpressionUUID->"06fd5125-d86c-4b59-b697-521b2d6607db"]
+Cell[1817, 55, 814, 19, 216, "Input",ExpressionUUID->"c3e8d4a2-98af-49d1-bf41-54b443009f01"],
+Cell[2634, 76, 198, 4, 48, "Print",ExpressionUUID->"06c0945a-777c-4eee-8551-cf750114aacc"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[67995, 1212, 192, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"78b04ffd-fa5d-4906-afda-8ff82c7f313b",
+Cell[2881, 86, 192, 3, 61, "SlideShowNavigationBar",ExpressionUUID->"ee3ea2a1-973b-4e9a-a704-0d8a3c30d1be",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[68212, 1219, 426, 7, 156, "Subsection",ExpressionUUID->"a59682d6-5f49-4e8b-a85d-e3757d6306b2"],
-Cell[68641, 1228, 38639, 684, 431, "Text",ExpressionUUID->"0a303cac-99e6-4583-b0ef-6402608cad5d"]
+Cell[3098, 93, 363, 6, 94, "Subsection",ExpressionUUID->"7da6da63-6378-4f26-b58d-d42a7250afa4"],
+Cell[3464, 101, 64765, 1114, 360, "Text",ExpressionUUID->"06fd5125-d86c-4b59-b697-521b2d6607db"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[107329, 1918, 186, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"f1ea6945-699f-482b-8fd0-06e69f1653cb",
+Cell[68278, 1221, 192, 3, 61, "SlideShowNavigationBar",ExpressionUUID->"78b04ffd-fa5d-4906-afda-8ff82c7f313b",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[107540, 1925, 506, 8, 156, "Subsection",ExpressionUUID->"6135c970-ad58-4672-ba1b-4f339a749438"],
-Cell[108049, 1935, 116174, 1956, 463, "Text",ExpressionUUID->"cfc41bef-421c-4d66-a482-0f5a380e3a05"]
+Cell[68495, 1228, 426, 7, 94, "Subsection",ExpressionUUID->"a59682d6-5f49-4e8b-a85d-e3757d6306b2"],
+Cell[68924, 1237, 38639, 684, 348, "Text",ExpressionUUID->"0a303cac-99e6-4583-b0ef-6402608cad5d"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[224272, 3897, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"d0653087-e6fc-4117-98fa-618b3d35e3ba",
+Cell[107612, 1927, 186, 3, 61, "SlideShowNavigationBar",ExpressionUUID->"f1ea6945-699f-482b-8fd0-06e69f1653cb",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[224419, 3903, 356, 6, 156, "Subsection",ExpressionUUID->"a6bca3fb-c161-4f12-a2a7-035c628e3fe4"],
-Cell[224778, 3911, 198, 3, 85, "Text",ExpressionUUID->"cac38220-9db5-44ec-8899-a8a685e8c89c"],
-Cell[224979, 3916, 14983, 302, 3542, "Input",ExpressionUUID->"cfd1372f-1809-4aef-85d8-aeda3e4a70bc"]
+Cell[107823, 1934, 506, 8, 94, "Subsection",ExpressionUUID->"6135c970-ad58-4672-ba1b-4f339a749438"],
+Cell[108332, 1944, 116174, 1956, 377, "Text",ExpressionUUID->"cfc41bef-421c-4d66-a482-0f5a380e3a05"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[224555, 3906, 122, 2, 61, "SlideShowNavigationBar",ExpressionUUID->"d0653087-e6fc-4117-98fa-618b3d35e3ba",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[224702, 3912, 356, 6, 94, "Subsection",ExpressionUUID->"a6bca3fb-c161-4f12-a2a7-035c628e3fe4"],
+Cell[225061, 3920, 198, 3, 51, "Text",ExpressionUUID->"cac38220-9db5-44ec-8899-a8a685e8c89c"],
+Cell[CellGroupData[{
+Cell[225284, 3927, 18388, 359, 2511, "Input",ExpressionUUID->"cfd1372f-1809-4aef-85d8-aeda3e4a70bc"],
+Cell[243675, 4288, 3165, 67, 252, "PrintTemporary",ExpressionUUID->"ada050cd-a64e-4265-9988-b161b5c7456a"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }
