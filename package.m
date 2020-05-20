@@ -30,12 +30,14 @@ Parametri:
 NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata una lista con un unico elemento che rappresenta un messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le condizioni imposte.
 "
 
+checkResult::usage = "TODO"
+
 Begin["`Private`"]
 
-circleAngleGraphicsElements[type_, angle_, choice_] := Module[{alpha, aAngle, cAngle, points, choices,radiantsAngle},
-	(* trasforma l'angolo in radianti (per ragionare sempre in radianti) *)
-	radiantsAngle=angle*Degree;
-	
+alpha;
+
+circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle},
+
 	(* Controlla che i parametri siano coerenti: se viene richiesto che il centro della circonferenza sia esterno
     al triangolo inscritto e che l'angolo al centro sia 180\[Degree], allora viene notificata l'impossibilit\[AGrave] di graficarlo *)
 	If[Mod[radiantsAngle, Pi/(type*1.)] == 0 && choice == 1, Return[{Text["Impossibile disegnare."]}]];
@@ -75,6 +77,9 @@ circleAngleGraphicsElements[type_, angle_, choice_] := Module[{alpha, aAngle, cA
 	(* Aggiunge il punto C alla lista dei punti.
 	Viene calcolato moltiplicando la "RotationMatrix" derivata da cAngle applicata al punto medio (ricavato moltiplicando la "RotationMatrix" derivata da alpha/2 ad A)*)
 	AppendTo[points, RotationMatrix[cAngle].middlePoint/.middlePoint->RotationMatrix[alpha/2].points[[1]]];
+	
+	(*"bacAngle" calcola l'angolo che definisce il punto di partenza per rappresentare graficamente l'angolo BAC*)
+	bacAngle= PlanarAngle[points[[1]] -> {points[[2]], points[[3]]}];
 
 	Return[
 		{
@@ -96,15 +101,29 @@ circleAngleGraphicsElements[type_, angle_, choice_] := Module[{alpha, aAngle, cA
 			Aggiunge, inoltre, un tooltip che mostra esplicitamente l'ampienza dell'angolo in gradi quando il mouse viene posizionato sopra.
 			  *)
 			Tooltip[{Red, Thick, Circle[circleCenter, 0.2, {aAngle, aAngle + alpha}]}, StringJoin[ToString@NumberForm[alpha/Degree, {3, 2}],"\[Degree]"]],
-			Tooltip[{Blue, Thick, Circle[points[[3]], 0.2, {angletemp, angletemp + alpha/2}]}, StringJoin[ToString@NumberForm[alpha/(2.*Degree), {3, 2}],"\[Degree]"]],
+			Tooltip[{Blue, Thick, Circle[points[[3]], 0.2, {cStartAngle, cStartAngle + alpha/2}]}, StringJoin[ToString@NumberForm[alpha/(2.*Degree), {3, 2}],"\[Degree]"]],
+			
+			{Magenta, Thick, Circle[points[[1]], 0.2, {aStartAngle, aStartAngle + bacAngle}]},
 			
 			(* Etichetta i punti A, B, C, O visualizzati. *)
 			MapIndexed[Text[FromCharacterCode[#2[[1]] + 64] , #1, offset]&, points], 
-			Text["O", circleCenter,offset]
+			Text["O", circleCenter,offset],
+			Text[StringJoin[ToString@NumberForm[bacAngle/Degree, {3, 2}], "\[Degree]"],
+			points[[1]],
+			-offset]
 			
-			(* "angleTemp" calcola l'angolo che definisce il punto di partenza per rappresentare graficamente l'angolo alla circonferenza *)
-		}/.{angletemp -> PlanarAngle[points[[3]] -> {{points[[3]][[1]] + 1, points[[3]][[2]]}, points[[1]]}], circleCenter -> {0,0}, offset->{1.5,-1.5}}
+		(* "cStartAngle" calcola l'angolo che definisce il punto di partenza per rappresentare graficamente l'angolo alla circonferenza *)
+		}/.{
+		cStartAngle -> PlanarAngle[points[[3]] -> {{points[[3]][[1]] + 1, points[[3]][[2]]}, points[[1]]}],
+		aStartAngle -> PlanarAngle[points[[1]] -> {{points[[1]][[1]] + 1, points[[1]][[2]]}, points[[2]]}],
+		circleCenter -> {0,0}, offset->{-1.5,1.5}}
 	]
 ]
+
+checkResult[pAOB_, aAOB_, pACB_ , aACB_]:= Module[{},
+Return[pAOB]
+]
+
+
 End[]
 EndPackage[]
