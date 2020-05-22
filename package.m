@@ -36,7 +36,7 @@ Begin["`Private`"]
 
 alpha;
 
-circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle},
+circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle, x},
 
 	(* Controlla che i parametri siano coerenti: se viene richiesto che il centro della circonferenza sia esterno
     al triangolo inscritto e che l'angolo al centro sia 180\[Degree], allora viene notificata l'impossibilit\[AGrave] di graficarlo *)
@@ -80,7 +80,7 @@ circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 	
 	(*"bacAngle" calcola l'angolo che definisce il punto di partenza per rappresentare graficamente l'angolo BAC*)
 	bacAngle= PlanarAngle[points[[1]] -> {points[[2]], points[[3]]}];
-
+	x = calculateValues[alpha, alpha/2, bacAngle];
 	Return[
 		{
 			Circle[circleCenter, 1] ,
@@ -110,7 +110,8 @@ circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 			Text["O", circleCenter,offset],
 			Text[StringJoin[ToString@NumberForm[bacAngle/Degree, {3, 2}], "\[Degree]"],
 			points[[1]],
-			-offset]
+			-offset],
+			MapIndexed[Text[#1, {0,0},{0,#2[[1]]}]&, x]
 			
 		(* "cStartAngle" calcola l'angolo che definisce il punto di partenza per rappresentare graficamente l'angolo alla circonferenza *)
 		}/.{
@@ -119,6 +120,28 @@ circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 		circleCenter -> {0,0}, offset->{-1.5,1.5}}
 	]
 ]
+
+calculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, AB, perimeterAOB, areaAOB},
+toReturn = {};
+
+(* calcolo AB sfruttando il teorema della corda: 2*radius*sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
+AB = Inactivate[2*1*Sin[v Degree]]/.v -> circumferenceAngle/Degree;
+perimeterAOB = Inactivate[v+1+1]/.v -> Activate[AB];
+AppendTo[toReturn, {"Teorema della corda: 2*raggio*sin(angoloAllaCirconferenza)", AB//TraditionalForm, Activate[AB]}];
+AppendTo[toReturn, {"2P: raggio+raggio+AB", perimeterAOB, Activate[perimeterAOB]}];
+
+(* calcolo area = 1/2*OB*AO*sin(alpha) dove alpha \[EGrave] l'angolo al centro *)
+(*areaAOB = 1/2*1*1*Sin[circleAngle];
+AppendTo[toReturn, areaAOB];*)
+(* --- adesso abbiamo perimetro e area di AOB --- *)
+
+(* calcolo BC sfruttando il teorema dei seni BC = (sin(beta)*AB)/sin(BAC) dove beta \[EGrave] l'angolo alla circonferenza *)
+(* calcolo l'angolo ABC ABC = Pi - circumferenceAngle - BAC *)
+(* sfrutto di nuovo il teorema dei seni e calcolo AC = (sin(beta)*AB)/sin(ABC) dove beta \[EGrave] l'angolo alla circonferenza *)
+(* calcolo l'area come sopra: area = 1/2*BC*AC*sin(beta) *)
+(* --- adesso abbiamo perimetro e area di ABC --- *)
+Return[toReturn]
+];
 
 checkResult[pAOB_, aAOB_, pACB_ , aACB_]:= Module[{},
 Return[pAOB]
