@@ -32,11 +32,12 @@ NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata u
 
 checkResult::usage = "TODO"
 
+perimeter::usage = "TODO"
+area::usage = "TODO"
+
 Begin["`Private`"]
 
-alpha;
-
-circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle, x},
+circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle, alpha, x},
 
 	(* Controlla che i parametri siano coerenti: se viene richiesto che il centro della circonferenza sia esterno
     al triangolo inscritto e che l'angolo al centro sia 180\[Degree], allora viene notificata l'impossibilit\[AGrave] di graficarlo *)
@@ -121,25 +122,42 @@ circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 	]
 ]
 
-calculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, AB, perimeterAOB, areaAOB},
+calculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, AB, perimeterAOB, areaAOB, BC, ABC, AC, perimeterABC, areaABC},
 toReturn = {};
 
 (* calcolo AB sfruttando il teorema della corda: 2*radius*sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
-AB = Inactivate[2*1*Sin[v Degree]]/.v -> circumferenceAngle/Degree;
-perimeterAOB = Inactivate[v+1+1]/.v -> Activate[AB];
-AppendTo[toReturn, {"Teorema della corda: 2*raggio*sin(angoloAllaCirconferenza)", AB//TraditionalForm, Activate[AB]}];
-AppendTo[toReturn, {"2P: raggio+raggio+AB", perimeterAOB, Activate[perimeterAOB]}];
+AB = Inactivate[2*1*Sin[v Pi]]/.v -> circumferenceAngle/Pi;
+perimeterAOB = "1+1+AB";
+AppendTo[toReturn, {"Teorema della corda: 2*raggio*sin(angoloAllaCirconferenza)", ToExpression[ToString@AB], Activate[AB]}];
+AppendTo[toReturn, {"2P: raggio+raggio+AB", StringReplace[perimeterAOB, {"AB" -> ToString@Activate[AB]}]//TraditionalForm, ToExpression[StringReplace[perimeterAOB, {"AB" -> ToString@Activate[AB]}]]}];
 
 (* calcolo area = 1/2*OB*AO*sin(alpha) dove alpha \[EGrave] l'angolo al centro *)
-(*areaAOB = 1/2*1*1*Sin[circleAngle];
-AppendTo[toReturn, areaAOB];*)
+(*areaAOB = Inactivate[Rationalize[1*1*Sin[v Pi]/2]]/.v \[Rule] circleAngle/Pi;*)
+(*AppendTo[toReturn, {"Area: 1/2*OB*AO*sin(alpha)", ToExpression[ToString@areaAOB]//DisplayForm, Activate[areaAOB]}];*)
+areaAOB = "\!\(\*FractionBox[\(OB*AO*Sin[circleAngle]\), \(2\)]\)";
+AppendTo[toReturn, {"Area: 1/2*OB*AO*sin(alpha)", StringReplace[areaAOB, {"OB" -> "1", "AO" -> "1", "circleAngle" -> ToString@circleAngle}]//TraditionalForm, ToExpression[StringReplace[areaAOB, {"OB" -> "1", "AO" -> "1", "circleAngle" -> ToString@circleAngle}]]}];
 (* --- adesso abbiamo perimetro e area di AOB --- *)
 
 (* calcolo BC sfruttando il teorema dei seni BC = (sin(beta)*AB)/sin(BAC) dove beta \[EGrave] l'angolo alla circonferenza *)
+BC = Inactivate[Sin[v Pi]*AB/Sin[aAngle]]/.v -> circumferenceAngle/Pi;
+AppendTo[toReturn, {"Teorema dei seni: (sin(beta)*AB)/sin(BAC)", ToExpression[ToString@BC], Activate[BC]}];
+
 (* calcolo l'angolo ABC ABC = Pi - circumferenceAngle - BAC *)
+ABC = Pi - circumferenceAngle - aAngle;
+AppendTo[toReturn, {"Calcolo angolo ABC: 180\[Degree] - angoloAllaCirconferenza - angoloBAC", ToExpression[ToString@ABC], Activate[ABC]}];
+
 (* sfrutto di nuovo il teorema dei seni e calcolo AC = (sin(beta)*AB)/sin(ABC) dove beta \[EGrave] l'angolo alla circonferenza *)
+AC = Inactivate[Sin[v Pi]*AB/Sin[ABC]]/.v -> circumferenceAngle/Pi;
+AppendTo[toReturn, {"Teorema dei seni: (sin(beta)*AB)/sin(ABC)", ToExpression[ToString@AC], Activate[AC]}];
+
+perimeterABC = "AB+BC+AC";
+AppendTo[toReturn, {"2P: raggio+raggio+AB", StringReplace[perimeterABC, {"AB" -> ToString@Activate[AB], "BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC]}]//TraditionalForm, ToExpression[StringReplace[perimeterABC, {"AB" -> ToString@Activate[AB], "BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC]}]]}];
+
 (* calcolo l'area come sopra: area = 1/2*BC*AC*sin(beta) *)
+areaABC = "\!\(\*FractionBox[\(BC*AC*Sin[circumferenceAngle]\), \(2\)]\)";
+AppendTo[toReturn, {"Area: 1/2*BC*AC*sin(alpha)", StringReplace[areaABC, {"BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC], "circumferenceAngle" -> ToString@circumferenceAngle}]//TraditionalForm, ToExpression[StringReplace[areaABC, {"BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC], "circumferenceAngle" -> ToString@circumferenceAngle}]]}];
 (* --- adesso abbiamo perimetro e area di ABC --- *)
+
 Return[toReturn]
 ];
 
