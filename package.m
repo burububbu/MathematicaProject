@@ -138,8 +138,9 @@ AppendTo[toReturn, {"Area: \!\(\*FractionBox[\(\*OverscriptBox[\(OB\), \(_\)]*\*
 (* --- adesso abbiamo perimetro e area di AOB --- *)
 
 (* calcolo BC sfruttando il teorema dei seni BC = (sin(beta)*AB)/sin(BAC) dove beta \[EGrave] l'angolo alla circonferenza *)
-BC = Inactivate[Sin[v Pi]*AB/Sin[aAngle]]/.v -> circumferenceAngle/Pi;
-AppendTo[toReturn, {"Teorema dei seni: (sin(\[Beta])*\!\(\*OverscriptBox[\(AB\), \(_\)]\))/sin(\!\(\*OverscriptBox[\(BAC\), \(^\)]\))", ToExpression[ToString@BC], Activate[BC]}];
+(*BC = Inactivate[Sin[v Pi]*AB/Sin[aAngle]]/.v -> circumferenceAngle/Pi;*)
+BC = "\!\(\*FractionBox[\(Sin[v\\\ Pi]*AB\), \(Sin[aAngle]\)]\)";
+AppendTo[toReturn, {"Teorema dei seni: (sin(\[Beta])*\!\(\*OverscriptBox[\(AB\), \(_\)]\))/sin(\!\(\*OverscriptBox[\(BAC\), \(^\)]\))", StringReplace[BC, {"AB" -> ToString@toReturn[[1]][[3]], "v" -> ToString[circumferenceAngle/Pi], "aAngle" -> ToString@aAngle}], ToExpression[StringReplace[BC, {"AB" -> ToString@toReturn[[1]][[3]], "v" -> ToString[circumferenceAngle/Pi], "aAngle" -> ToString@aAngle}]]}];
 
 (* calcolo l'angolo ABC ABC = Pi - circumferenceAngle - BAC *)
 ABC = Pi - circumferenceAngle - aAngle;
@@ -150,11 +151,11 @@ AC = Inactivate[Sin[v Pi]*AB/Sin[ABC]]/.v -> circumferenceAngle/Pi;
 AppendTo[toReturn, {"Teorema dei seni: \!\(\*FractionBox[\((sin \((\[Beta])\)*\*OverscriptBox[\(AB\), \(_\)])\), \(sin \((\*OverscriptBox[\(ABC\), \(^\)])\)\)]\)", ToExpression[ToString@AC], Activate[AC]}];
 
 perimeterABC = "AB+BC+AC";
-AppendTo[toReturn, {"2P: r+r+\!\(\*OverscriptBox[\(AB\), \(_\)]\)", StringReplace[perimeterABC, {"AB" -> ToString@Activate[AB], "BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC]}]//TraditionalForm, ToExpression[StringReplace[perimeterABC, {"AB" -> ToString@Activate[AB], "BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC]}]]}];
+AppendTo[toReturn, {"2P: \!\(\*OverscriptBox[\(BC\), \(_\)]\)+\!\(\*OverscriptBox[\(AC\), \(_\)]\)+\!\(\*OverscriptBox[\(AB\), \(_\)]\)", StringReplace[perimeterABC, {"AB" -> ToString@Activate[AB], "BC" -> toReturn[[4]][[3]], "AC" -> ToString@Activate[AC]}]//TraditionalForm, ToExpression[StringReplace[perimeterABC, {"AB" -> ToString@Activate[AB], "BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC]}]]}];
 
 (* calcolo l'area come sopra: area = 1/2*BC*AC*sin(beta) *)
-(*areaABC = "\!\(\*FractionBox[\(BC*AC*Sin[circumferenceAngle]\), \(2\)]\)";*)
-areaABC = "(BC*AC*Sin[circumferenceAngle])/2";
+areaABC = "\!\(\*FractionBox[\(BC*AC*Sin[circumferenceAngle]\), \(2\)]\)";
+(*areaABC = "(BC*AC*Sin[circumferenceAngle])/2";*)
 
 AppendTo[toReturn, {"Area: \!\(\*FractionBox[\(\*OverscriptBox[\(BC\), \(_\)]*\*OverscriptBox[\(AC\), \(_\)]*sin \((\[Beta])\)\), \(2\)]\)", StringReplace[areaABC, {"BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC], "circumferenceAngle" -> ToString@circumferenceAngle}]//TraditionalForm, ToExpression[StringReplace[areaABC, {"BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC], "circumferenceAngle" -> ToString@circumferenceAngle}]]}];
 (* --- adesso abbiamo perimetro e area di ABC --- *)
