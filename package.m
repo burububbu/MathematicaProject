@@ -16,9 +16,10 @@
 	https://community.wolfram.com/,
 	https://mathematica.stackexchange.com/ *)
 
+
 BeginPackage["AngleCircBackend`"]
 
-circleAngleGraphicsElements::usage = "circleAngleGraphicsElements[type_, angle_, choice_] ritorna una lista di oggetti grafici contenente:
+CircleAngleGraphicsElements::usage = "circleAngleGraphicsElements[type_, angle_, choice_] ritorna una lista di oggetti grafici contenente:
 - La circonferenza goniometrica su cui vengono costruiti i triangoli
 - Due ToolTips che mostrano le dimensioni dell'angolo al centro e di quello alla circonferenza, rispettivamente
 - Il triangolo AOB dove O \[EGrave] il centro della circonferenza e A e B formano un angolo al centro che rispetta i criteri passati come parametri
@@ -30,16 +31,16 @@ Parametri:
 NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata una lista con un unico elemento che rappresenta un messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le condizioni imposte.
 "
 
-checkResult::usage = "TODO"
+CheckResult::usage = "TODO"
 
-perimeter::usage = "TODO"
-area::usage = "TODO"
 
 Begin["`Private`"]
 
-solvingSteps;
-circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle, alpha},
 
+solvingSteps;
+
+
+CircleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle, alpha},
 	(* Controlla che i parametri siano coerenti: se viene richiesto che il centro della circonferenza sia esterno
     al triangolo inscritto e che l'angolo al centro sia 180\[Degree], allora viene notificata l'impossibilit\[AGrave] di graficarlo *)
 	If[Mod[radiantsAngle, Pi/(type*1.)] == 0 && choice == 1, Return[{Text["Impossibile disegnare."]}]];
@@ -82,7 +83,7 @@ circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 	
 	(*"bacAngle" calcola l'angolo che definisce il punto di partenza per rappresentare graficamente l'angolo BAC*)
 	bacAngle= PlanarAngle[points[[1]] -> {points[[2]], points[[3]]}];
-	solvingSteps = calculateValues[alpha, alpha/2, bacAngle];
+	solvingSteps = CalculateValues[alpha, alpha/2, bacAngle];
 	Return[
 		{
 			Circle[circleCenter, 1] ,
@@ -121,49 +122,52 @@ circleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 	]
 ]
 
-calculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, AB, perimeterAOB, areaAOB, BC, ABC, AC, perimeterABC, areaABC},
-toReturn = {};
 
-(* calcolo AB sfruttando il teorema della corda: 2*radius*sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
-AB = Inactivate[2*1*Sin[v Pi]]/.v -> circumferenceAngle/Pi;
-perimeterAOB = "1+1+AB";
-AppendTo[toReturn, {"Teorema della corda: 2*r*sin(\[Beta])", ToExpression[ToString@AB], Activate[AB]}];
-AppendTo[toReturn, {"2P: r+r+\!\(\*OverscriptBox[\(AB\), \(_\)]\)", StringReplace[perimeterAOB, {"AB" -> ToString@Activate[AB]}]//TraditionalForm, ToExpression[StringReplace[perimeterAOB, {"AB" -> ToString@Activate[AB]}]]}];
+CalculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, teoremaDellaCorda, perimetro, area, teoremaDeiSeni, angoloTriangolo, AB,releasedAB,perimetroAOB},
+	(* Contiene liste nel formato "{ ELEMENTO DA CALCOLARE , FORMULA TEORICA , FORMULA APPLICATA " = " RISULTATO }" *)
+	toReturn = {};
+	
+	teoremaDellaCorda = HoldForm[2*r*Sin[beta]];
+	perimetro=HoldForm[l1+l2+l3];
+	area=HoldForm[1/2*l1*l2*Sin[alpha]];
+	teoremaDeiSeni=HoldForm[Sin[beta]*l1/Sin[angle]];
+	angoloTriangolo=Pi-angolo1-angolo2;
 
-(* calcolo area = 1/2*OB*AO*sin(alpha) dove alpha \[EGrave] l'angolo al centro *)
-(*areaAOB = Inactivate[Rationalize[1*1*Sin[v Pi]/2]]/.v \[Rule] circleAngle/Pi;*)
-(*AppendTo[toReturn, {"Area: 1/2*OB*AO*sin(alpha)", ToExpression[ToString@areaAOB]//DisplayForm, Activate[areaAOB]}];*)
-areaAOB = "\!\(\*FractionBox[\(OB*AO*Sin[circleAngle]\), \(2\)]\)";
-AppendTo[toReturn, {"Area: \!\(\*FractionBox[\(\*OverscriptBox[\(OB\), \(_\)]*\*OverscriptBox[\(AO\), \(_\)]*sin \((\[Alpha])\)\), \(2\)]\)", StringReplace[areaAOB, {"OB" -> "1", "AO" -> "1", "circleAngle" -> ToString@circleAngle}]//TraditionalForm, ToExpression[StringReplace[areaAOB, {"OB" -> "1", "AO" -> "1", "circleAngle" -> ToString@circleAngle}]]}];
-(* --- adesso abbiamo perimetro e area di AOB --- *)
+	(* calcolo AB sfruttando il teorema della corda: 2*radius*sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
+	AB = teoremaDellaCorda/.{r->1, beta->circumferenceAngle};
+	releasedAB = ReleaseHold@AB;
+	AppendTo[toReturn, {"AB", "Teorema della Corda:\n"<>Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB}];
+	
+	(* perimetro AOB *)
+	perimetroAOB=perimetro/.{l1->1,l2->1,l3->releasedAB};
+	AppendTo[toReturn, {"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify@perimetro, Beautify@perimetroAOB<>" = "<>ToString@ReleaseHold@perimetroAOB}];
+	
+	
+	(* calcolo area = 1/2*OB*AO*sin(alpha) dove alpha \[EGrave] l'angolo al centro *)
+	
+	
+	(* --- adesso abbiamo perimetro e area di AOB --- *)
 
-(* calcolo BC sfruttando il teorema dei seni BC = (sin(beta)*AB)/sin(BAC) dove beta \[EGrave] l'angolo alla circonferenza *)
-(*BC = Inactivate[Sin[v Pi]*AB/Sin[aAngle]]/.v -> circumferenceAngle/Pi;*)
-BC = "\!\(\*FractionBox[\(Sin[v\\\ Pi]*AB\), \(Sin[aAngle]\)]\)";
-AppendTo[toReturn, {"Teorema dei seni: (sin(\[Beta])*\!\(\*OverscriptBox[\(AB\), \(_\)]\))/sin(\!\(\*OverscriptBox[\(BAC\), \(^\)]\))", StringReplace[BC, {"AB" -> ToString@toReturn[[1]][[3]], "v" -> ToString[circumferenceAngle/Pi], "aAngle" -> ToString@aAngle}], ToExpression[StringReplace[BC, {"AB" -> ToString@toReturn[[1]][[3]], "v" -> ToString[circumferenceAngle/Pi], "aAngle" -> ToString@aAngle}]]}];
+	(* calcolo BC sfruttando il teorema dei seni BC = (sin(beta)*AB)/sin(BAC) dove beta \[EGrave] l'angolo alla circonferenza *)
+	
+	(* calcolo l'angolo ABC ABC = Pi - circumferenceAngle - BAC *)
+	
+	(* sfrutto di nuovo il teorema dei seni e calcolo AC = (sin(beta)*AB)/sin(ABC) dove beta \[EGrave] l'angolo alla circonferenza *)
+	
+	(* calcolo l'area come sopra: area = 1/2*BC*AC*sin(beta) *)
+	
+	(* --- adesso abbiamo perimetro e area di ABC --- *)
+	Return[toReturn];
+]
 
-(* calcolo l'angolo ABC ABC = Pi - circumferenceAngle - BAC *)
-ABC = Pi - circumferenceAngle - aAngle;
-AppendTo[toReturn, {"Calcolo angolo \!\(\*OverscriptBox[\(ABC\), \(^\)]\): 180\[Degree] - \[Beta] - \!\(\*OverscriptBox[\(BAC\), \(^\)]\)", ToExpression[ToString@ABC], Activate[ABC]}];
 
-(* sfrutto di nuovo il teorema dei seni e calcolo AC = (sin(beta)*AB)/sin(ABC) dove beta \[EGrave] l'angolo alla circonferenza *)
-AC = Inactivate[Sin[v Pi]*AB/Sin[ABC]]/.v -> circumferenceAngle/Pi;
-AppendTo[toReturn, {"Teorema dei seni: \!\(\*FractionBox[\((sin \((\[Beta])\)*\*OverscriptBox[\(AB\), \(_\)])\), \(sin \((\*OverscriptBox[\(ABC\), \(^\)])\)\)]\)", ToExpression[ToString@AC], Activate[AC]}];
+CheckResult[pAOB_, aAOB_, pACB_ , aACB_]:= Module[{},
+	Return[solvingSteps];
+]
 
-perimeterABC = "AB+BC+AC";
-AppendTo[toReturn, {"2P: \!\(\*OverscriptBox[\(BC\), \(_\)]\)+\!\(\*OverscriptBox[\(AC\), \(_\)]\)+\!\(\*OverscriptBox[\(AB\), \(_\)]\)", StringReplace[perimeterABC, {"AB" -> ToString@Activate[AB], "BC" -> toReturn[[4]][[3]], "AC" -> ToString@Activate[AC]}]//TraditionalForm, ToExpression[StringReplace[perimeterABC, {"AB" -> ToString@Activate[AB], "BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC]}]]}];
 
-(* calcolo l'area come sopra: area = 1/2*BC*AC*sin(beta) *)
-areaABC = "\!\(\*FractionBox[\(BC*AC*Sin[circumferenceAngle]\), \(2\)]\)";
-(*areaABC = "(BC*AC*Sin[circumferenceAngle])/2";*)
-
-AppendTo[toReturn, {"Area: \!\(\*FractionBox[\(\*OverscriptBox[\(BC\), \(_\)]*\*OverscriptBox[\(AC\), \(_\)]*sin \((\[Beta])\)\), \(2\)]\)", StringReplace[areaABC, {"BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC], "circumferenceAngle" -> ToString@circumferenceAngle}]//TraditionalForm, ToExpression[StringReplace[areaABC, {"BC" -> ToString@Activate[BC], "AC" -> ToString@Activate[AC], "circumferenceAngle" -> ToString@circumferenceAngle}]]}];
-(* --- adesso abbiamo perimetro e area di ABC --- *)
-Return[toReturn]
-];
-
-checkResult[pAOB_, aAOB_, pACB_ , aACB_]:= Module[{},
-Return[solvingSteps];
+Beautify[formula_]:=Module[{},
+	Return[StringReplace[ToString@formula,{"AngleCircBackend`Private`"->"", " + "->"+"," "->"*"}]]
 ]
 
 
