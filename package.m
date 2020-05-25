@@ -123,39 +123,54 @@ CircleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 ]
 
 
-CalculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, teoremaDellaCorda, perimetro, area, teoremaDeiSeni, angoloTriangolo, AB,releasedAB,perimetroAOB},
+CalculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, teoremaDellaCorda, perimetro, area, teoremaDeiSeni, angoloTriangolo, AB,releasedAB,perimetroAOB,areaAOB, BC, releasedBC, ABC, releasedABC, AC, releasedAC, perimetroABC, areaABC},
 	(* Contiene liste nel formato "{ ELEMENTO DA CALCOLARE , FORMULA TEORICA , FORMULA APPLICATA " = " RISULTATO }" *)
 	toReturn = {};
 	
-	teoremaDellaCorda = HoldForm[2*r*Sin[beta]];
+	teoremaDellaCorda = HoldForm[2*r*Sin[\[Beta]]];
 	perimetro=HoldForm[l1+l2+l3];
-	area=HoldForm[1/2*l1*l2*Sin[alpha]];
-	teoremaDeiSeni=HoldForm[Sin[beta]*l1/Sin[angle]];
-	angoloTriangolo=Pi-angolo1-angolo2;
+	area=HoldForm[(l1*l2*Sin[angolo])/2];
+	(*  a:sin(angolo2)=b:sin(angolo1)
+		a:sin(Subscript[angoloOpposto, a])=b:sin(Subscript[angoloOpposto, b]); *)
+	teoremaDeiSeni=HoldForm[(Sin[angoloOppostoAlLatoDaTrovare]*l1)/Sin[angoloOppostoAL1]];
+	angoloTriangolo=HoldForm[Pi-angolo1-angolo2];
 
 	(* calcolo AB sfruttando il teorema della corda: 2*radius*sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
-	AB = teoremaDellaCorda/.{r->1, beta->circumferenceAngle};
+	AB = teoremaDellaCorda/.{r->1, \[Beta]->circumferenceAngle};
 	releasedAB = ReleaseHold@AB;
-	AppendTo[toReturn, {"AB", "Teorema della Corda:\n"<>Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB}];
+	AppendTo[toReturn, {"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", "Teorema della Corda:\n"<>Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB}];
 	
 	(* perimetro AOB *)
 	perimetroAOB=perimetro/.{l1->1,l2->1,l3->releasedAB};
-	AppendTo[toReturn, {"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify@perimetro, Beautify@perimetroAOB<>" = "<>ToString@ReleaseHold@perimetroAOB}];
-	
+	AppendTo[toReturn, {"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroAOB<>" = "<>ToString@ReleaseHold@perimetroAOB}];
 	
 	(* calcolo area = 1/2*OB*AO*sin(alpha) dove alpha \[EGrave] l'angolo al centro *)
-	
-	
+	areaAOB=area/.{l1->1,l2->1,angolo->circleAngle};
+	AppendTo[toReturn, {"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Beautify@areaAOB<>" = "<>ToString@ReleaseHold@areaAOB}];
 	(* --- adesso abbiamo perimetro e area di AOB --- *)
 
-	(* calcolo BC sfruttando il teorema dei seni BC = (sin(beta)*AB)/sin(BAC) dove beta \[EGrave] l'angolo alla circonferenza *)
+	(* calcolo BC sfruttando il teorema dei seni BC = (sin(BAC)*AB)/sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
+	BC = teoremaDeiSeni/.{l1->releasedAB, angoloOppostoAlLatoDaTrovare->aAngle, angoloOppostoAL1->circumferenceAngle};
+	releasedBC = ReleaseHold@BC;
+	AppendTo[toReturn, {"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", "Teorema dei Seni:\n"<>Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC}];
 	
-	(* calcolo l'angolo ABC ABC = Pi - circumferenceAngle - BAC *)
+	(* calcolo l'angolo ABC = Pi - circumferenceAngle - BAC *)
+	ABC=angoloTriangolo/.{angolo1->circumferenceAngle, angolo2->aAngle};
+	releasedABC = ReleaseHold@ABC;
+	AppendTo[toReturn, {"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[angoloTriangolo/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC}];
 	
-	(* sfrutto di nuovo il teorema dei seni e calcolo AC = (sin(beta)*AB)/sin(ABC) dove beta \[EGrave] l'angolo alla circonferenza *)
+	(* sfrutto di nuovo il teorema dei seni e calcolo AC = (sin(ABC)*AB)/sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
+	AC = teoremaDeiSeni/.{l1->releasedAB,angoloOppostoAlLatoDaTrovare->releasedABC,angoloOppostoAL1->circumferenceAngle};
+	releasedAC = ReleaseHold@AC;
+	AppendTo[toReturn, {"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", "Teorema dei Seni:\n"<>Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC}];
+		
+	(* perimetro AOB *)
+	perimetroABC=perimetro/.{l1->releasedAC,l2->releasedBC,l3->releasedAB};
+	AppendTo[toReturn, {"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@ReleaseHold@perimetroABC}];
 	
-	(* calcolo l'area come sopra: area = 1/2*BC*AC*sin(beta) *)
-	
+	(* calcolo area = 1/2*BC*AC*sin(beta) *)
+	areaABC=area/.{l1->releasedBC,l2->releasedAC,angolo->circumferenceAngle};
+	AppendTo[toReturn, {"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@ReleaseHold@areaABC}];
 	(* --- adesso abbiamo perimetro e area di ABC --- *)
 	Return[toReturn];
 ]
@@ -167,7 +182,7 @@ CheckResult[pAOB_, aAOB_, pACB_ , aACB_]:= Module[{},
 
 
 Beautify[formula_]:=Module[{},
-	Return[StringReplace[ToString@formula,{"AngleCircBackend`Private`"->"", " + "->"+"," "->"*"}]]
+	Return[StringReplace[ToString@TraditionalForm@formula,{"AngleCircBackend`Private`"->""}]]
 ]
 
 
