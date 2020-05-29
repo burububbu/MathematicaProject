@@ -35,24 +35,25 @@ CheckResult::usage = "TODO"
 
 grafica::usage = "TODO"
 
-IsValid::usage = "Ritorna TRUE se il valore passato \[EGrave] non-nullo e compreso tra 0 e 360, FALSE altrimenti"
+IsValid::usage = "Ritorna TRUE se il valore passato \[EGrave] non-nullo e compreso tra 0 (escluso) e 180, FALSE altrimenti"
 
 
 Begin["`Private`"]
 
 
-solvingSteps;
+bacAngle;
 
 
-grafica:=DynamicModule[{angleType,
+grafica:=DynamicModule[{
+		angleType,
 		alpha=30,
 		eventualAlpha=30,
 		choice,
-		graphic={Circle[{0,0},1]},
+		graphic={Circle[{0, 0}, 1]},
 		dati={"Clicca \"Disegna\" per visualizzare i dati"},
 		panelSoluzione={{"Clicca \"Disegna\" per inserire la soluzione"}},
-		steps="",
-		pAOB, pABC, aAOB, aABC
+		steps={},
+		pAOB, pABC, aAOB, aABC,precision
 	},
 	Grid[{
 		{ (* Riga 1 *)
@@ -61,15 +62,16 @@ grafica:=DynamicModule[{angleType,
 					Row[{"Tipo di angolo: ",
 						RadioButtonBar[
 							Dynamic@angleType, {1 -> "Centro", 2 -> "Circonferenza"},
-							Appearance-> "Vertical"] 
+							Appearance-> "Vertical"
+						] 
 					}, BaseStyle->FontSize -> 18],
 					Row[{"Ampiezza angolo: ",
 						InputField[
-							Dynamic@eventualAlpha, Number,ImageSize->{100,35}],
+							Dynamic@eventualAlpha, Number, ImageSize->{100, 35}],
 						" \[Degree]"
 					}, BaseStyle->FontSize -> 18],
 					(* Visualizzazione Errore *)
-					Row[{Dynamic[If[IsValid[eventualAlpha],Style["",Red],Style["L'ampiezza deve essere\ncompresa tra 0 e 360",Red]]]}, BaseStyle->FontSize -> 18],
+					Row[{Dynamic[If[IsValid[eventualAlpha*angleType], "", Style["L'ampiezza deve essere\ncompresa tra 0 (escluso) e " <> ToString[180 / angleType], Red]]]}, BaseStyle -> FontSize -> 18],
 					Row[{"Centro della circonferenza \[EGrave]: ",
 						RadioButtonBar[
 							Dynamic@choice, {1 -> "Esterno", 2 -> "Interno"},
@@ -83,16 +85,37 @@ grafica:=DynamicModule[{angleType,
 							graphic=CircleAngleGraphicsElements[angleType,alpha Degree, choice];
 							dati={
 								Row[{"r = 1 (r \[EGrave] il raggio)"}, BaseStyle->FontSize -> 18],
-								Row[{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\) = "<>ToString@GetABC,"      ",Dynamic@StringJoin[If[angleType===1,"\!\(\*OverscriptBox[\(AOB\), \(^\)]\)","\!\(\*OverscriptBox[\(ACB\), \(^\)]\)"] ," = ", ToString@alpha,"\[Degree]"]}, BaseStyle->FontSize -> 18]
+								Row[{"\!\(\*OverscriptBox[\(BAC\), \(^\)]\) = "<>ToString@(bacAngle/Degree)<>"\[Degree]","      ",Dynamic@StringJoin[If[angleType===1,"\!\(\*OverscriptBox[\(AOB\), \(^\)]\)","\!\(\*OverscriptBox[\(ACB\), \(^\)]\)"] ," = ", ToString@alpha,"\[Degree]"]}, BaseStyle->FontSize -> 18]
 							};
 							panelSoluzione={
-								{Style["Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],InputField[Dynamic@pAOB,Number,ImageSize->{100,35}],Style["Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],InputField[Dynamic@aAOB,Number,ImageSize->{100,35}]},
-								{Style["Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],InputField[Dynamic@pABC,Number,ImageSize->{100,35}],Style["Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],InputField[Dynamic@aABC,Number,ImageSize->{100,35}]},
-								{Button[Style["Conferma",FontSize->18],steps=CheckResult[0,0,0,0],
-									Enabled->Dynamic@IsValid[alpha]],SpanFromLeft}
+								{
+									Style["Cifre dopo la virgola: " Dynamic@ToString@precision, FontSize->16],
+									Slider[Dynamic@precision,{1,8,1}]
+								},
+								{
+									Style["Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
+									InputField[Dynamic@pAOB, Number, ImageSize->{100,35}],
+									Style["Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
+									InputField[Dynamic@aAOB,Number,ImageSize->{100,35}]
+								},
+								{
+									Style["Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
+									InputField[Dynamic@pABC, Number, ImageSize->{100,35}],
+									Style["Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
+									InputField[Dynamic@aABC,Number,ImageSize->{100,35}]
+								},
+								{
+									Button[Style["Conferma",FontSize->18],
+										steps := GetSteps[alpha*angleType, alpha*angleType/2, bacAngle,precision],
+										(*steps = CheckResult[0,0,0,0,precision],*)
+										Enabled->Dynamic@IsValid[alpha*angleType]
+									],
+									SpanFromLeft
+								}
 							};
+							steps = {};
 						],
-						Enabled->Dynamic@IsValid[eventualAlpha]
+						Enabled->Dynamic@IsValid[eventualAlpha*angleType]
 					]}]
 				}],
 				Style["Inserisci i Parametri Richiesti",FontSize->24],
@@ -139,12 +162,14 @@ grafica:=DynamicModule[{angleType,
 			(*Cella 3*)
 			(*SpanFromAbove*)
 		}
-		}, Frame->(*True*)All,Alignment->Top
+		},
+		Frame->All,
+		Alignment->Top
 	]
 ]
 
 
-CircleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle, alpha},
+CircleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, alpha},
 	(* Controlla che i parametri siano coerenti: se viene richiesto che il centro della circonferenza sia esterno
     al triangolo inscritto e che l'angolo al centro sia 180\[Degree], allora viene notificata l'impossibilit\[AGrave] di graficarlo *)
 	If[Mod[radiantsAngle, Pi/(type*1.)] == 0 && choice == 1, Return[{Text["Impossibile disegnare."]}]];
@@ -187,7 +212,7 @@ CircleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 	
 	(*"bacAngle" calcola l'angolo che definisce il punto di partenza per rappresentare graficamente l'angolo BAC*)
 	bacAngle= PlanarAngle[points[[1]] -> {points[[2]], points[[3]]}];
-	solvingSteps = CalculateValues[alpha, alpha/2, bacAngle];
+	(*solvingSteps = CalculateValues[alpha, alpha/2, bacAngle];*)
 	Return[
 		{
 			Circle[circleCenter, 1] ,
@@ -207,9 +232,9 @@ CircleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 			(* Permette di rappresentare graficamente gli angoli al centro e alla circonferenza.
 			Aggiunge, inoltre, un tooltip che mostra esplicitamente l'ampienza dell'angolo in gradi quando il mouse viene posizionato sopra.
 			  *)
-			Tooltip[{EdgeForm[{Thickness@0.005,Red}], FaceForm@RGBColor[0,0,0,0], Disk[circleCenter, 0.2, {aAngle, aAngle + alpha}]}, StringJoin[ToString@NumberForm[alpha/Degree, {3, 2}],"\[Degree]"]],
-			Tooltip[{EdgeForm[{Thickness@0.005,Blue}], FaceForm@RGBColor[0,0,0,0], Disk[points[[3]], 0.2, {cStartAngle, cStartAngle + alpha/2}]}, StringJoin[ToString@NumberForm[alpha/(2.*Degree), {3, 2}],"\[Degree]"]],
-			Tooltip[{EdgeForm[{Thickness@0.005,Darker[Green]}], FaceForm@RGBColor[0,0,0,0], Disk[points[[1]], 0.15, {aStartAngle, aStartAngle + bacAngle}]}, StringJoin[ToString@NumberForm[bacAngle/Degree, {3, 2}], "\[Degree]"]],
+			Tooltip[{EdgeForm[{Thickness@0.005,Red}], FaceForm@RGBColor[0,0,0,0], Disk[circleCenter, 0.2, {aAngle, aAngle + alpha}]}, StringJoin[ToString@NumberForm[alpha/Degree, {5, 2}],"\[Degree]"]],
+			Tooltip[{EdgeForm[{Thickness@0.005,Blue}], FaceForm@RGBColor[0,0,0,0], Disk[points[[3]], 0.2, {cStartAngle, cStartAngle + alpha/2}]}, StringJoin[ToString@NumberForm[alpha/(2.*Degree), {5, 2}],"\[Degree]"]],
+			Tooltip[{EdgeForm[{Thickness@0.005,Darker[Green]}], FaceForm@RGBColor[0,0,0,0], Disk[points[[1]], 0.15, {aStartAngle, aStartAngle + bacAngle}]}, StringJoin[ToString@NumberForm[bacAngle/Degree, {5, 2}], "\[Degree]"]],
 
 			
 			(* Etichetta i punti A, B, C, O visualizzati. *)
@@ -224,10 +249,7 @@ CircleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, c
 ]
 
 
-CalculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, teoremaDellaCorda, perimetro, area, teoremaDeiSeni, angoloTriangolo, AB,releasedAB,perimetroAOB,areaAOB, BC, releasedBC, ABC, releasedABC, AC, releasedAC, perimetroABC, areaABC},
-	(* Contiene liste nel formato "{ ELEMENTO DA CALCOLARE , FORMULA TEORICA , FORMULA APPLICATA " = " RISULTATO }" *)
-	(* toReturn = {}; *)
-	
+GetSteps[circleAngle_, circumferenceAngle_, aAngle_, precision_] := Module[{toReturn, teoremaDellaCorda, perimetro, area, teoremaDeiSeni, angoloTriangolo, AB,releasedAB,perimetroAOB,areaAOB, BC, releasedBC, ABC, releasedABC, AC, releasedAC, perimetroABC, areaABC},
 	teoremaDellaCorda = HoldForm[2*r*Sin[\[Beta]]];
 	perimetro=HoldForm[l1+l2+l3];
 	area=HoldForm[(l1*l2*Sin[angolo])/2];
@@ -238,78 +260,60 @@ CalculateValues[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn,
 
 	(* calcolo AB sfruttando il teorema della corda: 2*radius*sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
 	AB = teoremaDellaCorda/.{r->1, \[Beta]->circumferenceAngle};
-	releasedAB = ReleaseHold@AB;
-	(*AppendTo[toReturn, {"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", "Teorema della Corda:\n"<>Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB}]; *)
+	releasedAB = Round[ReleaseHold@AB, N[10^-precision]];
 	
 	(* perimetro AOB *)
 	perimetroAOB=perimetro/.{l1->1,l2->1,l3->releasedAB};
 	
-	(* AppendTo[toReturn, {"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\),
- \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroAOB<>" = "<>ToString@ReleaseHold@perimetroAOB}]; *)
-	
 	(* calcolo area = 1/2*OB*AO*sin(alpha) dove alpha \[EGrave] l'angolo al centro *)
 	areaAOB=area/.{l1->1,l2->1,angolo->circleAngle};
-	(*AppendTo[toReturn, {"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Beautify@areaAOB<>" = "<>ToString@ReleaseHold@areaAOB}]; *)
+
 	(* --- adesso abbiamo perimetro e area di AOB --- *)
 
 	(* calcolo BC sfruttando il teorema dei seni BC = (sin(BAC)*AB)/sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
 	BC = teoremaDeiSeni/.{l1->releasedAB, angoloOppostoAlLatoDaTrovare->aAngle, angoloOppostoAL1->circumferenceAngle};
-	releasedBC = ReleaseHold@BC;
-	(*AppendTo[toReturn, {"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", "Teorema dei Seni:\n"<>Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC}]; *)
+	releasedBC = Round[ReleaseHold@BC,N[10^-precision]];
 	
 	(* calcolo l'angolo ABC = Pi - circumferenceAngle - BAC *)
 	ABC=angoloTriangolo/.{angolo1->circumferenceAngle, angolo2->aAngle};
-	releasedABC = ReleaseHold@ABC;
-	(*AppendTo[toReturn, {"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[angoloTriangolo/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC}]; *)
+	releasedABC = Round[ReleaseHold@ABC,N[10^-precision]];
 	
 	(* sfrutto di nuovo il teorema dei seni e calcolo AC = (sin(ABC)*AB)/sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
 	AC = teoremaDeiSeni/.{l1->releasedAB,angoloOppostoAlLatoDaTrovare->releasedABC,angoloOppostoAL1->circumferenceAngle};
-	releasedAC = ReleaseHold@AC;
-	(* AppendTo[toReturn, {"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", "Teorema dei Seni:\n"<>Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC}];*)
+	releasedAC = Round[ReleaseHold@AC,N[10^-precision]];
 		
 	(* perimetro AOB *)
 	perimetroABC=perimetro/.{l1->releasedAC,l2->releasedBC,l3->releasedAB};
-	(*AppendTo[toReturn, {"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@ReleaseHold@perimetroABC}]; *)
 	
 	(* calcolo area = 1/2*BC*AC*sin(beta) *)
 	areaABC=area/.{l1->releasedBC,l2->releasedAC,angolo->circumferenceAngle};
-	(*AppendTo[toReturn, {"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@ReleaseHold@areaABC}]; *)
+
 	(* --- adesso abbiamo perimetro e area di ABC --- *)
-	
+
 	(* Forma: Array di Array
 		[Step1,Step2,...]
 		Stepi=[CosaTrovare, Teorema Utilizzato, Formula Simbolica, FormulaApplicata=Risultato] *)
-	(*Return@{
-	{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", "Teorema della Corda",Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB},
-	{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", "",Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroAOB<>" = "<>ToString@ReleaseHold@perimetroAOB},
-	{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", "",Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Beautify@areaAOB<>" = "<>ToString@ReleaseHold@areaAOB},
-	{"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", "Teorema dei Seni",Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC},
-	{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", "",Beautify[angoloTriangolo/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC},
-	{"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", "Teorema dei Seni",Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC},
-	{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", "",Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@ReleaseHold@perimetroABC},
-	{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", "",Beautify[area/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@ReleaseHold@areaABC}
-	}*)
-	
 	Return@{
-	{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB},
-	{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroAOB<>" = "<>ToString@ReleaseHold@perimetroAOB},
-	{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Beautify@areaAOB<>" = "<>ToString@ReleaseHold@areaAOB},
-	{"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC},
-	{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[angoloTriangolo/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC},
-	{"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC},
-	{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@ReleaseHold@perimetroABC},
-	{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@ReleaseHold@areaABC}
+		{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB},
+		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroAOB<>" = "<>ToString@Round[ReleaseHold@perimetroAOB,N[10^-precision]]},
+		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Beautify@areaAOB<>" = "<>ToString@Round[ReleaseHold@areaAOB,N[10^-precision]]},
+		{"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC},
+		{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[angoloTriangolo/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC},
+		{"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC},
+		{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@Round[ReleaseHold@perimetroABC,N[10^-precision]]},
+		{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@Round[ReleaseHold@areaABC,N[10^-precision]]}
 	}
 ]
 
 
-CheckResult[pAOB_, aAOB_, pACB_ , aACB_]:= Module[{},
+(*CheckResult[pAOB_, aAOB_, pACB_ , aACB_,precision_]:= Module[{},
+	steps=CalculateValue[]
 	Return[solvingSteps];
-]
+]*)
 
 
 IsValid[alpha_]:=Module[{},
-	And[alpha=!=Null,alpha>=0,alpha<=360]
+	And[alpha=!=Null,alpha>0,alpha<=180]
 ]
 
 
