@@ -33,6 +33,8 @@ NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata u
 
 CheckResult::usage = "TODO"
 
+grafica::usage = "TODO"
+
 IsValid::usage = "Ritorna TRUE se il valore passato \[EGrave] non-nullo e compreso tra 0 e 360, FALSE altrimenti"
 
 
@@ -40,6 +42,106 @@ Begin["`Private`"]
 
 
 solvingSteps;
+
+
+grafica:=DynamicModule[{angleType,
+		alpha=30,
+		eventualAlpha=30,
+		choice,
+		graphic={Circle[{0,0},1]},
+		dati={"Clicca \"Disegna\" per visualizzare i dati"},
+		panelSoluzione={{"Clicca \"Disegna\" per inserire la soluzione"}},
+		steps="",
+		pAOB, pABC, aAOB, aABC
+	},
+	Grid[{
+		{ (* Riga 1 *)
+			Panel[ (* Cella 1 *)
+				Column[{
+					Row[{"Tipo di angolo: ",
+						RadioButtonBar[
+							Dynamic@angleType, {1 -> "Centro", 2 -> "Circonferenza"},
+							Appearance-> "Vertical"] 
+					}, BaseStyle->FontSize -> 18],
+					Row[{"Ampiezza angolo: ",
+						InputField[
+							Dynamic@eventualAlpha, Number,ImageSize->{100,35}],
+						" \[Degree]"
+					}, BaseStyle->FontSize -> 18],
+					(* Visualizzazione Errore *)
+					Row[{Dynamic[If[IsValid[eventualAlpha],Style["",Red],Style["L'ampiezza deve essere\ncompresa tra 0 e 360",Red]]]}, BaseStyle->FontSize -> 18],
+					Row[{"Centro della circonferenza \[EGrave]: ",
+						RadioButtonBar[
+							Dynamic@choice, {1 -> "Esterno", 2 -> "Interno"},
+							Appearance->"Vertical"]
+					}, BaseStyle->FontSize -> 18],
+					Row[{Button[
+						Style["Disegna",FontSize->16],
+						Module[{},
+							If[!IsValid[eventualAlpha],Return[]];
+							alpha=eventualAlpha;
+							graphic=CircleAngleGraphicsElements[angleType,alpha Degree, choice];
+							dati={
+								Row[{"r = 1 (r \[EGrave] il raggio)"}, BaseStyle->FontSize -> 18],
+								Row[{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\) = "<>ToString@GetABC,"      ",Dynamic@StringJoin[If[angleType===1,"\!\(\*OverscriptBox[\(AOB\), \(^\)]\)","\!\(\*OverscriptBox[\(ACB\), \(^\)]\)"] ," = ", ToString@alpha,"\[Degree]"]}, BaseStyle->FontSize -> 18]
+							};
+							panelSoluzione={
+								{Style["Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],InputField[Dynamic@pAOB,Number,ImageSize->{100,35}],Style["Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],InputField[Dynamic@aAOB,Number,ImageSize->{100,35}]},
+								{Style["Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],InputField[Dynamic@pABC,Number,ImageSize->{100,35}],Style["Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],InputField[Dynamic@aABC,Number,ImageSize->{100,35}]},
+								{Button[Style["Conferma",FontSize->18],steps=CheckResult[0,0,0,0],
+									Enabled->Dynamic@IsValid[alpha]],SpanFromLeft}
+							};
+						],
+						Enabled->Dynamic@IsValid[eventualAlpha]
+					]}]
+				}],
+				Style["Inserisci i Parametri Richiesti",FontSize->24],
+				Appearance->"Frameless",
+				BaseStyle->Large,
+				Background-> White
+			],
+			(* Cella 2 *)
+			Panel@Dynamic@Graphics[graphic,ImageSize->350]
+			(* Cella 3 *)
+			(*Panel@Dynamic@Grid[steps,BaseStyle\[Rule]{FontSize \[Rule] 6},Frame \[Rule] All,  ItemStyle\[Rule] Darker[Blue]]*)
+		},
+		{(* Riga 2 *)
+			(* Cella 1 *)
+			Panel[Dynamic@Column[dati],
+				Style["Dati",FontSize->24],
+				Appearance->"Frameless",
+				BaseStyle->Large,
+				Background-> LightYellow
+			],
+			(* Cella 2 *)
+			SpanFromAbove
+			(*Cella 3*)
+			(*SpanFromAbove*)
+		},
+		{(* Riga 3 *)
+			(* Cella 1 *)
+			SpanFromAbove,
+			(* Cella 2 *)
+			Panel[Dynamic@Grid@panelSoluzione,
+				Style["Inserisci la Soluzione",FontSize->24],
+				Appearance->"Frameless",
+				BaseStyle->Large,
+				Background-> White
+			]
+			(*Cella 3*)
+			(*SpanFromAbove*)
+		},
+		{(* Riga 4 *)
+			(* Cella 1 *)
+			Panel@Dynamic@Grid[steps,BaseStyle->{FontSize -> 18},Frame -> All,  ItemStyle-> Darker[Blue]],
+			(* Cella 2 *)
+			SpanFromLeft
+			(*Cella 3*)
+			(*SpanFromAbove*)
+		}
+		}, Frame->(*True*)All,Alignment->Top
+	]
+]
 
 
 CircleAngleGraphicsElements[type_, radiantsAngle_, choice_] := Module[{aAngle, cAngle, points, choices, bacAngle, alpha},
