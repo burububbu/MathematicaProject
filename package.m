@@ -106,7 +106,7 @@ grafica:=DynamicModule[{
 								},
 								{
 									Button[Style["Conferma",FontSize->18],
-										steps := GetSteps[alpha*angleType, alpha*angleType/2, bacAngle,precision],
+										steps := GetSteps[N[alpha*angleType*Degree], N[alpha*angleType/2*Degree], bacAngle, precision],
 										(*steps = CheckResult[0,0,0,0,precision],*)
 										Enabled->Dynamic@IsValid[alpha*angleType]
 									],
