@@ -71,7 +71,7 @@ grafica:=DynamicModule[{
 						" \[Degree]"
 					}, BaseStyle->FontSize -> 18],
 					(* Visualizzazione Errore *)
-					Row[{Dynamic[If[IsValid[eventualAlpha*angleType], "", Style["L'ampiezza deve essere\ncompresa tra 0 (escluso) e " <> ToString[180 / angleType], Red]]]}, BaseStyle -> FontSize -> 18],
+					Row[{Dynamic[If[IsValid[eventualAlpha*angleType], "", Style["L'ampiezza deve essere compresa tra 0 (escluso) e " <> ToString[180 / angleType], Red]]]}, BaseStyle -> FontSize -> 16],
 					Row[{"Centro della circonferenza \[EGrave]: ",
 						RadioButtonBar[
 							Dynamic@choice, {1 -> "Esterno", 2 -> "Interno"},
@@ -116,7 +116,8 @@ grafica:=DynamicModule[{
 							steps = {};
 						],
 						Enabled->Dynamic@IsValid[eventualAlpha*angleType]
-					]}]
+					]}],
+					Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"},BaseStyle->{FontSize->16,Darker@Gray}]
 				}],
 				Style["Inserisci i Parametri Richiesti",FontSize->24],
 				Appearance->"Frameless",
