@@ -31,8 +31,6 @@ Parametri:
 NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata una lista con un unico elemento che rappresenta un messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le condizioni imposte.
 "
 
-CheckResult::usage = "TODO"
-
 grafica::usage = "TODO"
 
 IsValid::usage = "Ritorna TRUE se il valore passato \[EGrave] non-nullo e compreso tra 0 (escluso) e 180, FALSE altrimenti"
@@ -43,7 +41,7 @@ Begin["`Private`"]
 
 bacAngle;
 (* pAOB, aAOB, pABC, aABC *)
-soluzioniEsatte;
+risultatiCorretti;
 
 
 grafica:=DynamicModule[{
@@ -55,8 +53,9 @@ grafica:=DynamicModule[{
 		dati={"Clicca \"Disegna\" per visualizzare i dati"},
 		panelSoluzione={{"Clicca \"Disegna\" per inserire la soluzione"}},
 		steps={},
-		risultati={Null,Null,Null,Null},
-		soluzioni={Automatic,Automatic,Automatic,Automatic}
+		risultatiUtente={Null,Null,Null,Null},
+		soluzioni={Automatic,Automatic,Automatic,Automatic},
+		enabled=False
 	},
 	Grid[{
 		{ (* Riga 1 *)
@@ -83,6 +82,7 @@ grafica:=DynamicModule[{
 					Row[{Button[
 						Style["Disegna",FontSize->16],
 							If[!IsValid[eventualAlpha],Return[]];
+							Clear[risultatiCorretti];
 							soluzioni={Automatic,Automatic,Automatic,Automatic};
 							alpha=Round[eventualAlpha, 0.01];
 							graphic=CircleAngleGraphicsElements[angleType,alpha, choice];
@@ -93,29 +93,45 @@ grafica:=DynamicModule[{
 							panelSoluzione={
 								{
 									Style["Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultati[[1]]], Number, ImageSize->{100,35},ContinuousAction->True,Background->Dynamic@soluzioni[[1]]],
+									InputField[Dynamic[risultatiUtente[[1]]], String, ImageSize->{100,35}, ContinuousAction -> True, Background->Dynamic@soluzioni[[1]]],
 									Style["Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultati[[2]]],Number,ImageSize->{100,35},ContinuousAction->True,Background->Dynamic@soluzioni[[2]]]
+									InputField[Dynamic[risultatiUtente[[2]]], String, ImageSize->{100,35}, ContinuousAction -> True, Background->Dynamic@soluzioni[[2]]]
+								},
+								{
+								Dynamic[If[Or[risultatiUtente[[1]]==="", NumberQ@ToExpression@risultatiUtente[[1]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
+								SpanFromLeft,
+								Dynamic[If[Or[risultatiUtente[[2]]==="", NumberQ@ToExpression@risultatiUtente[[2]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
+								SpanFromLeft
 								},
 								{
 									Style["Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultati[[3]]], Number, ImageSize->{100,35},ContinuousAction->True,Background->Dynamic@soluzioni[[3]]],
+									InputField[Dynamic[risultatiUtente[[3]]], String, ImageSize->{100,35}, ContinuousAction -> True, Background->Dynamic@soluzioni[[3]]],
 									Style["Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultati[[4]]],Number,ImageSize->{100,35},ContinuousAction->True,Background->Dynamic@soluzioni[[4]]]
+									InputField[Dynamic[risultatiUtente[[4]]], String, ImageSize->{100,35}, ContinuousAction -> True, Background->Dynamic@soluzioni[[4]]]
+								},
+								{
+								Dynamic[If[Or[risultatiUtente[[3]]==="", NumberQ@ToExpression@risultatiUtente[[3]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
+								SpanFromLeft,
+								Dynamic[If[Or[risultatiUtente[[4]]==="", NumberQ@ToExpression@risultatiUtente[[4]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
+								SpanFromLeft
 								},
 								{
 									Button[Style["Conferma",FontSize->18], 
 										steps := GetSteps[N[alpha*angleType], N[alpha*angleType/2], bacAngle];
-										soluzioni=CheckSoluzioni[risultati],
-										Enabled->Dynamic[And[IsValid[alpha*angleType],ContainsNone[Dynamic@risultati,{Null}]]]
+										soluzioni:=CheckSoluzioni[ToExpression/@risultatiUtente];
+										enabled=False,
+										Enabled -> Dynamic[And[IsValid[alpha*angleType], ContainsNone[Dynamic@risultatiUtente, {""}], enabled, AllTrue[risultatiUtente, NumberQ[ToExpression[#]]&]]]
 									],
 									SpanFromLeft
 								}
 							};
-							steps = {},
+							steps = {};
+							enabled = True;
+							risultatiUtente=Table["", 4],
 						Enabled->Dynamic@IsValid[eventualAlpha*angleType]
 					]}],
-					Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"},BaseStyle->{FontSize->16,Darker@Gray}]
+					Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"}, BaseStyle->{FontSize->16, Darker@Gray}],
+					Row[{Dynamic@Which[ContainsAny[soluzioni, {LightRed}], "Riprova l'esercizio per approfondire le tue competenze", ContainsAll[soluzioni, {LightGreen}], "Hai completato l'esercizio con successo", True, ""]}, BaseStyle->{FontSize->16, Dynamic@Which[ContainsAny[soluzioni, {LightRed}], Darker@Red, True, Darker@Green]}]
 				}],
 				Style["Inserisci i Parametri Richiesti",FontSize->24],
 				Appearance->"Frameless",
@@ -292,22 +308,23 @@ GetSteps[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, teorem
 	(* Forma: Array di Array
 		[Step1,Step2,...]
 		Stepi=[CosaTrovare, Teorema Utilizzato, Formula Simbolica, FormulaApplicata=Risultato] *)
-	soluzioniEsatte={Round[ReleaseHold@perimetroAOB,0.01],Round[ReleaseHold@areaAOB,0.01],Round[ReleaseHold@perimetroABC,0.01],Round[ReleaseHold@areaABC,0.01]};
+		
+	risultatiCorretti={Round[ReleaseHold@perimetroAOB,0.01],Round[ReleaseHold@areaAOB,0.01],Round[ReleaseHold@perimetroABC,0.01],Round[ReleaseHold@areaABC,0.01]};
 	Return@{
 		{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB},
-		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroAOB<>" = "<>ToString@soluzioniEsatte[[1]]},
-		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Beautify@areaAOB<>" = "<>ToString@soluzioniEsatte[[2]]},
+		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroAOB<>" = "<>ToString@risultatiCorretti[[1]]},
+		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Beautify@areaAOB<>" = "<>ToString@risultatiCorretti[[2]]},
 		{"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC},
 		{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[angoloTriangolo/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC},
 		{"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC},
-		{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@soluzioniEsatte[[3]]},
-		{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@soluzioniEsatte[[4]]}
+		{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@risultatiCorretti[[3]]},
+		{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@risultatiCorretti[[4]]}
 	}
 	(*Return@{{Beautify@BC}}*)
 ]
 
 
-CheckSoluzioni[risultati_]:=MapIndexed[Which[#1==soluzioniEsatte[[#2]][[1]], LightGreen, True, LightRed]&, risultati]
+CheckSoluzioni[risultati_]:=MapIndexed[Which[#1==risultatiCorretti[[#2]][[1]], LightGreen, True, LightRed]&, risultati]
 
 
 IsValid[alpha_]:=And[alpha=!=Null,alpha>0,alpha<=180]
