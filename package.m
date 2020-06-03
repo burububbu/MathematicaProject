@@ -55,7 +55,8 @@ grafica:=DynamicModule[{
 		steps={},
 		risultatiUtente={Null,Null,Null,Null},
 		soluzioni={Automatic,Automatic,Automatic,Automatic},
-		enabled=False
+		enabled=False,
+		formule = {}
 	},
 	Grid[{
 		{ (* Riga 1 *)
@@ -145,14 +146,36 @@ grafica:=DynamicModule[{
 		},
 		{(* Riga 2 *)
 			(* Cella 1 *)
+			Column[{
 			Panel[Dynamic@Column[dati],
 				Style["Dati",FontSize->24],
 				Appearance->"Frameless",
 				BaseStyle->Large,
 				Background-> LightYellow
 			],
+			"",
+			Panel[Dynamic@Column[Flatten@{
+				Button["Mostra/nascondi formule",
+					If[Length@formule == 0, 
+						formule = {
+							Row[{Style["Teorema della Corda: " <>  Beautify@(2*r*Sin[\[Beta]]), colore], " con \[Beta] angolo alla circonferenza"}],
+							Row[{Style["Area del Triangolo: " <> Beautify@((Subscript[l, 1]*Subscript[l, 2]*Sin[\[Theta]])/2), colore], " con \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)"}],
+							Row[{Style["Teorema dei Seni: " <>  Beautify@(a:Sin[\[Alpha]] == b:Sin[\[Beta]]), colore], "\n con \[Alpha] angolo opposto al lato \!\(\*
+StyleBox[\"a\",\nFontSlant->\"Italic\"]\) e \[Beta] angolo opposto al lato \!\(\*
+StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"}]
+						}/.colore -> Darker@Red,
+						formule = {}],
+					BaseStyle -> FontSize -> 16],
+					formule},
+					BaseStyle->FontSize -> 18],
+				Style["Formule",FontSize->24],
+				Appearance->"Frameless",
+				BaseStyle->Large,
+				Background-> LightGreen
+			]
+			}],
 			(* Cella 2 *)
-			SpanFromAbove
+			SpanFromAbove	
 			(*Cella 3*)
 			(*SpanFromAbove*)
 		},
