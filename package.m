@@ -52,7 +52,7 @@ grafica:=DynamicModule[{
 		graphic={Circle[{0, 0}, 1]},
 		dati={"Clicca \"Disegna\" per visualizzare i dati"},
 		panelSoluzione={{"Clicca \"Disegna\" per inserire la soluzione"}},
-		steps={},
+		steps={{"Inserisci le soluzioni per visualizzare i passaggi per la risoluzione dell'esercizio"}},
 		risultatiUtente={Null,Null,Null,Null},
 		soluzioni={Automatic,Automatic,Automatic,Automatic},
 		enabled=False,
@@ -94,9 +94,9 @@ grafica:=DynamicModule[{
 							panelSoluzione={
 								{
 									Style["Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultatiUtente[[1]]], String, ImageSize->{100,35}, ContinuousAction -> True, Background->Dynamic@soluzioni[[1]]],
+									InputField[Dynamic[risultatiUtente[[1]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@enabled, Background->Dynamic@soluzioni[[1]]],
 									Style["Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultatiUtente[[2]]], String, ImageSize->{100,35}, ContinuousAction -> True, Background->Dynamic@soluzioni[[2]]]
+									InputField[Dynamic[risultatiUtente[[2]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@enabled, Background->Dynamic@soluzioni[[2]]]
 								},
 								{
 								Dynamic[If[Or[risultatiUtente[[1]]==="", NumberQ@ToExpression@risultatiUtente[[1]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
@@ -106,9 +106,9 @@ grafica:=DynamicModule[{
 								},
 								{
 									Style["Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultatiUtente[[3]]], String, ImageSize->{100,35}, ContinuousAction -> True, Background->Dynamic@soluzioni[[3]]],
+									InputField[Dynamic[risultatiUtente[[3]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@enabled, Background->Dynamic@soluzioni[[3]]],
 									Style["Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultatiUtente[[4]]], String, ImageSize->{100,35}, ContinuousAction -> True, Background->Dynamic@soluzioni[[4]]]
+									InputField[Dynamic[risultatiUtente[[4]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@enabled, Background->Dynamic@soluzioni[[4]]]
 								},
 								{
 								Dynamic[If[Or[risultatiUtente[[3]]==="", NumberQ@ToExpression@risultatiUtente[[3]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
@@ -126,7 +126,7 @@ grafica:=DynamicModule[{
 									SpanFromLeft
 								}
 							};
-							steps = {};
+							steps = {{"Inserisci le soluzioni per visualizzare i passaggi per la risoluzione dell'esercizio"}};
 							enabled = True;
 							risultatiUtente=Table["", 4],
 						Enabled->Dynamic@IsValid[eventualAlpha*angleType]
@@ -199,7 +199,7 @@ StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"}]
 			SpanFromLeft
 			(*Cella 3*)
 			(*SpanFromAbove*)
-		}
+		} 
 		},
 		Frame->All,
 		Alignment->Top
