@@ -131,6 +131,7 @@ grafica:=DynamicModule[{
 						Enabled->Dynamic@IsValid[eventualAlpha, angleType, choice]
 					]}],
 					Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"}, BaseStyle->{FontSize->16, Darker@Gray}],
+					Row[]
 					Row[{Dynamic@Which[ContainsAny[soluzioni, {LightRed}], "Riprova l'esercizio per approfondire le tue competenze", ContainsAll[soluzioni, {LightGreen}], "Hai completato l'esercizio con successo", True, ""]}, BaseStyle->{FontSize->16, Dynamic@Which[ContainsAny[soluzioni, {LightRed}], Darker@Red, True, Darker@Green]}]
 				}],
 				Style["Inserisci i Parametri Richiesti",FontSize->24],
