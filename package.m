@@ -19,7 +19,7 @@
 
 BeginPackage["AngleCircBackend`"]
 
-CircleAngleGraphicsElements::usage = "circleAngleGraphicsElements[type_, angle_, choice_] ritorna una lista di oggetti grafici contenente:
+grafica::usage = "circleAngleGraphicsElements[type_, angle_, choice_] ritorna una lista di oggetti grafici contenente:
 - La circonferenza goniometrica su cui vengono costruiti i triangoli
 - Due ToolTips che mostrano le dimensioni dell'angolo al centro e di quello alla circonferenza, rispettivamente
 - Il triangolo AOB dove O \[EGrave] il centro della circonferenza e A e B formano un angolo al centro che rispetta i criteri passati come parametri
@@ -30,10 +30,6 @@ Parametri:
 - \"choice\" specifica se il centro della circonferenza deve essere interno o esterno al triangolo \"ABC\": 1\[Rule]esterno , 2\[Rule]interno.
 NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata una lista con un unico elemento che rappresenta un messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le condizioni imposte.
 "
-
-grafica::usage = "TODO"
-
-IsValid::usage = "Ritorna TRUE se il valore passato \[EGrave] non-nullo e compreso tra 0 (escluso) e 180, FALSE altrimenti"
 
 
 Begin["`Private`"]
@@ -74,7 +70,7 @@ grafica:=DynamicModule[{
 						" \[Degree]"
 					}, BaseStyle->FontSize -> 18],
 					(* Visualizzazione Errore *)
-					Row[{Dynamic[If[IsValid[eventualAlpha*angleType], "", Style["L'ampiezza deve essere compresa tra 0 (escluso) e " <> ToString[180 / angleType], Red]]]}, BaseStyle -> FontSize -> 16],
+					Row[{Dynamic[If[IsValid[eventualAlpha, angleType, choice], "", Style["L'ampiezza deve essere compresa tra 0 (escluso) e " <> ToString[180 / angleType], Red]]]}, BaseStyle -> FontSize -> 16],
 					Row[{"Centro della circonferenza \[EGrave]: ",
 						RadioButtonBar[
 							Dynamic@choice, {1 -> "Esterno", 2 -> "Interno"},
@@ -82,7 +78,7 @@ grafica:=DynamicModule[{
 					}, BaseStyle->FontSize -> 18],
 					Row[{Button[
 						Style["Disegna",FontSize->16],
-							If[!IsValid[eventualAlpha],Return[]];
+							If[!IsValid[eventualAlpha, angleType, choice],Return[]];
 							Clear[risultatiCorretti];
 							soluzioni={Automatic,Automatic,Automatic,Automatic};
 							alpha=Round[eventualAlpha, 0.01];
@@ -94,9 +90,9 @@ grafica:=DynamicModule[{
 							panelSoluzione={
 								{
 									Style["Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultatiUtente[[1]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@enabled, Background->Dynamic@soluzioni[[1]]],
+									InputField[Dynamic[risultatiUtente[[1]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[enabled, alpha*angleType < 180], Background->Dynamic@soluzioni[[1]]],
 									Style["Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[risultatiUtente[[2]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@enabled, Background->Dynamic@soluzioni[[2]]]
+									InputField[Dynamic[risultatiUtente[[2]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[enabled, alpha*angleType < 180], Background->Dynamic@soluzioni[[2]]]
 								},
 								{
 								Dynamic[If[Or[risultatiUtente[[1]]==="", NumberQ@ToExpression@risultatiUtente[[1]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
@@ -121,7 +117,10 @@ grafica:=DynamicModule[{
 										steps := GetSteps[N[alpha*angleType], N[alpha*angleType/2], bacAngle];
 										soluzioni:=CheckSoluzioni[ToExpression/@risultatiUtente];
 										enabled=False,
-										Enabled -> Dynamic[And[IsValid[alpha*angleType], ContainsNone[Dynamic@risultatiUtente, {""}], enabled, AllTrue[risultatiUtente, NumberQ[ToExpression[#]]&]]]
+										Enabled -> Dynamic[And[
+										IsValid[alpha, angleType, choice],
+										(* alpha*angleType < 180, tutto,  *)
+										 enabled, ContainsNone[Part[risultatiUtente, Which[alpha*angleType < 180 , 1, True, 3] ;; 4], {""}], AllTrue[Select[risultatiUtente, # =!= ""&], NumberQ[ToExpression[#]]&]]]
 									],
 									SpanFromLeft
 								}
@@ -129,7 +128,7 @@ grafica:=DynamicModule[{
 							steps = {{"Inserisci le soluzioni per visualizzare i passaggi per la risoluzione dell'esercizio"}};
 							enabled = True;
 							risultatiUtente=Table["", 4],
-						Enabled->Dynamic@IsValid[eventualAlpha*angleType]
+						Enabled->Dynamic@IsValid[eventualAlpha, angleType, choice]
 					]}],
 					Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"}, BaseStyle->{FontSize->16, Darker@Gray}],
 					Row[{Dynamic@Which[ContainsAny[soluzioni, {LightRed}], "Riprova l'esercizio per approfondire le tue competenze", ContainsAll[soluzioni, {LightGreen}], "Hai completato l'esercizio con successo", True, ""]}, BaseStyle->{FontSize->16, Dynamic@Which[ContainsAny[soluzioni, {LightRed}], Darker@Red, True, Darker@Green]}]
@@ -158,10 +157,10 @@ grafica:=DynamicModule[{
 				Button["Mostra/nascondi formule",
 					If[Length@formule == 0, 
 						formule = {
-							Row[{Style["Teorema della Corda: " <>  Beautify@(2*r*Sin[\[Beta]]), colore], " con \[Beta] angolo alla circonferenza"}],
-							Row[{Style["Area del Triangolo: " <> Beautify@((Subscript[l, 1]*Subscript[l, 2]*Sin[\[Theta]])/2), colore], " con \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)"}],
-							Row[{Style["Teorema dei Seni: " <>  Beautify@(a:Sin[\[Alpha]] == b:Sin[\[Beta]]), colore], "\n con \[Alpha] angolo opposto al lato \!\(\*
-StyleBox[\"a\",\nFontSlant->\"Italic\"]\) e \[Beta] angolo opposto al lato \!\(\*
+							Row[{Style["Teorema della Corda: " <>  Beautify@(2*r*Sin[\[Beta]]), colore], "\n\tcon \[Beta] angolo alla circonferenza"}],
+							Row[{Style["Area del Triangolo: " <> Beautify@((Subscript[l, 1]*Subscript[l, 2]*Sin[\[Theta]])/2), colore], "\n\tcon \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)"}],
+							Row[{Style["Teorema dei Seni: " <>  Beautify@(a:Sin[\[Alpha]] == b:Sin[\[Beta]]), colore], "\n\tcon \[Alpha] angolo opposto al lato \!\(\*
+StyleBox[\"a\",\nFontSlant->\"Italic\"]\)\n\te \[Beta] angolo opposto al lato \!\(\*
 StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"}]
 						}/.colore -> Darker@Red,
 						formule = {}],
@@ -301,10 +300,10 @@ GetSteps[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, teorem
 	releasedAB = N@Round[ReleaseHold@AB, 0.01];
 	
 	(* perimetro AOB *)
-	perimetroAOB=perimetro/.{l1->1,l2->1,l3->releasedAB};
+	perimetroAOB=Which[circleAngle == 180, Null, True, perimetro/.{l1->1,l2->1,l3->releasedAB}];
 	
 	(* calcolo area = 1/2*OB*AO*sin(alpha) dove alpha \[EGrave] l'angolo al centro *)
-	areaAOB=area/.{l1->1,l2->1,angolo->circleAngle Degree};
+	areaAOB=Which[circleAngle == 180, Null, True, area/.{l1->1,l2->1,angolo->circleAngle Degree}];
 
 	(* --- adesso abbiamo perimetro e area di AOB --- *)
 
@@ -335,8 +334,8 @@ GetSteps[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, teorem
 	risultatiCorretti={Round[ReleaseHold@perimetroAOB,0.01],Round[ReleaseHold@areaAOB,0.01],Round[ReleaseHold@perimetroABC,0.01],Round[ReleaseHold@areaABC,0.01]};
 	Return@{
 		{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", Beautify@teoremaDellaCorda, Beautify@AB<>" = "<>ToString@releasedAB},
-		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroAOB<>" = "<>ToString@risultatiCorretti[[1]]},
-		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Beautify@areaAOB<>" = "<>ToString@risultatiCorretti[[2]]},
+		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[perimetro/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Which[perimetroAOB == Null, "non calcolabile", True, Beautify@perimetroAOB<>" = "<>ToString@risultatiCorretti[[1]]]},
+		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[area/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Which[areaAOB == Null, "non calcolabile", True, Beautify@areaAOB<>" = "<>ToString@risultatiCorretti[[2]]]},
 		{"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC},
 		{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[angoloTriangolo/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC},
 		{"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", Beautify[teoremaDeiSeni/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC},
@@ -350,7 +349,10 @@ GetSteps[circleAngle_, circumferenceAngle_, aAngle_] := Module[{toReturn, teorem
 CheckSoluzioni[risultati_]:=MapIndexed[Which[#1==risultatiCorretti[[#2]][[1]], LightGreen, True, LightRed]&, risultati]
 
 
-IsValid[alpha_]:=And[alpha=!=Null,alpha>0,alpha<=180]
+(* Ritorna TRUE se il valore passato \[EGrave] non-nullo e compreso tra 0 (escluso) e 180, FALSE altrimenti *)
+(*[alpha == Null, alpha*type <= 0, alpha*type > 180, And[alpha*type \[Equal] 180, choice \[Equal] 1]]*)
+IsValid[alpha_, type_, choice_]:=And[alpha =!= Null, alpha*type > 0, alpha*type <= 180, Or[alpha*type < 180, choice == 2]]
+	
 
 
 Beautify[formula_]:=StringReplace[ToString[formula//TraditionalForm],{"AngleCircBackend`Private`"->""}]
