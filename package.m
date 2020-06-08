@@ -52,6 +52,7 @@ grafica:=DynamicModule[{
 		datiProblema={"Clicca \"Disegna\" per visualizzare i dati"},
 		formInputRisultati={{"Clicca \"Disegna\" per inserire la soluzione"}},
 		passiRisoluzione=Null,
+		numeroInputFields = 4,
 		inputRisultati=Table[Null, 4],
 		coloriInputRisultati=Table[Automatic, 4],
 		formRisultatiEnabled=False,
@@ -75,9 +76,18 @@ grafica:=DynamicModule[{
 						" \[Degree]"},
 						BaseStyle->FontSize -> 18],
 					Row[{ (* Visualizzazione Errore *)
-						Dynamic@If[IsValid[inputAlpha, inputTipoAngolo, posizioneCentro],
+						Dynamic@If[InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro],
 							"",
-							Style["L'ampiezza deve essere compresa tra 0 (escluso) e " <> ToString[180 / inputTipoAngolo], Red]
+							Style[
+								Which[
+									!AngoloValido[inputAlpha, inputTipoAngolo],
+									"L'ampiezza deve essere compresa tra 0\[Degree] (escluso) e " <> ToString[180 / inputTipoAngolo] <> "\[Degree].",
+									True,
+									"Non \[EGrave] possibile impostare l'ampiezza a "  <> ToString@inputAlpha <> "\[Degree] e richiedere" <>
+									"\nil centro della circonferenza esterno."
+								],
+								Red
+							]
 						]},
 						BaseStyle -> FontSize -> 16],
 					Row[{"Centro della circonferenza \[EGrave]: ",  (* Radiobutton posizione centro *)
@@ -89,9 +99,11 @@ grafica:=DynamicModule[{
 						Button[ (* Bottone "disegna" *)
 							Style["Disegna",FontSize->16],
 
-							If[!IsValid[inputAlpha, inputTipoAngolo, posizioneCentro], Return[]];
+							If[!InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro], Return[]];
+							numeroInputFields = NumeroInputField[inputAlpha, inputTipoAngolo, posizioneCentro];
 							Clear@risultatiCorretti;
-							coloriInputRisultati=Table[Automatic, 4];
+							coloriInputRisultati=Table[Automatic, numeroInputFields];
+							inputRisultati=Table["", numeroInputFields];
 							alpha=Round[inputAlpha, 0.01];
 							tipoAngolo=inputTipoAngolo;
 							graficoEsercizio=ElementiGrafici[tipoAngolo, alpha, posizioneCentro];
@@ -108,7 +120,64 @@ grafica:=DynamicModule[{
 										"\[Degree]"]},
 									BaseStyle->FontSize -> 18]
 							};
-							formInputRisultati={{
+							
+							formInputRisultati = Flatten[MapThread[
+								(*  #1 = nomi
+									#2 = inFileds
+									#3 = colori
+								*)
+								{
+									{
+										Style[#1[[1]], FontSize->16],
+										InputField[Dynamic@ReleaseHold@#2[[1]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[formRisultatiEnabled, alpha*tipoAngolo < 180], Background->Dynamic[#3[[1]]]],
+										Style[#1[[2]], FontSize->16],
+										InputField[#2[[2]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[formRisultatiEnabled, alpha*tipoAngolo < 180], Background->Dynamic[#3[[2]]]]
+									},
+									{
+										If[Or[#2[[1]]==="", NumberQ@ToExpression@#2[[1]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]],
+										SpanFromLeft,
+										If[Or[#2[[2]]==="", NumberQ@ToExpression@#2[[2]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]],
+										SpanFromLeft
+									}
+								}&,
+								{
+									{
+										{
+											"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)",
+											"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)"
+										},
+										{
+											"Perimetro \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
+											"Area \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)"
+										}
+									},
+									{
+										{
+											Hold[inputRisultati[[1]]],
+											Dynamic@inputRisultati[[2]]
+										},
+										{
+											Dynamic@inputRisultati[[3]],
+											Dynamic@inputRisultati[[4]]
+										}
+									},
+									{
+										{
+											Dynamic@coloriInputRisultati[[1]],
+											Dynamic@coloriInputRisultati[[2]]
+										},
+										{
+											Dynamic@coloriInputRisultati[[3]],
+											Dynamic@coloriInputRisultati[[4]]
+										}
+									}
+								}
+							], 1];
+							
+							Print[Dynamic@inputRisultati];
+
+							(* formInputRisultati={
+								{
 									Style["Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
 									InputField[Dynamic[inputRisultati[[1]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[formRisultatiEnabled, alpha*tipoAngolo < 180], Background->Dynamic@coloriInputRisultati[[1]]],
 									Style["Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
@@ -140,7 +209,7 @@ grafica:=DynamicModule[{
 										formRisultatiEnabled=False,
 										
 										Enabled -> Dynamic[And[
-											IsValid[alpha, tipoAngolo, posizioneCentro],
+											InputDisegnaValido[alpha, tipoAngolo, posizioneCentro],
 											formRisultatiEnabled,
 											ContainsNone[inputRisultati[[Which[alpha*tipoAngolo < 180, 1, True, 3] ;; 4]], {""}],
 											AllTrue[Select[inputRisultati, # =!= ""&],
@@ -148,19 +217,18 @@ grafica:=DynamicModule[{
 									],
 									SpanFromLeft
 								}
-							};
+							}; *)
 							passiRisoluzione = Null;
-							formRisultatiEnabled = True;
-							inputRisultati=Table["", 4],
+							formRisultatiEnabled = True,
 
-							Enabled->Dynamic@IsValid[inputAlpha, inputTipoAngolo, posizioneCentro]
+							Enabled->Dynamic@InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro]
 						]
 					}, (* Fine bottone disegna *)
 					(* Note *)
 					Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"},
 						BaseStyle->{FontSize->16, Darker@Gray}],
 					(*  *)
-					Row[{Dynamic@Which[inputAlpha*inputTipoAngolo == 180 && posizioneCentro == 2,
+					Row[{Dynamic@Which[NumeroInputField[inputAlpha,inputTipoAngolo,posizioneCentro] == 2,
 						"NOTA: i dati inseriti permettono la costruzione\ndi un unico triangolo",
 						True,
 						""]},
@@ -259,17 +327,25 @@ grafica:=DynamicModule[{
 					BaseStyle->Large,
 					Background-> White
 				]
-			}
-		}, (* Fine Grid *)
-		Frame->All,
-		Alignment->Top
-		(* SIAMO ARRIVATI QUI *)
-	],
-	" ",
-	Panel[Dynamic@Grid[Which[passiRisoluzione===Null, {{"Inserisci le soluzioni per visualizzare i passaggi\nper la risoluzione dell'esercizio"}}, True, passiRisoluzione], BaseStyle->{FontSize -> 22},Alignment->{Center,Center},Frame -> All,  ItemStyle-> Darker[Blue]], Style["Passi Soluzione",FontSize->24]]
-	},
-	BaselinePosition->Bottom
-	]
+			}}, (* Fine elementi Grid *)
+			Frame->All,
+			Alignment->Top
+		],
+		" ",
+		Panel[
+			Dynamic@Grid[
+				Which[passiRisoluzione===Null,
+					{{"Inserisci le soluzioni per visualizzare i passaggi\nper la risoluzione dell'esercizio"}},
+					True,
+					passiRisoluzione
+				],
+				BaseStyle->{FontSize -> 22},
+				Frame -> All,
+				ItemStyle-> Darker[Blue]
+			],
+			Style["Passi Soluzione", FontSize->24]
+		]
+	}]
 ]
 
 ElementiGrafici[tipoAngolo_, angolo_, posizioneCentro_] := Module[{angoloA, angoloC, punti, alpha},
@@ -433,9 +509,13 @@ CheckSoluzioni[risultati_]:=MapIndexed[Which[#1==risultatiCorretti[[#2]][[1]], L
 
 (* Ritorna TRUE se il valore passato \[EGrave] non-nullo e compreso tra 0 (escluso) e 180, FALSE altrimenti *)
 (*[alpha == Null, alpha*tipoAngolo <= 0, alpha*tipoAngolo > 180, And[alpha*tipoAngolo \[Equal] 180, posizioneCentro \[Equal] 1]]*)
-IsValid[alpha_, tipoAngolo_, posizioneCentro_]:=And[alpha =!= Null, alpha*tipoAngolo > 0, alpha*tipoAngolo <= 180, Or[alpha*tipoAngolo < 180, posizioneCentro == 2]]
-	
+InputDisegnaValido[alpha_, tipoAngolo_, posizioneCentro_]:=And[AngoloValido[alpha, tipoAngolo], TriangoloDisegnabile[alpha, tipoAngolo, posizioneCentro]]
 
+AngoloValido[alpha_, tipoAngolo_]:=And[alpha =!= Null, alpha*tipoAngolo > 0, alpha*tipoAngolo <= 180]
+
+TriangoloDisegnabile[alpha_,tipoAngolo_,posizioneCentro_]:=Or[alpha*tipoAngolo < 180, posizioneCentro == 2]
+
+NumeroInputField[alpha_, tipoAngolo_, posizioneCentro_]:=Which[alpha*tipoAngolo == 180 && posizioneCentro == 2, 2, True, 4]
 
 Beautify[formula_]:=StringReplace[ToString[formula//TraditionalForm],{"EsercizioTriAngoli`Private`"->""}]
 
