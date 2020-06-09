@@ -30,6 +30,7 @@ Parametri:
 - \"posizioneCentro\" specifica se il centro della circonferenza deve essere interno o esterno al triangolo \"ABC\": 1\[Rule]esterno , 2\[Rule]interno.
 NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata una lista con un unico elemento che rappresenta un messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le condizioni imposte.
 "
+CustomRound::usage = "Vecchio"
 
 
 Begin["`Private`"]
@@ -59,6 +60,7 @@ grafica:=DynamicModule[{
 		(* formule visualizzate su richiesta dell'utente *)
 		formule = {}
 	},
+	
 	Row[{ (* Contiene 2 "celle": una contente tutto quello che riguarda la preparazione e lo svolgimento dell'esercizio,
 			l'altra contente esclusivamente i passi di risoluzione *)
 		Grid[{ (* Parentesi che non corrisponde a nulla nell'insieme degli elementi da rappresentare graficamente *)
@@ -119,6 +121,7 @@ grafica:=DynamicModule[{
 										"\[Degree]"]},
 									BaseStyle->FontSize -> 18]
 							};
+							
 							formInputRisultati = Table[With[{i=i, nomi = {
 											"Perimetro \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
 											"Area \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
@@ -129,14 +132,15 @@ grafica:=DynamicModule[{
 									Style[nomi[[i]],FontSize->16],
 									InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
 									Style[nomi[[i+1]],FontSize->16 ],
-									InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]],
+									InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]]
 								  }],{i, 1, Length@inputRisultati, 2}];
 								  
+							formInputRisultati = Insert[formInputRisultati, {Style["Nota bene:\n\[Bullet] I risultati di tutte le operazioni, eccetto quelle trigonometriche,\n  devono essere approssimati ai centesimi.\n\[Bullet] Le operazioni trigonometriche considerano gli angoli in radianti.", FontSize->16, Darker@Gray], SpanFromLeft}, 1];
 							AppendTo[formInputRisultati, 
 									{
 										Button[Style["Conferma",FontSize->18], 
-										passiRisoluzione := PassiRisoluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
-										coloriInputRisultati:=CheckSoluzioni[ToExpression/@inputRisultati];
+										passiRisoluzione = PassiRisoluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
+										coloriInputRisultati=CheckSoluzioni[ToExpression/@inputRisultati];
 										formRisultatiEnabled=False,
 										Enabled -> Dynamic[And[
 											InputDisegnaValido[alpha, tipoAngolo, posizioneCentro],
@@ -379,14 +383,14 @@ PassiRisoluzione[angoloAlCentro_, angoloAllaCirconferenza_, angoloA_] := Module[
 	(* teoremaDellaCorda = ;
 	perimetro=;
 	area=;
-	(*  a:sin(angolo2)=b:sin(angolo1)
+	 (* a:sin(angolo2)=b:sin(angolo1)
 		a:sin(Subscript[angoloOpposto, a])=b:sin(Subscript[angoloOpposto, b]); *)
 	teoremaDeiSeni=;
 	angoloTriangolo=; *)
 
 	(* calcolo AB sfruttando il teorema della corda: 2*radius*sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
 	AB = formule[[1]]/.{r->1, \[Beta]->angoloAllaCirconferenza Degree};
-	releasedAB = Round[ReleaseHold@AB, 0.01];
+	releasedAB = CustomRound[ReleaseHold@AB];
 	
 	(* perimetro AOB *)
 	perimetroAOB=Which[angoloAlCentro == 180, Null, True, formule[[2]]/.{l1->1,l2->1,l3->releasedAB}];
@@ -398,22 +402,21 @@ PassiRisoluzione[angoloAlCentro_, angoloAllaCirconferenza_, angoloA_] := Module[
 
 	(* calcolo BC sfruttando il teorema dei seni BC = (sin(BAC)*AB)/sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
 	BC = formule[[4]]/.{l1->releasedAB*1., angoloOppostoAlLatoDaTrovare->angoloA Degree, angoloOppostoAL1->angoloAllaCirconferenza Degree};
-	releasedBC = Round[ReleaseHold@BC,0.01];
+	releasedBC = CustomRound[ReleaseHold@BC];
 	
 	(* calcolo l'angolo ABC = Pi - angoloAllaCirconferenza - BAC *)
 	ABC=formule[[5]]/.{angolo1->angoloAllaCirconferenza Degree, angolo2->angoloA Degree};
-	releasedABC = Round[ReleaseHold@ABC,0.01];
+	releasedABC = CustomRound[ReleaseHold@ABC];
 	
 	(* sfrutto di nuovo il teorema dei seni e calcolo AC = (sin(ABC)*AB)/sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
 	AC = formule[[4]]/.{l1->releasedAB*1.,angoloOppostoAlLatoDaTrovare->releasedABC,angoloOppostoAL1->angoloAllaCirconferenza Degree};
-	releasedAC = Round[ReleaseHold@AC,0.01];
-		
+	releasedAC = CustomRound[ReleaseHold@AC];
+	
 	(* perimetro AOB *)
 	perimetroABC=formule[[2]]/.{l1->releasedAC,l2->releasedBC,l3->releasedAB};
 	
 	(* calcolo area = 1/2*BC*AC*sin(beta) *)
 	areaABC=formule[[3]]/.{l1->releasedBC,l2->releasedAC,angolo->angoloAllaCirconferenza Degree};
-
 	(* --- adesso abbiamo perimetro e area di ABC --- *)
 
 	(* Forma: Array di Array
@@ -421,12 +424,12 @@ PassiRisoluzione[angoloAlCentro_, angoloAllaCirconferenza_, angoloA_] := Module[
 		Stepi=[CosaTrovare, Teorema Utilizzato, Formula Simbolica, FormulaApplicata=Risultato] *)
 		
 	risultatiCorretti={
-		Round[ReleaseHold@perimetroABC,0.01],
-		Round[ReleaseHold@areaABC,0.01],
-		Round[ReleaseHold@perimetroAOB,0.01],
-		Round[ReleaseHold@areaAOB,0.01]
+		ReleaseHold@perimetroABC,
+		CustomRound[ReleaseHold@areaABC],
+		ReleaseHold@perimetroAOB,
+		CustomRound[ReleaseHold@areaAOB]
 		};
-		
+	
 	(*If[angoloAlCentro < 180, 
 		AppendTo[risultatiCorretti, {Round[ReleaseHold@perimetroAOB,0.01],
 		Round[ReleaseHold@areaAOB,0.01]}], Identity];
@@ -456,6 +459,8 @@ AngoloValido[alpha_, tipoAngolo_]:=And[alpha =!= Null, alpha*tipoAngolo > 0, alp
 TriangoloDisegnabile[alpha_,tipoAngolo_,posizioneCentro_]:=Or[alpha*tipoAngolo < 180, posizioneCentro == 2]
 
 NumeroInputField[alpha_, tipoAngolo_, posizioneCentro_]:=Which[alpha*tipoAngolo == 180 && posizioneCentro == 2, 2, True, 4]
+(*Mathematica FA SCHIFO!!!*)
+CustomRound[number_]:=N[Floor[number*100+0.5]/100]
 
 Beautify[formula_]:=StringReplace[ToString[formula//TraditionalForm],{"EsercizioTriAngoli`Private`"->""}]
 
