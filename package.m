@@ -98,12 +98,11 @@ grafica:=DynamicModule[{
 					Row@{
 						Button[ (* Bottone "disegna" *)
 							Style["Disegna",FontSize->16],
-
 							If[!InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro], Return[]];
 							numeroInputFields = NumeroInputField[inputAlpha, inputTipoAngolo, posizioneCentro];
 							Clear@risultatiCorretti;
 							coloriInputRisultati=Table[Automatic, numeroInputFields];
-							inputRisultati=Table["", numeroInputFields];
+							inputRisultati=Table[Null, numeroInputFields];
 							alpha=Round[inputAlpha, 0.01];
 							tipoAngolo=inputTipoAngolo;
 							graficoEsercizio=ElementiGrafici[tipoAngolo, alpha, posizioneCentro];
@@ -120,104 +119,35 @@ grafica:=DynamicModule[{
 										"\[Degree]"]},
 									BaseStyle->FontSize -> 18]
 							};
-							
-							formInputRisultati = Flatten[MapThread[
-								(*  #1 = nomi
-									#2 = inFileds
-									#3 = colori
-								*)
-								{
-									{
-										Style[#1[[1]], FontSize->16],
-										InputField[Dynamic@ReleaseHold@#2[[1]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[formRisultatiEnabled, alpha*tipoAngolo < 180], Background->Dynamic[#3[[1]]]],
-										Style[#1[[2]], FontSize->16],
-										InputField[#2[[2]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[formRisultatiEnabled, alpha*tipoAngolo < 180], Background->Dynamic[#3[[2]]]]
-									},
-									{
-										If[Or[#2[[1]]==="", NumberQ@ToExpression@#2[[1]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]],
-										SpanFromLeft,
-										If[Or[#2[[2]]==="", NumberQ@ToExpression@#2[[2]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]],
-										SpanFromLeft
-									}
-								}&,
-								{
-									{
-										{
+							formInputRisultati = Table[With[{i=i, nomi = {
+											"Perimetro \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
+											"Area \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
 											"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)",
 											"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)"
-										},
-										{
-											"Perimetro \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
-											"Area \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)"
-										}
-									},
+									}},
+								{
+									Style[nomi[[i]],FontSize->16],
+									InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
+									Style[nomi[[i+1]],FontSize->16 ],
+									InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]],
+								  }],{i, 1, Length@inputRisultati, 2}];
+								  
+							AppendTo[formInputRisultati, 
 									{
-										{
-											Hold[inputRisultati[[1]]],
-											Dynamic@inputRisultati[[2]]
-										},
-										{
-											Dynamic@inputRisultati[[3]],
-											Dynamic@inputRisultati[[4]]
-										}
-									},
-									{
-										{
-											Dynamic@coloriInputRisultati[[1]],
-											Dynamic@coloriInputRisultati[[2]]
-										},
-										{
-											Dynamic@coloriInputRisultati[[3]],
-											Dynamic@coloriInputRisultati[[4]]
-										}
-									}
-								}
-							], 1];
-							
-							Print[Dynamic@inputRisultati];
-
-							(* formInputRisultati={
-								{
-									Style["Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[inputRisultati[[1]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[formRisultatiEnabled, alpha*tipoAngolo < 180], Background->Dynamic@coloriInputRisultati[[1]]],
-									Style["Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[inputRisultati[[2]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@And[formRisultatiEnabled, alpha*tipoAngolo < 180], Background->Dynamic@coloriInputRisultati[[2]]]
-								},
-								{
-									Dynamic[If[Or[inputRisultati[[1]]==="", NumberQ@ToExpression@inputRisultati[[1]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
-									SpanFromLeft,
-									Dynamic[If[Or[inputRisultati[[2]]==="", NumberQ@ToExpression@inputRisultati[[2]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
-									SpanFromLeft
-								},
-								{
-									Style["Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[inputRisultati[[3]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[3]]],
-									Style["Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", FontSize->16],
-									InputField[Dynamic[inputRisultati[[4]]], String, ImageSize->{100,35}, ContinuousAction -> True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[4]]]
-								},
-								{
-									Dynamic[If[Or[inputRisultati[[3]]==="", NumberQ@ToExpression@inputRisultati[[3]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
-									SpanFromLeft,
-									Dynamic[If[Or[inputRisultati[[4]]==="", NumberQ@ToExpression@inputRisultati[[4]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
-									SpanFromLeft
-								},
-								{
-									Button[Style["Conferma",FontSize->18], 
-										
+										Button[Style["Conferma",FontSize->18], 
 										passiRisoluzione := PassiRisoluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
 										coloriInputRisultati:=CheckSoluzioni[ToExpression/@inputRisultati];
 										formRisultatiEnabled=False,
-										
 										Enabled -> Dynamic[And[
 											InputDisegnaValido[alpha, tipoAngolo, posizioneCentro],
 											formRisultatiEnabled,
-											ContainsNone[inputRisultati[[Which[alpha*tipoAngolo < 180, 1, True, 3] ;; 4]], {""}],
+											ContainsNone[inputRisultati, {""}],
 											AllTrue[Select[inputRisultati, # =!= ""&],
 											NumberQ[ToExpression[#]]&]]]
 									],
 									SpanFromLeft
-								}
-							}; *)
+								}];
+							
 							passiRisoluzione = Null;
 							formRisultatiEnabled = True,
 
@@ -490,16 +420,26 @@ PassiRisoluzione[angoloAlCentro_, angoloAllaCirconferenza_, angoloA_] := Module[
 		[Step1,Step2,...]
 		Stepi=[CosaTrovare, Teorema Utilizzato, Formula Simbolica, FormulaApplicata=Risultato] *)
 		
-	risultatiCorretti={Round[ReleaseHold@perimetroAOB,0.01],Round[ReleaseHold@areaAOB,0.01],Round[ReleaseHold@perimetroABC,0.01],Round[ReleaseHold@areaABC,0.01]};
+	risultatiCorretti={
+		Round[ReleaseHold@perimetroABC,0.01],
+		Round[ReleaseHold@areaABC,0.01],
+		Round[ReleaseHold@perimetroAOB,0.01],
+		Round[ReleaseHold@areaAOB,0.01]
+		};
+		
+	(*If[angoloAlCentro < 180, 
+		AppendTo[risultatiCorretti, {Round[ReleaseHold@perimetroAOB,0.01],
+		Round[ReleaseHold@areaAOB,0.01]}], Identity];
+	*)		
 	Return@{
 		{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", Beautify@formule[[1]], Beautify@AB<>" = "<>ToString@releasedAB},
-		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Which[perimetroAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify@perimetroAOB<>" = "<>ToString@risultatiCorretti[[1]]]},
-		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[3]]/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Which[areaAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify@areaAOB<>" = "<>ToString@risultatiCorretti[[2]]]},
+		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Which[perimetroAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify@perimetroAOB<>" = "<>ToString@risultatiCorretti[[3]]]},
+		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[3]]/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Which[areaAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify@areaAOB<>" = "<>ToString@risultatiCorretti[[4]]]},
 		{"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", Beautify[formule[[4]]/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC},
 		{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[formule[[5]]/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC},
 		{"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", Beautify[formule[[4]]/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angoloOppostoAlLatoDaTrovare->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angoloOppostoAL1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC},
-		{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@risultatiCorretti[[3]]},
-		{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[3]]/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@risultatiCorretti[[4]]}
+		{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@risultatiCorretti[[1]]},
+		{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[3]]/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@risultatiCorretti[[2]]}
 	}
 ]
 
