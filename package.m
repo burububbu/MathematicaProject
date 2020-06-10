@@ -19,19 +19,10 @@
 
 BeginPackage["EsercizioTriAngoli`"]
 
-grafica::usage = "circleAngleGraphicsElements[tipoAngolo_, angle_, posizioneCentro_] ritorna una lista di oggetti grafici contenente:
-- La circonferenza goniometrica su cui vengono costruiti i triangoli
-- Due ToolTips che mostrano le dimensioni dell'angolo al centro e di quello alla circonferenza, rispettivamente
-- Il triangolo AOB dove O \[EGrave] il centro della circonferenza e A e B formano un angolo al centro che rispetta i criteri passati come parametri
-- Il triangolo ABC inscritto nella circonferenza che insiste sullo stesso arco AB e rispetta i criteri passati come parametri.
-Parametri:	
-- \"tipoAngolo\" definisce il tipo di angolo che \"angle\" rappresenta: 1\[Rule]angolo al centro, 2\[Rule]angolo alla circonferenza
-- \"angle\" rappresenta la grandezza dell'angolo specificato
-- \"posizioneCentro\" specifica se il centro della circonferenza deve essere interno o esterno al triangolo \"ABC\": 1\[Rule]esterno , 2\[Rule]interno.
-NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata una lista con un unico elemento che rappresenta un messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le condizioni imposte.
-"
-CustomRound::usage = "Vecchio"
-
+grafica::usage = "grafica ritorna una tabella contenente gli elementi utili alla visualizzazione e risoluzione dell'esercizio.
+In particolare, viene mostrata la form per la definizione dell'esercizio, il grafico rappresentante l'esercizio stesso,
+una cella in cui sono elencati i dati e le formule da utilizzare, la form per l'immissione dei risultati del problema.
+Inoltre, una volta selezionato il pulsante conferma, \[EGrave] visualizzata una tabella che presenta gli step di risoluzione dell'esercizio. "
 
 Begin["`Private`"]
 
@@ -54,7 +45,7 @@ grafica:=DynamicModule[{
 		formInputRisultati={{"Clicca \"Disegna\" per inserire la soluzione"}},
 		passiRisoluzione=Null,
 		numeroInputFields = 4,
-		inputRisultati=Table[Null, 4],
+		inputRisultati=Table["", 4],
 		coloriInputRisultati=Table[Automatic, 4],
 		formRisultatiEnabled=False,
 		(* formule visualizzate su richiesta dell'utente *)
@@ -104,7 +95,7 @@ grafica:=DynamicModule[{
 							numeroInputFields = NumeroInputField[inputAlpha, inputTipoAngolo, posizioneCentro];
 							Clear@risultatiCorretti;
 							coloriInputRisultati=Table[Automatic, numeroInputFields];
-							inputRisultati=Table[Null, numeroInputFields];
+							inputRisultati=Table["", numeroInputFields];
 							alpha=Round[inputAlpha, 0.01];
 							tipoAngolo=inputTipoAngolo;
 							graficoEsercizio=ElementiGrafici[tipoAngolo, alpha, posizioneCentro];
@@ -122,19 +113,29 @@ grafica:=DynamicModule[{
 									BaseStyle->FontSize -> 18]
 							};
 							
-							formInputRisultati = Table[With[{i=i, nomi = {
+							formInputRisultati = Flatten[Table[With[{i=i, nomi = {
 											"Perimetro \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
 											"Area \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
 											"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)",
 											"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)"
 									}},
-								{
-									Style[nomi[[i]],FontSize->16],
-									InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
-									Style[nomi[[i+1]],FontSize->16 ],
-									InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]]
-								  }],{i, 1, Length@inputRisultati, 2}];
-								  
+								
+									{
+										{
+											Style[nomi[[i]],FontSize->16],
+											InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
+											Style[nomi[[i+1]],FontSize->16 ],
+											InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]]
+								         },
+								         {
+											Dynamic[If[Or[inputRisultati[[i]]==="", And[SyntaxQ@inputRisultati[[i]],NumberQ@ToExpression@inputRisultati[[i]]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
+											SpanFromLeft,
+											Dynamic[If[Or[inputRisultati[[i+1]]==="", And[SyntaxQ@inputRisultati[[i+1]],NumberQ@ToExpression@inputRisultati[[i+1]]]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
+											SpanFromLeft
+										}
+								     }
+								  ],{i, 1, Length@inputRisultati, 2}], 1];
+					
 							formInputRisultati = Insert[formInputRisultati, {Style["Nota bene:\n\[Bullet] I risultati di tutte le operazioni, eccetto quelle trigonometriche,\n  devono essere approssimati ai centesimi.\n\[Bullet] Le operazioni trigonometriche considerano gli angoli in radianti.", FontSize->16, Darker@Gray], SpanFromLeft}, 1];
 							AppendTo[formInputRisultati, 
 									{
@@ -142,12 +143,15 @@ grafica:=DynamicModule[{
 										passiRisoluzione = PassiRisoluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
 										coloriInputRisultati=CheckSoluzioni[ToExpression/@inputRisultati];
 										formRisultatiEnabled=False,
-										Enabled -> Dynamic[And[
+										Enabled -> Dynamic@And[
 											InputDisegnaValido[alpha, tipoAngolo, posizioneCentro],
 											formRisultatiEnabled,
 											ContainsNone[inputRisultati, {""}],
-											AllTrue[Select[inputRisultati, # =!= ""&],
-											NumberQ[ToExpression[#]]&]]]
+											AllTrue[
+												Select[inputRisultati, # =!= ""&],
+												And[SyntaxQ@#,NumberQ@ToExpression@#]&
+											]
+										]
 									],
 									SpanFromLeft
 								}];
@@ -282,10 +286,19 @@ grafica:=DynamicModule[{
 	}]
 ]
 
+
+(* ElementiGrafici[tipoAngolo_, angolo_, posizioneCentro_] ritorna una lista di oggetti grafici contenente:
+- La circonferenza goniometrica su cui vengono costruiti i triangoli
+- Due ToolTips che mostrano le dimensioni dell'angolo al centro e di quello alla circonferenza, rispettivamente
+- Il triangolo AOB dove O \[EGrave] il centro della circonferenza e A e B formano un angolo al centro che rispetta i criteri passati come parametri
+- Il triangolo ABC inscritto nella circonferenza che insiste sullo stesso arco AB e rispetta i criteri passati come parametri.
+Parametri:	
+- \"tipoAngolo\" definisce il tipo di angolo che \"angle\" rappresenta: 1\[Rule]angolo al centro, 2\[Rule]angolo alla circonferenza
+- \"angle\" rappresenta la grandezza dell'angolo specificato
+- \"posizioneCentro\" specifica se il centro della circonferenza deve essere interno o esterno al triangolo \"ABC\": 1\[Rule]esterno , 2\[Rule]interno.
+NOTA: Se i parametri non sono coerenti (es: [1,180,1]) verr\[AGrave] ritornata una lista con un unico elemento che rappresenta un messaggio di testo che specifica l'impossibilit\[AGrave] di seguire le condizioni imposte.
+*)
 ElementiGrafici[tipoAngolo_, angolo_, posizioneCentro_] := Module[{angoloA, angoloC, punti, alpha},
-	(* Controlla che i parametri siano coerenti: se viene richiesto che il centro della circonferenza sia esterno
-    al triangolo inscritto e che l'angolo al centro sia 180\[Degree], allora viene notificata l'impossibilit\[AGrave] di graficarlo *)
-	(* If[Mod[angolo, 180/(tipoAngolo*1.)] == 0 && posizioneCentro == 1, Return[{Text["Impossibile disegnare."]}]]; *)
 	
 	(* Calcola alpha partendo dai valori di tipoAngolo e angle passati dall'utente.
 	alpha corrisponde all'angolo al centro in radianti ed \[EGrave] sempre minore o uguale a Pi.
@@ -459,7 +472,7 @@ AngoloValido[alpha_, tipoAngolo_]:=And[alpha =!= Null, alpha*tipoAngolo > 0, alp
 TriangoloDisegnabile[alpha_,tipoAngolo_,posizioneCentro_]:=Or[alpha*tipoAngolo < 180, posizioneCentro == 2]
 
 NumeroInputField[alpha_, tipoAngolo_, posizioneCentro_]:=Which[alpha*tipoAngolo == 180 && posizioneCentro == 2, 2, True, 4]
-(*Mathematica FA SCHIFO!!!*)
+
 CustomRound[number_]:=N[Floor[number*100+0.5]/100]
 
 Beautify[formula_]:=StringReplace[ToString[formula//TraditionalForm],{"EsercizioTriAngoli`Private`"->""}]
