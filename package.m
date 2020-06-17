@@ -67,7 +67,7 @@ grafica:=DynamicModule[{
 						]},
 						BaseStyle -> FontSize -> 16],
 					Row[{"Ampiezza angolo: ", (* Inputfield relativo all'ampiezza dell'angolo *)
-						InputField[Dynamic@inputAlpha, Number, ImageSize->{100, 35},ContinuousAction->True],
+						InputField[Dynamic@inputAlpha, Number, ImageSize->{100,25},ContinuousAction->True],
 						" \[Degree]"},
 						BaseStyle -> FontSize -> 16],
 					Row[{ (* Visualizzazione dell'errore *)
@@ -158,7 +158,7 @@ grafica:=DynamicModule[{
 								         si mostra l'errore. StringMatchQ assicura che la stringa in input sia un numero *)
 											Dynamic[If[Or[inputRisultati[[i]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
 											SpanFromLeft,
-											Dynamic[If[Or[inputRisultati[[i+1]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
+											Dynamic[If[Or[inputRisultati[[i+1]]==="", StringMatchQ[inputRisultati[[i+1]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
 											SpanFromLeft
 										}
 								     }
@@ -235,14 +235,15 @@ grafica:=DynamicModule[{
 						Appearance->"Frameless",
 						Background-> LightYellow
 					]
-		}, Frame->All, BaselinePosition->Top, Alignment->Center],
+		}, BaselinePosition->Top, Alignment->Center],
+		" ",
 		Column[{Panel@Dynamic@Graphics[graficoEsercizio,ImageSize->300],
 		Panel[Dynamic@Grid@formInputRisultati,
 					Style["Inserisci la Soluzione", FontSize->20],
 					Appearance->"Frameless",
 					Background-> White
 				]
-		}, Frame->All, BaselinePosition->Top],
+		}, BaselinePosition->Top, Alignment->Center],
 		" ",
 		Column[{
 		Panel[ (* Panel Formule da mostrare all'utente *)
@@ -309,7 +310,7 @@ grafica:=DynamicModule[{
 			Style["Passi Soluzione", FontSize->20]
 		]
 		}, Alignment->Center, BaselinePosition->Top]
-	}]
+	}, Background->LightBlue, Frame->True]
 ]
 
 
@@ -347,6 +348,7 @@ ElementiGrafici[tipoAngolo_, angolo_, posizioneCentro_] := Module[{angoloA, ango
 	Middlepoint \[EGrave] il punto medio dell'arco AB. *)
 	angoloC=Which[
 		posizioneCentro==1 (* centro della circonferenza esterno al triangolo ABC *),
+		(* TODO RIFARE STO CALCOLO CON 2 AL POSTO DI 0.1 *)
 		(* formula iniziale: RandomChoice[{-1, 1}]*(alpha/2 + 0.1 + RandomReal[{0, beta - 0.1}]) con beta = 180-alpha
 		la formula sottostante equivale a quella sovrastante semplificata
 		*)
