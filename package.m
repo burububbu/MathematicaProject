@@ -59,6 +59,7 @@ grafica:=DynamicModule[{
 	
 	Row[{ (* Contiene 2 "celle": una per la configurazione dell'esercizio ed il suo svolgimento,
 			l'altra contente esclusivamente i passi di risoluzione *)
+		Column[{
 		Grid[{
 			{(* Riga 1 *)
 			 (* Cella 1 *)
@@ -68,11 +69,11 @@ grafica:=DynamicModule[{
 							Dynamic@inputTipoAngolo, {1 -> "Centro", 2 -> "Circonferenza"},
 							Appearance-> "Vertical"
 						]},
-						BaseStyle->FontSize -> 18],
+						BaseStyle -> FontSize -> 16],
 					Row[{"Ampiezza angolo: ", (* Inputfield relativo all'ampiezza dell'angolo *)
 						InputField[Dynamic@inputAlpha, Number, ImageSize->{100, 35},ContinuousAction->True],
 						" \[Degree]"},
-						BaseStyle->FontSize -> 18],
+						BaseStyle -> FontSize -> 16],
 					Row[{ (* Visualizzazione dell'errore *)
 						Dynamic@If[InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro],
 							(* Se l'input \[EGrave] valido non stampo errori *)
@@ -91,15 +92,15 @@ grafica:=DynamicModule[{
 								Red
 							]
 						]},
-						BaseStyle -> FontSize -> 16],
+						BaseStyle -> FontSize -> 14],
 					Row[{"Centro della circonferenza \[EGrave]: ",  (* RadioButton per la selezione della posizione del centro *)
 						RadioButtonBar[
 							Dynamic@posizioneCentro, {1 -> "Esterno", 2 -> "Interno"},
 							Appearance->"Vertical"]},
-						BaseStyle->FontSize -> 18],
+						BaseStyle -> FontSize -> 16],
 					Row@{
 						Button[ (* Pulsante "Disegna" *)
-							Style["Disegna",FontSize->16],
+							Style["Disegna", FontSize->14],
 							(* Nonostante questo controllo sia effettuato in "Enabled", la correttezza dell'input viene 
 							ricontrollata per far fronte ad un "problema" di Mathematica, che consiste nel poter cliccare
 							un bottone che dovrebbe essere disabilitato quando, dopo aver scritto un input sbagliato, 
@@ -122,7 +123,7 @@ grafica:=DynamicModule[{
 							(* Nota: angoloBAC viene calcolato nella funzione "ElementiGrafici" *)
 							datiProblema= {
 								Row[{"r = 1 (r \[EGrave] il raggio)"},
-									BaseStyle->FontSize -> 18],
+									BaseStyle -> FontSize -> 16],
 								Row[{Dynamic@StringJoin["\!\(\*OverscriptBox[\(BAC\), \(^\)]\) = ", ToString@CustomRound@angoloBAC, "\[Degree]"],
 									"\t",
 									Dynamic@StringJoin[
@@ -131,7 +132,7 @@ grafica:=DynamicModule[{
 										"B\), \(^\)]\) = ",
 										ToString@alpha,
 										"\[Degree]"]},
-									BaseStyle->FontSize -> 18]
+									BaseStyle->FontSize -> 16]
 							};
 							
 							(* Costruisce il formInputRisultati: *)
@@ -151,30 +152,30 @@ grafica:=DynamicModule[{
 									(* ( * ) necessario per poter ritornare pi\[UGrave] liste dalla Table *)
 									{
 										{
-											Style[nomi[[i]],FontSize->16],
+											Style[nomi[[i]],FontSize->14],
 											(* L'utilizzo dell'array "inputRisultati" permette di mantenere la coerenza tra
 											la variabile che deve essere modificata e l'errore associato al suo valore *)
-											InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
-											Style[nomi[[i+1]],FontSize->16 ],
-											InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{100,35}, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]]
+											InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{80,25}, BaseStyle -> FontSize->14, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
+											Style[nomi[[i+1]],FontSize->14 ],
+											InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{80,25}, BaseStyle -> FontSize->14, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]]
 								         },
 								         { (* Se \[EGrave] stato inserito un valore non-numerico nell'InputField corrispondente, 
 								         si mostra l'errore. StringMatchQ assicura che la stringa in input sia un numero *)
-											Dynamic[If[Or[inputRisultati[[i]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
+											Dynamic[If[Or[inputRisultati[[i]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
 											SpanFromLeft,
-											Dynamic[If[Or[inputRisultati[[i+1]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->14]]],
+											Dynamic[If[Or[inputRisultati[[i+1]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
 											SpanFromLeft
 										}
 								     }
 								  ],{i, 1, Length@inputRisultati, 2}], 1];
 							
 							(* Si inserisce una nota in testa alla lista *)
-							formInputRisultati = Insert[formInputRisultati, {Style["Nota bene:\n\[Bullet] I risultati di tutte le operazioni, eccetto quelle trigonometriche,\n  devono essere approssimati ai centesimi.\n\[Bullet] Le operazioni trigonometriche considerano gli angoli in radianti.", FontSize->16, Darker@Gray], SpanFromLeft}, 1];
+							formInputRisultati = Insert[formInputRisultati, {Style["Nota bene:\n\[Bullet] I risultati di tutte le operazioni, eccetto quelle\n  trigonometriche, devono essere approssimati\n  ai centesimi.\n\[Bullet] Le operazioni trigonometriche considerano\n  gli angoli in radianti.", FontSize->14, Darker@Gray], SpanFromLeft}, 1];
 							
 							(* Viene aggiunta l'ultima riga che contiene il pulsante "Conferma" che occupa due celle *)
 							AppendTo[formInputRisultati, 
 									{
-										Button[Style["Conferma",FontSize->18], 
+										Button[Style["Conferma",FontSize->16], 
 											{risultatiCorretti, passiRisoluzione}=Soluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
 											coloriInputRisultati=CheckSoluzioni[CustomRound@ToExpression@#&/@inputRisultati, risultatiCorretti];
 											formRisultatiEnabled=False,
@@ -205,7 +206,7 @@ grafica:=DynamicModule[{
 					}, (* Fine bottone disegna *)
 					(* Note per l'utente *)
 					Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"},
-						BaseStyle->{FontSize->16, Darker@Gray}],
+						BaseStyle->{FontSize->14, Darker@Gray}],
 					(* Nel caso in cui il numero di input della soluzione sia 2, significa che l'ampiezza dell'angolo al centro \[EGrave] 180\[Degree] 
 					e che la posizione del centro sia stata definita come interna. Dunque, verr\[AGrave] visualizzato l'avviso per l'utente
 					riguardo la possibilit\[AGrave] di costruire un solo triangolo *)
@@ -213,15 +214,15 @@ grafica:=DynamicModule[{
 						"NOTA: i dati inseriti permettono la costruzione\ndi un unico triangolo",
 						True,
 						""]},
-						BaseStyle->{FontSize->16, Darker@Blue}],
+						BaseStyle->{FontSize->14, Darker@Blue}],
 					(* Messaggio da visualizzare dopo l'immissione dei risultati da parte dell'utente *)
 					Row[{Dynamic@Which[ContainsAny[coloriInputRisultati, {LightRed}],
-						"Riprova l'esercizio per approfondire le tue competenze",
+						"Riprova l'esercizio per approfondire\nle tue competenze",
 						ContainsAll[coloriInputRisultati, {LightGreen}],
 						"Hai completato l'esercizio con successo",
 						True,
 						""]},
-						BaseStyle->{FontSize->16,
+						BaseStyle->{FontSize->14,
 							Dynamic@Which[ContainsAny[coloriInputRisultati, {LightRed}],
 								Darker@Red,
 								True,
@@ -229,26 +230,41 @@ grafica:=DynamicModule[{
 					]}],
 					
 					(* Titolo del panel per la costruzione dell'esercizio *)
-					Style["Inserisci i Parametri Richiesti", FontSize->24],
+					Style["Inserisci i Parametri Richiesti", FontSize->22],
 					Appearance->"Frameless",
-					BaseStyle->Large,
 					Background-> White
 				], (* Fine Panel *)
 				(* Cella 2 *) (* Grafico dell'esercizio *)
-				Panel@Dynamic@Graphics[graficoEsercizio,ImageSize->400]
+				Panel@Dynamic@Graphics[graficoEsercizio,ImageSize->300]
 			},
 			{ (* Riga 2 *)
 				(* Cella 1 *)
+				SpanFromAbove, (* Fine column *)
+				(* Cella 2 *)
+				SpanFromAbove
+			},
+			{(* Riga 3 *)
 				Column@{ (* La column permette di visualizzare i due panel (dati e formule) in colonna *)
 					Panel[ (* Panel dei dati del problema *)
 						Dynamic@Column@datiProblema,
-						
-						Style["Dati",FontSize->24],
+						Style["Dati",FontSize->20],
 						Appearance->"Frameless",
-						BaseStyle->Large,
 						Background-> LightYellow
-					],
-					Panel[ (* Panel Formule da mostrare all'utente *)
+					]
+				}, (* Cella 1 (si unisce alla cella in cui ci sono dati e formule) *)
+				(* Cella 2 (Panel per inserimento dei risultati da parte dell'utente) *)
+				Panel[Dynamic@Grid@formInputRisultati,
+					Style["Inserisci la Soluzione", FontSize->20],
+					Appearance->"Frameless",
+					Background-> White
+				]
+			}}, (* Fine elementi Grid *)
+			Frame->All,
+			Alignment->Top
+		], SpanFromAbove}],
+		" ",
+		Column[{
+		Panel[ (* Panel Formule da mostrare all'utente *)
 						Dynamic@Column[ (* La column mostra il bottone e le formule una sotto l'altra *)
 							(* Flatten "rende piatto" l'array passato a Column: "formule" \[EGrave] un array di
 								Rows (il perch\[EAcute] viene spiegato successivamente) e deve essere ridotto a "lista" di rows:
@@ -284,36 +300,17 @@ grafica:=DynamicModule[{
 										formule = {}
 									],
 									
-									BaseStyle->FontSize->16
+									BaseStyle->FontSize->14
 								],
 								formule (* Celle successive all'interno della Column *)
 							},
-							BaseStyle->FontSize->18
+							BaseStyle->FontSize->16
 						], (* Fine column all'interno del panel *)
 						
-						Style["Formule", FontSize->24],
+						Style["Formule", FontSize->20],
 						Appearance->"Frameless",
-						BaseStyle->Large,
 						Background->LightGreen
-					](* Fine panel "Mostra Formule" *)
-				}, (* Fine column *)
-				(* Cella 2 *)
-				SpanFromAbove
-			},
-			{(* Riga 3 *)
-				SpanFromAbove, (* Cella 1 (si unisce alla cella in cui ci sono dati e formule) *)
-				(* Cella 2 (Panel per inserimento dei risultati da parte dell'utente) *)
-				Panel[Dynamic@Grid@formInputRisultati,
-					Style["Inserisci la Soluzione",FontSize->24],
-					Appearance->"Frameless",
-					BaseStyle->Large,
-					Background-> White
-				]
-			}}, (* Fine elementi Grid *)
-			Frame->All,
-			Alignment->Top
-		],
-		" ",
+					],(* Fine panel "Mostra Formule" *)
 		(* Panel per la visualizzazione dei passi di risoluzione *)
 		Panel[
 			(* Grid contenente i passi di risoluzione del problema, se non ci sono mostra una nota *)
@@ -323,13 +320,14 @@ grafica:=DynamicModule[{
 					True,
 					passiRisoluzione
 				],
-				BaseStyle->{FontSize -> 22},
+				BaseStyle->{FontSize -> 16},
 				Frame -> All,
-				ItemStyle-> Darker[Blue]
+				ItemStyle-> Darker@Blue
 			],
 			(* Titolo Panel *)
-			Style["Passi Soluzione", FontSize->24]
+			Style["Passi Soluzione", FontSize->20]
 		]
+		}, Alignment->Center]
 	}]
 ]
 
