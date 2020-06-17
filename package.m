@@ -22,15 +22,17 @@ BeginPackage["EsercizioTriAngoli`"]
 grafica::usage = "grafica ritorna una tabella contenente gli elementi utili alla visualizzazione e risoluzione dell'esercizio.
 In particolare, viene mostrata la form per la definizione dell'esercizio, il grafico rappresentante l'esercizio stesso,
 una cella in cui sono elencati i dati e le formule da utilizzare, la form per l'immissione dei risultati del problema.
-Inoltre, una volta selezionato il pulsante conferma, \[EGrave] visualizzata una tabella che presenta gli step di risoluzione dell'esercizio. "
+Inoltre, una volta selezionato il pulsante Conferma, \[EGrave] visualizzata una tabella che presenta gli step di risoluzione dell'esercizio."
 
 Begin["`Private`"]
 
 
+(* Le variabili angoloBAC e risultatiCorretti sono definite globalmente in quanto devono essere disponibili per le varie funzioni *)
+
 angoloBAC;
 
 (* Risultati corretti del problema.
-	Memorizzati in un array: {perimetroAOB, areaAOB, perimetroABC, areaABC} *)
+	Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *)
 risultatiCorretti;
 
 
@@ -484,22 +486,17 @@ PassiRisoluzione[angoloAlCentro_, angoloAllaCirconferenza_, angoloA_] := Module[
 	(* calcolo area = 1/2*BC*AC*sin(beta) *)
 	areaABC=formule[[3]]/.{l1->releasedBC,l2->releasedAC,angolo->angoloAllaCirconferenza Degree};
 	(* --- adesso abbiamo perimetro e area di ABC --- *)
-
-	(* Forma: Array di Array
-		[Step1,Step2,...]
-		Stepi=[CosaTrovare, Teorema Utilizzato, Formula Simbolica, FormulaApplicata=Risultato] *)
-		
+	
 	risultatiCorretti={
 		ReleaseHold@perimetroABC,
 		CustomRound[ReleaseHold@areaABC],
 		ReleaseHold@perimetroAOB,
 		CustomRound[ReleaseHold@areaAOB]
 		};
-	
-	(*If[angoloAlCentro < 180, 
-		AppendTo[risultatiCorretti, {Round[ReleaseHold@perimetroAOB,0.01],
-		Round[ReleaseHold@areaAOB,0.01]}], Identity];
-	*)		
+		
+	(* Forma: Array di Array
+		[Step1,Step2,...]
+		Stepi=[CosaTrovare, Teorema Utilizzato, Formula Simbolica, FormulaApplicata=Risultato] *)
 	Return@{
 		{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", Beautify@formule[[1]], Beautify@AB<>" = "<>ToString@releasedAB},
 		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Which[perimetroAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify@perimetroAOB<>" = "<>ToString@risultatiCorretti[[3]]]},
@@ -520,22 +517,30 @@ Restituisce una lista di colori i cui elementi possono essere: LightRed se l'inp
 CheckSoluzioni[risultati_]:=MapIndexed[Which[#1==risultatiCorretti[[#2]][[1]], LightGreen, True, LightRed]&, risultati]
 
 
-(* *)
-InputDisegnaValido[alpha_, tipoAngolo_, posizioneCentro_]:=And[AngoloValido[alpha, tipoAngolo], TriangoloDisegnabile[alpha, tipoAngolo, posizioneCentro]]
+(* Controlla che l'angolo sia valido e che almeno un triangolo sia disegnabile *)
+InputDisegnaValido[alpha_, tipoAngolo_, posizioneCentro_]:=And[
+	AngoloValido[alpha, tipoAngolo],
+	TriangoloDisegnabile[alpha, tipoAngolo, posizioneCentro]
+]
 
 (* Ritorna TRUE se il valore passato \[EGrave] non-nullo e compreso tra 0 (escluso) e 180, FALSE altrimenti *)
 AngoloValido[alpha_, tipoAngolo_]:=And[alpha =!= Null, alpha*tipoAngolo > 0, alpha*tipoAngolo <= 180]
 
-(* Verifica se \[EGrave] possibile disegnare il triangolo ABC, controllando che l'angolo al centro sia minore di 180\[Degree]
-oppure che la posizione del centro sia interna. Questo controllo \[EGrave] necessario in quanto non \[EGrave] possibile disegnare il triangolo
-costruito sull'angolo alla circonferenza con ampiezza di 90\[Degree] e la posizione del centro esterna, dato che il centro della circonferenza
-\[EGrave] incluso nell'ipotenusa (AB) del triangolo ABC *)
-TriangoloDisegnabile[alpha_,tipoAngolo_,posizioneCentro_]:=Or[alpha*tipoAngolo < 180, posizioneCentro == 2]
+(* Ritorna TRUE se, con i parametri passati, almeno un triangolo \[EGrave] disegnabile. 
+Questo controllo \[EGrave] necessario in quanto non \[EGrave] possibile disegnare un triangolo
+rettangolo inscritto (ABC) dove il centro del cerchio non cade sull'ipotenusa (AB) *)
+TriangoloDisegnabile[alpha_, tipoAngolo_, posizioneCentro_]:=Or[alpha*tipoAngolo < 180, posizioneCentro == 2]
 
+(* Restituisce il numero di InputField in base al numero di triangoli disegnabili *)
 NumeroInputField[alpha_, tipoAngolo_, posizioneCentro_]:=Which[alpha*tipoAngolo == 180 && posizioneCentro == 2, 2, True, 4]
 
+(* Approssima ai centesimi. Tale implementazione \[EGrave] stata necessaria a causa di problematiche riscontrate con le built-in esistenti.
+In particolare, la built-in Round, talvolta, effettuava un'approssimazione ai decimi anzich\[EAcute] ai centesimi nonostante il valore passato
+fosse approssimabile ai centesimi *)
 CustomRound[number_]:=N[Floor[number*100+0.5]/100]
 
+(* Prende una formula e restituisce una stringa in TraditionalForm. Lo StringReplace inibisce il percorso dei parametri non valutati
+rimuovendo il percorso che li caratterizza *)
 Beautify[formula_]:=StringReplace[ToString[formula//TraditionalForm],{"EsercizioTriAngoli`Private`"->""}]
 
 
