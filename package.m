@@ -59,11 +59,7 @@ grafica:=DynamicModule[{
 	
 	Row[{ (* Contiene 2 "celle": una per la configurazione dell'esercizio ed il suo svolgimento,
 			l'altra contente esclusivamente i passi di risoluzione *)
-		Column[{
-		Grid[{
-			{(* Riga 1 *)
-			 (* Cella 1 *)
-				Panel[Column[{ (* Panel in cui inserire i dati per la costruzione dell'esercizio *)
+		Column[{Panel[Column[{ (* Panel in cui inserire i dati per la costruzione dell'esercizio *)
 					Row[{"Tipo di angolo: ", (* Radiobutton per la selezione del tipo di angolo *)
 						RadioButtonBar[
 							Dynamic@inputTipoAngolo, {1 -> "Centro", 2 -> "Circonferenza"},
@@ -86,8 +82,7 @@ grafica:=DynamicModule[{
 									"L'ampiezza deve essere compresa tra 0\[Degree] (escluso) e " <> ToString[180 / inputTipoAngolo] <> "\[Degree].",
 									True,
 									(* Altrimenti asserisco che il problema sia la combinazione (alpha-tipoAngolo) che non \[EGrave] corretta *)
-									"Non \[EGrave] possibile impostare l'ampiezza a "  <> ToString@inputAlpha <> "\[Degree] e richiedere" <>
-									"\nil centro della circonferenza esterno."
+									"Non \[EGrave] possibile impostare l'ampiezza a "  <> ToString@inputAlpha <> "\[Degree]\ne richiedere il centro della circonferenza esterno."
 								],
 								Red
 							]
@@ -234,34 +229,20 @@ grafica:=DynamicModule[{
 					Appearance->"Frameless",
 					Background-> White
 				], (* Fine Panel *)
-				(* Cella 2 *) (* Grafico dell'esercizio *)
-				Panel@Dynamic@Graphics[graficoEsercizio,ImageSize->300]
-			},
-			{ (* Riga 2 *)
-				(* Cella 1 *)
-				SpanFromAbove, (* Fine column *)
-				(* Cella 2 *)
-				SpanFromAbove
-			},
-			{(* Riga 3 *)
-				Column@{ (* La column permette di visualizzare i due panel (dati e formule) in colonna *)
-					Panel[ (* Panel dei dati del problema *)
+				Panel[ (* Panel dei dati del problema *)
 						Dynamic@Column@datiProblema,
 						Style["Dati",FontSize->20],
 						Appearance->"Frameless",
 						Background-> LightYellow
 					]
-				}, (* Cella 1 (si unisce alla cella in cui ci sono dati e formule) *)
-				(* Cella 2 (Panel per inserimento dei risultati da parte dell'utente) *)
-				Panel[Dynamic@Grid@formInputRisultati,
+		}, Frame->All, BaselinePosition->Top, Alignment->Center],
+		Column[{Panel@Dynamic@Graphics[graficoEsercizio,ImageSize->300],
+		Panel[Dynamic@Grid@formInputRisultati,
 					Style["Inserisci la Soluzione", FontSize->20],
 					Appearance->"Frameless",
 					Background-> White
 				]
-			}}, (* Fine elementi Grid *)
-			Frame->All,
-			Alignment->Top
-		], SpanFromAbove}],
+		}, Frame->All, BaselinePosition->Top],
 		" ",
 		Column[{
 		Panel[ (* Panel Formule da mostrare all'utente *)
@@ -327,7 +308,7 @@ grafica:=DynamicModule[{
 			(* Titolo Panel *)
 			Style["Passi Soluzione", FontSize->20]
 		]
-		}, Alignment->Center]
+		}, Alignment->Center, BaselinePosition->Top]
 	}]
 ]
 
