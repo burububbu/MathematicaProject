@@ -233,12 +233,11 @@ grafica:=DynamicModule[{
 			}, BaselinePosition->Top, Alignment->Center],
 			" ",
 			Column[{
-				Column@{Dynamic@Graphics[graficoEsercizio,ImageSize->300],
+				Dynamic@Graphics[graficoEsercizio,ImageSize->300],
 				Column@{
 					Style["Inserisci la Soluzione", FontSize->20],
 					Dynamic@Grid[formInputRisultati, BaseStyle->FontSize->16]
 				}
-				},
 			}, BaselinePosition->Top, Alignment->Center],
 			" ",
 			Column[{
