@@ -57,42 +57,45 @@ grafica:=DynamicModule[{
 							Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *)		
 	},
 	
-	Row[{ (* Contiene 2 "celle": una per la configurazione dell'esercizio ed il suo svolgimento,
+	Panel[
+		Row[{ (* Contiene 2 "celle": una per la configurazione dell'esercizio ed il suo svolgimento,
 			l'altra contente esclusivamente i passi di risoluzione *)
-		Column[{Panel[Column[{ (* Panel in cui inserire i dati per la costruzione dell'esercizio *)
+			Column[{
+				Column@{
+					Style["Inserisci i parametri richiesti", FontSize->20],
 					Row[{"Tipo di angolo: ", (* Radiobutton per la selezione del tipo di angolo *)
-						RadioButtonBar[
-							Dynamic@inputTipoAngolo, {1 -> "Centro", 2 -> "Circonferenza"},
-							Appearance-> "Vertical"
-						]},
-						BaseStyle -> FontSize -> 16],
+							RadioButtonBar[
+								Dynamic@inputTipoAngolo, {1 -> "Centro", 2 -> "Circonferenza"},
+								Appearance-> "Vertical"
+							]},
+							BaseStyle -> FontSize -> 16],
 					Row[{"Ampiezza angolo: ", (* Inputfield relativo all'ampiezza dell'angolo *)
 						InputField[Dynamic@inputAlpha, Number, ImageSize->{100,25},ContinuousAction->True],
 						" \[Degree]"},
 						BaseStyle -> FontSize -> 16],
 					Row[{ (* Visualizzazione dell'errore *)
-						Dynamic@If[InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro],
-							(* Se l'input \[EGrave] valido non stampo errori *)
-							"",
-							(* Altrimenti *)
-							Style[
-								Which[
-									!AngoloValido[inputAlpha, inputTipoAngolo],
-									(* Se l'angolo non \[EGrave] valido, lo notifico *)
-									"L'ampiezza deve essere compresa tra 0\[Degree] (escluso) e " <> ToString[180 / inputTipoAngolo] <> "\[Degree].",
-									True,
-									(* Altrimenti asserisco che il problema sia la combinazione (alpha-tipoAngolo) che non \[EGrave] corretta *)
-									"Non \[EGrave] possibile impostare l'ampiezza a "  <> ToString@inputAlpha <> "\[Degree]\ne richiedere il centro della circonferenza esterno."
-								],
-								Red
-							]
-						]},
-						BaseStyle -> FontSize -> 14],
+							Dynamic@If[InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro],
+								(* Se l'input \[EGrave] valido non stampo errori *)
+								"",
+								(* Altrimenti *)
+								Style[
+									Which[
+										!AngoloValido[inputAlpha, inputTipoAngolo],
+										(* Se l'angolo non \[EGrave] valido, lo notifico *)
+										"L'ampiezza deve essere compresa tra 0\[Degree] (escluso) e " <> ToString[180 / inputTipoAngolo] <> "\[Degree].",
+										True,
+										(* Altrimenti asserisco che il problema sia la combinazione (alpha-tipoAngolo) che non \[EGrave] corretta *)
+										"Non \[EGrave] possibile impostare l'ampiezza a "  <> ToString@inputAlpha <> "\[Degree]\ne richiedere il centro della circonferenza esterno."
+									],
+									Red
+								]
+							]},
+							BaseStyle -> FontSize -> 14],
 					Row[{"Centro della circonferenza \[EGrave]: ",  (* RadioButton per la selezione della posizione del centro *)
 						RadioButtonBar[
 							Dynamic@posizioneCentro, {1 -> "Esterno", 2 -> "Interno"},
 							Appearance->"Vertical"]},
-						BaseStyle -> FontSize -> 16],
+					BaseStyle -> FontSize -> 16],
 					Row@{
 						Button[ (* Pulsante "Disegna" *)
 							Style["Disegna", FontSize->14],
@@ -153,16 +156,16 @@ grafica:=DynamicModule[{
 											InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{80,25}, BaseStyle -> FontSize->14, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
 											Style[nomi[[i+1]],FontSize->14 ],
 											InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{80,25}, BaseStyle -> FontSize->14, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]]
-								         },
-								         { (* Se \[EGrave] stato inserito un valore non-numerico nell'InputField corrispondente, 
-								         si mostra l'errore. StringMatchQ assicura che la stringa in input sia un numero *)
+											},
+											{ (* Se \[EGrave] stato inserito un valore non-numerico nell'InputField corrispondente, 
+											si mostra l'errore. StringMatchQ assicura che la stringa in input sia un numero *)
 											Dynamic[If[Or[inputRisultati[[i]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
 											SpanFromLeft,
 											Dynamic[If[Or[inputRisultati[[i+1]]==="", StringMatchQ[inputRisultati[[i+1]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
 											SpanFromLeft
 										}
-								     }
-								  ],{i, 1, Length@inputRisultati, 2}], 1];
+										}
+									],{i, 1, Length@inputRisultati, 2}], 1];
 							
 							(* Si inserisce una nota in testa alla lista *)
 							formInputRisultati = Insert[formInputRisultati, {Style["Nota bene:\n\[Bullet] I risultati di tutte le operazioni, eccetto quelle\n  trigonometriche, devono essere approssimati\n  ai centesimi.\n\[Bullet] Le operazioni trigonometriche considerano\n  gli angoli in radianti.", FontSize->14, Darker@Gray], SpanFromLeft}, 1];
@@ -221,96 +224,78 @@ grafica:=DynamicModule[{
 							Dynamic@Which[ContainsAny[coloriInputRisultati, {LightRed}],
 								Darker@Red,
 								True,
-								Darker@Green]}
-					]}],
-					
-					(* Titolo del panel per la costruzione dell'esercizio *)
-					Style["Inserisci i Parametri Richiesti", FontSize->22],
-					Appearance->"Frameless" ,
-					Background-> LightBlue
-				], (* Fine Panel *)
-				Panel[ (* Panel dei dati del problema *)
-						Dynamic@Column@datiProblema,
-						Style["Dati",FontSize->20],
-						Appearance->"Frameless",
-						Background-> LightYellow
-					]
-		}, BaselinePosition->Top, Alignment->Center],
-		" ",
-		Column[{Panel@Dynamic@Graphics[graficoEsercizio,ImageSize->300],
-		Panel[Dynamic@Grid@formInputRisultati,
+								Darker@Green]}]
+				},
+				Column@{
+					Style["Dati", FontSize->20],
+					Dynamic@Column[datiProblema, BaseStyle->FontSize->16, Background->LightYellow]
+				}
+			}, BaselinePosition->Top, Alignment->Center],
+			" ",
+			Column[{
+				Column@{Dynamic@Graphics[graficoEsercizio,ImageSize->300],
+				Column@{
 					Style["Inserisci la Soluzione", FontSize->20],
-					Appearance->"Frameless",
-					Background-> LightBlue
-				]
-		}, BaselinePosition->Top, Alignment->Center],
-		" ",
-		Column[{
-		Panel[ (* Panel Formule da mostrare all'utente *)
-						Dynamic@Column[ (* La column mostra il bottone e le formule una sotto l'altra *)
-							(* Flatten "rende piatto" l'array passato a Column: "formule" \[EGrave] un array di
-								Rows (il perch\[EAcute] viene spiegato successivamente) e deve essere ridotto a "lista" di rows:
-								es: {button, {Row@"a",Row@"b",Row@"c"}} deve diventare {button, Row@"a",Row@"b",Row@"c"} (senza graffe)
+					Dynamic@Grid[formInputRisultati, BaseStyle->FontSize->16]
+				}
+				},
+			}, BaselinePosition->Top, Alignment->Center],
+			" ",
+			Column[{
+				Dynamic@Column[{ (* La column mostra il bottone e le formule una sotto l'altra *)
+					Style["Formule", FontSize->20],
+					(* Flatten "rende piatto" l'array passato a Column: "formule" \[EGrave] un array di
+						Rows (il perch\[EAcute] viene spiegato successivamente) e deve essere ridotto a "lista" di rows:
+						es: {button, {Row@"a",Row@"b",Row@"c"}} deve diventare {button, Row@"a",Row@"b",Row@"c"} (senza graffe)
+						*)
+					Column@{
+						Button["Mostra/nascondi formule",
+							(* Un semplice toggle: se l'array di formule \[EGrave] vuoto, allora lo si riempie,
+								altrimenti lo si svuota
 								*)
-							Flatten@{
-								Button["Mostra/nascondi formule",
-									(* Un semplice toggle: se l'array di formule \[EGrave] vuoto, allora lo si riempie,
-										altrimenti lo si svuota
-										*)
-									If[Length@formule == 0,
-										(* E' stato necessario utilizzare un array di rows al fine di poter creare style diversi
-											all'interno della stessa stringa (in particolare, il titolo \[EGrave] in rosso mentre le
-											specificazioni sono nel colore di default)
-											*)
-										formule = MapThread[Row@{Style[#1, colore], #2}&,
-											{
-												(* #1 *)
-												{
-													"Teorema della Corda: " <>  Beautify@(2*r*Sin[\[Beta]]),
-													"Area del Triangolo: " <> Beautify@((Subscript[l, 1]*Subscript[l, 2]*Sin[\[Theta]])/2),
-													"Teorema dei Seni: " <>  Beautify@(a:Sin[\[Alpha]] == b:Sin[\[Beta]])
-												},
-												(* #2 *)
-												{
-													"\n\tcon \[Beta] angolo alla circonferenza",
-													"\n\tcon \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)",
-													"\n\tcon \[Alpha] angolo opposto al lato \!\(\*StyleBox[\"a\",\nFontSlant->\"Italic\"]\)\n\te \[Beta] angolo opposto al lato \!\(\*StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"
-												}
-											}
-										]/.colore->Darker@Red,
-										(* L'else dell'if *)
-										formule = {}
-									],
-									
-									BaseStyle->FontSize->14
-								],
-								formule (* Celle successive all'interno della Column *)
-							},
-							BaseStyle->FontSize->16
-						], (* Fine column all'interno del panel *)
-						
-						Style["Formule", FontSize->20],
-						Appearance->"Frameless",
-						Background->LightGreen
-					],(* Fine panel "Mostra Formule" *)
-		(* Panel per la visualizzazione dei passi di risoluzione *)
-		Panel[
-			(* Grid contenente i passi di risoluzione del problema, se non ci sono mostra una nota *)
-			Dynamic@Grid[
-				Which[passiRisoluzione===Null,
-					{{"Inserisci le soluzioni per visualizzare i passaggi\nper la risoluzione dell'esercizio"}},
-					True,
-					passiRisoluzione
-				],
-				BaseStyle->{FontSize -> 16},
-				Frame -> All,
-				ItemStyle-> Darker@Blue
-			],
-			(* Titolo Panel *)
-			Style["Passi Soluzione", FontSize->20]
-		]
-		}, Alignment->Center, BaselinePosition->Top]
-	}, Background->LightBlue, Frame->True]
+							If[Length@formule == 0,
+								(* E' stato necessario utilizzare un array di rows al fine di poter creare style diversi
+									all'interno della stessa stringa (in particolare, il titolo \[EGrave] in rosso mentre le
+									specificazioni sono nel colore di default)
+									*)
+								formule = MapThread[Row@{Style[#1, colore], #2}&,
+									{
+										(* #1 *)
+										{
+											"Teorema della Corda: " <>  Beautify@(2*r*Sin[\[Beta]]),
+											"Area del Triangolo: " <> Beautify@((Subscript[l, 1]*Subscript[l, 2]*Sin[\[Theta]])/2),
+											"Teorema dei Seni: " <>  Beautify@(a:Sin[\[Alpha]] == b:Sin[\[Beta]])
+										},
+										(* #2 *)
+										{
+											"\n\tcon \[Beta] angolo alla circonferenza",
+											"\n\tcon \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)",
+											"\n\tcon \[Alpha] angolo opposto al lato \!\(\*StyleBox[\"a\",\nFontSlant->\"Italic\"]\)\n\te \[Beta] angolo opposto al lato \!\(\*StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"
+										}
+									}
+								]/.colore->Darker@Red,
+								(* L'else dell'if *)
+								formule = {}
+							],
+							BaseStyle->FontSize->14
+						],
+						Dynamic@Column@formule (* Celle successive all'interno della Column *)
+					}
+				}, Background->LightGreen, BaseStyle->FontSize->16], (* Fine column all'interno del panel *)
+				Dynamic@Grid[
+						Which[passiRisoluzione===Null,
+						{{"Inserisci le soluzioni per visualizzare i passaggi\nper la risoluzione dell'esercizio"}},
+						True,
+						passiRisoluzione
+						],
+						BaseStyle->{FontSize -> 16},
+						Frame -> All,
+						ItemStyle-> Darker@Blue
+					]
+			}, BaselinePosition->Top, Alignment->Center]
+		}],
+		Background->LightBlue
+	]
 ]
 
 
