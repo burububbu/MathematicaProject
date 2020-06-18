@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   2559848,      42350]
-NotebookOptionsPosition[   2547028,      42098]
-NotebookOutlinePosition[   2555428,      42266]
-CellTagsIndexPosition[   2555005,      42254]
+NotebookDataLength[   2556631,      42325]
+NotebookOptionsPosition[   2543799,      42073]
+NotebookOutlinePosition[   2552206,      42241]
+CellTagsIndexPosition[   2551783,      42229]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -40698,54 +40698,8 @@ Cell[BoxData[
     EvaluationNotebook[], EvaluationElements -> All, InsertResults -> True],
   Evaluator->Automatic,
   Method->"Queued"]], "Output",
- CellChangeTimes->{{3.80062052194589*^9, 3.8006205453951373`*^9}, {
-   3.800620588465684*^9, 3.800620606043128*^9}, 3.800620663393409*^9, {
-   3.800620718834529*^9, 3.800620750107544*^9}, 3.8006208191287794`*^9, {
-   3.8006208511399555`*^9, 3.8006208995563607`*^9}, 3.800620949130066*^9, {
-   3.800620979699316*^9, 3.8006210382224903`*^9}, {3.8006210736582427`*^9, 
-   3.8006211102533927`*^9}, {3.8007028439639454`*^9, 
-   3.8007028447953343`*^9}, {3.8007074475838995`*^9, 3.8007074481483884`*^9}, 
-   3.800707550343728*^9, 3.8007077481233644`*^9, 3.8007083724062595`*^9, 
-   3.800708443674327*^9, 3.8007085528306723`*^9, 3.800708689217396*^9, 
-   3.800708850861189*^9, 3.8007090016985826`*^9, {3.800709077233042*^9, 
-   3.8007091027052183`*^9}, {3.800709282582408*^9, 3.800709283132885*^9}, 
-   3.8007093428223653`*^9, 3.800709452309685*^9, 3.800710145779581*^9, {
-   3.800711246325694*^9, 3.8007112667215037`*^9}, 3.8007112979828467`*^9, {
-   3.8007114859116173`*^9, 3.8007115045332*^9}, 3.8007118495928392`*^9, 
-   3.800711887754842*^9, 3.800711930083624*^9, {3.8007119836546116`*^9, 
-   3.800712005496428*^9}, {3.800712047442235*^9, 3.800712047799619*^9}, 
-   3.8007122260180044`*^9, 3.8007123071521597`*^9, 3.8007124311826153`*^9, 
-   3.800712532824403*^9, {3.800712571465584*^9, 3.800712590541639*^9}, 
-   3.800712625291139*^9, 3.8007127435093994`*^9, 3.8007130023425875`*^9, 
-   3.8007131075586405`*^9, {3.8007840097996345`*^9, 3.8007840109095535`*^9}, 
-   3.800784525645789*^9, 3.8007845932761936`*^9, 3.800784840734912*^9, 
-   3.8007849505722394`*^9, 3.800785001596031*^9, 3.800785046147822*^9, 
-   3.8007852807962413`*^9, 3.800785735516097*^9, 3.800786393054084*^9, 
-   3.800786457588726*^9, {3.8013901848812237`*^9, 3.801390185363758*^9}, 
-   3.8013923501357303`*^9, 3.8013931524175577`*^9, 3.8013955932967043`*^9, {
-   3.801395979082364*^9, 3.8013959958657894`*^9}, {3.801396866249411*^9, 
-   3.801396893179105*^9}, {3.8013969379799647`*^9, 3.801396938383196*^9}, {
-   3.8013971792315493`*^9, 3.801397191632518*^9}, 3.80139735429099*^9, 
-   3.801397468941661*^9, {3.8013978069939647`*^9, 3.8013978085919857`*^9}, 
-   3.8013980171492815`*^9, 3.8013981739141645`*^9, 3.801398338886925*^9, 
-   3.8013984782685685`*^9, 3.8013985814676576`*^9, {3.8013989126404977`*^9, 
-   3.8013989145888634`*^9}, 3.8013991355051117`*^9, 3.801399624958499*^9, {
-   3.801399675526263*^9, 3.8013997018681955`*^9}, 3.801399747489416*^9, 
-   3.801400038296903*^9, 3.8014003156112375`*^9, 3.8014007323170443`*^9, {
-   3.8014010126932817`*^9, 3.801401021962761*^9}, 3.801401058207081*^9, 
-   3.8014011089937344`*^9, 3.8014011475552073`*^9, 3.801401192490768*^9, 
-   3.801401271986095*^9, {3.801401396690292*^9, 3.8014014135362635`*^9}, 
-   3.801401466895003*^9, 3.8014015280495777`*^9, 3.801401606809019*^9, 
-   3.8014018030738277`*^9, 3.8014018697066593`*^9, 3.801401910169668*^9, 
-   3.8014019585226955`*^9, 3.8014019952603645`*^9, 3.8014020609979362`*^9, 
-   3.8014025144439774`*^9, {3.8014025819705696`*^9, 3.8014026020106153`*^9}, {
-   3.8014026662192364`*^9, 3.8014026781271496`*^9}, 3.8014027421158776`*^9, 
-   3.801402800009301*^9, {3.8014029116742916`*^9, 3.801402926782648*^9}, 
-   3.8014030775874405`*^9, 3.8014031343180227`*^9, {3.801453964639735*^9, 
-   3.80145399407246*^9}, {3.8014541225985327`*^9, 3.8014541499286427`*^9}, {
-   3.8014542073199263`*^9, 3.8014542342030463`*^9}, {3.801454279784007*^9, 
-   3.8014542803026204`*^9}, 3.801455182088234*^9},
- CellLabel->"Out[8]=",ExpressionUUID->"e257543e-1f87-49dc-a91b-ac4dff5e7607"]
+ CellChangeTimes->{3.8014563643796797`*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"9f0dc234-e42a-4267-8ec2-f6acbdf312ab"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -40779,52 +40733,10 @@ Cell[BoxData[{
  CellLabel->"In[9]:=",ExpressionUUID->"6f712259-f3d7-45ad-987a-d72d04c25b54"],
 
 Cell[BoxData["\<\"Notebook valutato\"\>"], "Print",
- CellChangeTimes->{{3.800620522591164*^9, 3.800620545672224*^9}, {
-   3.800620588697034*^9, 3.800620606186744*^9}, 3.800620663567966*^9, {
-   3.80062071896913*^9, 3.800620750291052*^9}, 3.8006208192534466`*^9, {
-   3.8006208512696085`*^9, 3.80062089973485*^9}, 3.800620949263707*^9, {
-   3.8006209798499126`*^9, 3.8006210384304495`*^9}, {3.800621073843753*^9, 
-   3.8006211104568486`*^9}, 3.8007028451702175`*^9, 3.800707448205274*^9, 
-   3.800707550695794*^9, 3.8007077483387794`*^9, 3.800708372654453*^9, 
-   3.800708443925642*^9, 3.800708553019842*^9, 3.8007086894647117`*^9, 
-   3.800708851191308*^9, 3.800709001974845*^9, {3.80070907743251*^9, 
-   3.8007091029814878`*^9}, 3.8007092832904625`*^9, 3.800709343403225*^9, 
-   3.8007094525598335`*^9, 3.8007101459223266`*^9, {3.800711246794447*^9, 
-   3.8007112669259214`*^9}, 3.8007112982461452`*^9, {3.800711486414305*^9, 
-   3.8007115047384973`*^9}, 3.800711849815219*^9, 3.800711888063545*^9, 
-   3.800711930345745*^9, {3.8007119839368725`*^9, 3.800712005681992*^9}, 
-   3.8007120479352865`*^9, 3.800712226300249*^9, 3.8007123075943174`*^9, 
-   3.800712431385935*^9, 3.800712533075732*^9, {3.8007125720258226`*^9, 
-   3.8007125907670674`*^9}, 3.800712625477041*^9, 3.800712744063887*^9, 
-   3.8007130025600066`*^9, 3.800713107788024*^9, 3.800784011137608*^9, 
-   3.8007845260855856`*^9, 3.800784594063072*^9, 3.800784841187298*^9, 
-   3.80078495104636*^9, 3.8007850020602493`*^9, 3.800785046678851*^9, 
-   3.800785281229777*^9, 3.800785736028934*^9, 3.800786393483939*^9, 
-   3.8007864580388327`*^9, 3.801390185465084*^9, 3.80139235041302*^9, 
-   3.8013931526844025`*^9, 3.8013955935510225`*^9, {3.801395979312749*^9, 
-   3.801395995943577*^9}, {3.8013968665363045`*^9, 3.8013968934373217`*^9}, 
-   3.80139693843007*^9, {3.8013971795068665`*^9, 3.8013971918055315`*^9}, 
-   3.8013973550305653`*^9, 3.8013974695031834`*^9, 3.8013978087794847`*^9, 
-   3.801398017398613*^9, 3.8013981744242306`*^9, 3.8013983390993547`*^9, 
-   3.801398478397197*^9, 3.801398581610278*^9, 3.801398914916546*^9, 
-   3.8013991357733955`*^9, 3.8013996251340322`*^9, {3.801399675728765*^9, 
-   3.8013997019539337`*^9}, 3.801399747705621*^9, 3.8014000385282416`*^9, 
-   3.8014003157409325`*^9, 3.8014007327835674`*^9, {3.8014010129246635`*^9, 
-   3.8014010220824423`*^9}, 3.801401058352664*^9, 3.801401109155302*^9, 
-   3.801401147760165*^9, 3.801401192710181*^9, 3.8014012720758543`*^9, {
-   3.801401396885771*^9, 3.8014014137467003`*^9}, 3.801401467050586*^9, 
-   3.8014015282789636`*^9, 3.801401606944689*^9, 3.8014018033121586`*^9, 
-   3.801401869870254*^9, 3.8014019102755136`*^9, 3.8014019586069393`*^9, 
-   3.801401995326188*^9, 3.8014020612193193`*^9, 3.8014025146384907`*^9, {
-   3.8014025821496663`*^9, 3.801402602211269*^9}, {3.8014026663508854`*^9, 
-   3.801402678325844*^9}, 3.801402742321067*^9, 3.8014028005129848`*^9, {
-   3.8014029118069363`*^9, 3.8014029270029593`*^9}, 3.8014030780731497`*^9, 
-   3.8014031345244675`*^9, {3.8014539650894995`*^9, 3.8014539942659426`*^9}, {
-   3.8014541227391586`*^9, 3.801454150117646*^9}, {3.801454207484494*^9, 
-   3.8014542343326983`*^9}, 3.8014542804332714`*^9, 3.801455182346266*^9},
+ CellChangeTimes->{3.8014563646050787`*^9},
  CellLabel->
   "During evaluation of \
-In[9]:=",ExpressionUUID->"32941c0c-76ae-4f2a-9d66-45a27aa5f389"]
+In[9]:=",ExpressionUUID->"47575c5e-7d76-48f0-ac0f-67194fde9c18"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -41073,43 +40985,41 @@ Cell[BoxData[
 Cell[BoxData[
  DynamicModuleBox[{EsercizioTriAngoli`Private`tipoAngolo$$ = 1, 
   EsercizioTriAngoli`Private`inputTipoAngolo$$ = 1, 
-  EsercizioTriAngoli`Private`alpha$$ = 30., 
-  EsercizioTriAngoli`Private`inputAlpha$$ = 30, 
+  EsercizioTriAngoli`Private`alpha$$ = 1., 
+  EsercizioTriAngoli`Private`inputAlpha$$ = 1, 
   EsercizioTriAngoli`Private`posizioneCentro$$ = 1, 
-  EsercizioTriAngoli`Private`angoloBAC$$ = 70.47380880109125, 
+  EsercizioTriAngoli`Private`angoloBAC$$ = 44.69070802020421, 
   EsercizioTriAngoli`Private`graficoEsercizio$$ = {
    Circle[{0, 0}, 1], 
    Point[{0, 0}], {
-    Point[{-0.15476676053798974`, 0.9879510361513756}], 
-    Point[{-0.6280074643630098, 0.7782073147332548}], 
-    Point[{0.0017709103554234829`, -0.9999984319370271}]}, {
+    Point[{0.8624459904988034, 0.5061491020169233}], 
+    Point[{0.8534811159508341, 0.5211237710134886}], 
+    Point[{-0.5102101178858589, 0.8600497867024315}]}, {
     EdgeForm[
      Thickness[Tiny]], 
     Opacity[0.3], 
     RGBColor[0, 0, 1], 
-    Triangle[{{-0.15476676053798974`, 
-      0.9879510361513756}, {-0.6280074643630098, 0.7782073147332548}, {0, 
-      0}}], 
+    Triangle[{{0.8624459904988034, 0.5061491020169233}, {0.8534811159508341, 
+      0.5211237710134886}, {0, 0}}], 
     RGBColor[1, 0, 0], 
-    Triangle[{{-0.15476676053798974`, 
-     0.9879510361513756}, {-0.6280074643630098, 0.7782073147332548}, {
-     0.0017709103554234829`, -0.9999984319370271}}]}, 
+    Triangle[{{0.8624459904988034, 0.5061491020169233}, {0.8534811159508341, 
+     0.5211237710134886}, {-0.5102101178858589, 0.8600497867024315}}]}, 
    Tooltip[{
      EdgeForm[{
        Thickness[0.005], 
        RGBColor[1, 0, 0]}], 
      FaceForm[
       RGBColor[0, 0, 0, 0]], 
-     Disk[{0, 0}, 0.2, {1.7261876917411594`, 2.249786467339458}]}, 
-    "30.\[Degree]"], 
+     Disk[{0, 0}, 0.2, {0.5307138208299348, 0.5481671133498781}]}, 
+    "1.\[Degree]"], 
    Tooltip[{
      EdgeForm[{
        Thickness[0.005], 
        RGBColor[0, 0, 1]}], 
      FaceForm[
       RGBColor[0, 0, 0, 0]], 
-     Disk[{0.0017709103554234829`, -0.9999984319370271}, 0.2, {
-      1.6493774649085564`, 1.9111768527077058`}]}, "15.\[Degree]"], 
+     Disk[{-0.5102101178858589, 0.8600497867024315}, 0.2, {
+      6.0308585949751805`, 6.0395852412351525`}]}, "0.5\[Degree]"], 
    Tooltip[{
      EdgeForm[{
        Thickness[0.005], 
@@ -41117,13 +41027,13 @@ Cell[BoxData[
         Rational[2, 3], 0]}], 
      FaceForm[
       RGBColor[0, 0, 0, 0]], 
-     Disk[{-0.15476676053798974`, 0.9879510361513756}, 0.15, {
-      3.5587834063352055`, 4.788783406335205}]}, "70.47\[Degree]"], {
-    Text["A", {-0.15476676053798974`, 0.9879510361513756}, {-1.5, 1.5}, 
+     Disk[{0.8624459904988034, 0.5061491020169233}, 0.15, {
+      2.1102367938848023`, 2.890236793884802}]}, "44.69\[Degree]"], {
+    Text["A", {0.8624459904988034, 0.5061491020169233}, {-1.5, 1.5}, 
      BaseStyle -> 20], 
-    Text["B", {-0.6280074643630098, 0.7782073147332548}, {-1.5, 1.5}, 
+    Text["B", {0.8534811159508341, 0.5211237710134886}, {-1.5, 1.5}, 
      BaseStyle -> 20], 
-    Text["C", {0.0017709103554234829`, -0.9999984319370271}, {-1.5, 1.5}, 
+    Text["C", {-0.5102101178858589, 0.8600497867024315}, {-1.5, 1.5}, 
      BaseStyle -> 20]}, 
    Text["O", {0, 0}, {-1.5, 1.5}, BaseStyle -> 20]}, 
   EsercizioTriAngoli`Private`datiProblema$$ = {
@@ -41254,14 +41164,109 @@ Le operazioni trigonometriche considerano\n  gli angoli in radianti.",
         AllTrue[
         EsercizioTriAngoli`Private`inputRisultati$$, 
          StringMatchQ[#, NumberString]& ]]]], SpanFromLeft}}, 
-  EsercizioTriAngoli`Private`passiRisoluzione$$ = Null, 
-  EsercizioTriAngoli`Private`numeroInputFields$$ = 4, 
-  EsercizioTriAngoli`Private`inputRisultati$$ = {"", "", "", ""}, 
+  EsercizioTriAngoli`Private`passiRisoluzione$$ = {{
+   "\!\(\*OverscriptBox[\(AB\), \(_\)]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{\"2\", \" \", \"r\", \" \", \
+RowBox[{\"sin\", \"(\", \"\[Beta]\", \")\"}]}], HoldForm], \
+TraditionalForm]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{\"2\", \" \", RowBox[{\"sin\", \"(\", \
+\"0.008726646259971648`\", \")\"}]}], HoldForm], TraditionalForm]\) = 0.02"}, \
+{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{\"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(BO\\\
+\\),\\\\(_\\\\)]\\\\)\\\"\", \"+\", \
+\"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(AO\\\\), \\\\(_\\\\)]\\\\)\\\"\", \"+\
+\", \"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(AB\\\\), \
+\\\\(_\\\\)]\\\\)\\\"\"}], HoldForm], TraditionalForm]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{\"1\", \"+\", \"1\", \"+\", \"0.02`\"}], \
+HoldForm], TraditionalForm]\) = 2.02"}, {
+   "Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+\"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(AO\\\\), \\\\(_\\\\)]\\\\)\\\"\", \" \
+\", \"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(BO\\\\), \\\\(_\\\\)]\\\\)\\\"\", \
+\" \", RowBox[{\"sin\", \"(\", \"\\\"\[Alpha]\\\"\", \")\"}]}], HoldForm], \
+TraditionalForm]\)", 
+    "\!\(\*FormBox[TagBox[FractionBox[RowBox[{\"sin\", \"(\", \
+\"0.017453292519943295`\", \")\"}], \"2\"], HoldForm], TraditionalForm]\) = \
+0.01"}, {"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", 
+    "\!\(\*FormBox[TagBox[FractionBox[RowBox[{RowBox[{\"sin\", \"(\", \
+\"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(BAC\\\\), \\\\(^\\\\)]\\\\)\\\"\", \
+\")\"}], \" \", \"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(AB\\\\), \\\\(_\\\\)]\
+\\\\)\\\"\"}], RowBox[{\"sin\", \"(\", \"\\\"\[Beta]\\\"\", \")\"}]], \
+HoldForm], TraditionalForm]\)", 
+    "\!\(\*FormBox[TagBox[FractionBox[RowBox[{RowBox[{\"sin\", \"(\", \"0.78`\
+\", \")\"}], \" \", \"0.02`\"}], RowBox[{\"sin\", \"(\", \
+\"0.008726646259971648`\", \")\"}]], HoldForm], TraditionalForm]\) = 1.61"}, {
+   "\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{\"\[Pi]\", \"-\", \"\\\"\[Beta]\\\"\", \
+\"-\", \"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(BAC\\\\), \
+\\\\(^\\\\)]\\\\)\\\"\"}], HoldForm], TraditionalForm]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{\"\[Pi]\", \"-\", \
+RowBox[{\"0.008726646259971648`\", \"\[VeryThinSpace]\"}], \"-\", \
+\"0.78`\"}], HoldForm], TraditionalForm]\) = 2.35"}, {
+   "\!\(\*OverscriptBox[\(AC\), \(_\)]\)", 
+    "\!\(\*FormBox[TagBox[FractionBox[RowBox[{RowBox[{\"sin\", \"(\", \
+\"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(ABC\\\\), \\\\(^\\\\)]\\\\)\\\"\", \
+\")\"}], \" \", \"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(AB\\\\), \\\\(_\\\\)]\
+\\\\)\\\"\"}], RowBox[{\"sin\", \"(\", \"\\\"\[Beta]\\\"\", \")\"}]], \
+HoldForm], TraditionalForm]\)", 
+    "\!\(\*FormBox[TagBox[FractionBox[RowBox[{RowBox[{\"sin\", \"(\", \"2.35`\
+\", \")\"}], \" \", \"0.02`\"}], RowBox[{\"sin\", \"(\", \
+\"0.008726646259971648`\", \")\"}]], HoldForm], TraditionalForm]\) = 1.63"}, {
+   "Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{\"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(AC\\\
+\\), \\\\(_\\\\)]\\\\)\\\"\", \"+\", \
+\"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(BC\\\\), \\\\(_\\\\)]\\\\)\\\"\", \"+\
+\", \"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(AB\\\\), \
+\\\\(_\\\\)]\\\\)\\\"\"}], HoldForm], TraditionalForm]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{RowBox[{\"1.63`\", \"\[VeryThinSpace]\"}], \
+\"+\", RowBox[{\"1.61`\", \"\[VeryThinSpace]\"}], \"+\", \"0.02`\"}], \
+HoldForm], TraditionalForm]\) = 3.26"}, {
+   "Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+\"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(BC\\\\), \\\\(_\\\\)]\\\\)\\\"\", \" \
+\", \"\\\"\\\\!\\\\(\\\\*OverscriptBox[\\\\(AC\\\\), \\\\(_\\\\)]\\\\)\\\"\", \
+\" \", RowBox[{\"sin\", \"(\", \"\\\"\[Beta]\\\"\", \")\"}]}], HoldForm], \
+TraditionalForm]\)", 
+    "\!\(\*FormBox[TagBox[RowBox[{FractionBox[\"1\", \"2\"], \" \", \
+\"1.61`\", \" \", \"1.63`\", \" \", RowBox[{\"sin\", \"(\", \
+\"0.008726646259971648`\", \")\"}]}], HoldForm], TraditionalForm]\) = 0.01"}},
+   EsercizioTriAngoli`Private`numeroInputFields$$ = 4, 
+  EsercizioTriAngoli`Private`inputRisultati$$ = {"2", "3", "31", "13"}, 
   EsercizioTriAngoli`Private`coloriInputRisultati$$ = {
-  Automatic, Automatic, Automatic, Automatic}, 
-  EsercizioTriAngoli`Private`formRisultatiEnabled$$ = True, 
-  EsercizioTriAngoli`Private`formule$$ = {}, 
-  EsercizioTriAngoli`Private`risultatiCorretti$$}, 
+   RGBColor[1, 0.85, 0.85], 
+   RGBColor[1, 0.85, 0.85], 
+   RGBColor[1, 0.85, 0.85], 
+   RGBColor[1, 0.85, 0.85]}, 
+  EsercizioTriAngoli`Private`formRisultatiEnabled$$ = False, 
+  EsercizioTriAngoli`Private`formule$$ = {
+   Row[{
+     Style[
+     "Teorema della Corda: \!\(\*FormBox[RowBox[{\"2\", \" \", \"r\", \" \", \
+RowBox[{\"sin\", \"(\", \"\[Beta]\", \")\"}]}], TraditionalForm]\)", 
+      RGBColor[
+       Rational[2, 3], 0, 0]], "\n\tcon \[Beta] angolo alla circonferenza"}], 
+   Row[{
+     Style[
+     "Area del Triangolo: \!\(\*FormBox[RowBox[{FractionBox[\"1\", \"2\"], \" \
+\", SubscriptBox[\"l\", \"1\"], \" \", SubscriptBox[\"l\", \"2\"], \" \", \
+RowBox[{\"sin\", \"(\", \"\[Theta]\", \")\"}]}], TraditionalForm]\)", 
+      RGBColor[
+       Rational[2, 3], 0, 0]], 
+     "\n\tcon \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\
+\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)"}], 
+   Row[{
+     Style[
+     "Teorema dei Seni: \!\(\*FormBox[RowBox[{\"a\", \":\", \
+RowBox[{RowBox[{\"sin\", \"(\", \"\[Alpha]\", \")\"}], \"\[LongEqual]\", \
+\"b\"}], \":\", RowBox[{\"sin\", \"(\", \"\[Beta]\", \")\"}]}], \
+TraditionalForm]\)", 
+      RGBColor[
+       Rational[2, 3], 0, 0]], 
+     "\n\tcon \[Alpha] angolo opposto al lato \!\(\*StyleBox[\"a\",\n\
+FontSlant->\"Italic\"]\)\n\te \[Beta] angolo opposto al lato \
+\!\(\*StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"}]}, 
+  EsercizioTriAngoli`Private`risultatiCorretti$$ = {3.2600000000000002`, 0.01,
+   2.02, 0.01}}, 
   TemplateBox[{
     TagBox[
      GridBox[{{
@@ -41301,28 +41306,28 @@ Le operazioni trigonometriche considerano\n  gli angoli in radianti.",
                   RadioButtonBar[
                    Dynamic[EsercizioTriAngoli`Private`inputTipoAngolo$$], {
                    1 -> "Centro", 2 -> "Circonferenza"}, Appearance -> 
-                   "Vertical"]]}, "Row", DisplayFunction -> (RowBox[{
+                   "Vertical"]]}, "Row", BaseStyle -> (FontSize -> 16), 
+                DisplayFunction -> (RowBox[{
                    TemplateSlotSequence[1, "\[InvisibleSpace]"]}]& ), 
                 InterpretationFunction -> (RowBox[{"Row", "[", 
                    RowBox[{
                     RowBox[{"{", 
                     TemplateSlotSequence[1, ","], "}"}], ",", 
                     RowBox[{"BaseStyle", "\[Rule]", 
-                    RowBox[{"FontSize", "\[Rule]", "16"}]}]}], "]"}]& ), 
-                BaseStyle -> (FontSize -> 16)]}, {
+                    RowBox[{"FontSize", "\[Rule]", "16"}]}]}], "]"}]& )]}, {
                TemplateBox[{"\"Ampiezza angolo: \"", 
                  InputFieldBox[
                   Dynamic[EsercizioTriAngoli`Private`inputAlpha$$], Number, 
-                  ImageSize -> {100, 25}, ContinuousAction -> True], 
-                 "\" \[Degree]\""}, "Row", DisplayFunction -> (RowBox[{
+                  ContinuousAction -> True, ImageSize -> {100, 25}], 
+                 "\" \[Degree]\""}, "Row", BaseStyle -> (FontSize -> 16), 
+                DisplayFunction -> (RowBox[{
                    TemplateSlotSequence[1, "\[InvisibleSpace]"]}]& ), 
                 InterpretationFunction -> (RowBox[{"Row", "[", 
                    RowBox[{
                     RowBox[{"{", 
                     TemplateSlotSequence[1, ","], "}"}], ",", 
                     RowBox[{"BaseStyle", "\[Rule]", 
-                    RowBox[{"FontSize", "\[Rule]", "16"}]}]}], "]"}]& ), 
-                BaseStyle -> (FontSize -> 16)]}, {
+                    RowBox[{"FontSize", "\[Rule]", "16"}]}]}], "]"}]& )]}, {
                TemplateBox[{
                  DynamicBox[
                   ToBoxes[
@@ -41347,13 +41352,13 @@ e ",
                     "Non \[EGrave] possibile impostare l'ampiezza a ", 
                     ToString[EsercizioTriAngoli`Private`inputAlpha$$], 
                     "\[Degree]\ne richiedere il centro della circonferenza \
-esterno."]], Red]], StandardForm]]}, "Row", DisplayFunction -> (#& ), 
+esterno."]], Red]], StandardForm]]}, "Row", BaseStyle -> (FontSize -> 14), 
+                DisplayFunction -> (#& ), 
                 InterpretationFunction -> (RowBox[{"Row", "[", 
                    RowBox[{
                     RowBox[{"{", #, "}"}], ",", 
                     RowBox[{"BaseStyle", "\[Rule]", 
-                    RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}]& ), 
-                BaseStyle -> (FontSize -> 14)]}, {
+                    RowBox[{"FontSize", "\[Rule]", "14"}]}]}], "]"}]& )]}, {
                TemplateBox[{"\"Centro della circonferenza \[EGrave]: \"", 
                  InterpretationBox[
                   StyleBox[
@@ -41386,15 +41391,15 @@ esterno."]], Red]], StandardForm]]}, "Row", DisplayFunction -> (#& ),
                   RadioButtonBar[
                    Dynamic[EsercizioTriAngoli`Private`posizioneCentro$$], {
                    1 -> "Esterno", 2 -> "Interno"}, Appearance -> 
-                   "Vertical"]]}, "Row", DisplayFunction -> (RowBox[{
+                   "Vertical"]]}, "Row", BaseStyle -> (FontSize -> 16), 
+                DisplayFunction -> (RowBox[{
                    TemplateSlotSequence[1, "\[InvisibleSpace]"]}]& ), 
                 InterpretationFunction -> (RowBox[{"Row", "[", 
                    RowBox[{
                     RowBox[{"{", 
                     TemplateSlotSequence[1, ","], "}"}], ",", 
                     RowBox[{"BaseStyle", "\[Rule]", 
-                    RowBox[{"FontSize", "\[Rule]", "16"}]}]}], "]"}]& ), 
-                BaseStyle -> (FontSize -> 16)]}, {
+                    RowBox[{"FontSize", "\[Rule]", "16"}]}]}], "]"}]& )]}, {
                TemplateBox[{
                  ButtonBox[
                   StyleBox[
@@ -41534,7 +41539,8 @@ angoli in radianti.", FontSize -> 14,
                     16], {EsercizioTriAngoli`Private`risultatiCorretti$$, 
                     EsercizioTriAngoli`Private`passiRisoluzione$$} = 
                     EsercizioTriAngoli`Private`Soluzione[
-                    N[EsercizioTriAngoli`Private`alpha$$ 
+                    N[
+                    EsercizioTriAngoli`Private`alpha$$ 
                     EsercizioTriAngoli`Private`tipoAngolo$$], 
                     N[
                     EsercizioTriAngoli`Private`alpha$$ 
@@ -41566,7 +41572,10 @@ angoli in radianti.", FontSize -> 14,
                
                TemplateBox[{
                 "\"L'ampiezza sar\[AGrave] approssimata ai centesimi\""}, 
-                "Row", DisplayFunction -> (#& ), 
+                "Row", BaseStyle -> {FontSize -> 14, 
+                  RGBColor[
+                  0.33333333333333337`, 0.33333333333333337`, 
+                   0.33333333333333337`]}, DisplayFunction -> (#& ), 
                 InterpretationFunction -> (RowBox[{"Row", "[", 
                    RowBox[{
                     RowBox[{"{", #, "}"}], ",", 
@@ -41622,11 +41631,7 @@ angoli in radianti.", FontSize -> 14,
                     RGBColor[
                     0.33333333333333337`, 0.33333333333333337`, 
                     0.33333333333333337`], Editable -> False, Selectable -> 
-                    False]}], "}"}]}]}], "]"}]& ), 
-                BaseStyle -> {FontSize -> 14, 
-                  RGBColor[
-                  0.33333333333333337`, 0.33333333333333337`, 
-                   0.33333333333333337`]}]}, {
+                    False]}], "}"}]}]}], "]"}]& )]}, {
                TemplateBox[{
                  DynamicBox[
                   ToBoxes[
@@ -41636,8 +41641,11 @@ angoli in radianti.", FontSize -> 14,
                     EsercizioTriAngoli`Private`inputTipoAngolo$$, 
                     EsercizioTriAngoli`Private`posizioneCentro$$] == 2, 
                     "NOTA: i dati inseriti permettono la costruzione\ndi un \
-unico triangolo", True, ""], StandardForm]]}, "Row", DisplayFunction -> (#& ),
-                 InterpretationFunction -> (RowBox[{"Row", "[", 
+unico triangolo", True, ""], StandardForm]]}, "Row", 
+                BaseStyle -> {FontSize -> 14, 
+                  RGBColor[0, 0, 
+                   Rational[2, 3]]}, DisplayFunction -> (#& ), 
+                InterpretationFunction -> (RowBox[{"Row", "[", 
                    RowBox[{
                     RowBox[{"{", #, "}"}], ",", 
                     RowBox[{"BaseStyle", "\[Rule]", 
@@ -41686,10 +41694,7 @@ unico triangolo", True, ""], StandardForm]]}, "Row", DisplayFunction -> (#& ),
                     Automatic, Method -> "Preemptive"], 
                     RGBColor[0, 0, 
                     Rational[2, 3]], Editable -> False, Selectable -> 
-                    False]}], "}"}]}]}], "]"}]& ), 
-                BaseStyle -> {FontSize -> 14, 
-                  RGBColor[0, 0, 
-                   Rational[2, 3]]}]}, {
+                    False]}], "}"}]}]}], "]"}]& )]}, {
                TemplateBox[{
                  DynamicBox[
                   ToBoxes[
@@ -41702,7 +41707,14 @@ unico triangolo", True, ""], StandardForm]]}, "Row", DisplayFunction -> (#& ),
                     EsercizioTriAngoli`Private`coloriInputRisultati$$, {
                     LightGreen}], "Hai completato l'esercizio con successo", 
                     True, ""], StandardForm]]}, "Row", 
-                DisplayFunction -> (#& ), 
+                BaseStyle -> {FontSize -> 14, 
+                  Dynamic[
+                   Which[
+                    ContainsAny[
+                    EsercizioTriAngoli`Private`coloriInputRisultati$$, {
+                    LightRed}], 
+                    Darker[Red], True, 
+                    Darker[Green]]]}, DisplayFunction -> (#& ), 
                 InterpretationFunction -> (RowBox[{"Row", "[", 
                    RowBox[{
                     RowBox[{"{", #, "}"}], ",", 
@@ -41717,17 +41729,9 @@ unico triangolo", True, ""], StandardForm]]}, "Row", DisplayFunction -> (#& ),
                     EsercizioTriAngoli`Private`coloriInputRisultati$$, {
                     LightRed}], 
                     Darker[Red], True, 
-                    Darker[Green]], StandardForm]]}], "}"}]}]}], "]"}]& ), 
-                BaseStyle -> {FontSize -> 14, 
-                  Dynamic[
-                   Which[
-                    ContainsAny[
-                    EsercizioTriAngoli`Private`coloriInputRisultati$$, {
-                    LightRed}], 
-                    Darker[Red], True, 
-                    Darker[Green]]]}]}}, 
-             GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> 
-             "Column", 
+                    Darker[Green]], StandardForm]]}], "}"}]}]}], "]"}]& )]}}, 
+             DefaultBaseStyle -> "Column", 
+             GridBoxAlignment -> {"Columns" -> {{Left}}}, 
              GridBoxItemSize -> {
               "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], 
             "Column"], Appearance -> "Frameless", Background -> 
@@ -41796,8 +41800,8 @@ unico triangolo", True, ""], StandardForm]]}, "Row", DisplayFunction -> (#& ),
                 RowBox[{"{", "}"}]}], ",", 
               RowBox[{"RotateLabel", "\[Rule]", "False"}], ",", 
               RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "]"}]& )]}}, 
-      GridBoxAlignment -> {"Columns" -> {{Center}}}, BaselinePosition -> Top, 
-      DefaultBaseStyle -> "Column", 
+      BaselinePosition -> Top, DefaultBaseStyle -> "Column", 
+      GridBoxAlignment -> {"Columns" -> {{Center}}}, 
       GridBoxItemSize -> {
        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
     "\" \"", 
@@ -41808,14 +41812,14 @@ unico triangolo", True, ""], StandardForm]]}, "Row", DisplayFunction -> (#& ),
           ToBoxes[
            Graphics[
            EsercizioTriAngoli`Private`graficoEsercizio$$, ImageSize -> 300], 
-           StandardForm]]]}, {
+           StandardForm], ImageSizeCache -> {300., {147., 153.}}]]}, {
         TemplateBox[{
           PanelBox[
            DynamicBox[
             ToBoxes[
              Grid[EsercizioTriAngoli`Private`formInputRisultati$$], 
-             StandardForm]], Appearance -> "Frameless", Background -> 
-           RGBColor[0.87, 0.94, 1]], 
+             StandardForm], ImageSizeCache -> {340., {136.5, 142.5}}], 
+           Appearance -> "Frameless", Background -> RGBColor[0.87, 0.94, 1]], 
           StyleBox[
           "\"Inserisci la Soluzione\"", FontSize -> 20, StripOnInput -> 
            False]}, "Labeled", DisplayFunction -> (GridBox[{{
@@ -41845,8 +41849,8 @@ unico triangolo", True, ""], StandardForm]]}, "Row", DisplayFunction -> (#& ),
                 RowBox[{"{", "}"}]}], ",", 
               RowBox[{"RotateLabel", "\[Rule]", "False"}], ",", 
               RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "]"}]& )]}}, 
-      GridBoxAlignment -> {"Columns" -> {{Center}}}, BaselinePosition -> Top, 
-      DefaultBaseStyle -> "Column", 
+      BaselinePosition -> Top, DefaultBaseStyle -> "Column", 
+      GridBoxAlignment -> {"Columns" -> {{Center}}}, 
       GridBoxItemSize -> {
        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"], 
     "\" \"", 
@@ -41964,8 +41968,8 @@ risoluzione dell'esercizio"}}, True,
                 RowBox[{"{", "}"}]}], ",", 
               RowBox[{"RotateLabel", "\[Rule]", "False"}], ",", 
               RowBox[{"Spacings", "\[Rule]", "Automatic"}]}], "]"}]& )]}}, 
-      GridBoxAlignment -> {"Columns" -> {{Center}}}, BaselinePosition -> Top, 
-      DefaultBaseStyle -> "Column", 
+      BaselinePosition -> Top, DefaultBaseStyle -> "Column", 
+      GridBoxAlignment -> {"Columns" -> {{Center}}}, 
       GridBoxItemSize -> {
        "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
    "Row",
@@ -42022,43 +42026,14 @@ risoluzione dell'esercizio"}}, True,
          ",", 
         RowBox[{"Frame", "\[Rule]", "True"}]}], "]"}]& )],
   DynamicModuleValues:>{}]], "Output",
- CellMargins:>
-  Dynamic[{{
-    0.135 FrontEnd`AbsoluteCurrentValue[{WindowSize, 1}], 0.03 
-     FrontEnd`AbsoluteCurrentValue[{WindowSize, 1}]}, {
-    0.03584083450351052 
-     FrontEnd`AbsoluteCurrentValue[{WindowSize, 2}], (-0.03088486900702107) 
-     FrontEnd`AbsoluteCurrentValue[{WindowSize, 2}]}}],
+ Editable->False,
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
  CellChangeTimes->{
-  3.800712533127591*^9, {3.8007125720936413`*^9, 3.8007125909256124`*^9}, 
-   3.8007126255344105`*^9, 3.8007127441247263`*^9, 3.800713002629821*^9, 
-   3.8007131078378897`*^9, 3.800784012196368*^9, 3.8007845262506514`*^9, 
-   3.8007845943531528`*^9, 3.800784841338608*^9, 3.800784951305894*^9, 
-   3.8007850022253227`*^9, 3.800785046860714*^9, 3.800785281382774*^9, 
-   3.800785736205937*^9, 3.800786393638939*^9, 3.800786458302903*^9, 
-   3.8013901859108686`*^9, 3.801392350467843*^9, 3.8013931527860956`*^9, 
-   3.801395593615384*^9, {3.801395979372588*^9, 3.801395995985465*^9}, {
-   3.801396866602126*^9, 3.8013968934841995`*^9}, 3.8013969385836587`*^9, {
-   3.8013971795647383`*^9, 3.801397191967027*^9}, 3.801397355077408*^9, 
-   3.8013974695532217`*^9, 3.801397808862263*^9, 3.801398017446484*^9, 
-   3.801398174483073*^9, 3.801398339150221*^9, 3.8013984784391155`*^9, 
-   3.80139858166162*^9, 3.8013989150601645`*^9, 3.801399135819272*^9, 
-   3.801399625188859*^9, {3.801399675809742*^9, 3.801399702129465*^9}, 
-   3.801399747751521*^9, 3.8014000385920706`*^9, 3.8014003157858057`*^9, 
-   3.8014007328304396`*^9, {3.8014010129785185`*^9, 3.8014010222091017`*^9}, 
-   3.801401058468354*^9, 3.8014011092151423`*^9, 3.801401147817012*^9, 
-   3.801401192762042*^9, 3.8014012721446695`*^9, {3.8014013969316483`*^9, 
-   3.8014014137896175`*^9}, 3.8014014670974617`*^9, 3.801401528333851*^9, 
-   3.8014016069885397`*^9, 3.8014018033719983`*^9, 3.8014018699180956`*^9, 
-   3.8014019103473234`*^9, 3.801401958684734*^9, 3.801401995417219*^9, 
-   3.8014020612692184`*^9, 3.8014025146923127`*^9, {3.801402582202525*^9, 
-   3.801402602276097*^9}, {3.8014026664047403`*^9, 3.801402678375948*^9}, 
-   3.8014027423804054`*^9, 3.801402800558823*^9, {3.80140291186578*^9, 
-   3.8014029270538235`*^9}, 3.8014030781180296`*^9, 3.801403134570344*^9, {
-   3.801453965738762*^9, 3.801453994377643*^9}, {3.801454122867814*^9, 
-   3.8014541501894555`*^9}, {3.8014542075632744`*^9, 3.8014542344673395`*^9}, 
-   3.8014542806107955`*^9, 3.8014551824509864`*^9},
- CellLabel->"Out[13]=",ExpressionUUID->"280243d8-bee2-474a-915d-e6e9a0e6b1de"]
+  3.8014563646768894`*^9, {3.801456400216401*^9, 3.8014564005943823`*^9}, {
+   3.8014564452836223`*^9, 
+   3.8014564472433767`*^9}},ExpressionUUID->"057401e1-9c07-49f7-8b67-\
+877412f06377"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -42208,72 +42183,72 @@ ExpressionUUID->"b9203d85-8e77-49c6-9229-e95b1876e86a"
 (*CellTagsOutline
 CellTagsIndex->{
  "SlideShowHeader"->{
-  Cell[580, 22, 206, 3, 1, "SlideShowNavigationBar",ExpressionUUID->"c3035731-6c12-4639-ba9c-3ba5161c7e44",
+  Cell[580, 22, 206, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"c3035731-6c12-4639-ba9c-3ba5161c7e44",
    CellTags->"SlideShowHeader"],
-  Cell[2473078, 40573, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"792e246b-6a16-4f5b-bf27-34514f5d1ae1",
+  Cell[2473078, 40573, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"792e246b-6a16-4f5b-bf27-34514f5d1ae1",
    CellTags->"SlideShowHeader"],
-  Cell[2475238, 40634, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"5200382a-c176-4bec-bc01-b339922e08b8",
+  Cell[2475238, 40634, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"5200382a-c176-4bec-bc01-b339922e08b8",
    CellTags->"SlideShowHeader"],
-  Cell[2486205, 40833, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"64508c68-b3eb-407e-bb53-bef005836311",
+  Cell[2479670, 40745, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"64508c68-b3eb-407e-bb53-bef005836311",
    CellTags->"SlideShowHeader"],
-  Cell[2486902, 40854, 188, 3, 1, "SlideShowNavigationBar",ExpressionUUID->"167a03db-8d64-4dd9-93a9-9863e8329a50",
+  Cell[2480367, 40766, 188, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"167a03db-8d64-4dd9-93a9-9863e8329a50",
    CellTags->"SlideShowHeader"],
-  Cell[2487683, 40876, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"25cf2fb6-8754-4e87-a5df-4d362eed277d",
+  Cell[2481148, 40788, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"25cf2fb6-8754-4e87-a5df-4d362eed277d",
    CellTags->"SlideShowHeader"],
-  Cell[2488449, 40897, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"64dd8b4c-81d5-49f6-a4a0-240a8505749a",
+  Cell[2481914, 40809, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"64dd8b4c-81d5-49f6-a4a0-240a8505749a",
    CellTags->"SlideShowHeader"],
-  Cell[2493238, 40995, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"6bae2c9c-1ed0-4ed9-a4f9-b62dc7e89b78",
+  Cell[2486703, 40907, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"6bae2c9c-1ed0-4ed9-a4f9-b62dc7e89b78",
    CellTags->"SlideShowHeader"],
-  Cell[2545906, 42067, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"deea1ea9-3721-42d4-8cf7-479550e10761",
+  Cell[2542677, 42042, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"deea1ea9-3721-42d4-8cf7-479550e10761",
    CellTags->"SlideShowHeader"],
-  Cell[2546644, 42088, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"e3701b34-953d-4815-bfdb-4d265b8f11d6",
+  Cell[2543415, 42063, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"e3701b34-953d-4815-bfdb-4d265b8f11d6",
    CellTags->"SlideShowHeader"]},
  "ValutazioneNotebookSlide"->{
   Cell[2475385, 40640, 274, 5, 198, "Section",ExpressionUUID->"bc46727a-966e-44fb-88ae-5eba039ceb25",
    CellTags->"ValutazioneNotebookSlide"]},
  "AngoliAlCentroSlide"->{
-  Cell[2486330, 40837, 535, 12, 123, "Section",ExpressionUUID->"c299507f-5261-483f-88d5-86225e175639",
+  Cell[2479795, 40749, 535, 12, 123, "Section",ExpressionUUID->"c299507f-5261-483f-88d5-86225e175639",
    CellTags->"AngoliAlCentroSlide"]},
  "AngoliAlCirconferenzaSlide"->{
-  Cell[2487093, 40859, 553, 12, 123, "Section",ExpressionUUID->"e146d328-50aa-401c-9b74-328d39e95569",
+  Cell[2480558, 40771, 553, 12, 123, "Section",ExpressionUUID->"e146d328-50aa-401c-9b74-328d39e95569",
    CellTags->"AngoliAlCirconferenzaSlide"]},
  "RelazioneTraAngoliAlCentroEAllaCirconferenzaSlide"->{
-  Cell[2487808, 40880, 604, 12, 224, "Section",ExpressionUUID->"914a305d-d21b-499d-a101-ef8cba945e19",
+  Cell[2481273, 40792, 604, 12, 224, "Section",ExpressionUUID->"914a305d-d21b-499d-a101-ef8cba945e19",
    CellTags->"RelazioneTraAngoliAlCentroEAllaCirconferenzaSlide"]},
  "Esercizio1/2Slide"->{
-  Cell[2488596, 40903, 675, 12, 148, "Section",ExpressionUUID->"81110a0d-45f9-40da-b3db-507d5511d556",
+  Cell[2482061, 40815, 675, 12, 148, "Section",ExpressionUUID->"81110a0d-45f9-40da-b3db-507d5511d556",
    CellTags->"Esercizio1/2Slide"]},
  "Esercizio2/2Slide"->{
-  Cell[2493385, 41001, 708, 13, 123, "Section",ExpressionUUID->"90febad1-9a77-469b-ac4c-5d589893df87",
+  Cell[2486850, 40913, 708, 13, 123, "Section",ExpressionUUID->"90febad1-9a77-469b-ac4c-5d589893df87",
    CellTags->"Esercizio2/2Slide"]},
  "BibliografiaESitografiaSlide"->{
-  Cell[2546031, 42071, 576, 12, 123, "Section",ExpressionUUID->"4f5cc93b-754a-48f1-86e2-ee3c8ce06600",
+  Cell[2542802, 42046, 576, 12, 123, "Section",ExpressionUUID->"4f5cc93b-754a-48f1-86e2-ee3c8ce06600",
    CellTags->"BibliografiaESitografiaSlide"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"SlideShowHeader", 2552243, 42209},
- {"ValutazioneNotebookSlide", 2553751, 42230},
- {"AngoliAlCentroSlide", 2553922, 42233},
- {"AngoliAlCirconferenzaSlide", 2554096, 42236},
- {"RelazioneTraAngoliAlCentroEAllaCirconferenzaSlide", 2554300, 42239},
- {"Esercizio1/2Slide", 2554495, 42242},
- {"Esercizio2/2Slide", 2554658, 42245},
- {"BibliografiaESitografiaSlide", 2554832, 42248}
+ {"SlideShowHeader", 2549014, 42184},
+ {"ValutazioneNotebookSlide", 2550529, 42205},
+ {"AngoliAlCentroSlide", 2550700, 42208},
+ {"AngoliAlCirconferenzaSlide", 2550874, 42211},
+ {"RelazioneTraAngoliAlCentroEAllaCirconferenzaSlide", 2551078, 42214},
+ {"Esercizio1/2Slide", 2551273, 42217},
+ {"Esercizio2/2Slide", 2551436, 42220},
+ {"BibliografiaESitografiaSlide", 2551610, 42223}
  }
 *)
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 206, 3, 1, "SlideShowNavigationBar",ExpressionUUID->"c3035731-6c12-4639-ba9c-3ba5161c7e44",
+Cell[580, 22, 206, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"c3035731-6c12-4639-ba9c-3ba5161c7e44",
  CellTags->"SlideShowHeader"],
 Cell[789, 27, 663, 12, 352, "Title",ExpressionUUID->"87251559-9609-4990-ac3a-07215adc63f0"],
 Cell[1455, 41, 560, 9, 114, "Author",ExpressionUUID->"276f1ec2-b104-4e6f-8d4c-ece299146f16"],
 Cell[2018, 52, 2471023, 40516, 402, "Text",ExpressionUUID->"6f6225fb-a4a8-465a-af73-5faece44c19d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2473078, 40573, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"792e246b-6a16-4f5b-bf27-34514f5d1ae1",
+Cell[2473078, 40573, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"792e246b-6a16-4f5b-bf27-34514f5d1ae1",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
 Cell[2473225, 40579, 155, 3, 198, "Section",ExpressionUUID->"cc6b2dbc-d2f0-418a-ba4b-42e72978589b"],
@@ -42281,7 +42256,7 @@ Cell[2473383, 40584, 1806, 44, 331, "Text",ExpressionUUID->"0713f2c4-6231-42a9-a
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2475238, 40634, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"5200382a-c176-4bec-bc01-b339922e08b8",
+Cell[2475238, 40634, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"5200382a-c176-4bec-bc01-b339922e08b8",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
 Cell[2475385, 40640, 274, 5, 198, "Section",ExpressionUUID->"bc46727a-966e-44fb-88ae-5eba039ceb25",
@@ -42291,66 +42266,66 @@ Cell[CellGroupData[{
 Cell[2476100, 40660, 1579, 28, 57, "Input",ExpressionUUID->"403dcfcc-cc9f-4d4f-8319-ac0c798191fd",
  CellOpen->False,
  InitializationCell->True],
-Cell[2477682, 40690, 3833, 57, 100, "Output",ExpressionUUID->"e257543e-1f87-49dc-a91b-ac4dff5e7607"]
+Cell[2477682, 40690, 424, 11, 100, "Output",ExpressionUUID->"9f0dc234-e42a-4267-8ec2-f6acbdf312ab"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2481552, 40752, 1264, 26, 19, "Input",ExpressionUUID->"6f712259-f3d7-45ad-987a-d72d04c25b54",
+Cell[2478143, 40706, 1264, 26, 19, "Input",ExpressionUUID->"6f712259-f3d7-45ad-987a-d72d04c25b54",
  CellOpen->False],
-Cell[2482819, 40780, 3325, 46, 65, "Print",ExpressionUUID->"32941c0c-76ae-4f2a-9d66-45a27aa5f389"]
+Cell[2479410, 40734, 199, 4, 65, "Print",ExpressionUUID->"47575c5e-7d76-48f0-ac0f-67194fde9c18"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2486205, 40833, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"64508c68-b3eb-407e-bb53-bef005836311",
+Cell[2479670, 40745, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"64508c68-b3eb-407e-bb53-bef005836311",
  CellTags->"SlideShowHeader"],
-Cell[2486330, 40837, 535, 12, 123, "Section",ExpressionUUID->"c299507f-5261-483f-88d5-86225e175639",
+Cell[2479795, 40749, 535, 12, 123, "Section",ExpressionUUID->"c299507f-5261-483f-88d5-86225e175639",
  CellTags->"AngoliAlCentroSlide"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2486902, 40854, 188, 3, 1, "SlideShowNavigationBar",ExpressionUUID->"167a03db-8d64-4dd9-93a9-9863e8329a50",
+Cell[2480367, 40766, 188, 3, 63, "SlideShowNavigationBar",ExpressionUUID->"167a03db-8d64-4dd9-93a9-9863e8329a50",
  CellTags->"SlideShowHeader"],
-Cell[2487093, 40859, 553, 12, 123, "Section",ExpressionUUID->"e146d328-50aa-401c-9b74-328d39e95569",
+Cell[2480558, 40771, 553, 12, 123, "Section",ExpressionUUID->"e146d328-50aa-401c-9b74-328d39e95569",
  CellTags->"AngoliAlCirconferenzaSlide"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2487683, 40876, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"25cf2fb6-8754-4e87-a5df-4d362eed277d",
+Cell[2481148, 40788, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"25cf2fb6-8754-4e87-a5df-4d362eed277d",
  CellTags->"SlideShowHeader"],
-Cell[2487808, 40880, 604, 12, 224, "Section",ExpressionUUID->"914a305d-d21b-499d-a101-ef8cba945e19",
+Cell[2481273, 40792, 604, 12, 224, "Section",ExpressionUUID->"914a305d-d21b-499d-a101-ef8cba945e19",
  CellTags->"RelazioneTraAngoliAlCentroEAllaCirconferenzaSlide"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2488449, 40897, 122, 2, 1, "SlideShowNavigationBar",ExpressionUUID->"64dd8b4c-81d5-49f6-a4a0-240a8505749a",
+Cell[2481914, 40809, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"64dd8b4c-81d5-49f6-a4a0-240a8505749a",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[2488596, 40903, 675, 12, 148, "Section",ExpressionUUID->"81110a0d-45f9-40da-b3db-507d5511d556",
+Cell[2482061, 40815, 675, 12, 148, "Section",ExpressionUUID->"81110a0d-45f9-40da-b3db-507d5511d556",
  CellTags->"Esercizio1/2Slide"],
-Cell[2489274, 40917, 3568, 63, 610, "Text",ExpressionUUID->"83303f14-b1bc-4553-8d82-e34db456eced"],
-Cell[2492845, 40982, 344, 7, 70, "Text",ExpressionUUID->"0f4cb393-b5de-45bf-aedb-d89b6385d539"]
+Cell[2482739, 40829, 3568, 63, 610, "Text",ExpressionUUID->"83303f14-b1bc-4553-8d82-e34db456eced"],
+Cell[2486310, 40894, 344, 7, 70, "Text",ExpressionUUID->"0f4cb393-b5de-45bf-aedb-d89b6385d539"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2493238, 40995, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"6bae2c9c-1ed0-4ed9-a4f9-b62dc7e89b78",
+Cell[2486703, 40907, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"6bae2c9c-1ed0-4ed9-a4f9-b62dc7e89b78",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[2493385, 41001, 708, 13, 123, "Section",ExpressionUUID->"90febad1-9a77-469b-ac4c-5d589893df87",
+Cell[2486850, 40913, 708, 13, 123, "Section",ExpressionUUID->"90febad1-9a77-469b-ac4c-5d589893df87",
  CellTags->"Esercizio2/2Slide"],
 Cell[CellGroupData[{
-Cell[2494118, 41018, 3419, 52, 19, "Input",ExpressionUUID->"a0e3611b-448b-49ed-8c1b-c17ea5a3f501",
+Cell[2487583, 40930, 3419, 52, 19, "Input",ExpressionUUID->"a0e3611b-448b-49ed-8c1b-c17ea5a3f501",
  CellOpen->False],
-Cell[2497540, 41072, 48305, 988, 753, "Output",ExpressionUUID->"280243d8-bee2-474a-915d-e6e9a0e6b1de"]
+Cell[2491005, 40984, 51611, 1051, 780, "Output",ExpressionUUID->"057401e1-9c07-49f7-8b67-877412f06377"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2545906, 42067, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"deea1ea9-3721-42d4-8cf7-479550e10761",
+Cell[2542677, 42042, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"deea1ea9-3721-42d4-8cf7-479550e10761",
  CellTags->"SlideShowHeader"],
-Cell[2546031, 42071, 576, 12, 123, "Section",ExpressionUUID->"4f5cc93b-754a-48f1-86e2-ee3c8ce06600",
+Cell[2542802, 42046, 576, 12, 123, "Section",ExpressionUUID->"4f5cc93b-754a-48f1-86e2-ee3c8ce06600",
  CellTags->"BibliografiaESitografiaSlide"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2546644, 42088, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"e3701b34-953d-4815-bfdb-4d265b8f11d6",
+Cell[2543415, 42063, 122, 2, 63, "SlideShowNavigationBar",ExpressionUUID->"e3701b34-953d-4815-bfdb-4d265b8f11d6",
  CellTags->"SlideShowHeader"],
-Cell[2546769, 42092, 243, 3, 85, "Text",ExpressionUUID->"faee2cef-35da-4f2a-8b37-39288dff3780"]
+Cell[2543540, 42067, 243, 3, 85, "Text",ExpressionUUID->"faee2cef-35da-4f2a-8b37-39288dff3780"]
 }, Open  ]]
 }
 ]
