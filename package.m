@@ -226,8 +226,8 @@ grafica:=DynamicModule[{
 					
 					(* Titolo del panel per la costruzione dell'esercizio *)
 					Style["Inserisci i Parametri Richiesti", FontSize->22],
-					Appearance->"Frameless",
-					Background-> White
+					Appearance->"Frameless" ,
+					Background-> LightBlue
 				], (* Fine Panel *)
 				Panel[ (* Panel dei dati del problema *)
 						Dynamic@Column@datiProblema,
@@ -241,7 +241,7 @@ grafica:=DynamicModule[{
 		Panel[Dynamic@Grid@formInputRisultati,
 					Style["Inserisci la Soluzione", FontSize->20],
 					Appearance->"Frameless",
-					Background-> White
+					Background-> LightBlue
 				]
 		}, BaselinePosition->Top, Alignment->Center],
 		" ",
@@ -349,15 +349,15 @@ ElementiGrafici[tipoAngolo_, angolo_, posizioneCentro_] := Module[{angoloA, ango
 	angoloC=Which[
 		posizioneCentro==1 (* centro della circonferenza esterno al triangolo ABC *),
 		(* TODO RIFARE STO CALCOLO CON 2 AL POSTO DI 0.1 *)
-		(* formula iniziale: RandomChoice[{-1, 1}]*(alpha/2 + 0.1 + RandomReal[{0, beta - 0.1}]) con beta = 180-alpha
+		(* formula iniziale: RandomChoice[{-1, 1}]*(alpha/2 + 2 + RandomReal[{0, beta - 2}]) con beta = 180-alpha
 		la formula sottostante equivale a quella sovrastante semplificata
 		*)
-		(RandomChoice[{-1, 1}]*RandomReal[{alpha+0.1,-alpha+2*180}])/2,
+		(RandomChoice[{-1, 1}]*RandomReal[{alpha+4,360-alpha}])/2,
 		
 		posizioneCentro==2 (* centro della circonferenza interno al triangolo ABC *),
 		(* formula iniziale: alpha/2 + beta + RandomReal[{0, alpha}] con beta = 180-alpha
 		la formula sottostante equivale a quella sovrastante semplificata*)
-		RandomReal[{-alpha,alpha}]/2+180
+		180+RandomReal[{-alpha,alpha}]/2
 	];
 	(* Aggiunge il punto C alla lista dei punti.
 	Viene calcolato moltiplicando la "RotationMatrix" derivata da angoloC applicata al punto medio
