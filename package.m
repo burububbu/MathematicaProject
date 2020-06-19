@@ -58,240 +58,255 @@ grafica:=DynamicModule[{
 	},
 	
 	Panel[
-		Row[{ (* Contiene 2 "celle": una per la configurazione dell'esercizio ed il suo svolgimento,
-			l'altra contente esclusivamente i passi di risoluzione *)
-			Column[{
-				Column@{
-					Style["Inserisci i parametri richiesti", FontSize->20],
-					Row[{"Tipo di angolo: ", (* Radiobutton per la selezione del tipo di angolo *)
-							RadioButtonBar[
-								Dynamic@inputTipoAngolo, {1 -> "Centro", 2 -> "Circonferenza"},
-								Appearance-> "Vertical"
-							]},
+		Row[{ (* Contiene 3 "columns" e due filler (" "): una per la configurazione dell'esercizio e la visualizzazione dei dati,
+			un'altra per la visualizzazione del grafico e l'inserimento dei risultati e un'ultima contenente le formule utilizzabili per
+			la risoluzione ed i passi che portano alla soluzione corretta dell'esercizio *)
+			(* Note:
+				1) la colonna contiene a sua volta due colonne per seguire la separazione logica degli elementi
+				2) sono state usate pi\[UGrave] colonne in una riga anzich\[EAcute] una Grid per evitare malfunzionamenti legati alla necessaria
+					indipendenza tra le varie colonne: l'aumento della dimensione verticale di una cella non deve influenzare
+					la grandezza della colonna successiva e attraverso la built-in Grid non \[EGrave] possibile tenere questo comportamento *)
+			Column[ (* Prima Colonna *)
+				{
+					Column@{ (* Colonna Parametri per Creare l'esercizio *)
+						Style["Inserisci i parametri richiesti", FontSize->20],
+						Row[{"Tipo di angolo: ", (* Radiobutton per la selezione del tipo di angolo *)
+								RadioButtonBar[
+									Dynamic@inputTipoAngolo, {1 -> "Centro", 2 -> "Circonferenza"},
+									Appearance-> "Vertical"
+								]},
+								BaseStyle -> FontSize -> 16],
+						Row[{"Ampiezza angolo: ", (* Inputfield relativo all'ampiezza dell'angolo *)
+							InputField[Dynamic@inputAlpha, Number, ImageSize->{100,25},ContinuousAction->True],
+							" \[Degree]"},
 							BaseStyle -> FontSize -> 16],
-					Row[{"Ampiezza angolo: ", (* Inputfield relativo all'ampiezza dell'angolo *)
-						InputField[Dynamic@inputAlpha, Number, ImageSize->{100,25},ContinuousAction->True],
-						" \[Degree]"},
+						Row[{ (* Visualizzazione dell'errore *)
+								Dynamic@If[InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro],
+									(* Se l'input \[EGrave] valido non stampo errori *)
+									"",
+									(* Altrimenti *)
+									Style[
+										Which[
+											!AngoloValido[inputAlpha, inputTipoAngolo],
+											(* Se l'angolo non \[EGrave] valido, lo notifico *)
+											"L'ampiezza deve essere compresa tra 0\[Degree] (escluso) e " <> ToString[180 / inputTipoAngolo] <> "\[Degree].",
+											True,
+											(* Altrimenti asserisco che il problema sia la combinazione (alpha-tipoAngolo) che non \[EGrave] corretta *)
+											"Non \[EGrave] possibile impostare l'ampiezza a "  <> ToString@inputAlpha <> "\[Degree]\ne richiedere il centro della circonferenza esterno."
+										],
+										Red
+									]
+								]},
+								BaseStyle -> FontSize -> 14],
+						Row[{"Centro della circonferenza \[EGrave]: ",  (* RadioButton per la selezione della posizione del centro *)
+							RadioButtonBar[
+								Dynamic@posizioneCentro, {1 -> "Esterno", 2 -> "Interno"},
+								Appearance->"Vertical"]},
 						BaseStyle -> FontSize -> 16],
-					Row[{ (* Visualizzazione dell'errore *)
-							Dynamic@If[InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro],
-								(* Se l'input \[EGrave] valido non stampo errori *)
-								"",
-								(* Altrimenti *)
-								Style[
-									Which[
-										!AngoloValido[inputAlpha, inputTipoAngolo],
-										(* Se l'angolo non \[EGrave] valido, lo notifico *)
-										"L'ampiezza deve essere compresa tra 0\[Degree] (escluso) e " <> ToString[180 / inputTipoAngolo] <> "\[Degree].",
-										True,
-										(* Altrimenti asserisco che il problema sia la combinazione (alpha-tipoAngolo) che non \[EGrave] corretta *)
-										"Non \[EGrave] possibile impostare l'ampiezza a "  <> ToString@inputAlpha <> "\[Degree]\ne richiedere il centro della circonferenza esterno."
-									],
-									Red
-								]
-							]},
-							BaseStyle -> FontSize -> 14],
-					Row[{"Centro della circonferenza \[EGrave]: ",  (* RadioButton per la selezione della posizione del centro *)
-						RadioButtonBar[
-							Dynamic@posizioneCentro, {1 -> "Esterno", 2 -> "Interno"},
-							Appearance->"Vertical"]},
-					BaseStyle -> FontSize -> 16],
-					Row@{
-						Button[ (* Pulsante "Disegna" *)
-							Style["Disegna", FontSize->14],
-							(* Nonostante questo controllo sia effettuato in "Enabled", la correttezza dell'input viene 
-							ricontrollata per far fronte ad un "problema" di Mathematica, che consiste nel poter cliccare
-							un bottone che dovrebbe essere disabilitato quando, dopo aver scritto un input sbagliato, 
-							si rimane all'interno dell'InputField con il cursore ma si clicca il pulsante con il mouse *)
-							If[!InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro], Return[]];
-							
-							(* Viene impostato il numero di InputField da rendere disponibile all'utente *)
-							numeroInputFields = NumeroInputField[inputAlpha, inputTipoAngolo, posizioneCentro];
-							
-							(* Ridefinisce coloriInputRisultati e inputRisultati in base al numero di InputField calcolati *)
-							coloriInputRisultati=Table[Automatic, numeroInputFields];
-							inputRisultati=Table["", numeroInputFields];
-							
-							(* L'alpha inserito dall'utente viene arrotondato al centesimo *)
-							alpha=CustomRound@inputAlpha;
-							tipoAngolo=inputTipoAngolo;
-							(* Vengono caricati gli elementi da mostrare nel grafico *)
-							{angoloBAC, graficoEsercizio}=ElementiGrafici[tipoAngolo, alpha, posizioneCentro];
-							
-							(* Nota: angoloBAC viene calcolato nella funzione "ElementiGrafici" *)
-							datiProblema= {
-								Row[{"r = 1 (r \[EGrave] il raggio)"},
-									BaseStyle -> FontSize -> 16],
-								Row[{Dynamic@StringJoin["\!\(\*OverscriptBox[\(BAC\), \(^\)]\) = ", ToString@CustomRound@angoloBAC, "\[Degree]"],
-									"\t",
-									Dynamic@StringJoin[
-										"\!\(\*OverscriptBox[\(A",
-										Which[tipoAngolo===1, "O", True, "C"],
-										"B\), \(^\)]\) = ",
-										ToString@alpha,
-										"\[Degree]"]},
-									BaseStyle->FontSize -> 16]
-							};
-							
-							(* Costruisce il formInputRisultati: *)
-							(* L'obiettivo \[EGrave] creare una riga per ogni triangolo costruito. Per fare questo ci si serve di
-							Table. "With" permette di estendere lo scope della "i" definita dalla Table e inizializza un array 
-							di nomi utilizzati nelle label. La "i" ha il valore iniziale a 1 e viene incrementato di 2 fino
-							ad arrivare al numero di InputField da visualizzare. L'incremento di 2 unit\[AGrave] \[EGrave] dettato dalla scelta
-							di mostrare 2 InputField in una stessa riga (di fatto vengono utilizzati "i" ed "i+1").
-							Dato che Table restituisce l'array con una coppia di parentesi in pi\[UGrave] ( * ), viene utilizzato
-							"Flatten" per "appiattire" l'array al primo livello *)
-							formInputRisultati = Flatten[Table[With[{i=i, nomi = {
-											"Perimetro \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
-											"Area \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
-											"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)",
-											"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)"
-									}},
-									(* ( * ) necessario per poter ritornare pi\[UGrave] liste dalla Table *)
-									{
+						Row@{
+							Button[ (* Pulsante "Disegna" *)
+								Style["Disegna", FontSize->14],
+								(* Nonostante questo controllo sia effettuato in "Enabled", la correttezza dell'input viene 
+								ricontrollata per far fronte ad un "problema" di Mathematica, che consiste nel poter cliccare
+								un bottone che dovrebbe essere disabilitato quando, dopo aver scritto un input sbagliato, 
+								si rimane all'interno dell'InputField con il cursore ma si clicca il pulsante con il mouse *)
+								If[!InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro], Return[]];
+								
+								(* Viene impostato il numero di InputField da rendere disponibile all'utente *)
+								numeroInputFields = NumeroInputField[inputAlpha, inputTipoAngolo, posizioneCentro];
+								
+								(* Ridefinisce coloriInputRisultati e inputRisultati in base al numero di InputField calcolati *)
+								coloriInputRisultati=Table[Automatic, numeroInputFields];
+								inputRisultati=Table["", numeroInputFields];
+								
+								(* L'alpha inserito dall'utente viene arrotondato al centesimo *)
+								alpha=CustomRound@inputAlpha;
+								tipoAngolo=inputTipoAngolo;
+								(* Vengono caricati gli elementi da mostrare nel grafico *)
+								{angoloBAC, graficoEsercizio}=ElementiGrafici[tipoAngolo, alpha, posizioneCentro];
+								
+								(* Nota: angoloBAC viene calcolato nella funzione "ElementiGrafici" *)
+								datiProblema= {
+									Row[{"r = 1 (r \[EGrave] il raggio)"},
+										BaseStyle -> FontSize -> 16],
+									Row[{Dynamic@StringJoin["\!\(\*OverscriptBox[\(BAC\), \(^\)]\) = ", ToString@CustomRound@angoloBAC, "\[Degree]"],
+										"\t",
+										Dynamic@StringJoin[
+											"\!\(\*OverscriptBox[\(A",
+											Which[tipoAngolo===1, "O", True, "C"],
+											"B\), \(^\)]\) = ",
+											ToString@alpha,
+											"\[Degree]"]},
+										BaseStyle->FontSize -> 16]
+								};
+								
+								(* Costruisce il formInputRisultati: *)
+								(* L'obiettivo \[EGrave] creare una riga per ogni triangolo costruito. Per fare questo ci si serve di
+								Table. "With" permette di estendere lo scope della "i" definita dalla Table e inizializza un array 
+								di nomi utilizzati nelle label. La "i" ha il valore iniziale a 1 e viene incrementato di 2 fino
+								ad arrivare al numero di InputField da visualizzare. L'incremento di 2 unit\[AGrave] \[EGrave] dettato dalla scelta
+								di mostrare 2 InputField in una stessa riga (di fatto vengono utilizzati "i" ed "i+1").
+								Dato che Table restituisce l'array con una coppia di parentesi in pi\[UGrave] ( * ), viene utilizzato
+								"Flatten" per "appiattire" l'array al primo livello *)
+								formInputRisultati = Flatten[Table[With[{i=i, nomi = {
+												"Perimetro \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
+												"Area \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
+												"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)",
+												"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)"
+										}},
+										(* ( * ) necessario per poter ritornare pi\[UGrave] liste dalla Table *)
 										{
-											Style[nomi[[i]],FontSize->14],
-											(* L'utilizzo dell'array "inputRisultati" permette di mantenere la coerenza tra
-											la variabile che deve essere modificata e l'errore associato al suo valore *)
-											InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{80,25}, BaseStyle -> FontSize->14, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
-											Style[nomi[[i+1]],FontSize->14 ],
-											InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{80,25}, BaseStyle -> FontSize->14, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]]
-											},
-											{ (* Se \[EGrave] stato inserito un valore non-numerico nell'InputField corrispondente, 
-											si mostra l'errore. StringMatchQ assicura che la stringa in input sia un numero *)
-											Dynamic[If[Or[inputRisultati[[i]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
-											SpanFromLeft,
-											Dynamic[If[Or[inputRisultati[[i+1]]==="", StringMatchQ[inputRisultati[[i+1]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
+											{
+												Style[nomi[[i]],FontSize->14],
+												(* L'utilizzo dell'array "inputRisultati" permette di mantenere la coerenza tra
+												la variabile che deve essere modificata e l'errore associato al suo valore *)
+												InputField[Dynamic@inputRisultati[[i]],String, ImageSize->{80,25}, BaseStyle -> FontSize->14, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i]]],
+												Style[nomi[[i+1]],FontSize->14 ],
+												InputField[Dynamic@inputRisultati[[i+1]],String, ImageSize->{80,25}, BaseStyle -> FontSize->14, ContinuousAction->True, Enabled -> Dynamic@formRisultatiEnabled, Background->Dynamic@coloriInputRisultati[[i+1]]]
+												},
+												{ (* Se \[EGrave] stato inserito un valore non-numerico nell'InputField corrispondente, 
+												si mostra l'errore. StringMatchQ assicura che la stringa in input sia un numero *)
+												Dynamic[If[Or[inputRisultati[[i]]==="", StringMatchQ[inputRisultati[[i]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
+												SpanFromLeft,
+												Dynamic[If[Or[inputRisultati[[i+1]]==="", StringMatchQ[inputRisultati[[i+1]], NumberString]], "", Style["Non \[EGrave] possibile inserire una stringa", Red, FontSize->12]]],
+												SpanFromLeft
+											}
+											}
+										],{i, 1, Length@inputRisultati, 2}], 1];
+								
+								(* Si inserisce una nota in testa alla lista *)
+								formInputRisultati = Insert[formInputRisultati, {Style["Nota bene:\n\[Bullet] I risultati di tutte le operazioni, eccetto quelle\n  trigonometriche, devono essere approssimati\n  ai centesimi.\n\[Bullet] Le operazioni trigonometriche considerano\n  gli angoli in radianti.", FontSize->14, Darker@Gray], SpanFromLeft}, 1];
+								
+								(* Viene aggiunta l'ultima riga che contiene il pulsante "Conferma" che occupa due celle *)
+								AppendTo[formInputRisultati, 
+										{
+											Button[Style["Conferma",FontSize->16], 
+												{risultatiCorretti, passiRisoluzione}=Soluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
+												coloriInputRisultati=CheckSoluzioni[CustomRound@ToExpression@#&/@inputRisultati, risultatiCorretti];
+												formRisultatiEnabled=False,
+												(* Il pulsante viene abilitato quando (1) il form dei risultati \[EGrave] abilitato,
+												(2) inputRisultati non contiene stringhe vuote e (3) tutti i valori sono numerici *)
+												Enabled -> Dynamic@And[
+													formRisultatiEnabled,
+													ContainsNone[inputRisultati, {""}],
+													AllTrue[
+														inputRisultati,
+														StringMatchQ[#, NumberString]&
+													]
+												]
+											],
 											SpanFromLeft
 										}
-										}
-									],{i, 1, Length@inputRisultati, 2}], 1];
-							
-							(* Si inserisce una nota in testa alla lista *)
-							formInputRisultati = Insert[formInputRisultati, {Style["Nota bene:\n\[Bullet] I risultati di tutte le operazioni, eccetto quelle\n  trigonometriche, devono essere approssimati\n  ai centesimi.\n\[Bullet] Le operazioni trigonometriche considerano\n  gli angoli in radianti.", FontSize->14, Darker@Gray], SpanFromLeft}, 1];
-							
-							(* Viene aggiunta l'ultima riga che contiene il pulsante "Conferma" che occupa due celle *)
-							AppendTo[formInputRisultati, 
-									{
-										Button[Style["Conferma",FontSize->16], 
-											{risultatiCorretti, passiRisoluzione}=Soluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
-											coloriInputRisultati=CheckSoluzioni[CustomRound@ToExpression@#&/@inputRisultati, risultatiCorretti];
-											formRisultatiEnabled=False,
-											(* Il pulsante viene abilitato quando (1) il form dei risultati \[EGrave] abilitato,
-											(2) inputRisultati non contiene stringhe vuote e (3) tutti i valori sono numerici *)
-											Enabled -> Dynamic@And[
-												formRisultatiEnabled,
-												ContainsNone[inputRisultati, {""}],
-												AllTrue[
-													inputRisultati,
-													StringMatchQ[#, NumberString]&
-												]
-											]
-										],
-										SpanFromLeft
-									}
-								];
-							
-							(* Al click di "Disegna" viene impostato a "true" formRisultatiEnabled che permette la scrittura negli
-							InputField per l'inserimento dei risultati. Inoltre, viene inizializzato a Null passiRisoluzione in quanto 
-							potrebbero essere presenti dei valori impostati nell'esecuzione precedente *)
-							passiRisoluzione = Null;
-							formRisultatiEnabled = True,
+									];
+								
+								(* Al click di "Disegna" viene impostato a "true" formRisultatiEnabled che permette la scrittura negli
+								InputField per l'inserimento dei risultati. Inoltre, viene inizializzato a Null passiRisoluzione in quanto 
+								potrebbero essere presenti dei valori impostati nell'esecuzione precedente *)
+								passiRisoluzione = Null;
+								formRisultatiEnabled = True,
 
-							(* Il pulsante viene abilitato se gli input per la costruzione dell'esercizio sono corretti *)
-							Enabled->Dynamic@InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro]
-						]
-					}, (* Fine bottone disegna *)
-					(* Note per l'utente *)
-					Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"},
-						BaseStyle->{FontSize->14, Darker@Gray}],
-					(* Nel caso in cui il numero di input della soluzione sia 2, significa che l'ampiezza dell'angolo al centro \[EGrave] 180\[Degree] 
-					e che la posizione del centro sia stata definita come interna. Dunque, verr\[AGrave] visualizzato l'avviso per l'utente
-					riguardo la possibilit\[AGrave] di costruire un solo triangolo *)
-					Row[{Dynamic@Which[NumeroInputField[inputAlpha,inputTipoAngolo,posizioneCentro] == 2,
-						"NOTA: i dati inseriti permettono la costruzione\ndi un unico triangolo",
-						True,
-						""]},
-						BaseStyle->{FontSize->14, Darker@Blue}],
-					(* Messaggio da visualizzare dopo l'immissione dei risultati da parte dell'utente *)
-					Row[{Dynamic@Which[ContainsAny[coloriInputRisultati, {LightRed}],
-						"Riprova l'esercizio per approfondire\nle tue competenze",
-						ContainsAll[coloriInputRisultati, {LightGreen}],
-						"Hai completato l'esercizio con successo",
-						True,
-						""]},
-						BaseStyle->{FontSize->14,
-							Dynamic@Which[ContainsAny[coloriInputRisultati, {LightRed}],
-								Darker@Red,
-								True,
-								Darker@Green]}]
+								(* Il pulsante viene abilitato se gli input per la costruzione dell'esercizio sono corretti *)
+								Enabled->Dynamic@InputDisegnaValido[inputAlpha, inputTipoAngolo, posizioneCentro]
+							]
+						}, (* Fine bottone disegna *)
+						(* Note per l'utente *)
+						Row[{"L'ampiezza sar\[AGrave] approssimata ai centesimi"},
+							BaseStyle->{FontSize->14, Darker@Gray}],
+						(* Nel caso in cui il numero di input della soluzione sia 2, significa che l'ampiezza dell'angolo al centro \[EGrave] 180\[Degree] 
+						e che la posizione del centro sia stata definita come interna. Dunque, verr\[AGrave] visualizzato l'avviso per l'utente
+						riguardo la possibilit\[AGrave] di costruire un solo triangolo *)
+						Row[{Dynamic@Which[NumeroInputField[inputAlpha,inputTipoAngolo,posizioneCentro] == 2,
+							"NOTA: i dati inseriti permettono la costruzione\ndi un unico triangolo",
+							True,
+							""]},
+							BaseStyle->{FontSize->14, Darker@Blue}],
+						(* Messaggio da visualizzare dopo l'immissione dei risultati da parte dell'utente *)
+						Row[{Dynamic@Which[ContainsAny[coloriInputRisultati, {LightRed}],
+							"Riprova l'esercizio per approfondire\nle tue competenze",
+							ContainsAll[coloriInputRisultati, {LightGreen}],
+							"Hai completato l'esercizio con successo",
+							True,
+							""]},
+							BaseStyle->{FontSize->14,
+								Dynamic@Which[ContainsAny[coloriInputRisultati, {LightRed}],
+									Darker@Red,
+									True,
+									Darker@Green]}]
+					}, (* Fine Colonna Parametri per Creare l'esercizio *)
+					Column@{ (* Colonna Visualizzazione Dati *)
+						Style["Dati", FontSize->20],
+						Dynamic@Column[datiProblema, BaseStyle->FontSize->16, Background->LightYellow]
+					} (* Fine Colonna Visualizzazione Dati *)
 				},
-				Column@{
-					Style["Dati", FontSize->20],
-					Dynamic@Column[datiProblema, BaseStyle->FontSize->16, Background->LightYellow]
-				}
-			}, BaselinePosition->Top, Alignment->Center],
+				BaselinePosition->Top, Alignment->Center
+			],(* Fine Prima Colonna *)
 			" ",
-			Column[{
-				Dynamic@Graphics[graficoEsercizio,ImageSize->300],
-				Column@{
-					Style["Inserisci la Soluzione", FontSize->20],
-					Dynamic@Grid[formInputRisultati, BaseStyle->FontSize->16]
-				}
-			}, BaselinePosition->Top, Alignment->Center],
-			" ",
-			Column[{
-				Dynamic@Column[{ (* La column mostra il bottone e le formule una sotto l'altra *)
-					Style["Formule", FontSize->20],
-					(* Flatten "rende piatto" l'array passato a Column: "formule" \[EGrave] un array di
-						Rows (il perch\[EAcute] viene spiegato successivamente) e deve essere ridotto a "lista" di rows:
-						es: {button, {Row@"a",Row@"b",Row@"c"}} deve diventare {button, Row@"a",Row@"b",Row@"c"} (senza graffe)
-						*)
+			Column[ (* Seconda Colonna *)
+				{
+					Dynamic@Graphics[graficoEsercizio,ImageSize->300],
 					Column@{
-						Button["Mostra/nascondi formule",
-							(* Un semplice toggle: se l'array di formule \[EGrave] vuoto, allora lo si riempie,
-								altrimenti lo si svuota
-								*)
-							If[Length@formule == 0,
-								(* E' stato necessario utilizzare un array di rows al fine di poter creare style diversi
-									all'interno della stessa stringa (in particolare, il titolo \[EGrave] in rosso mentre le
-									specificazioni sono nel colore di default)
-									*)
-								formule = MapThread[Row@{Style[#1, colore], #2}&,
-									{
-										(* #1 *)
-										{
-											"Teorema della Corda: " <>  Beautify@(2*r*Sin[\[Beta]]),
-											"Area del Triangolo: " <> Beautify@((Subscript[l, 1]*Subscript[l, 2]*Sin[\[Theta]])/2),
-											"Teorema dei Seni: " <>  Beautify@(a:Sin[\[Alpha]] == b:Sin[\[Beta]])
-										},
-										(* #2 *)
-										{
-											"\n\tcon \[Beta] angolo alla circonferenza",
-											"\n\tcon \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)",
-											"\n\tcon \[Alpha] angolo opposto al lato \!\(\*StyleBox[\"a\",\nFontSlant->\"Italic\"]\)\n\te \[Beta] angolo opposto al lato \!\(\*StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"
-										}
-									}
-								]/.colore->Darker@Red,
-								(* L'else dell'if *)
-								formule = {}
-							],
-							BaseStyle->FontSize->14
-						],
-						Dynamic@Column@formule (* Celle successive all'interno della Column *)
+						Style["Inserisci la Soluzione", FontSize->20],
+						Dynamic@Grid[formInputRisultati, BaseStyle->FontSize->16]
 					}
-				}, Background->LightGreen, BaseStyle->FontSize->16], (* Fine column all'interno del panel *)
-				Dynamic@Grid[
+				},
+				BaselinePosition->Top, Alignment->Center
+			], (* Fine Seconda Colonna *)
+			" ",
+			Column[ (* Terza Colonna *)
+				{
+					Dynamic@Column[ (* Column che mostra il bottone e le formule una sotto l'altra *)
+						{
+							Style["Formule", FontSize->20],
+							Column@{
+								Button["Mostra/nascondi formule",
+									(* Un semplice toggle: se l'array di formule \[EGrave] vuoto, allora lo si riempie,
+										altrimenti lo si svuota
+										*)
+									If[Length@formule == 0,
+										(* E' stato necessario utilizzare un array di rows al fine di poter creare style diversi
+											all'interno della stessa stringa (in particolare, il titolo \[EGrave] in rosso mentre le
+											specificazioni sono nel colore di default)
+											*)
+										formule = MapThread[
+											Row@{Style[#1, colore], #2}&,
+											{
+												(* #1 *)
+												{
+													"Teorema della Corda: " <>  Beautify@(2*r*Sin[\[Beta]]),
+													"Area del Triangolo: " <> Beautify@((Subscript[l, 1]*Subscript[l, 2]*Sin[\[Theta]])/2),
+													"Teorema dei Seni: " <>  Beautify@(a:Sin[\[Alpha]] == b:Sin[\[Beta]])
+												},
+												(* #2 *)
+												{
+													"\n\tcon \[Beta] angolo alla circonferenza",
+													"\n\tcon \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)",
+													"\n\tcon \[Alpha] angolo opposto al lato \!\(\*StyleBox[\"a\",\nFontSlant->\"Italic\"]\)\n\te \[Beta] angolo opposto al lato \!\(\*StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"
+												}
+											}
+										]/.colore->Darker@Red,
+										(* L'else dell'if *)
+										formule = {}
+									],
+									BaseStyle->FontSize->14
+								],
+								Dynamic@Column@formule (* Cella delle formule *)
+							}
+						},
+						Background->LightGreen, BaseStyle->FontSize->16
+					], (* Fine Column che mostra il bottone e le formule una sotto l'altra *)
+					Dynamic@Grid[ (* Grid che mostra gli steps per la soluzione dell'esercizio *)
 						Which[passiRisoluzione===Null,
-						{{"Inserisci le soluzioni per visualizzare i passaggi\nper la risoluzione dell'esercizio"}},
-						True,
-						passiRisoluzione
+							{{"Inserisci le soluzioni per visualizzare i passaggi\nper la risoluzione dell'esercizio"}},
+							True,
+							passiRisoluzione
 						],
-						BaseStyle->{FontSize -> 16},
+						BaseStyle->{FontSize->16},
 						Frame -> All,
-						ItemStyle-> Darker@Blue
-					]
-			}, BaselinePosition->Top, Alignment->Center]
+						ItemStyle->Darker@Blue
+					] (* Fine Grid che mostra gli steps per la soluzione dell'esercizio *)
+				},
+				BaselinePosition->Top, Alignment->Center
+			] (* Fine Terza Colonna *)
 		}],
 		Background->LightBlue
 	]
