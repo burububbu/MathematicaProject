@@ -57,7 +57,6 @@ grafica:=DynamicModule[{
 							Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *)		
 	},
 	
-	Panel[
 		Row[{ (* Contiene 3 "columns" e due filler (" "): una per la configurazione dell'esercizio e la visualizzazione dei dati,
 			un'altra per la visualizzazione del grafico e l'inserimento dei risultati e un'ultima contenente le formule utilizzabili per
 			la risoluzione ed i passi che portano alla soluzione corretta dell'esercizio *)
@@ -307,9 +306,7 @@ grafica:=DynamicModule[{
 				},
 				BaselinePosition->Top, Alignment->Center
 			] (* Fine Terza Colonna *)
-		}],
-		Background->LightBlue
-	]
+		}, Background->LightBlue, BaseStyle->FontFamily->"Helvetica"]
 ]
 
 
