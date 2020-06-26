@@ -54,7 +54,8 @@ grafica:=DynamicModule[{
 									inseribili *)
 		formule = {}, (* formule visualizzate su richiesta dell'utente *)
 		risultatiCorretti (* Risultati corretti del problema. 
-							Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *)		
+							Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *),
+		test	
 	},
 	
 		Row[{ (* Contiene 3 "columns" e due filler (" "): una per la configurazione dell'esercizio e la visualizzazione dei dati,
@@ -179,7 +180,13 @@ grafica:=DynamicModule[{
 								(* Viene aggiunta l'ultima riga che contiene il pulsante "Conferma" che occupa due celle *)
 								AppendTo[formInputRisultati, 
 										{
-											Button[Style["Conferma",FontSize->16], 
+											Button[Style["Conferma",FontSize->16],
+												If[
+													DialogInput[
+														{},
+														Column[{TextCell["Una volta Confermato non sar\[AGrave] possibile tentare l'esercizio nuovamente.\nContinuare?"],
+														Row[{Button[" S\[IGrave] ",DialogReturn[1]],Button[" No ",DialogReturn[0]]}]}]
+													]===0,Return[]];
 												{risultatiCorretti, passiRisoluzione}=Soluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
 												coloriInputRisultati=CheckSoluzioni[CustomRound@ToExpression@#&/@inputRisultati, risultatiCorretti];
 												formRisultatiEnabled=False,
@@ -192,7 +199,8 @@ grafica:=DynamicModule[{
 														inputRisultati,
 														StringMatchQ[#, NumberString]&
 													]
-												]
+												],
+												Method->"Queued"
 											],
 											SpanFromLeft
 										}
