@@ -280,13 +280,15 @@ grafica:=DynamicModule[{
 												(* #1 *)
 												{
 													"Teorema della Corda: " <>  Beautify@(2*r*Sin[\[Beta]]),
-													"Area del Triangolo: " <> Beautify@((Subscript[l, 1]*Subscript[l, 2]*Sin[\[Theta]])/2),
+													"Area del Triangolo: " <> Beautify@((a*b*Sin[\[Theta]])/2),
 													"Teorema dei Seni: " <>  Beautify@(a:Sin[\[Alpha]] == b:Sin[\[Beta]])
 												},
 												(* #2 *)
 												{
 													"\n\tcon \[Beta] angolo alla circonferenza",
-													"\n\tcon \[Theta] angolo tra i segmenti \!\(\*SubscriptBox[\(l\), \(1\)]\) e \!\(\*SubscriptBox[\(l\), \(2\)]\)",
+													"\n\tcon \[Theta] angolo tra i segmenti \!\(\*
+StyleBox[\"a\",\nFontSlant->\"Italic\"]\) e \!\(\*
+StyleBox[\"b\",\nFontSlant->\"Italic\"]\)",
 													"\n\tcon \[Alpha] angolo opposto al lato \!\(\*StyleBox[\"a\",\nFontSlant->\"Italic\"]\)\n\te \[Beta] angolo opposto al lato \!\(\*StyleBox[\"b\",\nFontSlant->\"Italic\"]\)"
 												}
 											}
@@ -309,7 +311,7 @@ grafica:=DynamicModule[{
 						],
 						BaseStyle->{FontSize->16},
 						Frame -> All,
-						ItemStyle->Darker@Blue
+						ItemStyle-> Darker@Gray
 					] (* Fine Grid che mostra gli steps per la soluzione dell'esercizio *)
 				},
 				BaselinePosition->Top, Alignment->Center
@@ -430,32 +432,32 @@ Soluzione[angoloAlCentro_, angoloAllaCirconferenza_, angoloA_] := Module[
 	},
 
 	(* Calcola AB sfruttando il teorema della corda: 2*radius*sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
-	AB = formule[[1]]/.{r->1, \[Beta]->angoloAllaCirconferenza Degree};
+	AB = formule[[1]]/.{r->1, \[Beta]->CustomRound@(angoloAllaCirconferenza Degree)};
 	releasedAB = CustomRound@ReleaseHold@AB;
 	
 	(* Perimetro AOB *)
 	perimetroAOB=Which[angoloAlCentro == 180, Null, True, formule[[2]]/.{l1->1,l2->1,l3->releasedAB}];
 	
 	(* Calcola area = 1/2*OB*AO*sin(alpha) dove alpha \[EGrave] l'angolo al centro *)
-	areaAOB=Which[angoloAlCentro == 180, Null, True, formule[[3]]/.{l1->1,l2->1,angolo->angoloAlCentro Degree}];
+	areaAOB=Which[angoloAlCentro == 180, Null, True, formule[[3]]/.{l1->1,l2->1,angolo->CustomRound@(angoloAlCentro Degree)}];
 
 	(* Calcola BC sfruttando il teorema dei seni BC = (sin(BAC)*AB)/sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
-	BC = formule[[4]]/.{l1->releasedAB*1., angolo2->angoloA Degree, angolo1->angoloAllaCirconferenza Degree};
+	BC = formule[[4]]/.{l1->releasedAB*1., angolo2->CustomRound@(angoloA Degree), angolo1->CustomRound@(angoloAllaCirconferenza Degree)};
 	releasedBC = CustomRound@ReleaseHold@BC;
 	
 	(* Calcola l'angolo ABC = 180 - angoloAllaCirconferenza - BAC *)
-	ABC=formule[[5]]/.{angolo1->angoloAllaCirconferenza Degree, angolo2->angoloA Degree};
+	ABC=formule[[5]]/.{angolo1->CustomRound@(angoloAllaCirconferenza Degree), angolo2->CustomRound@(angoloA Degree)};
 	releasedABC = CustomRound@ReleaseHold@ABC;
 	
 	(* Si riutilizza di nuovo il teorema dei seni e viene calcolato AC = (sin(ABC)*AB)/sin(beta) dove beta \[EGrave] l'angolo alla circonferenza *)
-	AC = formule[[4]]/.{l1->releasedAB*1.,angolo2->releasedABC,angolo1->angoloAllaCirconferenza Degree};
+	AC = formule[[4]]/.{l1->releasedAB*1., angolo2->releasedABC, angolo1->CustomRound@(angoloAllaCirconferenza Degree)};
 	releasedAC = CustomRound@ReleaseHold@AC;
 	
 	(* Perimetro AOB *)
-	perimetroABC=formule[[2]]/.{l1->releasedAC,l2->releasedBC,l3->releasedAB};
+	perimetroABC=formule[[2]]/.{l1->releasedAC, l2->releasedBC, l3->releasedAB};
 	
 	(* Calcolo l'area = 1/2*BC*AC*sin(beta) *)
-	areaABC=formule[[3]]/.{l1->releasedBC,l2->releasedAC,angolo->angoloAllaCirconferenza Degree};
+	areaABC=formule[[3]]/.{l1->releasedBC, l2->releasedAC, angolo->CustomRound@(angoloAllaCirconferenza Degree)};
 	
 	risultatiCorretti={
 		ReleaseHold@perimetroABC,
