@@ -54,7 +54,10 @@ grafica:=DynamicModule[{
 									inseribili *)
 		formule = {}, (* formule visualizzate su richiesta dell'utente *)
 		risultatiCorretti (* Risultati corretti del problema. 
-							Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *)
+							Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *),
+		tipoInput,
+		daConvertire = Null,
+		convertito = Null
 	},
 	
 		Row[{ (* Contiene 3 "columns" e due filler (" "): una per la configurazione dell'esercizio e la visualizzazione dei dati,
@@ -181,11 +184,7 @@ grafica:=DynamicModule[{
 										{
 											Button[Style["Conferma",FontSize->16],
 												If[
-													DialogInput[
-														{},
-														Column[{TextCell["Una volta Confermato non sar\[AGrave] possibile tentare l'esercizio nuovamente.\nContinuare?"],
-														Row[{Button[" S\[IGrave] ",DialogReturn[1]],Button[" No ",DialogReturn[0]]}]}]
-													]===0,Return[]];
+													ChoiceDialog["Una volta Confermato non sar\[AGrave] possibile tentare l'esercizio nuovamente.\nContinuare?",{"S\[IGrave]"->1,"No"->0},WindowTitle->"Continuare?"]===0,Return[]];
 												{risultatiCorretti, passiRisoluzione}=Soluzione[N[alpha*tipoAngolo], N[alpha*tipoAngolo/2], angoloBAC];
 												coloriInputRisultati=CheckSoluzioni[CustomRound@ToExpression@#&/@inputRisultati, risultatiCorretti];
 												formRisultatiEnabled=False,
@@ -240,8 +239,7 @@ grafica:=DynamicModule[{
 									Darker@Green]}]
 					}, (* Fine Colonna Parametri per Creare l'esercizio *)
 					Column@{ (* Colonna Visualizzazione Dati *)
-						Style["Dati", FontSize->20],
-						Dynamic@Column[datiProblema, BaseStyle->FontSize->16, Background->LightYellow]
+						Dynamic@Column[Insert[datiProblema,Style["Dati", FontSize->20],1], BaseStyle->FontSize->16, Background->LightYellow, Frame->True, Spacings->2]
 					} (* Fine Colonna Visualizzazione Dati *)
 				},
 				BaselinePosition->Top, Alignment->Center
@@ -297,10 +295,45 @@ StyleBox[\"b\",\nFontSlant->\"Italic\"]\)",
 									],
 									BaseStyle->FontSize->14
 								],
-								Dynamic@Column@formule (* Cella delle formule *)
+								Dynamic@Column@formule (* Cella delle formule *),
+								Style["Convertitore da Gradi a Radianti e viceversa", FontSize->20],
+								Style["1) Inserisci l'input\n"<>
+									  "2) Seleziona l'unit\[AGrave] di misura dell'input inserito(gradi o radianti)\n"<>
+									  "3) Viene restituito il valore corrispondente\n"<>
+									  "    (se \[EGrave] stato selezionato \"gradi\" verr\[AGrave] ritornato il valore in radianti e viceversa).\n"<>
+									  "4) Cliccando \"Copia negli appunti\", il valore convertito verr\[AGrave] salvato\n"<>
+									  "    negli appunti del computer: \[EGrave] possibile incollarlo cliccando il\n"<>
+									  "    \"Tasto Destro del Mouse\"->\"Incolla\"", FontSize->14, Darker@Gray],
+								Button[
+									"Convertitore Gradi - Radianti",
+									{daConvertire,convertito} = Table[Null,2];
+									CreateDialog[
+										{
+											TextCell["Inserisci il valore"],
+											Row[{InputField[Dynamic@daConvertire, Number], PopupMenu[Dynamic@tipoInput,{Degree->"Gradi",1/Degree->"Radianti"}]}],
+											Row[{
+												Button["Calcola", convertito=CustomRound[N@daConvertire*tipoInput]],
+												"\t",
+												Dynamic@Row@If[
+														convertito=!=Null,
+														{
+															ToString@convertito,
+															"\t",
+															Button["Copia negli appunti", CopyToClipboard[convertito]]
+														},
+														{}
+													]
+											}]
+										},
+										Selectable->True,
+										Deployed->False,
+										WindowTitle->"Convertitore Gradi - Radianti"
+										],
+									BaseStyle->FontSize->14
+								]
 							}
 						},
-						Background->LightGreen, BaseStyle->FontSize->16
+						Background->LightGreen, Frame->True, Spacings->2, BaseStyle->FontSize->16
 					], (* Fine Column che mostra il bottone e le formule una sotto l'altra *)
 					Dynamic@Grid[ (* Grid che mostra gli steps per la soluzione dell'esercizio *)
 						Which[passiRisoluzione===Null,
@@ -353,7 +386,6 @@ ElementiGrafici[tipoAngolo_, angolo_, posizioneCentro_] := Module[{angoloA, ango
 	Middlepoint \[EGrave] il punto medio dell'arco AB. *)
 	angoloC=Which[
 		posizioneCentro==1 (* centro della circonferenza esterno al triangolo ABC *),
-		(* TODO RIFARE STO CALCOLO CON 2 AL POSTO DI 0.1 *)
 		(* formula iniziale: RandomChoice[{-1, 1}]*(alpha/2 + 2 + RandomReal[{0, beta - 2}]) con beta = 180-alpha
 		la formula sottostante equivale a quella sovrastante semplificata
 		*)
@@ -412,8 +444,7 @@ ElementiGrafici[tipoAngolo_, angolo_, posizioneCentro_] := Module[{angoloA, ango
 
 
 Soluzione[angoloAlCentro_, angoloAllaCirconferenza_, angoloA_] := Module[
-	{
-																							(* Teorema dei Seni := a:sin(angolo2)=b:sin(angolo1) *)
+	{																						(* Teorema dei Seni := a:sin(angolo2)=b:sin(angolo1) *)
 		formule={HoldForm@(2*r*Sin@\[Beta]), HoldForm@(l1+l2+l3), HoldForm@((l1*l2*Sin@angolo)/2), HoldForm@((Sin@angolo2*l1)/Sin@angolo1), HoldForm@(Pi-angolo1-angolo2)},
 		AB,
 		releasedAB,
