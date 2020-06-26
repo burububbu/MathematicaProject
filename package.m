@@ -128,13 +128,13 @@ grafica:=DynamicModule[{
 								datiProblema= {
 									Row[{"r = 1 (r \[EGrave] il raggio)"},
 										BaseStyle -> FontSize -> 16],
-									Row[{Dynamic@StringJoin["\!\(\*OverscriptBox[\(BAC\), \(^\)]\) = ", ToString@CustomRound@angoloBAC, "\[Degree]"],
+									Row[{Dynamic@StringJoin["\!\(\*OverscriptBox[\(BAC\), \(^\)]\) = ", ToString[PaddedForm[angoloBAC, {3,2}]], "\[Degree]"],
 										"\t",
 										Dynamic@StringJoin[
 											"\!\(\*OverscriptBox[\(A",
 											Which[tipoAngolo===1, "O", True, "C"],
 											"B\), \(^\)]\) = ",
-											ToString@alpha,
+											ToString[PaddedForm[alpha, {3,2}]],
 											"\[Degree]"]},
 										BaseStyle->FontSize -> 16]
 								};
@@ -471,14 +471,14 @@ Soluzione[angoloAlCentro_, angoloAllaCirconferenza_, angoloA_] := Module[
 		Step_i=[CosaTrovare, Teorema Utilizzato, Formula Simbolica, FormulaApplicata=Risultato] *)
 	Return@{
 		{ReleaseHold@perimetroABC, CustomRound@ReleaseHold@areaABC, ReleaseHold@perimetroAOB, CustomRound@ReleaseHold@areaAOB},
-		{{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", Beautify@formule[[1]], Beautify@AB<>" = "<>ToString@releasedAB},
-		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Which[perimetroAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify@perimetroAOB<>" = "<>ToString@risultatiCorretti[[3]]]},
-		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[3]]/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Which[areaAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify@areaAOB<>" = "<>ToString@risultatiCorretti[[4]]]},
-		{"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", Beautify[formule[[4]]/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angolo1-> "\[Beta]"}], Beautify@BC<>" = "<>ToString@releasedBC},
-		{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[formule[[5]]/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify@ABC<>" = "<>ToString@releasedABC},
-		{"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", Beautify[formule[[4]]/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angolo2->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angolo1-> "\[Beta]" }], Beautify@AC<>" = "<>ToString@releasedAC},
-		{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify@perimetroABC<>" = "<>ToString@risultatiCorretti[[1]]},
-		{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[3]]/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify@areaABC<>" = "<>ToString@risultatiCorretti[[2]]}
+		{{"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", Beautify@formule[[1]], Beautify[AB/.t_Real:> PaddedForm[t, {3,2}]]<>" = "<>ToString[PaddedForm[releasedAB, {3,2}]]},
+		{"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(BO\),\(_\)]\)",l2->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Which[perimetroAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify[perimetroAOB/.t_Real:> PaddedForm[t, {3,2}]]<>" = "<>ToString[PaddedForm[risultatiCorretti[[3]], {3,2}]]]},
+		{"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[3]]/.{l1->"\!\(\*OverscriptBox[\(AO\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BO\), \(_\)]\)",angolo->"\[Alpha]"}], Which[areaAOB === Null, "Il triangolo non \[EGrave] stato costruito", True, Beautify[areaAOB/.t_Real:> PaddedForm[t, {3,2}]]<>" = "<>ToString[PaddedForm[risultatiCorretti[[4]], {3,2}]]]},
+		{"\!\(\*OverscriptBox[\(BC\), \(_\)]\)", Beautify[formule[[4]]/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)", angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)", angolo1-> "\[Beta]"}], Beautify[BC/.t_Real:> PaddedForm[t, {3,2}]]<>" = "<>ToString[PaddedForm[releasedBC, {3,2}]]},
+		{"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", Beautify[formule[[5]]/.{angolo1->"\[Beta]",angolo2->"\!\(\*OverscriptBox[\(BAC\), \(^\)]\)"}], Beautify[ABC/.t_Real:> PaddedForm[t, {3,2}]]<>" = "<>ToString[PaddedForm[releasedABC, {3,2}]]},
+		{"\!\(\*OverscriptBox[\(AC\), \(_\)]\)", Beautify[formule[[4]]/.{l1->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)",angolo2->"\!\(\*OverscriptBox[\(ABC\), \(^\)]\)", angolo1-> "\[Beta]" }], Beautify[AC/.t_Real:> PaddedForm[t, {3,2}]]<>" = "<>ToString[PaddedForm[releasedAC, {3,2}]]},
+		{"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[2]]/.{l1->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l3->"\!\(\*OverscriptBox[\(AB\), \(_\)]\)"}], Beautify[perimetroABC/.t_Real:> PaddedForm[t, {3,2}]]<>" = "<>ToString[PaddedForm[risultatiCorretti[[1]], {3,2}]]},
+		{"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)", Beautify[formule[[3]]/.{l1->"\!\(\*OverscriptBox[\(BC\), \(_\)]\)",l2->"\!\(\*OverscriptBox[\(AC\), \(_\)]\)",angolo->"\[Beta]"}], Beautify[areaABC/.t_Real:> PaddedForm[t, {3,2}]]<>" = "<>ToString[PaddedForm[risultatiCorretti[[2]], {3,2}]]}
 	}}
 ]
 
