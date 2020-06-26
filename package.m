@@ -54,7 +54,7 @@ grafica:=DynamicModule[{
 									inseribili *)
 		formule = {}, (* formule visualizzate su richiesta dell'utente *)
 		risultatiCorretti (* Risultati corretti del problema. 
-							Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *),
+							Memorizzati in un array: { perimetroABC, areaABC, perimetroAOB, areaAOB } *)
 	},
 	
 		Row[{ (* Contiene 3 "columns" e due filler (" "): una per la configurazione dell'esercizio e la visualizzazione dei dati,
