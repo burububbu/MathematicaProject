@@ -151,8 +151,8 @@ grafica:=DynamicModule[{
 								Dato che Table restituisce l'array con una coppia di parentesi in pi\[UGrave] ( * ), viene utilizzato
 								"Flatten" per "appiattire" l'array al primo livello *)
 								formInputRisultati = Flatten[Table[With[{i=i, nomi = {
-												"Perimetro \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
-												"Area \!\(\*OverscriptBox[\(ACB\), \(\[EmptyUpTriangle]\)]\)",
+												"Perimetro \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)",
+												"Area \!\(\*OverscriptBox[\(ABC\), \(\[EmptyUpTriangle]\)]\)",
 												"Perimetro \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)",
 												"Area \!\(\*OverscriptBox[\(AOB\), \(\[EmptyUpTriangle]\)]\)"
 										}},
